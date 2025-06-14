@@ -1,0 +1,5 @@
+rootProject.name = 'skystat'
+include 'domain'
+include 'application'
+include 'framework'
+include 'bootstrap'

@@ -1,0 +1,21 @@
+plugins {
+  id 'org.springframework.boot' version '3.5.0'
+}
+
+group = 'com.ilway'
+version = '1.0.0'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation project(':domain')
+  implementation project(':application')
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  runtimeOnly 'com.h2database:h2'
+  runtimeOnly 'com.mysql:mysql-connector-j'
+}
