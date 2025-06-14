@@ -1,0 +1,20 @@
+package vo.metar.type;
+
+public enum MetaField {
+
+  STATION_ICAO,
+  REPORT_TYPE,
+  OBSERVATION_TIME,
+  REPORT_TIME,
+  WIND,
+  VISIBILITY,
+  TEMPERATURE,
+  DEW_POINT,
+  ALTIMETER,
+  WEATHER,
+  WEATHER_GROUP,
+  CLOUD,
+  CLOUD_GROUP,
+  REMARKS;
+
+}
