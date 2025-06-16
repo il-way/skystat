@@ -1,6 +1,6 @@
 package vo.metar.type;
 
-public enum MetaField {
+public enum MetarField {
 
   STATION_ICAO,
   REPORT_TYPE,

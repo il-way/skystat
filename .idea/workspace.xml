@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/domain/src/main/java/vo/unit/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <changelist_data name="il-way" email="" automatic="false" />
+      <change afterPath="$PROJECT_DIR$/framework/src/main/java/exception/MetarParseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/src/main/java/parser/metar/regex/AltimeterRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/src/main/java/parser/metar/regex/IssuedTimeRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/src/main/java/parser/shared/ReportParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/src/main/java/parser/shared/ReportRegexParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/Hello.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/vo/metar/type/MetaField.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/vo/metar/type/MetarField.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +56,16 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="il-way" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-24/lib/src.zip!/java.base/java/util/regex/Matcher.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -70,7 +83,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.'parser'에 있는 테스트.executor": "Run",
+    "Gradle.AltimeterTest.executor": "Run",
+    "Gradle.AltimeterTest.헥토파스칼_단위의_기압정보를_정상적으로_파싱한다.executor": "Run",
+    "Gradle.CloudTest.executor": "Run",
+    "Gradle.DewPointTest.executor": "Run",
+    "Gradle.MetarParserTest.executor": "Run",
+    "Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor": "Run",
     "Gradle.MinimumCrosswindPolicy.executor": "Run",
+    "Gradle.ObservataionTimeTest.관측시간_파싱_성공.executor": "Run",
+    "Gradle.RemarkTest.executor": "Run",
+    "Gradle.ReportTypeTest.executor": "Run",
+    "Gradle.StationTest.executor": "Run",
+    "Gradle.TemperatureTest.executor": "Run",
+    "Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.VisibilityTest.executor": "Run",
+    "Gradle.WeatherTest.executor": "Run",
+    "Gradle.WeatherTest.관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다.executor": "Run",
+    "Gradle.WeatherTest.단일_기상현상만_관측된_경우_phenomena의_길이가_1인_Weather객체를_반환한다.executor": "Debug",
+    "Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다.executor": "Run",
+    "Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다.executor": "Run",
+    "Gradle.WindTest.executor": "Run",
     "Gradle.skystat [dependencies].executor": "Run",
     "Gradle.skystat:application [:application:Main.main()].executor": "Run",
     "Gradle.skystat:bootstrap [:bootstrap:Main.main()].executor": "Run",
@@ -85,7 +118,7 @@
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.qodana"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -95,30 +128,13 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="parser" />
+      <recent name="parser.metar.entry" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle.MinimumCrosswindPolicy">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="skystat.application.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="skystat.framework.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="skystat.bootstrap.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MinimumCrosswindPolicy" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.'parser'에 있는 테스트">
+    <configuration name="MetarParserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -129,9 +145,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":domain:test" />
+            <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;policy.MinimumCrosswindPolicy&quot;" />
+            <option value="&quot;parser.MetarParserTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -142,35 +158,109 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="skystat [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MetarParserTest.메타_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="dependencies" />
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.MetarParserTest.메타_파싱에_성공해야한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="TemperatureTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.TemperatureTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="VisibilityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.VisibilityTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="'parser'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MinimumCrosswindPolicy" />
-        <item itemvalue="애플리케이션.Main (3)" />
-        <item itemvalue="Gradle.skystat [dependencies]" />
-        <item itemvalue="애플리케이션.Main (2)" />
-        <item itemvalue="애플리케이션.Main (1)" />
+        <item itemvalue="Gradle.'parser'에 있는 테스트" />
+        <item itemvalue="Gradle.MetarParserTest" />
+        <item itemvalue="Gradle.VisibilityTest" />
+        <item itemvalue="Gradle.TemperatureTest" />
+        <item itemvalue="Gradle.MetarParserTest.메타_파싱에_성공해야한다" />
       </list>
     </recent_temporary>
   </component>
@@ -183,5 +273,16 @@
       <updated>1749879615889</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
