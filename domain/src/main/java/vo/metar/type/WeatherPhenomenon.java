@@ -3,7 +3,7 @@ package vo.metar.type;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum WeatherPhenomenon {
+public enum WeatherPhenomenon implements Describable {
   DZ("Drizzle"),
   RA("Rain"),
   SN("Snow"),
@@ -31,6 +31,7 @@ public enum WeatherPhenomenon {
 
   private final String description;
 
+  @Override
   public String getDescription() {
     return description;
   }

@@ -2,6 +2,7 @@ package vo.metar.field;
 
 import lombok.Builder;
 import lombok.Value;
+import vo.metar.type.Describable;
 import vo.metar.type.WeatherDescriptor;
 import vo.metar.type.WeatherInensity;
 import vo.metar.type.WeatherPhenomenon;
@@ -34,7 +35,7 @@ public class Weather {
 
   public boolean containsPhenomena(String target) {
     try {
-      List<WeatherPhenomenon> targetList = IntStream
+      List<Describable> targetList = IntStream
               .range(0, target.length() / 2)
               .mapToObj(idx -> target.substring(idx * 2, 2 * (idx + 1)))
               .map(WeatherPhenomenon::valueOf)
@@ -46,7 +47,20 @@ public class Weather {
     }
   }
 
-  public boolean containsPhenomena(List<WeatherPhenomenon> targetList) {
+  public boolean containsPhenomena(List<Describable> targetList) {
+    if (targetList == null) {
+      throw new IllegalArgumentException("targetList mut not be null");
+    }
+
+    targetList.stream()
+        .filter(t -> !(t instanceof WeatherPhenomenon))
+        .findFirst()
+        .ifPresent(t -> {
+          throw new IllegalArgumentException(
+              "All elements of targetList must be WeatherPhenomenon, but found: " +
+              targetList.getClass().getSimpleName());
+        });
+
     if (targetList.isEmpty())
       return true;
 

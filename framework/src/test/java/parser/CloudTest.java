@@ -72,13 +72,13 @@ public class CloudTest {
             .build();
 
     CloudGroup expected = CloudGroup.builder()
-            .clouds(List.of(cloud))
+            .cloudList(List.of(cloud))
             .build();
 
     assertAll(
             () -> assertEquals(expected, cloudGroup),
             () -> assertThrows(IllegalStateException.class, () ->
-                    cloudGroup.getClouds().get(0).getAltitudeOrThrow()
+                    cloudGroup.getCloudList().get(0).getAltitudeOrThrow()
             )
     );
   }
@@ -98,7 +98,7 @@ public class CloudTest {
             .build();
 
     CloudGroup expected = CloudGroup.builder()
-            .clouds(List.of(expected1))
+            .cloudList(List.of(expected1))
             .build();
 
     assertEquals(expected, cloudGroup);
@@ -133,7 +133,7 @@ public class CloudTest {
             .build();
 
     CloudGroup expected = CloudGroup.builder()
-            .clouds(List.of(expected1, expected2, expected3))
+            .cloudList(List.of(expected1, expected2, expected3))
             .build();
 
     assertEquals(expected, cloudGroup);
@@ -169,7 +169,7 @@ public class CloudTest {
             .build();
 
     CloudGroup expected = CloudGroup.builder()
-            .clouds(List.of(expected1))
+            .cloudList(List.of(expected1))
             .build();
 
     assertAll(
@@ -206,7 +206,7 @@ public class CloudTest {
             .build();
 
     CloudGroup expected = CloudGroup.builder()
-            .clouds(List.of(expected1, expected2))
+            .cloudList(List.of(expected1, expected2))
             .build();
 
     assertAll(

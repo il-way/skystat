@@ -1,9 +1,10 @@
 package vo.metar.type;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum CloudCoverage {
+public enum CloudCoverage implements Describable {
 
   FEW("Few"),
   SCT("Scattered"),
@@ -17,6 +18,7 @@ public enum CloudCoverage {
 
   private final String description;
 
+  @Override
   public String getDescription() {
     return description;
   }

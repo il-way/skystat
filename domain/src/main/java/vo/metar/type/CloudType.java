@@ -1,9 +1,10 @@
 package vo.metar.type;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum CloudType {
+public enum CloudType implements Describable {
 
   TCU("Towering Cumulus"),
   CB("Cumulonimbus"),
@@ -11,6 +12,7 @@ public enum CloudType {
 
   private final String description;
 
+  @Override
   public String getDescription() {
     return description;
   }
