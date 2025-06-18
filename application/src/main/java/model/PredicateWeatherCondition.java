@@ -1,6 +1,5 @@
 package model;
 
-import vo.metar.type.Describable;
 import vo.metar.type.WeatherPhenomenon;
 
 import java.util.List;
