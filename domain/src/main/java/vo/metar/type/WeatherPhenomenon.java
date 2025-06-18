@@ -3,7 +3,7 @@ package vo.metar.type;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum WeatherPhenomenon implements Describable {
+public enum WeatherPhenomenon implements MetarDescription {
   DZ("Drizzle"),
   RA("Rain"),
   SN("Snow"),

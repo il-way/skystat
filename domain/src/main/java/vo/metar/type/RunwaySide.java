@@ -3,7 +3,7 @@ package vo.metar.type;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum RunwaySide implements Symbolizable{
+public enum RunwaySide implements MetarSymbol {
   LEFT("L"),
   RIGHT("R"),
   CNETER("C"),

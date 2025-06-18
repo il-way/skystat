@@ -71,4 +71,13 @@ public class Cloud {
   public boolean hasCloudType() {
     return type != CloudType.NONE;
   }
+
+  public boolean containCloudType(CloudType target) {
+    return type == target;
+  }
+
+  public boolean containCloudCoverage(CloudCoverage target) {
+    return coverage == target;
+  }
+
 }

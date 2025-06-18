@@ -35,42 +35,33 @@ public class Weather {
 
   public boolean containsPhenomena(String target) {
     try {
-      List<Describable> targetList = IntStream
+      List<WeatherPhenomenon> targetToList = IntStream
               .range(0, target.length() / 2)
               .mapToObj(idx -> target.substring(idx * 2, 2 * (idx + 1)))
               .map(WeatherPhenomenon::valueOf)
               .collect(Collectors.toList());
 
-      return containsPhenomena(targetList);
+      return containsPhenomena(targetToList);
     } catch (IllegalArgumentException e) {
       return false;
     }
   }
 
-  public boolean containsPhenomena(List<Describable> targetList) {
-    if (targetList == null) {
-      throw new IllegalArgumentException("targetList mut not be null");
+  public boolean containsPhenomena(List<WeatherPhenomenon> target) {
+    if (target == null) {
+      throw new IllegalArgumentException("target mut not be null");
     }
 
-    targetList.stream()
-        .filter(t -> !(t instanceof WeatherPhenomenon))
-        .findFirst()
-        .ifPresent(t -> {
-          throw new IllegalArgumentException(
-              "All elements of targetList must be WeatherPhenomenon, but found: " +
-              targetList.getClass().getSimpleName());
-        });
-
-    if (targetList.isEmpty())
+    if (target.isEmpty())
       return true;
 
     int targetIndex = 0;
     for (WeatherPhenomenon p : this.phenomena) {
-      if (p.equals(targetList.get(targetIndex))) {
+      if (p.equals(target.get(targetIndex))) {
         targetIndex++;
       }
 
-      if (targetIndex == targetList.size()) {
+      if (targetIndex == target.size()) {
         return true;
       }
     }

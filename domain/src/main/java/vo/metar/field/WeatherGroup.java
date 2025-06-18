@@ -34,9 +34,22 @@ public class WeatherGroup {
             .anyMatch(weather -> weather.containsPhenomena(target));
   }
 
-  public boolean containsPhenomena(List<Describable> targetList) {
+  public boolean containsPhenomena(List<WeatherPhenomenon> target) {
+//    target.stream()
+//        .filter(t -> !(t instanceof WeatherPhenomenon))
+//        .findFirst()
+//        .ifPresent(t -> {
+//          throw new IllegalArgumentException(
+//              "All elements of target must be WeatherPhenomenon, but found: " +
+//                  target.getClass().getSimpleName());
+//        });
+//
+//    List<WeatherPhenomenon> casted = target.stream()
+//        .map(t -> (WeatherPhenomenon) t)
+//        .toList();
+
     return weatherList.stream()
-            .anyMatch(weather -> weather.containsPhenomena(targetList));
+            .anyMatch(weather -> weather.containsPhenomena(target));
   }
 
   public int size() {

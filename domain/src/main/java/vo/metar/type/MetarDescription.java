@@ -1,5 +1,5 @@
 package vo.metar.type;
 
-public interface Describable {
+public interface MetarDescription {
   String getDescription();
 }

@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum CloudCoverage implements Describable {
+public enum CloudCoverage implements MetarDescription {
 
   FEW("Few"),
   SCT("Scattered"),

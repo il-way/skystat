@@ -49,35 +49,14 @@ public class CloudGroup {
         .min();
   }
 
-  public boolean containsCloudType(List<Describable> targetList) {
-    if (targetList == null) {
-      throw new IllegalArgumentException("targetList mut not be null");
-    }
+  public boolean containsCloudType(CloudType target) {
+    return cloudList.stream()
+        .anyMatch(cloud -> cloud.containCloudType(target));
+  }
 
-    targetList.stream()
-        .filter(t -> !(t instanceof CloudType))
-        .findFirst()
-        .ifPresent(t -> {
-          throw new IllegalArgumentException(
-              "All elements of targetList must be CloudType, but found: " +
-                  targetList.getClass().getSimpleName());
-        });
-
-    if (targetList.isEmpty())
-      return true;
-
-    int targetIndex = 0;
-    for (Cloud c : this.cloudList) {
-      if (c.getType().equals(targetList.get(targetIndex))) {
-        targetIndex++;
-      }
-
-      if (targetIndex == targetList.size()) {
-        return true;
-      }
-    }
-
-    return false;
+  public boolean containsCloudCoverage(CloudCoverage target) {
+    return cloudList.stream()
+        .anyMatch(cloud -> cloud.containCloudCoverage(target));
   }
 
 }

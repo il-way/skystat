@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum CloudType implements Describable {
+public enum CloudType implements MetarDescription {
 
   TCU("Towering Cumulus"),
   CB("Cumulonimbus"),

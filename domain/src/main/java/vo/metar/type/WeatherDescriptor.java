@@ -3,7 +3,7 @@ package vo.metar.type;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum WeatherDescriptor implements Describable {
+public enum WeatherDescriptor implements MetarDescription {
   BC("Patches"),
   BL("Blowing"),
   DR("Drifting"),

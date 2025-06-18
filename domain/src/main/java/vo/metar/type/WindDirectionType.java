@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum WindDirectionType implements Symbolizable {
+public enum WindDirectionType implements MetarSymbol {
   FIXED("FIX"),
   VARIABLE("VRB");
 

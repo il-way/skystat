@@ -1,5 +1,5 @@
 package vo.metar.type;
 
-public interface Symbolizable {
+public interface MetarSymbol {
   String getSymbol();
 }
