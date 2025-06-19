@@ -54,8 +54,8 @@
         <option value="Exception" />
         <option value="Enum" />
         <option value="Record" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -135,6 +135,7 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="port.input" />
       <recent name="usecases" />
       <recent name="model" />
       <recent name="parser" />
@@ -271,8 +272,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.'parser'에 있는 테스트" />
-        <item itemvalue="Gradle.MetarParserTest.메타_파싱에_성공해야한다" />
         <item itemvalue="Gradle.ObservataionTimeTest.관측시간_파싱_성공" />
+        <item itemvalue="Gradle.MetarParserTest.메타_파싱에_성공해야한다" />
         <item itemvalue="Gradle.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다" />
         <item itemvalue="Gradle.parser.ObservataionTimeTest 및 그 외 7개" />
       </list>
