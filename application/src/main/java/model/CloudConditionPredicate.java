@@ -4,7 +4,7 @@ import vo.metar.type.MetarDescription;
 
 import java.util.List;
 
-public record PredicateCloudCondition(
+public record CloudConditionPredicate(
   MetarCloudGroupField  field,
   MetarDescription      target
 ) {}

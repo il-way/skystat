@@ -7,7 +7,6 @@ import java.util.OptionalInt;
 import lombok.*;
 import vo.metar.type.CloudCoverage;
 import vo.metar.type.CloudType;
-import vo.metar.type.Describable;
 
 @Value
 @Builder

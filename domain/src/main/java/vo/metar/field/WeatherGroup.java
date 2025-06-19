@@ -2,7 +2,6 @@ package vo.metar.field;
 
 import lombok.Builder;
 import lombok.Value;
-import vo.metar.type.Describable;
 import vo.metar.type.WeatherPhenomenon;
 
 import java.util.List;

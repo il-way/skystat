@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 import parser.metar.entry.ObservationTimeRegexParser;
 import parser.shared.ReportParser;
 
-import java.time.LocalDateTime;
-import java.time.YearMonth;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,7 +21,7 @@ public class ObservataionTimeTest {
 
     assertEquals(result, ZonedDateTime.of(
         LocalDateTime.of(2025, 5, 1, 3, 0),
-        ZoneId.of("UTC")));
+      ZoneOffset.UTC));
   }
 
 }

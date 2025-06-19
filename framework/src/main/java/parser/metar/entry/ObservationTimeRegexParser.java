@@ -6,10 +6,7 @@ import parser.metar.regex.ObservationTimeRegexes;
 import parser.shared.ReportRegexParser;
 import vo.metar.type.MetarField;
 
-import java.time.LocalDateTime;
-import java.time.YearMonth;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.util.regex.Matcher;
 
 @RequiredArgsConstructor
@@ -41,7 +38,7 @@ public class ObservationTimeRegexParser extends ReportRegexParser<ZonedDateTime>
             minute
     );
 
-    return ZonedDateTime.of(local, ZoneId.of("UTC"));
+    return ZonedDateTime.of(local, ZoneOffset.UTC);
   }
 
   public ObservationTimeRegexParser withYearMonth(YearMonth yearMonth) {

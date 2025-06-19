@@ -4,7 +4,7 @@ import vo.metar.type.WeatherPhenomenon;
 
 import java.util.List;
 
-public record PredicateWeatherCondition(
+public record WeatherConditionPredicate(
   MetarWeatherGroupField    field,
   List<WeatherPhenomenon>   target
 ) {}

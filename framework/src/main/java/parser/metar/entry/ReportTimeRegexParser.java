@@ -7,6 +7,7 @@ import vo.metar.type.ReportType;
 
 import java.time.YearMonth;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -38,7 +39,7 @@ public class ReportTimeRegexParser extends ReportRegexParser<ZonedDateTime> {
   }
 
   private ZonedDateTime roundTo(ZonedDateTime obsTime) {
-    ZonedDateTime utc = obsTime.withZoneSameInstant(ZoneId.of("UTC"));
+    ZonedDateTime utc = obsTime.withZoneSameInstant(ZoneOffset.UTC);
     ZonedDateTime baseHour = utc.truncatedTo(ChronoUnit.HOURS);
 
     int minute = utc.getMinute();

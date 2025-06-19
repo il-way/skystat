@@ -6,6 +6,7 @@ import vo.metar.type.CloudCoverage;
 import vo.metar.type.CloudType;
 
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class MetarTestData {
         Integer.parseInt(ddhhmm.substring(4, 6)),
         0,
         0,
-        ZoneId.of("UTC"));
+      ZoneOffset.UTC);
   }
 
   private static Wind generateWind(double dir, double speed, double gust) {

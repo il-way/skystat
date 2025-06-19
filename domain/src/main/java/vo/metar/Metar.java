@@ -6,11 +6,11 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import spec.TimeZoneSpec;
 import vo.metar.field.*;
 import vo.metar.type.ReportType;
 
 @Getter
-@Builder
 @ToString
 @EqualsAndHashCode
 public class Metar {
@@ -33,4 +33,25 @@ public class Metar {
   private final CloudGroup cloudGroup;
   private final String remarks;
 
+  private static final TimeZoneSpec timeZoneSpec = new TimeZoneSpec();
+
+  @Builder
+	public Metar(String rawText, String stationIcao, ReportType reportType, ZonedDateTime observationTime, ZonedDateTime reportTime, Wind wind, Visibility visibility, Temperature temperature, Temperature dewPoint, Altimeter altimeter, WeatherGroup weatherGroup, CloudGroup cloudGroup, String remarks) {
+    timeZoneSpec.check(observationTime);
+    timeZoneSpec.check(reportTime);
+
+    this.rawText = rawText;
+    this.stationIcao = stationIcao;
+    this.reportType = reportType;
+    this.observationTime = observationTime;
+    this.reportTime = reportTime;
+    this.wind = wind;
+    this.visibility = visibility;
+    this.temperature = temperature;
+    this.dewPoint = dewPoint;
+    this.altimeter = altimeter;
+    this.weatherGroup = weatherGroup;
+    this.cloudGroup = cloudGroup;
+    this.remarks = remarks;
+	}
 }
