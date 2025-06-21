@@ -1,4 +1,4 @@
-package vo.metar.type;
+package vo.weather.type;
 
 import lombok.RequiredArgsConstructor;
 

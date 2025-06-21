@@ -1,10 +1,9 @@
-package vo.metar.type;
+package vo.weather.type;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum CloudCoverage implements MetarDescription {
+public enum CloudCoverage implements WeatherDescription {
 
   FEW("Few"),
   SCT("Scattered"),

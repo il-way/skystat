@@ -2,8 +2,8 @@ package parser.metar.entry;
 
 import parser.metar.regex.TemperaturePairRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.field.Temperature;
-import vo.metar.type.MetarField;
+import vo.weather.Temperature;
+import vo.metar.MetarField;
 import vo.unit.TemperatureUnit;
 
 import java.util.HashMap;

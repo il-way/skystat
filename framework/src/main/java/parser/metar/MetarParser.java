@@ -4,14 +4,13 @@ import exception.MetarParseException;
 import parser.metar.composite.CompositeRegexParser;
 import parser.metar.entry.*;
 import vo.metar.Metar;
-import vo.metar.field.*;
-import vo.metar.type.MetarField;
-import vo.metar.type.ReportType;
+import vo.metar.MetarField;
+import vo.weather.CloudGroup;
+import vo.weather.WeatherGroup;
 
-import static vo.metar.type.MetarField.*;
+import static vo.metar.MetarField.*;
 
 import java.time.YearMonth;
-import java.time.ZonedDateTime;
 import java.util.Map;
 
 public class MetarParser {

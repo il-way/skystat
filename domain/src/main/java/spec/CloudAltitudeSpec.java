@@ -2,7 +2,7 @@ package spec;
 
 import exception.GenericSpecificationExeception;
 import spec.shared.AbstractSpecification;
-import vo.metar.field.Cloud;
+import vo.weather.Cloud;
 
 public class CloudAltitudeSpec extends AbstractSpecification<Cloud> {
 

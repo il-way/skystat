@@ -2,10 +2,10 @@ package parser.metar.entry;
 
 import parser.metar.regex.CloudRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.field.Cloud;
-import vo.metar.type.CloudCoverage;
-import vo.metar.type.CloudType;
-import vo.metar.type.MetarField;
+import vo.weather.Cloud;
+import vo.weather.type.CloudCoverage;
+import vo.weather.type.CloudType;
+import vo.metar.MetarField;
 
 import java.util.regex.Matcher;
 

@@ -1,10 +1,10 @@
-package vo.metar.field;
+package vo.weather;
 
 import lombok.Builder;
 import lombok.Value;
-import vo.metar.type.WeatherDescriptor;
-import vo.metar.type.WeatherInensity;
-import vo.metar.type.WeatherPhenomenon;
+import vo.weather.type.WeatherDescriptor;
+import vo.weather.type.WeatherInensity;
+import vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
 import java.util.stream.Collectors;

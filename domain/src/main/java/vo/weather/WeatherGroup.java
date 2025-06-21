@@ -1,8 +1,8 @@
-package vo.metar.field;
+package vo.weather;
 
 import lombok.Builder;
 import lombok.Value;
-import vo.metar.type.WeatherPhenomenon;
+import vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
 

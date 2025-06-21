@@ -1,4 +1,4 @@
-package vo.metar.type;
+package vo.metar;
 
 public enum MetarField {
 

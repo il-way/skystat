@@ -2,7 +2,7 @@ package parser.metar.regex;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import vo.metar.type.ReportType;
+import vo.metar.ReportType;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

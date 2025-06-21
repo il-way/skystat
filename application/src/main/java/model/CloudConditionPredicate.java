@@ -1,10 +1,8 @@
 package model;
 
-import vo.metar.type.MetarDescription;
-
-import java.util.List;
+import vo.weather.type.WeatherDescription;
 
 public record CloudConditionPredicate(
   MetarCloudGroupField  field,
-  MetarDescription      target
+  WeatherDescription target
 ) {}

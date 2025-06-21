@@ -7,8 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import spec.TimeZoneSpec;
-import vo.metar.field.*;
-import vo.metar.type.ReportType;
+import vo.weather.*;
 
 @Getter
 @ToString

@@ -1,4 +1,4 @@
-package vo.metar.type;
+package vo.airport.type;
 
 public enum RunwayType {
   MULTI,

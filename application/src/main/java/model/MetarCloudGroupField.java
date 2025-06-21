@@ -2,12 +2,10 @@ package model;
 
 import lombok.RequiredArgsConstructor;
 import vo.metar.Metar;
-import vo.metar.type.CloudCoverage;
-import vo.metar.type.CloudType;
-import vo.metar.type.MetarDescription;
-import vo.metar.type.WeatherPhenomenon;
+import vo.weather.type.CloudCoverage;
+import vo.weather.type.CloudType;
+import vo.weather.type.WeatherDescription;
 
-import java.util.List;
 import java.util.function.BiPredicate;
 
 @RequiredArgsConstructor
@@ -27,9 +25,9 @@ public enum MetarCloudGroupField {
     return m.getCloudGroup().containsCloudCoverage((CloudCoverage) target);
   });
 
-  private final BiPredicate<Metar, MetarDescription> tester;
+  private final BiPredicate<Metar, WeatherDescription> tester;
 
-  public boolean test(Metar metar, MetarDescription target) {
+  public boolean test(Metar metar, WeatherDescription target) {
     return tester.test(metar, target);
   }
 

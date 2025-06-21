@@ -3,8 +3,8 @@ package parser.metar.entry;
 import parser.metar.regex.VisibilityRegexes;
 import parser.shared.ReportRegexParser;
 import policy.rounding.RoundingPolicy;
-import vo.metar.field.Visibility;
-import vo.metar.type.MetarField;
+import vo.weather.Visibility;
+import vo.metar.MetarField;
 import vo.unit.LengthUnit;
 
 import java.math.RoundingMode;

@@ -3,7 +3,7 @@ package parser;
 import org.junit.jupiter.api.Test;
 import parser.metar.entry.DewPointRegexParser;
 import parser.shared.ReportParser;
-import vo.metar.field.Temperature;
+import vo.weather.Temperature;
 import vo.unit.TemperatureUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,9 +1,9 @@
 package policy.crosswind;
 
 import exception.GenericPolicyException;
-import vo.metar.field.Runway;
-import vo.metar.field.RunwayEnd;
-import vo.metar.field.Wind;
+import vo.airport.Runway;
+import vo.airport.RunwayEnd;
+import vo.weather.Wind;
 
 import java.util.List;
 import java.util.stream.Stream;

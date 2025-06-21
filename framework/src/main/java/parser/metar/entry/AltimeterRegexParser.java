@@ -3,8 +3,8 @@ package parser.metar.entry;
 import parser.metar.regex.AltimeterRegexes;
 import parser.shared.ReportRegexParser;
 import policy.rounding.RoundingPolicy;
-import vo.metar.field.Altimeter;
-import vo.metar.type.MetarField;
+import vo.weather.Altimeter;
+import vo.metar.MetarField;
 import vo.unit.PressureUnit;
 
 import java.math.RoundingMode;

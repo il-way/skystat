@@ -3,7 +3,7 @@ package parser;
 import org.junit.jupiter.api.Test;
 import parser.metar.entry.AltimeterRegexParser;
 import parser.shared.ReportParser;
-import vo.metar.field.Altimeter;
+import vo.weather.Altimeter;
 import vo.unit.PressureUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

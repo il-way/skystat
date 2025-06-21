@@ -1,10 +1,10 @@
-package vo.metar.field;
+package vo.airport;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import spec.RunwayHeadingSpec;
-import vo.metar.type.RunwaySide;
+import vo.airport.type.RunwaySide;
 
 @Getter
 @EqualsAndHashCode

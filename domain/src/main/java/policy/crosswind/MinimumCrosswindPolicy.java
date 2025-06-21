@@ -2,8 +2,8 @@ package policy.crosswind;
 
 import java.util.List;
 
-import vo.metar.field.Wind;
-import vo.metar.field.Runway;
+import vo.weather.Wind;
+import vo.airport.Runway;
 
 public interface MinimumCrosswindPolicy {
   

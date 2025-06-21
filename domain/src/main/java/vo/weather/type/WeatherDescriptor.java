@@ -1,9 +1,9 @@
-package vo.metar.type;
+package vo.weather.type;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum WeatherDescriptor implements MetarDescription {
+public enum WeatherDescriptor implements WeatherDescription {
   BC("Patches"),
   BL("Blowing"),
   DR("Drifting"),

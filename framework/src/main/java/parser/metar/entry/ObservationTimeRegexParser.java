@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import parser.metar.regex.ObservationTimeRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.type.MetarField;
+import vo.metar.MetarField;
 
 import java.time.*;
 import java.util.regex.Matcher;

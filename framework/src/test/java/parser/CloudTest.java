@@ -4,10 +4,10 @@ import exception.GenericSpecificationExeception;
 import org.junit.jupiter.api.Test;
 import parser.metar.entry.CloudGroupRegexParser;
 import parser.shared.ReportParser;
-import vo.metar.field.Cloud;
-import vo.metar.field.CloudGroup;
-import vo.metar.type.CloudCoverage;
-import vo.metar.type.CloudType;
+import vo.weather.Cloud;
+import vo.weather.CloudGroup;
+import vo.weather.type.CloudCoverage;
+import vo.weather.type.CloudType;
 
 import java.util.List;
 

@@ -2,8 +2,8 @@ package parser.metar.regex;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import vo.metar.type.CloudCoverage;
-import vo.metar.type.CloudType;
+import vo.weather.type.CloudCoverage;
+import vo.weather.type.CloudType;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

@@ -10,8 +10,8 @@ import policy.crosswind.MinimumCrosswindPolicyType;
 import policy.crosswind.MultiRunwayMinimumCrosswindPolicy;
 import policy.crosswind.SingleRunwayMinimumCrosswindPolicy;
 import policy.rounding.RoundingPolicy;
-import vo.metar.field.Runway;
-import vo.metar.field.Wind;
+import vo.airport.Runway;
+import vo.weather.Wind;
 import vo.unit.LengthUnit;
 
 @AllArgsConstructor

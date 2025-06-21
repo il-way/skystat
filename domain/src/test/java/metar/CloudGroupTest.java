@@ -1,11 +1,10 @@
 package metar;
 
 import org.junit.jupiter.api.Test;
-import vo.metar.field.Cloud;
-import vo.metar.field.CloudGroup;
-import vo.metar.type.CloudCoverage;
-import vo.metar.type.CloudType;
-import vo.metar.type.WeatherPhenomenon;
+import vo.weather.Cloud;
+import vo.weather.CloudGroup;
+import vo.weather.type.CloudCoverage;
+import vo.weather.type.CloudType;
 
 import java.util.List;
 

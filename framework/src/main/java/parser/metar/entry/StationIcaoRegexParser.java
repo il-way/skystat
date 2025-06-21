@@ -2,7 +2,7 @@ package parser.metar.entry;
 
 import parser.metar.regex.StationIcaoRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.type.MetarField;
+import vo.metar.MetarField;
 
 import java.util.regex.Matcher;
 

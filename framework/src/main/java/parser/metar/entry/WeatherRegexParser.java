@@ -2,11 +2,11 @@ package parser.metar.entry;
 
 import parser.metar.regex.WeatherRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.field.Weather;
-import vo.metar.type.MetarField;
-import vo.metar.type.WeatherDescriptor;
-import vo.metar.type.WeatherInensity;
-import vo.metar.type.WeatherPhenomenon;
+import vo.weather.Weather;
+import vo.metar.MetarField;
+import vo.weather.type.WeatherDescriptor;
+import vo.weather.type.WeatherInensity;
+import vo.weather.type.WeatherPhenomenon;
 
 import java.util.ArrayList;
 import java.util.List;

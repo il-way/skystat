@@ -2,10 +2,10 @@ package parser.metar.entry;
 
 import parser.metar.regex.WindRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.field.Wind;
-import vo.metar.field.WindDirection;
-import vo.metar.type.MetarField;
-import vo.metar.type.WindDirectionType;
+import vo.weather.Wind;
+import vo.weather.WindDirection;
+import vo.metar.MetarField;
+import vo.weather.type.WindDirectionType;
 import vo.unit.SpeedUnit;
 
 import java.util.regex.Matcher;

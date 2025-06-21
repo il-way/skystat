@@ -1,12 +1,12 @@
-package vo.metar.field;
+package vo.weather;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import spec.CloudAltitudeSpec;
 import spec.CloudCoverageSpec;
-import vo.metar.type.CloudCoverage;
-import vo.metar.type.CloudType;
+import vo.weather.type.CloudCoverage;
+import vo.weather.type.CloudType;
 
 import java.util.List;
 import java.util.Optional;

@@ -5,9 +5,9 @@ import java.util.stream.Stream;
 
 import exception.GenericPolicyException;
 import lombok.RequiredArgsConstructor;
-import vo.metar.field.Runway;
-import vo.metar.field.RunwayEnd;
-import vo.metar.field.Wind;
+import vo.airport.Runway;
+import vo.airport.RunwayEnd;
+import vo.weather.Wind;
 import vo.unit.LengthUnit;
 
 @RequiredArgsConstructor

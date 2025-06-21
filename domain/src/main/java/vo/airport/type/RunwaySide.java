@@ -1,9 +1,10 @@
-package vo.metar.type;
+package vo.airport.type;
 
 import lombok.RequiredArgsConstructor;
+import vo.weather.type.WeatherSymbol;
 
 @RequiredArgsConstructor
-public enum RunwaySide implements MetarSymbol {
+public enum RunwaySide implements WeatherSymbol {
   LEFT("L"),
   RIGHT("R"),
   CNETER("C"),

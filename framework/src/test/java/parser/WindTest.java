@@ -3,8 +3,8 @@ package parser;
 import org.junit.jupiter.api.Test;
 import parser.metar.entry.WindRegexParser;
 import parser.shared.ReportParser;
-import vo.metar.field.Wind;
-import vo.metar.field.WindDirection;
+import vo.weather.Wind;
+import vo.weather.WindDirection;
 import vo.unit.SpeedUnit;
 
 import static org.junit.jupiter.api.Assertions.*;

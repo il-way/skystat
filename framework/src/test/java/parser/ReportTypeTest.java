@@ -3,7 +3,7 @@ package parser;
 import org.junit.jupiter.api.Test;
 import parser.metar.entry.ReportTypeRegexParser;
 import parser.shared.ReportParser;
-import vo.metar.type.ReportType;
+import vo.metar.ReportType;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;

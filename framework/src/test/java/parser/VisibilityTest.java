@@ -3,7 +3,7 @@ package parser;
 import org.junit.jupiter.api.Test;
 import parser.metar.entry.VisibilityRegexParser;
 import parser.shared.ReportParser;
-import vo.metar.field.Visibility;
+import vo.weather.Visibility;
 import vo.unit.LengthUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

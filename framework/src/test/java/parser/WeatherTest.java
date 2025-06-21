@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import parser.metar.entry.WeatherGroupRegexParser;
 import parser.metar.entry.WeatherRegexParser;
 import parser.shared.ReportParser;
-import vo.metar.field.Weather;
-import vo.metar.field.WeatherGroup;
-import vo.metar.type.WeatherInensity;
-import vo.metar.type.WeatherPhenomenon;
+import vo.weather.Weather;
+import vo.weather.WeatherGroup;
+import vo.weather.type.WeatherInensity;
+import vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
 

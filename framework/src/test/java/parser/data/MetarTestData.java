@@ -1,16 +1,15 @@
 package parser.data;
 
 import vo.metar.Metar;
-import vo.metar.field.*;
-import vo.metar.type.CloudCoverage;
-import vo.metar.type.CloudType;
+import vo.weather.type.CloudCoverage;
+import vo.weather.type.CloudType;
+import vo.weather.*;
 
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-import static vo.metar.type.ReportType.METAR;
+import static vo.metar.ReportType.METAR;
 import static vo.unit.LengthUnit.MILE;
 import static vo.unit.PressureUnit.INHG;
 import static vo.unit.SpeedUnit.KT;

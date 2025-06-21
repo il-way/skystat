@@ -2,9 +2,9 @@ package parser.metar.regex;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import vo.metar.type.WeatherDescriptor;
-import vo.metar.type.WeatherInensity;
-import vo.metar.type.WeatherPhenomenon;
+import vo.weather.type.WeatherDescriptor;
+import vo.weather.type.WeatherInensity;
+import vo.weather.type.WeatherPhenomenon;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;

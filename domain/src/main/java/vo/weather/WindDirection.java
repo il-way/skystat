@@ -1,7 +1,7 @@
-package vo.metar.field;
+package vo.weather;
 
 import lombok.EqualsAndHashCode;
-import vo.metar.type.WindDirectionType;
+import vo.weather.type.WindDirectionType;
 
 import java.util.Optional;
 

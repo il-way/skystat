@@ -1,6 +1,6 @@
 package parser.shared;
 
-import vo.metar.type.MetarField;
+import vo.metar.MetarField;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

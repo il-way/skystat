@@ -1,10 +1,9 @@
-package vo.metar.type;
+package vo.weather.type;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum CloudType implements MetarDescription {
+public enum CloudType implements WeatherDescription {
 
   TCU("Towering Cumulus"),
   CB("Cumulonimbus"),

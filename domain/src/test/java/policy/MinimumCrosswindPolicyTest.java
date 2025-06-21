@@ -2,8 +2,11 @@ package policy;
 
 import org.junit.jupiter.api.Test;
 import service.WindOperation;
-import vo.metar.field.*;
-import vo.metar.type.RunwaySide;
+import vo.airport.Runway;
+import vo.airport.RunwayEnd;
+import vo.airport.type.RunwaySide;
+import vo.weather.Wind;
+import vo.weather.WindDirection;
 
 import java.util.List;
 

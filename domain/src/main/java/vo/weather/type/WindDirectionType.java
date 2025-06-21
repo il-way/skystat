@@ -1,10 +1,9 @@
-package vo.metar.type;
+package vo.weather.type;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum WindDirectionType implements MetarSymbol {
+public enum WindDirectionType implements WeatherSymbol {
   FIXED("FIX"),
   VARIABLE("VRB");
 

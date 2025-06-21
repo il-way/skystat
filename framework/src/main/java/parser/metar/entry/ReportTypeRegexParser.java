@@ -2,8 +2,8 @@ package parser.metar.entry;
 
 import parser.metar.regex.ReportTypeRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.type.MetarField;
-import vo.metar.type.ReportType;
+import vo.metar.MetarField;
+import vo.metar.ReportType;
 
 import java.util.regex.Matcher;
 

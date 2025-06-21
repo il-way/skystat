@@ -2,9 +2,9 @@ package parser.metar.entry;
 
 import parser.metar.regex.WeatherRegexes;
 import parser.shared.ReportRegexParser;
-import vo.metar.field.Weather;
-import vo.metar.field.WeatherGroup;
-import vo.metar.type.MetarField;
+import vo.weather.Weather;
+import vo.weather.WeatherGroup;
+import vo.metar.MetarField;
 
 import java.util.ArrayList;
 import java.util.List;

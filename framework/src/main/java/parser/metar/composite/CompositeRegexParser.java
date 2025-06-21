@@ -5,7 +5,7 @@ import parser.metar.entry.ObservationTimeRegexParser;
 import parser.metar.entry.ReportTimeRegexParser;
 import parser.shared.ReportParser;
 import parser.shared.ReportRegexParser;
-import vo.metar.type.MetarField;
+import vo.metar.MetarField;
 
 import java.time.YearMonth;
 import java.util.ArrayList;

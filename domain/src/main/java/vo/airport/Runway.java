@@ -1,9 +1,8 @@
-package vo.metar.field;
+package vo.airport;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import vo.metar.field.RunwayEnd;
 import vo.unit.LengthUnit;
 
 @Getter

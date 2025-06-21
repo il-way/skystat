@@ -1,4 +1,4 @@
-package vo.metar.field;
+package vo.weather;
 
 import lombok.Builder;
 import lombok.Value;
