@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/dto/statistic/WeatherStatisticQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/usecases/CloudStatisticUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/usecases/MetarManagementUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/usecases/WeatherStatisticUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/usecases/WindRoseUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/dto/statistic/PreciateCloudStatisticQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/dto/statistic/CloudStatisticQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/dto/statistic/PreciateWeatherStatisticQuery.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/model/PredicateCloudCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/model/CloudConditionPredicate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/model/PredicateWeatherCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/model/WeatherConditionPredicate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
