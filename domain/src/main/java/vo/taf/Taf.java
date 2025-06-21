@@ -2,6 +2,7 @@ package vo.taf;
 
 import lombok.Builder;
 import lombok.Value;
+import spec.TimeZoneSpec;
 import vo.metar.ReportType;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
@@ -26,7 +27,11 @@ public class Taf {
 	private final boolean isNill;
 	private final boolean isCancelled;
 
+	private static final TimeZoneSpec timezoneSpec = new TimeZoneSpec();
+
 	public Taf(String rawText, String stationIcao, ReportType reportType, ZonedDateTime issuedTime, ForecastPeriod validPeriod, List<TafSection> sections, boolean isNill, boolean isCancelled) {
+		timezoneSpec.check(issuedTime);
+
 		this.rawText = rawText;
 		this.stationIcao = stationIcao;
 		this.reportType = reportType;

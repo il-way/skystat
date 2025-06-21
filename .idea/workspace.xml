@@ -43,8 +43,8 @@
         <option value="AnnotationType" />
         <option value="Exception" />
         <option value="Record" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -62,7 +62,7 @@
     <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-24/lib/src.zip!/java.base/java/util/regex/Matcher.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -135,11 +135,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="policy.modifier" />
       <recent name="port.input" />
       <recent name="usecases" />
       <recent name="model" />
       <recent name="parser" />
-      <recent name="parser.metar.entry" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.'parser'에 있는 테스트">

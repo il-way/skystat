@@ -8,5 +8,6 @@ public enum Modifier {
 	PROB30,
 	PROB40,
 	PROB30_TEMPO,
-	PROB40_TEMPO
+	PROB40_TEMPO,
+	NONE;
 }

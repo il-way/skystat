@@ -11,19 +11,19 @@ import java.time.ZonedDateTime;
 public class TafSection {
 
 	private final Modifier modifier;
-	private final ForecastPeriod interval;
+	private final ForecastPeriod period;
 	private final WeatherSnapshot weather;
 
-	public static TafSection of(Modifier modifier, ForecastPeriod interval, WeatherSnapshot weather) {
+	public static TafSection of(Modifier modifier, ForecastPeriod period, WeatherSnapshot weather) {
 		return TafSection.builder()
 			       .modifier(modifier)
-			       .interval(interval)
+			       .period(period)
 			       .weather(weather)
 			       .build();
 	}
 
 	public boolean isApplicable(ZonedDateTime t) {
-		return interval.contains(t);
+		return period.contains(t);
 	}
 
 }
