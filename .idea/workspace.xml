@@ -44,8 +44,8 @@
         <option value="Exception" />
         <option value="Record" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -86,6 +86,8 @@
     "Gradle.MetarParserTest.executor": "Run",
     "Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor": "Run",
     "Gradle.MinimumCrosswindPolicy.executor": "Run",
+    "Gradle.MinimumCrosswindPolicyTest.executor": "Run",
+    "Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다.executor": "Run",
     "Gradle.ObservataionTimeTest.관측시간_파싱_성공.executor": "Run",
     "Gradle.RemarkTest.executor": "Run",
     "Gradle.ReportTypeTest.executor": "Run",
