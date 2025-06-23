@@ -4,7 +4,7 @@ import exception.GenericPolicyException;
 import vo.taf.field.WeatherSnapshot;
 import vo.taf.type.Modifier;
 
-public class FmOverridePolicy implements OverridePolicy {
+public class FromOverridePolicy implements OverridePolicy {
 
 	@Override
 	public WeatherSnapshot overrideWith(WeatherSnapshot base, WeatherSnapshot patch, Modifier modifier) {

@@ -3,7 +3,7 @@ package vo.taf.field;
 import lombok.Builder;
 import lombok.Value;
 import policy.modifier.BasicOverridePolicy;
-import policy.modifier.FmOverridePolicy;
+import policy.modifier.FromOverridePolicy;
 import vo.taf.type.Modifier;
 import vo.weather.*;
 
@@ -36,7 +36,7 @@ public class WeatherSnapshot {
 
 	public WeatherSnapshot overrideWith(WeatherSnapshot patch, Modifier modifier) {
 		return switch (modifier) {
-			case FM -> new FmOverridePolicy().overrideWith(this, patch, modifier);
+			case FM -> new FromOverridePolicy().overrideWith(this, patch, modifier);
 			case HEADER, BECMG, TEMPO, PROB30_TEMPO, PROB40_TEMPO,
 			     PROB30, PROB40, NONE
 				-> new BasicOverridePolicy().overrideWith(this, patch, modifier);
