@@ -3,9 +3,9 @@ package vo.taf;
 import lombok.Builder;
 import lombok.Value;
 import spec.TimeZoneSpec;
-import vo.metar.ReportType;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
+import vo.taf.type.ReportType;
 
 import java.time.ZonedDateTime;
 import java.util.List;

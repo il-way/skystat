@@ -75,58 +75,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.'parser'에 있는 테스트.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.AltimeterTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.AltimeterTest.헥토파스칼_단위의_기압정보를_정상적으로_파싱한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CloudTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DewPointTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MetarParserTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MinimumCrosswindPolicy.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MinimumCrosswindPolicyTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ObservataionTimeTest.관측시간_파싱_성공.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RemarkTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ReportTypeTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StationTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.TemperatureTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.VisibilityTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.WeatherTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.WeatherTest.관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.WeatherTest.단일_기상현상만_관측된_경우_phenomena의_길이가_1인_Weather객체를_반환한다.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.WindTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.parser.ObservataionTimeTest 및 그 외 7개.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.skystat [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.skystat:application [:application:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.skystat:bootstrap [:bootstrap:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.skystat:domain [:domain:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.skystat:framework [:framework:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.소스 다운로드.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.'parser'에 있는 테스트.executor": "Run",
+    "Gradle.AltimeterTest.executor": "Run",
+    "Gradle.AltimeterTest.헥토파스칼_단위의_기압정보를_정상적으로_파싱한다.executor": "Run",
+    "Gradle.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor": "Run",
+    "Gradle.CloudTest.executor": "Run",
+    "Gradle.DewPointTest.executor": "Run",
+    "Gradle.MetarParserTest.executor": "Run",
+    "Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.MinimumCrosswindPolicy.executor": "Run",
+    "Gradle.MinimumCrosswindPolicyTest.executor": "Run",
+    "Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다.executor": "Run",
+    "Gradle.ObservataionTimeTest.관측시간_파싱_성공.executor": "Run",
+    "Gradle.RemarkTest.executor": "Run",
+    "Gradle.ReportTypeTest.executor": "Run",
+    "Gradle.StationTest.executor": "Run",
+    "Gradle.TafTest.print.executor": "Run",
+    "Gradle.TemperatureTest.executor": "Run",
+    "Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.VisibilityTest.executor": "Run",
+    "Gradle.WeatherTest.executor": "Run",
+    "Gradle.WeatherTest.관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다.executor": "Run",
+    "Gradle.WeatherTest.단일_기상현상만_관측된_경우_phenomena의_길이가_1인_Weather객체를_반환한다.executor": "Debug",
+    "Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다.executor": "Run",
+    "Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다.executor": "Run",
+    "Gradle.WindTest.executor": "Run",
+    "Gradle.parser.AltimeterTest 및 그 외 11개 (1).executor": "Run",
+    "Gradle.parser.AltimeterTest 및 그 외 11개 (2).executor": "Run",
+    "Gradle.parser.AltimeterTest 및 그 외 11개.executor": "Run",
+    "Gradle.parser.ObservataionTimeTest 및 그 외 7개.executor": "Run",
+    "Gradle.skystat [dependencies].executor": "Run",
+    "Gradle.skystat:application [:application:Main.main()].executor": "Run",
+    "Gradle.skystat:bootstrap [:bootstrap:Main.main()].executor": "Run",
+    "Gradle.skystat:domain [:domain:Main.main()].executor": "Run",
+    "Gradle.skystat:framework [:framework:Main.main()].executor": "Run",
+    "Gradle.소스 다운로드.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;,
-      &quot;repository&quot;
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="spec.shared" />
@@ -142,8 +146,8 @@
       <recent name="parser" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.'parser'에 있는 테스트">
-    <configuration name="MetarParserTest.메타_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.TafTest.print">
+    <configuration name="AltimeterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -156,7 +160,7 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;parser.MetarParserTest.메타_파싱에_성공해야한다&quot;" />
+            <option value="&quot;parser.AltimeterTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -167,7 +171,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MinimumCrosswindPolicyTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TafTest.print" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -180,7 +184,7 @@
           <list>
             <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;policy.MinimumCrosswindPolicyTest&quot;" />
+            <option value="&quot;taf.TafTest.print&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -191,31 +195,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":domain:test" />
-            <option value="--tests" />
-            <option value="&quot;policy.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="ObservataionTimeTest.관측시간_파싱_성공" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="parser.AltimeterTest 및 그 외 11개 (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -227,8 +207,18 @@
         <option name="taskNames">
           <list>
             <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;parser.ObservataionTimeTest.관측시간_파싱_성공&quot;" />
+            <option value="--tests &quot;parser.AltimeterTest&quot;" />
+            <option value="--tests &quot;parser.CloudTest&quot;" />
+            <option value="--tests &quot;parser.DewPointTest&quot;" />
+            <option value="--tests &quot;parser.MetarParserTest&quot;" />
+            <option value="--tests &quot;parser.ObservataionTimeTest&quot;" />
+            <option value="--tests &quot;parser.RemarkTest&quot;" />
+            <option value="--tests &quot;parser.ReportTypeTest&quot;" />
+            <option value="--tests &quot;parser.StationTest&quot;" />
+            <option value="--tests &quot;parser.TemperatureTest&quot;" />
+            <option value="--tests &quot;parser.VisibilityTest&quot;" />
+            <option value="--tests &quot;parser.WeatherTest&quot;" />
+            <option value="--tests &quot;parser.WindTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -239,7 +229,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="'parser'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="parser.AltimeterTest 및 그 외 11개 (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -251,8 +241,52 @@
         <option name="taskNames">
           <list>
             <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;parser.*&quot;" />
+            <option value="--tests &quot;parser.AltimeterTest&quot;" />
+            <option value="--tests &quot;parser.CloudTest&quot;" />
+            <option value="--tests &quot;parser.DewPointTest&quot;" />
+            <option value="--tests &quot;parser.MetarParserTest&quot;" />
+            <option value="--tests &quot;parser.ObservataionTimeTest&quot;" />
+            <option value="--tests &quot;parser.RemarkTest&quot;" />
+            <option value="--tests &quot;parser.ReportTypeTest&quot;" />
+            <option value="--tests &quot;parser.StationTest&quot;" />
+            <option value="--tests &quot;parser.TemperatureTest&quot;" />
+            <option value="--tests &quot;parser.VisibilityTest&quot;" />
+            <option value="--tests &quot;parser.WeatherTest&quot;" />
+            <option value="--tests &quot;parser.WindTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="parser.AltimeterTest 및 그 외 11개" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests &quot;parser.AltimeterTest&quot;" />
+            <option value="--tests &quot;parser.CloudTest&quot;" />
+            <option value="--tests &quot;parser.DewPointTest&quot;" />
+            <option value="--tests &quot;parser.MetarParserTest&quot;" />
+            <option value="--tests &quot;parser.ObservataionTimeTest&quot;" />
+            <option value="--tests &quot;parser.RemarkTest&quot;" />
+            <option value="--tests &quot;parser.ReportTypeTest&quot;" />
+            <option value="--tests &quot;parser.StationTest&quot;" />
+            <option value="--tests &quot;parser.TemperatureTest&quot;" />
+            <option value="--tests &quot;parser.VisibilityTest&quot;" />
+            <option value="--tests &quot;parser.WeatherTest&quot;" />
+            <option value="--tests &quot;parser.WindTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -265,11 +299,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.'parser'에 있는 테스트" />
-        <item itemvalue="Gradle.MinimumCrosswindPolicyTest" />
-        <item itemvalue="Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다" />
-        <item itemvalue="Gradle.ObservataionTimeTest.관측시간_파싱_성공" />
-        <item itemvalue="Gradle.MetarParserTest.메타_파싱에_성공해야한다" />
+        <item itemvalue="Gradle.TafTest.print" />
+        <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개 (2)" />
+        <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개 (1)" />
+        <item itemvalue="Gradle.AltimeterTest" />
+        <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개" />
       </list>
     </recent_temporary>
   </component>

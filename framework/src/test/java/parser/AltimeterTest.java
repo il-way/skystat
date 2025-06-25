@@ -17,7 +17,7 @@ public class AltimeterTest {
     String rawText = "METAR RKSI 030300Z 29008KT 260V320 9999 -RA BKN006 OVC045 11/10 Q1009 NOSIG=";
     Altimeter actual = parser.parse(rawText);
 
-    Altimeter expected = Altimeter.of(1009, PressureUnit.HPA);
+    Altimeter expected = Altimeter.of(1009D, PressureUnit.HPA);
     assertEquals(expected, actual);
   }
 

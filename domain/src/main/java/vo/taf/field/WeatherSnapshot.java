@@ -13,7 +13,7 @@ import java.time.ZonedDateTime;
 @Builder
 public class WeatherSnapshot {
 
-	// Basic Elements
+	// Basic Elements(Optional)
 	private final Wind wind;
 	private final Visibility visibility;
 	private final WeatherGroup weatherGroup;
