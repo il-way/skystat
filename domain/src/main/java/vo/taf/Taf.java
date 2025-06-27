@@ -25,11 +25,11 @@ public class Taf {
 	private final List<TafSection> sections;
 
 	private final boolean isNill;
-	private final boolean isCancelled;
+	private final boolean isCanceled;
 
 	private static final TimeZoneSpec timezoneSpec = new TimeZoneSpec();
 
-	public Taf(String rawText, String stationIcao, ReportType reportType, ZonedDateTime issuedTime, ForecastPeriod validPeriod, List<TafSection> sections, boolean isNill, boolean isCancelled) {
+	public Taf(String rawText, String stationIcao, ReportType reportType, ZonedDateTime issuedTime, ForecastPeriod validPeriod, List<TafSection> sections, boolean isNill, boolean isCanceled) {
 		timezoneSpec.check(issuedTime);
 
 		this.rawText = rawText;
@@ -39,6 +39,6 @@ public class Taf {
 		this.validPeriod = validPeriod;
 		this.sections = sections;
 		this.isNill = isNill;
-		this.isCancelled = isCancelled;
+		this.isCanceled = isCanceled;
 	}
 }

@@ -77,7 +77,7 @@ public class TafTest {
 				            tafHeaderSection,
 				            tafSecondSection
 			            ))
-			            .isCancelled(false)
+			            .isCanceled(false)
 			            .isNill(false)
 			            .build();
 
