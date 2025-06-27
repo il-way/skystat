@@ -9,6 +9,7 @@ import vo.taf.type.Modifier;
 import vo.taf.type.ReportType;
 import vo.unit.LengthUnit;
 import vo.weather.*;
+import vo.weather.type.*;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -58,7 +59,7 @@ public class TafTestData {
 			.build()
 	);
 
-	protected TafSection secondSection = TafSection.of(
+	protected TafSection section1 = TafSection.of(
 		Modifier.BECMG,
 		ForecastPeriod.of(
 			ZonedDateTime.of(2025, 6, 25, 15, 0, 0, 0, ZoneOffset.UTC),
@@ -72,7 +73,7 @@ public class TafTestData {
 			.build()
 	);
 
-	protected TafSection thirdSection = TafSection.of(
+	protected TafSection section2 = TafSection.of(
 		Modifier.BECMG,
 		ForecastPeriod.of(
 			ZonedDateTime.of(2025, 6, 25, 18, 0, 0, 0, ZoneOffset.UTC),
@@ -80,15 +81,54 @@ public class TafTestData {
 		),
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(170), 5, 0, KT))
-			.visibility(Visibility.of(9999, METERS))
-			.weatherGroup(null)
-			.cloudGroup(null)
+			.visibility(Visibility.of(4000, METERS))
+			.weatherGroup(WeatherGroup.of(List.of(
+				Weather.of(WeatherInensity.MODERATE, null, List.of(WeatherPhenomenon.BR))
+			)))
+			.cloudGroup(CloudGroup.of(List.of(
+				Cloud.of(BKN, 4000, NONE)
+			)))
 			.build()
 	);
 
+	protected TafSection section3 = TafSection.of(
+		Modifier.BECMG,
+		ForecastPeriod.of(
+			ZonedDateTime.of(2025, 6, 25, 21, 0, 0, 0, ZoneOffset.UTC),
+			ZonedDateTime.of(2025, 6, 25, 23, 0, 0, 0, ZoneOffset.UTC)
+		),
+		WeatherSnapshot.builder()
+			.wind(Wind.of(WindDirection.fixed(260), 7, 0, KT))
+			.visibility(Visibility.of(9999, METERS))
+			.weatherGroup(null)
+			.cloudGroup(CloudGroup.of(List.of(
+				Cloud.of(BKN, 4000, NONE)
+			)))
+			.build()
+	);
+
+	protected TafSection fourthSection = TafSection.of(
+		Modifier.BECMG,
+		ForecastPeriod.of(
+			ZonedDateTime.of(2025, 6, 26, 13, 0, 0, 0, ZoneOffset.UTC),
+			ZonedDateTime.of(2025, 6, 26, 15, 0, 0, 0, ZoneOffset.UTC)
+		),
+		WeatherSnapshot.builder()
+			.wind(Wind.of(WindDirection.fixed(200), 5, 0, KT))
+			.visibility(Visibility.of(6000, METERS))
+			.weatherGroup(null)
+			.cloudGroup(CloudGroup.of(List.of(
+				Cloud.of(FEW, 1000, NONE),
+				Cloud.of(BKN, 3000, NONE)
+			)))
+			.build()
+	);
 
 	protected List<TafSection> sections = List.of(
-
+		headerSection,
+		secondSection,
+		thirdSection,
+		fourthSection
 	);
 
 	protected boolean isNull = false;

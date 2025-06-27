@@ -24,7 +24,7 @@ public enum WeatherRegexes {
     return String.format(
             "(?:^|\\s)" +
             "(?<%1$s>%2$s)?" +
-            "(?<%3$s>%4$s)?" +
+            "(?<%3$s>(%4$s){1,3})?" +
             "(?<%5$s>(?:%6$s){1,3})" +
             "(?=(?:\\s|$))",
             INTENSITY.groupName, INTENSITY.regex,

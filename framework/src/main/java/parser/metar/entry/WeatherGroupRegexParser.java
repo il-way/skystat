@@ -18,6 +18,7 @@ public class WeatherGroupRegexParser extends ReportRegexParser<WeatherGroup> {
   @Override
   public WeatherGroup parse(String rawText) {
     Matcher matcher = getMatcher(rawText, WEATHER_REGEX);
+    System.out.println(matcher);
 
     WeatherRegexParser weatherParser = new WeatherRegexParser();
 

@@ -12,6 +12,7 @@ public enum WeatherDescriptor implements WeatherDescription {
   MI("Shallow"),
   PR("Partial"),
   SH("Showers"),
+  TS("Thunderstorm"),
   VC("in the Vicinity");
 
   private final String description;

@@ -6,6 +6,7 @@ import parser.metar.entry.WeatherRegexParser;
 import parser.shared.ReportParser;
 import vo.weather.Weather;
 import vo.weather.WeatherGroup;
+import vo.weather.type.WeatherDescriptor;
 import vo.weather.type.WeatherInensity;
 import vo.weather.type.WeatherPhenomenon;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.util.AssertionErrors.assertNull;
 
 public class WeatherTest {
 
@@ -26,7 +28,7 @@ public class WeatherTest {
 
     Weather weather = wxParser.parse(rawText);
 
-    assertEquals(null, weather);
+    assertNull(null, weather);
   }
 
   @Test
@@ -52,7 +54,7 @@ public class WeatherTest {
     // then
     Weather expected = Weather.builder()
         .intensity(WeatherInensity.LIGHT)
-        .descriptor(null)
+        .descriptor(List.of())
         .phenomena(List.of(WeatherPhenomenon.RA))
         .build();
 
@@ -74,7 +76,7 @@ public class WeatherTest {
     // then
     Weather expected = Weather.builder()
         .intensity(WeatherInensity.MODERATE)
-        .descriptor(null)
+        .descriptor(List.of())
         .phenomena(List.of(WeatherPhenomenon.RA, WeatherPhenomenon.SN))
         .build();
 
@@ -95,19 +97,19 @@ public class WeatherTest {
     // then
     Weather expected1 = Weather.builder()
         .intensity(WeatherInensity.LIGHT)
-        .descriptor(null)
-        .phenomena(List.of(WeatherPhenomenon.TS, WeatherPhenomenon.SN, WeatherPhenomenon.RA))
+        .descriptor(List.of(WeatherDescriptor.TS))
+        .phenomena(List.of(WeatherPhenomenon.SN, WeatherPhenomenon.RA))
         .build();
 
     Weather expected2 = Weather.builder()
         .intensity(WeatherInensity.LIGHT)
-        .descriptor(null)
+        .descriptor(List.of())
         .phenomena(List.of(WeatherPhenomenon.PL, WeatherPhenomenon.SN))
         .build();
 
     Weather expected3 = Weather.builder()
         .intensity(WeatherInensity.MODERATE)
-        .descriptor(null)
+        .descriptor(List.of())
         .phenomena(List.of(WeatherPhenomenon.BR))
         .build();
 

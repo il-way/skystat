@@ -27,7 +27,6 @@ public enum WeatherPhenomenon implements WeatherDescription {
   SS("Sandstorm"),
   DS("Duststorm"),
   WS("Wind Shear"),
-  TS("Thunderstorm"),
   NSW("Nil Significant Weather");
 
   private final String description;

@@ -150,31 +150,7 @@
       <recent name="parser" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TafTest.print">
-    <configuration name="AltimeterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;parser.AltimeterTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.WeatherTest">
     <configuration name="TafTest.print" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -189,6 +165,54 @@
             <option value=":domain:test" />
             <option value="--tests" />
             <option value="&quot;taf.TafTest.print&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.WeatherTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -267,47 +291,13 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="parser.AltimeterTest 및 그 외 11개" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests &quot;parser.AltimeterTest&quot;" />
-            <option value="--tests &quot;parser.CloudTest&quot;" />
-            <option value="--tests &quot;parser.DewPointTest&quot;" />
-            <option value="--tests &quot;parser.MetarParserTest&quot;" />
-            <option value="--tests &quot;parser.ObservataionTimeTest&quot;" />
-            <option value="--tests &quot;parser.RemarkTest&quot;" />
-            <option value="--tests &quot;parser.ReportTypeTest&quot;" />
-            <option value="--tests &quot;parser.StationTest&quot;" />
-            <option value="--tests &quot;parser.TemperatureTest&quot;" />
-            <option value="--tests &quot;parser.VisibilityTest&quot;" />
-            <option value="--tests &quot;parser.WeatherTest&quot;" />
-            <option value="--tests &quot;parser.WindTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.WeatherTest" />
+        <item itemvalue="Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다" />
         <item itemvalue="Gradle.TafTest.print" />
         <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개 (2)" />
         <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개 (1)" />
-        <item itemvalue="Gradle.AltimeterTest" />
-        <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개" />
       </list>
     </recent_temporary>
   </component>
@@ -331,6 +321,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/framework/src/main/java/parser/shared/ReportRegexParser.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/skystat$CloudTest.ic" NAME="CloudTest 커버리지 결과" MODIFIED="1750160684504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

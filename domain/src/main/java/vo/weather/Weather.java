@@ -13,18 +13,18 @@ import java.util.stream.IntStream;
 @Value
 public class Weather {
 
-  private final WeatherDescriptor descriptor;
+  private final List<WeatherDescriptor> descriptor;
   private final List<WeatherPhenomenon> phenomena;
   private final WeatherInensity intensity;
 
   @Builder
-  public Weather(WeatherInensity intensity, WeatherDescriptor descriptor, List<WeatherPhenomenon> phenomena) {
+  public Weather(WeatherInensity intensity, List<WeatherDescriptor> descriptor, List<WeatherPhenomenon> phenomena) {
     this.intensity = intensity;
     this.descriptor = descriptor;
     this.phenomena = List.copyOf(phenomena);
   }
 
-  public static Weather of(WeatherInensity intensity, WeatherDescriptor descriptor, List<WeatherPhenomenon> phenomena) {
+  public static Weather of(WeatherInensity intensity, List<WeatherDescriptor> descriptor, List<WeatherPhenomenon> phenomena) {
     return Weather.builder()
             .intensity(intensity)
             .descriptor(descriptor)

@@ -17,6 +17,7 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
   private static final MetarField FIELD_TYPE = MetarField.WEATHER;
   private static final String WEATHER_REGEX = WeatherRegexes.fullPattern();
   private static final String PHENOMENON_REGEX = WeatherRegexes.PHENOMENON.getRegex();
+  private static final String DESCRIPTOR_REGEX = WeatherRegexes.DESCRIPTOR.getRegex();
 
   @Override
   public Weather parse(String rawText) {
@@ -34,13 +35,10 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
             ? WeatherInensity.fromSymbol(intensityMatch)
             : WeatherInensity.MODERATE;
 
-    WeatherDescriptor descriptor = descriptorMatch != null
-            ? WeatherDescriptor.valueOf(descriptorMatch)
-            : null;
-
+    List<WeatherDescriptor> descriptor = parseDescriptors(descriptorMatch, DESCRIPTOR_REGEX);
     List<WeatherPhenomenon> phenomena = parsePhenomena(phenomenonMatch, PHENOMENON_REGEX);
 
-    if (descriptor == null && phenomena.isEmpty()) {
+    if (descriptor.isEmpty() && phenomena.isEmpty()) {
       return null;
     }
 
@@ -49,11 +47,13 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
             .descriptor(descriptor)
             .phenomena(phenomena)
             .build();
-
   }
 
   private List<WeatherPhenomenon> parsePhenomena(String phenomenonMatch, String phenomenonRegex) {
     List<WeatherPhenomenon> phenomena = new ArrayList<>();
+    if (phenomenonMatch == null || phenomenonMatch.isBlank()) {
+      return phenomena;
+    }
 
     Matcher matcher = getMatcher(phenomenonMatch, phenomenonRegex);
 
@@ -64,6 +64,23 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
     }
 
     return phenomena;
+  }
+
+  private List<WeatherDescriptor> parseDescriptors(String descriptorMatch, String descriptorRegex) {
+    List<WeatherDescriptor> descriptors = new ArrayList<>();
+    if (descriptorMatch == null || descriptorMatch.isBlank()) {
+      return descriptors;
+    }
+
+    Matcher matcher = getMatcher(descriptorMatch, descriptorRegex);
+
+    while (matcher.find()) {
+      String matched = matcher.group(0);
+      WeatherDescriptor descriptor = WeatherDescriptor.valueOf(matched);
+      descriptors.add(descriptor);
+    }
+
+    return descriptors;
   }
 
   @Override
