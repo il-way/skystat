@@ -43,10 +43,10 @@
       <list>
         <option value="AnnotationType" />
         <option value="Exception" />
-        <option value="Record" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Record" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
