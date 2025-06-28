@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +126,7 @@
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.색 구성표 글꼴"
   },
   "keyToStringList": {
     "GitStage.ChangesTree.GroupingKeys": [
@@ -150,7 +151,31 @@
       <recent name="parser" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.WeatherTest">
+  <component name="RunManager" selected="Gradle.TafTest.print">
+    <configuration name="MetarParserTest.메타_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.MetarParserTest.메타_파싱에_성공해야한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="TafTest.print" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -223,7 +248,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="parser.AltimeterTest 및 그 외 11개 (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="'parser'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -235,52 +260,8 @@
         <option name="taskNames">
           <list>
             <option value=":framework:test" />
-            <option value="--tests &quot;parser.AltimeterTest&quot;" />
-            <option value="--tests &quot;parser.CloudTest&quot;" />
-            <option value="--tests &quot;parser.DewPointTest&quot;" />
-            <option value="--tests &quot;parser.MetarParserTest&quot;" />
-            <option value="--tests &quot;parser.ObservataionTimeTest&quot;" />
-            <option value="--tests &quot;parser.RemarkTest&quot;" />
-            <option value="--tests &quot;parser.ReportTypeTest&quot;" />
-            <option value="--tests &quot;parser.StationTest&quot;" />
-            <option value="--tests &quot;parser.TemperatureTest&quot;" />
-            <option value="--tests &quot;parser.VisibilityTest&quot;" />
-            <option value="--tests &quot;parser.WeatherTest&quot;" />
-            <option value="--tests &quot;parser.WindTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="parser.AltimeterTest 및 그 외 11개 (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests &quot;parser.AltimeterTest&quot;" />
-            <option value="--tests &quot;parser.CloudTest&quot;" />
-            <option value="--tests &quot;parser.DewPointTest&quot;" />
-            <option value="--tests &quot;parser.MetarParserTest&quot;" />
-            <option value="--tests &quot;parser.ObservataionTimeTest&quot;" />
-            <option value="--tests &quot;parser.RemarkTest&quot;" />
-            <option value="--tests &quot;parser.ReportTypeTest&quot;" />
-            <option value="--tests &quot;parser.StationTest&quot;" />
-            <option value="--tests &quot;parser.TemperatureTest&quot;" />
-            <option value="--tests &quot;parser.VisibilityTest&quot;" />
-            <option value="--tests &quot;parser.WeatherTest&quot;" />
-            <option value="--tests &quot;parser.WindTest&quot;" />
+            <option value="--tests" />
+            <option value="&quot;parser.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -293,11 +274,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TafTest.print" />
+        <item itemvalue="Gradle.'parser'에 있는 테스트" />
+        <item itemvalue="Gradle.MetarParserTest.메타_파싱에_성공해야한다" />
         <item itemvalue="Gradle.WeatherTest" />
         <item itemvalue="Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다" />
-        <item itemvalue="Gradle.TafTest.print" />
-        <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개 (2)" />
-        <item itemvalue="Gradle.parser.AltimeterTest 및 그 외 11개 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -321,17 +302,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/framework/src/main/java/parser/shared/ReportRegexParser.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/skystat$CloudTest.ic" NAME="CloudTest 커버리지 결과" MODIFIED="1750160684504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

@@ -1,7 +1,6 @@
 package taf;
 
-import lombok.Getter;
-import lombok.Value;
+import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
 import vo.taf.field.WeatherSnapshot;
@@ -17,11 +16,9 @@ import java.util.List;
 
 import static vo.unit.LengthUnit.METERS;
 import static vo.unit.SpeedUnit.KT;
-import static vo.weather.type.CloudCoverage.BKN;
-import static vo.weather.type.CloudCoverage.FEW;
+import static vo.weather.type.CloudCoverage.*;
 import static vo.weather.type.CloudType.NONE;
 
-@Getter
 public class TafTestData {
 
 	protected String rawText = """
@@ -107,7 +104,23 @@ public class TafTestData {
 			.build()
 	);
 
-	protected TafSection fourthSection = TafSection.of(
+	protected TafSection section4 = TafSection.of(
+		Modifier.BECMG,
+		ForecastPeriod.of(
+			ZonedDateTime.of(2025, 6, 26, 9, 0, 0, 0, ZoneOffset.UTC),
+			ZonedDateTime.of(2025, 6, 26, 11, 0, 0, 0, ZoneOffset.UTC)
+		),
+		WeatherSnapshot.builder()
+			.wind(null)
+			.visibility(null)
+			.weatherGroup(null)
+			.cloudGroup(CloudGroup.of(List.of(
+				Cloud.of(SCT, 4000, NONE)
+			)))
+			.build()
+	);
+
+	protected TafSection section5 = TafSection.of(
 		Modifier.BECMG,
 		ForecastPeriod.of(
 			ZonedDateTime.of(2025, 6, 26, 13, 0, 0, 0, ZoneOffset.UTC),
@@ -126,12 +139,27 @@ public class TafTestData {
 
 	protected List<TafSection> sections = List.of(
 		headerSection,
-		secondSection,
-		thirdSection,
-		fourthSection
+		section1,
+		section2,
+		section3,
+		section4,
+		section5
 	);
 
-	protected boolean isNull = false;
+	protected boolean isNill = false;
 	protected boolean isCanceled = false;
+
+	protected Taf generate() {
+		return Taf.builder()
+			       .rawText(rawText)
+			       .stationIcao(stationIcao)
+			       .validPeriod(validPeriod)
+			       .reportType(reportType)
+			       .issuedTime(issuedTime)
+			       .sections(sections)
+			       .isNill(isNill)
+			       .isCanceled(isCanceled)
+			       .build();
+	}
 
 }

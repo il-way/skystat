@@ -10,14 +10,13 @@ import vo.weather.type.WeatherPhenomenon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 
 public class WeatherRegexParser extends ReportRegexParser<Weather> {
 
   private static final MetarField FIELD_TYPE = MetarField.WEATHER;
   private static final String WEATHER_REGEX = WeatherRegexes.fullPattern();
-  private static final String PHENOMENON_REGEX = WeatherRegexes.PHENOMENON.getRegex();
-  private static final String DESCRIPTOR_REGEX = WeatherRegexes.DESCRIPTOR.getRegex();
 
   @Override
   public Weather parse(String rawText) {
@@ -28,15 +27,21 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
     }
 
     String intensityMatch = matcher.group(WeatherRegexes.INTENSITY.getGroupName());
-    String descriptorMatch = matcher.group(WeatherRegexes.DESCRIPTOR.getGroupName());
-    String phenomenonMatch = matcher.group(WeatherRegexes.PHENOMENON.getGroupName());
-
     WeatherInensity intensity = intensityMatch != null
             ? WeatherInensity.fromSymbol(intensityMatch)
             : WeatherInensity.MODERATE;
 
-    List<WeatherDescriptor> descriptor = parseDescriptors(descriptorMatch, DESCRIPTOR_REGEX);
-    List<WeatherPhenomenon> phenomena = parsePhenomena(phenomenonMatch, PHENOMENON_REGEX);
+    List<WeatherDescriptor> descriptor = parseTokens(
+      matcher.group(WeatherRegexes.DESCRIPTOR.getGroupName()),
+      WeatherRegexes.DESCRIPTOR.getRegex(),
+      WeatherDescriptor::valueOf
+    );
+
+    List<WeatherPhenomenon> phenomena = parseTokens(
+      matcher.group(WeatherRegexes.PHENOMENON.getGroupName()),
+      WeatherRegexes.PHENOMENON.getRegex(),
+      WeatherPhenomenon::valueOf
+    );
 
     if (descriptor.isEmpty() && phenomena.isEmpty()) {
       return null;
@@ -49,38 +54,18 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
             .build();
   }
 
-  private List<WeatherPhenomenon> parsePhenomena(String phenomenonMatch, String phenomenonRegex) {
-    List<WeatherPhenomenon> phenomena = new ArrayList<>();
-    if (phenomenonMatch == null || phenomenonMatch.isBlank()) {
-      return phenomena;
+  private <T> List<T> parseTokens(String matchedPart, String regex, Function<String, T> converter) {
+    if (matchedPart == null || matchedPart.isBlank()) {
+      return List.of();
     }
 
-    Matcher matcher = getMatcher(phenomenonMatch, phenomenonRegex);
-
+    List<T> result = new ArrayList<>();
+    Matcher matcher = getMatcher(matchedPart, regex);
     while (matcher.find()) {
-      String matched = matcher.group(0);
-      WeatherPhenomenon phenomenon = WeatherPhenomenon.valueOf(matched);
-      phenomena.add(phenomenon);
+      result.add(converter.apply(matcher.group(0)));
     }
 
-    return phenomena;
-  }
-
-  private List<WeatherDescriptor> parseDescriptors(String descriptorMatch, String descriptorRegex) {
-    List<WeatherDescriptor> descriptors = new ArrayList<>();
-    if (descriptorMatch == null || descriptorMatch.isBlank()) {
-      return descriptors;
-    }
-
-    Matcher matcher = getMatcher(descriptorMatch, descriptorRegex);
-
-    while (matcher.find()) {
-      String matched = matcher.group(0);
-      WeatherDescriptor descriptor = WeatherDescriptor.valueOf(matched);
-      descriptors.add(descriptor);
-    }
-
-    return descriptors;
+    return result;
   }
 
   @Override
