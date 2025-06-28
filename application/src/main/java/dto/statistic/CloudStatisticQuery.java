@@ -1,7 +1,7 @@
 package dto.statistic;
 
 import dto.MetarRetrievalPeriod;
-import model.CloudConditionPredicate;
+import model.weather.CloudConditionPredicate;
 
 public record CloudStatisticQuery(
 	String                  icao,

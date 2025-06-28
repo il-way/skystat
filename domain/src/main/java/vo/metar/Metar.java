@@ -12,7 +12,7 @@ import vo.weather.*;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class Metar {
+public class Metar implements MetricSource {
 
   private final String rawText;
   

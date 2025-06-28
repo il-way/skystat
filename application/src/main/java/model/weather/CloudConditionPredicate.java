@@ -1,8 +1,8 @@
-package model;
+package model.weather;
 
 import vo.weather.type.WeatherDescription;
 
 public record CloudConditionPredicate(
-  MetarCloudGroupField  field,
-  WeatherDescription target
+  CloudGroupField     field,
+  WeatherDescription  target
 ) {}

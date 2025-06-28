@@ -3,7 +3,7 @@ package port.input;
 import dto.statistic.ObservationStatisticResponse;
 import dto.statistic.ThresholdStatisticQuery;
 import lombok.RequiredArgsConstructor;
-import model.ThresholdCondition;
+import model.weather.ThresholdCondition;
 import port.input.internal.ObservationStatisticAggregator;
 import port.output.MetarManagementOutputPort;
 import usecase.ThresholdStatisticUseCase;

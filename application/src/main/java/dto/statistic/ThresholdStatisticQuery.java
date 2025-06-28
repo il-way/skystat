@@ -1,7 +1,7 @@
 package dto.statistic;
 
 import dto.MetarRetrievalPeriod;
-import model.ThresholdCondition;
+import model.weather.ThresholdCondition;
 
 public record ThresholdStatisticQuery(
 	String                icao,

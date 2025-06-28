@@ -1,4 +1,4 @@
-package model;
+package model.generic;
 
 import lombok.RequiredArgsConstructor;
 

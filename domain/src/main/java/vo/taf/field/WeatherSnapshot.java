@@ -11,7 +11,7 @@ import java.time.ZonedDateTime;
 
 @Value
 @Builder
-public class WeatherSnapshot {
+public class WeatherSnapshot implements MetricSource {
 
 	// Basic Elements(Optional)
 	private final Wind wind;

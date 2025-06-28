@@ -1,7 +1,7 @@
-package model;
+package model.weather;
 
 import lombok.RequiredArgsConstructor;
-import vo.metar.Metar;
+import vo.weather.CloudGroup;
 import vo.weather.type.CloudCoverage;
 import vo.weather.type.CloudType;
 import vo.weather.type.WeatherDescription;
@@ -9,26 +9,26 @@ import vo.weather.type.WeatherDescription;
 import java.util.function.BiPredicate;
 
 @RequiredArgsConstructor
-public enum MetarCloudGroupField {
+public enum CloudGroupField {
 
-  HAS_CLOUDTYPE((m, target) -> {
+  HAS_CLOUDTYPE((cg, target) -> {
     if (!(target instanceof CloudType)) {
       throw new IllegalArgumentException("target must be CloudType, but: " + target.getClass().getSimpleName());
     }
-    return m.getCloudGroup().containsCloudType((CloudType) target);
+    return cg.containsCloudType((CloudType) target);
   }),
 
-  HAS_COVERAGE((m, target) -> {
+  HAS_COVERAGE((cg, target) -> {
     if (!(target instanceof CloudCoverage)) {
       throw new IllegalArgumentException("target must be CloudCoverage, but: " + target.getClass().getSimpleName());
     }
-    return m.getCloudGroup().containsCloudCoverage((CloudCoverage) target);
+    return cg.containsCloudCoverage((CloudCoverage) target);
   });
 
-  private final BiPredicate<Metar, WeatherDescription> tester;
+  private final BiPredicate<CloudGroup, WeatherDescription> tester;
 
-  public boolean test(Metar metar, WeatherDescription target) {
-    return tester.test(metar, target);
+  public boolean test(CloudGroup cg, WeatherDescription target) {
+    return tester.test(cg, target);
   }
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MetarManagementOutputPort {
 
-	void persist(Metar metar);
+	void save(Metar metar);
 
 	Metar findByIcao(String icao, ZonedDateTime reportTime);
 
