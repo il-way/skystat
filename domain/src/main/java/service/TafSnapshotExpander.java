@@ -11,7 +11,7 @@ import java.util.*;
 
 public final class TafSnapshotExpander {
 
-	public List<WeatherSnapshot> expand(Taf taf) {
+	public Map<ZonedDateTime, WeatherSnapshot> expand(Taf taf) {
 		Objects.requireNonNull(taf, "taf must not be null");
 
 		NavigableMap<ZonedDateTime, WeatherSnapshot> slots = initSlots(taf.getValidPeriod());
@@ -22,7 +22,8 @@ public final class TafSnapshotExpander {
 				slots.put(t, patched);
 			}
 		}
-		return new ArrayList<>(slots.values());
+
+		return slots;
 	}
 
 	private NavigableMap<ZonedDateTime, WeatherSnapshot> initSlots(ForecastPeriod period) {

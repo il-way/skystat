@@ -32,7 +32,7 @@ public class TafTestData {
 
 	protected String stationIcao = "RKSS";
 	protected ReportType reportType = ReportType.NORMAL;
-	protected ZonedDateTime issuedTime = ZonedDateTime.of(2025, 6, 25, 11, 0, 0, 0, ZoneOffset.UTC);;
+	protected ZonedDateTime issuedTime = ZonedDateTime.of(2025, 6, 25, 11, 0, 0, 0, ZoneOffset.UTC);
 	protected ForecastPeriod validPeriod = ForecastPeriod.of(
 		ZonedDateTime.of(2025, 6, 25, 12, 0, 0, 0, ZoneOffset.UTC),
 		ZonedDateTime.of(2025, 6, 26, 18, 0, 0, 0, ZoneOffset.UTC)
