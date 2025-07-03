@@ -57,5 +57,4 @@ public class WindRoseInputPort implements WindRoseUseCase {
 		return new WindRose(speedBins, directionBins, freq, metarList.size());
 	}
 
-
 }

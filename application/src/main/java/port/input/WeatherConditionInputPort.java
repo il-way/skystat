@@ -1,19 +1,16 @@
 package port.input;
 
-import dto.query.ThresholdConditionQuery;
-import dto.query.WeatherConditionQuery;
+import dto.taf.WeatherConditionQuery;
 import lombok.RequiredArgsConstructor;
-import model.weather.ThresholdCondition;
 import model.weather.WeatherConditionPredicate;
 import port.output.TafManagementOutputPort;
 import service.TafSnapshotExpander;
-import usecase.WeatherConditionUseCase;
+import usecase.ConditionUseCase;
 import vo.taf.Taf;
-import vo.taf.field.WeatherSnapshot;
 import vo.weather.WeatherGroup;
 
 @RequiredArgsConstructor
-public class WeatherConditionInputPort implements WeatherConditionUseCase {
+public class WeatherConditionInputPort implements ConditionUseCase<WeatherConditionQuery> {
 
 	private final TafManagementOutputPort tafManagementOutputPort;
 	private final TafSnapshotExpander expander = new TafSnapshotExpander();

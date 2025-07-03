@@ -6,14 +6,14 @@ import lombok.RequiredArgsConstructor;
 import model.weather.WeatherConditionPredicate;
 import port.input.internal.ObservationStatisticAggregator;
 import port.output.MetarManagementOutputPort;
-import usecase.WeatherStatisticUseCase;
+import usecase.StatisticUseCase;
 import vo.metar.Metar;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 @RequiredArgsConstructor
-public class WeatherStatisticInputPort implements WeatherStatisticUseCase {
+public class WeatherStatisticInputPort implements StatisticUseCase<WeatherStatisticQuery> {
 
 	private final MetarManagementOutputPort metarManagementOutputPort;
 

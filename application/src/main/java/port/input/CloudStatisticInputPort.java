@@ -6,14 +6,14 @@ import lombok.RequiredArgsConstructor;
 import model.weather.CloudConditionPredicate;
 import port.input.internal.ObservationStatisticAggregator;
 import port.output.MetarManagementOutputPort;
-import usecase.CloudStatisticUseCase;
+import usecase.StatisticUseCase;
 import vo.metar.Metar;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 @RequiredArgsConstructor
-public class CloudStatisticInputPort implements CloudStatisticUseCase {
+public class CloudStatisticInputPort implements StatisticUseCase<CloudStatisticQuery> {
 
 	private final MetarManagementOutputPort metarManagementOutputPort;
 

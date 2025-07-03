@@ -1,4 +1,4 @@
-package dto.query;
+package dto.taf;
 
 import model.weather.ThresholdCondition;
 

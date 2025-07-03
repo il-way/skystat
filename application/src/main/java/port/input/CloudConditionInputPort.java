@@ -1,19 +1,16 @@
 package port.input;
 
-import dto.query.CloudConditionQuery;
-import dto.query.WeatherConditionQuery;
+import dto.taf.CloudConditionQuery;
 import lombok.RequiredArgsConstructor;
 import model.weather.CloudConditionPredicate;
-import model.weather.WeatherConditionPredicate;
 import port.output.TafManagementOutputPort;
 import service.TafSnapshotExpander;
-import usecase.CloudConditionUseCase;
+import usecase.ConditionUseCase;
 import vo.taf.Taf;
 import vo.weather.CloudGroup;
-import vo.weather.WeatherGroup;
 
 @RequiredArgsConstructor
-public class CloudConditionInputPort implements CloudConditionUseCase {
+public class CloudConditionInputPort implements ConditionUseCase<CloudConditionQuery> {
 
 	private final TafManagementOutputPort tafManagementOutputPort;
 	private final TafSnapshotExpander expander = new TafSnapshotExpander();

@@ -6,14 +6,14 @@ import lombok.RequiredArgsConstructor;
 import model.weather.ThresholdCondition;
 import port.input.internal.ObservationStatisticAggregator;
 import port.output.MetarManagementOutputPort;
-import usecase.ThresholdStatisticUseCase;
+import usecase.StatisticUseCase;
 import vo.metar.Metar;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 @RequiredArgsConstructor
-public class ThresholdStatisticInputPort implements ThresholdStatisticUseCase {
+public class ThresholdStatisticInputPort implements StatisticUseCase<ThresholdStatisticQuery> {
 
 	private final MetarManagementOutputPort metarManagementOutputPort;
 
