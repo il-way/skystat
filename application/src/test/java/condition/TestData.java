@@ -1,5 +1,10 @@
 package condition;
 
+import org.mockito.Mock;
+import port.output.TafManagementOutputPort;
+import usecase.ConditionUseCase;
+import usecase.MetarManagementUseCase;
+import usecase.StatisticUseCase;
 import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
@@ -14,12 +19,21 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import static org.mockito.Mockito.*;
+
 import static vo.unit.LengthUnit.METERS;
 import static vo.unit.SpeedUnit.KT;
 import static vo.weather.type.CloudCoverage.*;
 import static vo.weather.type.CloudType.NONE;
 
 public class TestData {
+
+	protected TafManagementOutputPort tafManagementOutputPort;
+	protected ConditionUseCase conditionUseCase;
+
+	public TestData() {
+		init();
+	}
 
 	protected String rawText = """
 		RKSS 251100Z 2512/2618 03006KT 6000 FEW010 BKN027 BKN070 TN20/2520Z TX27/2605Z
@@ -160,6 +174,16 @@ public class TestData {
 			       .isNill(isNill)
 			       .isCanceled(isCanceled)
 			       .build();
+	}
+
+	protected ZonedDateTime ofUTC(int month, int day, int hour, int min) {
+		return ZonedDateTime.of(2025, month, day, hour, min, 0, 0, ZoneOffset.UTC);
+	}
+
+	private void init() {
+		tafManagementOutputPort = mock(TafManagementOutputPort.class);
+		when(tafManagementOutputPort.findByIcao("RKSS"))
+			.thenReturn(generate());
 	}
 
 }
