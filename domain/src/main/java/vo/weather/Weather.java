@@ -6,7 +6,10 @@ import vo.weather.type.WeatherDescriptor;
 import vo.weather.type.WeatherInensity;
 import vo.weather.type.WeatherPhenomenon;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -32,36 +35,51 @@ public class Weather {
             .build();
   }
 
-  public boolean containsPhenomena(String target) {
-    try {
-      List<WeatherPhenomenon> targetToList = IntStream
-              .range(0, target.length() / 2)
-              .mapToObj(idx -> target.substring(idx * 2, 2 * (idx + 1)))
-              .map(WeatherPhenomenon::valueOf)
-              .collect(Collectors.toList());
+  public boolean contains(String target) {
+    List<WeatherPhenomenon> targetPhenomena = new ArrayList<>();
+    List<WeatherDescriptor> targetDescriptors = new ArrayList<>();
 
-      return containsPhenomena(targetToList);
-    } catch (IllegalArgumentException e) {
-      return false;
+    for (int idx=0; idx<target.length(); idx++) {
+      String targetCode = target.substring(2 * idx, 2 * (idx + 1));
+      if (WeatherPhenomenon.names().contains(targetCode)) {
+        targetPhenomena.add(WeatherPhenomenon.valueOf(targetCode));
+        continue;
+      }
+
+      if (WeatherDescriptor.names().contains(targetCode)) {
+        targetDescriptors.add(WeatherDescriptor.valueOf(targetCode));
+      }
     }
+
+    return containsDescriptors(targetDescriptors) && containsPhenomena(targetPhenomena);
   }
 
   public boolean containsPhenomena(List<WeatherPhenomenon> target) {
+    return containsOrdered(this.phenomena, target);
+  }
+
+  public boolean containsDescriptors(List<WeatherDescriptor> target) {
+    return containsOrdered(this.descriptor, target);
+  }
+
+  private <T> boolean containsOrdered(List<T> source, List<T> target) {
     if (target == null) {
       throw new IllegalArgumentException("target mut not be null");
     }
-
-    if (target.isEmpty())
+    
+    if (target.isEmpty()) {
       return true;
+    }
 
     int targetIndex = 0;
-    for (WeatherPhenomenon p : this.phenomena) {
-      if (p.equals(target.get(targetIndex))) {
+    for (T element : source) {
+      if (element.equals(target.get(targetIndex))) {
         targetIndex++;
-      }
-
-      if (targetIndex == target.size()) {
-        return true;
+        if (targetIndex == target.size()) {
+          return true;
+        }
+      } else {
+        targetIndex = 0;
       }
     }
 

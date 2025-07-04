@@ -2,6 +2,7 @@ package vo.weather;
 
 import lombok.Builder;
 import lombok.Value;
+import vo.weather.type.WeatherDescriptor;
 import vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
@@ -28,25 +29,17 @@ public class WeatherGroup {
             .build();
   }
 
-  public boolean containsPhenomena(String target) {
+  public boolean contains(String target) {
     return weatherList.stream()
-            .anyMatch(weather -> weather.containsPhenomena(target));
+             .anyMatch(weather -> weather.contains(target));
+  }
+
+  public boolean containsDescriptors(List<WeatherDescriptor> target) {
+    return weatherList.stream()
+            .anyMatch(weather -> weather.containsDescriptors(target));
   }
 
   public boolean containsPhenomena(List<WeatherPhenomenon> target) {
-//    target.stream()
-//        .filter(t -> !(t instanceof WeatherPhenomenon))
-//        .findFirst()
-//        .ifPresent(t -> {
-//          throw new IllegalArgumentException(
-//              "All elements of target must be WeatherPhenomenon, but found: " +
-//                  target.getClass().getSimpleName());
-//        });
-//
-//    List<WeatherPhenomenon> casted = target.stream()
-//        .map(t -> (WeatherPhenomenon) t)
-//        .toList();
-
     return weatherList.stream()
             .anyMatch(weather -> weather.containsPhenomena(target));
   }

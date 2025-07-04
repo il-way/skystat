@@ -2,6 +2,9 @@ package vo.weather.type;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+import java.util.List;
+
 @RequiredArgsConstructor
 public enum WeatherInensity {
   LIGHT("-"),
@@ -20,4 +23,11 @@ public enum WeatherInensity {
     }
     throw new IllegalArgumentException("Invalid weather intensity symbol: " + symbol);
   }
+
+  public static List<String> names() {
+    return Arrays.stream(values())
+             .map(Enum::name)
+             .toList();
+  }
+
 }

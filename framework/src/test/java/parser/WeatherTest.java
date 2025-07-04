@@ -12,8 +12,7 @@ import vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.util.AssertionErrors.assertNull;
 
 public class WeatherTest {
@@ -80,9 +79,16 @@ public class WeatherTest {
         .phenomena(List.of(WeatherPhenomenon.RA, WeatherPhenomenon.SN))
         .build();
 
+    Weather unexpected = Weather.builder()
+                         .intensity(WeatherInensity.MODERATE)
+                         .descriptor(List.of())
+                         .phenomena(List.of(WeatherPhenomenon.SN, WeatherPhenomenon.RA))
+                         .build();
+
 
     assertAll(
         () -> assertEquals(expected, weather),
+        () -> assertNotEquals(unexpected, weather),
         () -> assertEquals(2, weather.getPhenomena().size())
     );
   }

@@ -2,6 +2,9 @@ package vo.weather.type;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+import java.util.List;
+
 @RequiredArgsConstructor
 public enum WeatherDescriptor implements WeatherDescription {
   BC("Patches"),
@@ -20,6 +23,12 @@ public enum WeatherDescriptor implements WeatherDescription {
   @Override
   public String getDescription() {
     return description;
+  }
+
+  public static List<String> names() {
+    return Arrays.stream(values())
+             .map(Enum::name)
+             .toList();
   }
 
 }
