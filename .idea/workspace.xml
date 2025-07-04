@@ -84,6 +84,7 @@
     "Gradle.AltimeterTest.헥토파스칼_단위의_기압정보를_정상적으로_파싱한다.executor": "Run",
     "Gradle.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor": "Run",
     "Gradle.CloudTest.executor": "Run",
+    "Gradle.ConditionTest.executor": "Run",
     "Gradle.ConditionTest.mocking에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.구름조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.구름탐색에_성공해야한다.executor": "Run",
@@ -156,8 +157,8 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다">
-    <configuration name="ConditionTest.구름탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ConditionTest">
+    <configuration name="ConditionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -170,7 +171,7 @@
           <list>
             <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.구름탐색에_성공해야한다&quot;" />
+            <option value="&quot;condition.ConditionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -279,11 +280,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다" />
+        <item itemvalue="Gradle.ConditionTest" />
         <item itemvalue="Gradle.ConditionTest.날씨조건_탐색에_성공해야한다" />
         <item itemvalue="Gradle.ConditionTest.구름조건_탐색에_성공해야한다" />
+        <item itemvalue="Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다" />
         <item itemvalue="Gradle.ConditionTest.mocking에_성공해야한다" />
-        <item itemvalue="Gradle.ConditionTest.구름탐색에_성공해야한다" />
       </list>
     </recent_temporary>
   </component>

@@ -3,7 +3,7 @@ package port.input;
 import dto.statistic.CloudStatisticQuery;
 import dto.statistic.ObservationStatisticResponse;
 import lombok.RequiredArgsConstructor;
-import model.weather.CloudConditionPredicate;
+import model.weather.CloudCondition;
 import port.input.internal.ObservationStatisticAggregator;
 import port.output.MetarManagementOutputPort;
 import usecase.StatisticUseCase;
@@ -21,8 +21,8 @@ public class CloudStatisticInputPort implements StatisticUseCase<CloudStatisticQ
 	public ObservationStatisticResponse execute(CloudStatisticQuery query) {
 		List<Metar> metarList = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
 
-		CloudConditionPredicate condition = query.condition();
-		Predicate<Metar> predicate = m -> condition.field().test(m.getCloudGroup(), condition.target());
+		CloudCondition condition = query.condition();
+		Predicate<Metar> predicate = m -> condition.predicate().test(m.getCloudGroup(), condition.target());
 
 		return ObservationStatisticAggregator.aggregate(metarList, predicate);
 	}

@@ -1,10 +1,43 @@
 package model.weather;
 
+import lombok.RequiredArgsConstructor;
+import vo.weather.WeatherGroup;
+import vo.weather.type.WeatherDescription;
+import vo.weather.type.WeatherDescriptor;
 import vo.weather.type.WeatherPhenomenon;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiPredicate;
 
-public record WeatherConditionPredicate(
-  WeatherGroupField       field,
-  List<WeatherPhenomenon> target
-) {}
+@RequiredArgsConstructor
+public enum WeatherConditionPredicate {
+
+  HAS_PHENOMENA((wg, target) ->
+                  wg.containsPhenomena(cast(target, WeatherPhenomenon.class))),
+
+  HAS_DESCRIPTORS((wg, target) ->
+                   wg.containsDescriptors(cast(target, WeatherDescriptor.class)));
+
+  private final BiPredicate<WeatherGroup, List<WeatherDescription>> tester;
+
+  public boolean test(WeatherGroup wg, List<WeatherDescription> target ) {
+    return tester.test(wg, target);
+  }
+
+  private static <T> List<T> cast(List<WeatherDescription> src, Class<T> clazz) {
+    List<T> out = new ArrayList<>();
+    for (WeatherDescription o: src) {
+      if (!clazz.isInstance(o)) {
+        throw new IllegalArgumentException("target must be"
+                                             + clazz.getSimpleName()
+                                             + ", but: "
+                                             + o.getClass().getSimpleName());
+      }
+      out.add(clazz.cast(o));
+    }
+
+	  return out;
+  }
+
+}

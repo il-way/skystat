@@ -17,7 +17,7 @@ public class ThresholdConditionInputPort implements ConditionUseCase<ThresholdCo
 	private final TafSnapshotExpander expander = new TafSnapshotExpander();
 
 	@Override
-	public Boolean execute(ThresholdConditionQuery query) {
+	public boolean execute(ThresholdConditionQuery query) {
 		Taf taf = tafManagementOutputPort.findByIcao(query.icao());
 		WeatherSnapshot weatherSnapshot = expander.expand(taf)
 			                                   .get(query.targetTime());

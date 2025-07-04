@@ -1,11 +1,11 @@
 package dto.taf;
 
-import model.weather.CloudConditionPredicate;
+import model.weather.CloudCondition;
 
 import java.time.ZonedDateTime;
 
 public record CloudConditionQuery(
 	String                  icao,
 	ZonedDateTime           targetTime,
-	CloudConditionPredicate condition
+	CloudCondition          condition
 ) { }

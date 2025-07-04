@@ -2,7 +2,7 @@ package port.input;
 
 import dto.taf.CloudConditionQuery;
 import lombok.RequiredArgsConstructor;
-import model.weather.CloudConditionPredicate;
+import model.weather.CloudCondition;
 import port.output.TafManagementOutputPort;
 import service.TafSnapshotExpander;
 import usecase.ConditionUseCase;
@@ -16,14 +16,14 @@ public class CloudConditionInputPort implements ConditionUseCase<CloudConditionQ
 	private final TafSnapshotExpander expander = new TafSnapshotExpander();
 
 	@Override
-	public Boolean execute(CloudConditionQuery query) {
+	public boolean execute(CloudConditionQuery query) {
 		Taf taf = tafManagementOutputPort.findByIcao(query.icao());
 		CloudGroup cloudGroup = expander.expand(taf)
 			                        .get(query.targetTime())
 			                        .getCloudGroup();
 
-		CloudConditionPredicate condition = query.condition();
-		return condition.field().test(cloudGroup, condition.target());
+		CloudCondition condition = query.condition();
+		return condition.predicate().test(cloudGroup, condition.target());
 	}
 
 }

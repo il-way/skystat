@@ -1,5 +1,7 @@
 package condition;
 
+import dto.taf.CloudConditionQuery;
+import dto.taf.WeatherConditionQuery;
 import org.mockito.Mock;
 import port.output.TafManagementOutputPort;
 import usecase.ConditionUseCase;
@@ -29,7 +31,8 @@ import static vo.weather.type.CloudType.NONE;
 public class TestData {
 
 	protected TafManagementOutputPort tafManagementOutputPort;
-	protected ConditionUseCase conditionUseCase;
+	protected ConditionUseCase<CloudConditionQuery> cloudConditionUseCase;
+	protected ConditionUseCase<WeatherConditionQuery> weatherConditionUseCase;
 
 	public TestData() {
 		init();
