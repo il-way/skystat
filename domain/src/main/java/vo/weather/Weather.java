@@ -23,8 +23,8 @@ public class Weather {
   @Builder
   public Weather(WeatherInensity intensity, List<WeatherDescriptor> descriptor, List<WeatherPhenomenon> phenomena) {
     this.intensity = intensity;
-    this.descriptor = descriptor;
-    this.phenomena = List.copyOf(phenomena);
+    this.descriptor = descriptor != null ? List.copyOf(descriptor) : List.of();
+    this.phenomena = phenomena != null ? List.copyOf(phenomena) : List.of();
   }
 
   public static Weather of(WeatherInensity intensity, List<WeatherDescriptor> descriptor, List<WeatherPhenomenon> phenomena) {
@@ -39,7 +39,7 @@ public class Weather {
     List<WeatherPhenomenon> targetPhenomena = new ArrayList<>();
     List<WeatherDescriptor> targetDescriptors = new ArrayList<>();
 
-    for (int idx=0; idx<target.length(); idx++) {
+    for (int idx=0; idx<target.length(); idx+=2) {
       String targetCode = target.substring(2 * idx, 2 * (idx + 1));
       if (WeatherPhenomenon.names().contains(targetCode)) {
         targetPhenomena.add(WeatherPhenomenon.valueOf(targetCode));
@@ -64,7 +64,7 @@ public class Weather {
 
   private <T> boolean containsOrdered(List<T> source, List<T> target) {
     if (target == null) {
-      throw new IllegalArgumentException("target mut not be null");
+      throw new IllegalArgumentException("target must not be null");
     }
     
     if (target.isEmpty()) {

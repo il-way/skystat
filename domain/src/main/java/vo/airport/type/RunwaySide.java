@@ -7,7 +7,7 @@ import vo.weather.type.WeatherSymbol;
 public enum RunwaySide implements WeatherSymbol {
   LEFT("L"),
   RIGHT("R"),
-  CNETER("C"),
+  CENTER("C"),
   NONE("N");
 
   private final String symbol;

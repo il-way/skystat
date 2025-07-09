@@ -14,7 +14,7 @@ public class WeatherGroup {
 
   @Builder
   public WeatherGroup(List<Weather> weatherList) {
-    this.weatherList = List.copyOf(weatherList);
+    this.weatherList = weatherList != null ? List.copyOf(weatherList) : List.of();
   }
 
   public static WeatherGroup of(List<Weather> weatherList) {

@@ -2,11 +2,8 @@ package condition;
 
 import dto.taf.CloudConditionQuery;
 import dto.taf.WeatherConditionQuery;
-import org.mockito.Mock;
 import port.output.TafManagementOutputPort;
 import usecase.ConditionUseCase;
-import usecase.MetarManagementUseCase;
-import usecase.StatisticUseCase;
 import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
@@ -28,13 +25,13 @@ import static vo.unit.SpeedUnit.KT;
 import static vo.weather.type.CloudCoverage.*;
 import static vo.weather.type.CloudType.NONE;
 
-public class TestData {
+public class TestDataRKSS {
 
 	protected TafManagementOutputPort tafManagementOutputPort;
 	protected ConditionUseCase<CloudConditionQuery> cloudConditionUseCase;
 	protected ConditionUseCase<WeatherConditionQuery> weatherConditionUseCase;
 
-	public TestData() {
+	public TestDataRKSS() {
 		init();
 	}
 

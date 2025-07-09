@@ -49,8 +49,8 @@ public class Metar implements MetricSource {
     this.temperature = temperature;
     this.dewPoint = dewPoint;
     this.altimeter = altimeter;
-    this.weatherGroup = weatherGroup;
-    this.cloudGroup = cloudGroup;
+    this.weatherGroup = weatherGroup != null ? weatherGroup : WeatherGroup.ofEmpty();
+    this.cloudGroup = cloudGroup != null ? cloudGroup : CloudGroup.ofEmpty();
     this.remarks = remarks;
 	}
 }

@@ -12,19 +12,18 @@ import org.junit.jupiter.api.Test;
 
 import port.input.CloudConditionInputPort;
 import port.input.WeatherConditionInputPort;
-import usecase.ConditionUseCase;
 import vo.weather.type.CloudType;
 import vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
 
-public class ConditionTest extends TestData {
+public class ConditionTest extends TestDataRKSS {
 
 	@Test
 	void 구름조건_탐색에_성공해야한다() {
 		cloudConditionUseCase = new CloudConditionInputPort(tafManagementOutputPort);
 		CloudConditionQuery query = new CloudConditionQuery(
-			"RKSS",
+			stationIcao,
 			ofUTC(6, 25, 17, 0),
 			new CloudCondition(CloudConditionPredicate.HAS_CLOUDTYPE, CloudType.CB)
 		);
@@ -38,7 +37,7 @@ public class ConditionTest extends TestData {
 		weatherConditionUseCase = new WeatherConditionInputPort(tafManagementOutputPort);
 
 		WeatherConditionQuery query = new WeatherConditionQuery(
-			"RKSS",
+			stationIcao,
 			ofUTC(6, 25, 22, 0),
 			new WeatherCondition(WeatherConditionPredicate.HAS_PHENOMENA, List.of(WeatherPhenomenon.BR))
 		);
