@@ -1,4 +1,4 @@
-package condition;
+package condition.data;
 
 import dto.taf.CloudConditionQuery;
 import dto.taf.WeatherConditionQuery;
@@ -25,15 +25,7 @@ import static vo.unit.SpeedUnit.KT;
 import static vo.weather.type.CloudCoverage.*;
 import static vo.weather.type.CloudType.NONE;
 
-public class TestDataRKSS {
-
-	protected TafManagementOutputPort tafManagementOutputPort;
-	protected ConditionUseCase<CloudConditionQuery> cloudConditionUseCase;
-	protected ConditionUseCase<WeatherConditionQuery> weatherConditionUseCase;
-
-	public TestDataRKSS() {
-		init();
-	}
+public class TestTafRKSS {
 
 	protected String rawText = """
 		RKSS 251100Z 2512/2618 03006KT 6000 FEW010 BKN027 BKN070 TN20/2520Z TX27/2605Z
@@ -163,8 +155,7 @@ public class TestDataRKSS {
 	protected boolean isNill = false;
 	protected boolean isCanceled = false;
 
-	protected Taf generate() {
-		return Taf.builder()
+	protected Taf taf = Taf.builder()
 			       .rawText(rawText)
 			       .stationIcao(stationIcao)
 			       .validPeriod(validPeriod)
@@ -174,16 +165,7 @@ public class TestDataRKSS {
 			       .isNill(isNill)
 			       .isCanceled(isCanceled)
 			       .build();
-	}
 
-	protected ZonedDateTime ofUTC(int month, int day, int hour, int min) {
-		return ZonedDateTime.of(2025, month, day, hour, min, 0, 0, ZoneOffset.UTC);
-	}
 
-	private void init() {
-		tafManagementOutputPort = mock(TafManagementOutputPort.class);
-		when(tafManagementOutputPort.findByIcao("RKSS"))
-			.thenReturn(generate());
-	}
 
 }

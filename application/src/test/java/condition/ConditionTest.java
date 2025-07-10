@@ -1,5 +1,7 @@
 package condition;
 
+import condition.data.ConditionTestData;
+import condition.data.TestTafRKSS;
 import dto.taf.CloudConditionQuery;
 import dto.taf.WeatherConditionQuery;
 import model.weather.CloudCondition;
@@ -17,13 +19,13 @@ import vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
 
-public class ConditionTest extends TestDataRKSS {
+public class ConditionTest extends ConditionTestData {
 
 	@Test
 	void 구름조건_탐색에_성공해야한다() {
 		cloudConditionUseCase = new CloudConditionInputPort(tafManagementOutputPort);
 		CloudConditionQuery query = new CloudConditionQuery(
-			stationIcao,
+			"RKSS",
 			ofUTC(6, 25, 17, 0),
 			new CloudCondition(CloudConditionPredicate.HAS_CLOUDTYPE, CloudType.CB)
 		);
@@ -37,7 +39,7 @@ public class ConditionTest extends TestDataRKSS {
 		weatherConditionUseCase = new WeatherConditionInputPort(tafManagementOutputPort);
 
 		WeatherConditionQuery query = new WeatherConditionQuery(
-			stationIcao,
+			"RKSS",
 			ofUTC(6, 25, 22, 0),
 			new WeatherCondition(WeatherConditionPredicate.HAS_PHENOMENA, List.of(WeatherPhenomenon.BR))
 		);

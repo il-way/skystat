@@ -1,9 +1,5 @@
-package condition;
+package condition.data;
 
-import dto.taf.CloudConditionQuery;
-import dto.taf.WeatherConditionQuery;
-import port.output.TafManagementOutputPort;
-import usecase.ConditionUseCase;
 import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
@@ -11,17 +7,12 @@ import vo.taf.field.WeatherSnapshot;
 import vo.taf.type.Modifier;
 import vo.taf.type.ReportType;
 import vo.weather.*;
-import vo.weather.type.WeatherDescriptor;
-import vo.weather.type.WeatherInensity;
-import vo.weather.type.WeatherPhenomenon;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static vo.unit.LengthUnit.METERS;
 import static vo.unit.LengthUnit.MILE;
 import static vo.unit.SpeedUnit.KT;
 import static vo.weather.type.CloudCoverage.*;
@@ -33,7 +24,7 @@ import static vo.weather.type.WeatherInensity.MODERATE;
 import static vo.weather.type.WeatherPhenomenon.BR;
 import static vo.weather.type.WeatherPhenomenon.RA;
 
-public class TestDataKJFK {
+public class TestTafKJFK {
 
 	protected String rawText = """
 		AMD KJFK 090843Z 0909/1012 24010KT P6SM BKN009 BKN250
