@@ -1,14 +1,15 @@
-package taf;
+package taf.data;
 
+import lombok.Getter;
 import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
 import vo.taf.field.WeatherSnapshot;
 import vo.taf.type.Modifier;
 import vo.taf.type.ReportType;
-import vo.unit.LengthUnit;
 import vo.weather.*;
-import vo.weather.type.*;
+import vo.weather.type.WeatherInensity;
+import vo.weather.type.WeatherPhenomenon;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -19,7 +20,8 @@ import static vo.unit.SpeedUnit.KT;
 import static vo.weather.type.CloudCoverage.*;
 import static vo.weather.type.CloudType.NONE;
 
-public class TafTestData {
+@Getter
+public class TestTafRKSS {
 
 	protected String rawText = """
 		RKSS 251100Z 2512/2618 03006KT 6000 FEW010 BKN027 BKN070 TN20/2520Z TX27/2605Z
@@ -40,10 +42,7 @@ public class TafTestData {
 
 	protected TafSection headerSection = TafSection.of(
 		Modifier.HEADER,
-		ForecastPeriod.of(
-			ZonedDateTime.of(2025, 6, 25, 12, 0, 0, 0, ZoneOffset.UTC),
-			ZonedDateTime.of(2025, 6, 26, 18, 0, 0, 0, ZoneOffset.UTC)
-		),
+		validPeriod,
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(30), 6, 0, KT))
 			.visibility(Visibility.of(6000, METERS))
@@ -97,7 +96,10 @@ public class TafTestData {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(260), 7, 0, KT))
 			.visibility(Visibility.of(9999, METERS))
-			.weatherGroup(null)
+			.weatherGroup(WeatherGroup.of(
+					Weather.of(WeatherInensity.MODERATE, null, List.of(WeatherPhenomenon.NSW))
+				)
+			)
 			.cloudGroup(CloudGroup.of(List.of(
 				Cloud.of(BKN, 4000, NONE)
 			)))
@@ -149,8 +151,7 @@ public class TafTestData {
 	protected boolean isNill = false;
 	protected boolean isCanceled = false;
 
-	protected Taf generate() {
-		return Taf.builder()
+	protected Taf taf = Taf.builder()
 			       .rawText(rawText)
 			       .stationIcao(stationIcao)
 			       .validPeriod(validPeriod)
@@ -160,6 +161,7 @@ public class TafTestData {
 			       .isNill(isNill)
 			       .isCanceled(isCanceled)
 			       .build();
-	}
+
+
 
 }

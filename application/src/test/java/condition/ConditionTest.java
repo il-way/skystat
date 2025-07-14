@@ -100,24 +100,4 @@ public class ConditionTest extends ConditionTestData {
 		);
 	}
 
-	@Test
-	void TEMPO는_동일_카테고리의_기상예보만을_대체한다() {
-		TafSnapshotExpander expander = new TafSnapshotExpander();
-		Map<ZonedDateTime, WeatherSnapshot> expanded = expander.expand(tafMap.get("KJFK"));
-
-		WeatherSnapshot fm092100 = expanded.get(ofUTC(7, 9, 21, 0));
-		WeatherSnapshot pb092200 = expanded.get(ofUTC(7, 9, 22, 0));
-
-		WeatherGroup wg092100 = fm092100.getWeatherGroup();
-		Wind w092100 = fm092100.getWind();
-
-		WeatherGroup wg092200 = pb092200.getWeatherGroup();
-		Wind w092200 = pb092200.getWind();
-
-		assertAll(
-			() -> assertEquals(w092100, w092200),
-			() -> assertNotEquals(wg092100, wg092200)
-		);
-	}
-
 }

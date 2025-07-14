@@ -5,6 +5,7 @@ import lombok.Value;
 import vo.weather.type.WeatherDescriptor;
 import vo.weather.type.WeatherPhenomenon;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Value
@@ -21,6 +22,12 @@ public class WeatherGroup {
     return WeatherGroup.builder()
             .weatherList(weatherList)
             .build();
+  }
+
+  public static WeatherGroup of(Weather... weathers) {
+    return WeatherGroup.builder()
+             .weatherList(Arrays.stream(weathers).toList())
+             .build();
   }
 
   public static WeatherGroup ofEmpty() {

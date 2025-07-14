@@ -1,38 +1,44 @@
 package vo.weather.type;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static vo.weather.type.WeatherPhenomenonGroup.*;
+
+@Getter
 @RequiredArgsConstructor
 public enum WeatherPhenomenon implements WeatherDescription {
-  DZ("Drizzle"),
-  RA("Rain"),
-  SN("Snow"),
-  SG("Snow Grains"),
-  IC("Ice Crystals"),
-  PL("Ice Pellets"),
-  GR("Hail"),
-  GS("Small Hail/Snow Pellets"),
-  UP("Unknown Precipitation"),
-  BR("Mist"),
-  FG("Fog"),
-  FU("Smoke"),
-  VA("Volcanic Ash"),
-  DU("Widespread Dust"),
-  SA("Sand"),
-  HZ("Haze"),
-  PY("Spray"),
-  PO("Dust/Sand Whirls"),
-  SQ("Squall"),
-  FC("Funnel Cloud / Tornado"),
-  SS("Sandstorm"),
-  DS("Duststorm"),
-  WS("Wind Shear"),
-  NSW("Nil Significant Weather");
+
+  DZ("Drizzle", PRECIPITATION),
+  RA("Rain", PRECIPITATION),
+  SN("Snow", PRECIPITATION),
+  SG("Snow Grains", PRECIPITATION),
+  IC("Ice Crystals", PRECIPITATION),
+  PL("Ice Pellets", PRECIPITATION),
+  GR("Hail", OBSCURATION),
+  GS("Small Hail/Snow Pellets", OBSCURATION),
+  UP("Unknown Precipitation", OBSCURATION),
+  BR("Mist", OBSCURATION),
+  FG("Fog", OBSCURATION),
+  FU("Smoke", OBSCURATION),
+  VA("Volcanic Ash", OBSCURATION),
+  DU("Widespread Dust", OBSCURATION),
+  SA("Sand", OBSCURATION),
+  HZ("Haze", OBSCURATION),
+  PY("Spray", OBSCURATION),
+  PO("Dust/Sand Whirls", SPECIAL),
+  SQ("Squall", SPECIAL),
+  FC("Funnel Cloud / Tornado", SPECIAL),
+  SS("Sandstorm", SPECIAL),
+  DS("Duststorm", SPECIAL),
+  WS("Wind Shear", SPECIAL),
+  NSW("Nil Significant Weather", SIGNIFICANT);
 
   private final String description;
+  private final WeatherPhenomenonGroup group;
 
   @Override
   public String getDescription() {
