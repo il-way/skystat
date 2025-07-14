@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/test/java/condition/data/ConditionTestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/test/java/condition/data/ConditionTestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafKJFK.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafKJFK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafRKSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafRKSS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +86,8 @@
     &quot;Gradle.AltimeterTest.헥토파스칼_단위의_기압정보를_정상적으로_파싱한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.CloudTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.FM은_이전_예보를_완전히_대체한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ConditionTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ConditionTest.mocking에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ConditionTest.구름조건_탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
@@ -132,7 +136,7 @@
     &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.색 구성표 글꼴&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
@@ -150,14 +154,14 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="condition.data" />
       <recent name="condition" />
       <recent name="model.taf" />
       <recent name="policy.modifier" />
       <recent name="port.input" />
-      <recent name="usecases" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ConditionTest">
+  <component name="RunManager" selected="Gradle.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다">
     <configuration name="ConditionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -172,6 +176,54 @@
             <option value=":application:test" />
             <option value="--tests" />
             <option value="&quot;condition.ConditionTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ConditionTest.FM은_이전_예보를_완전히_대체한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":application:test" />
+            <option value="--tests" />
+            <option value="&quot;condition.ConditionTest.FM은_이전_예보를_완전히_대체한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":application:test" />
+            <option value="--tests" />
+            <option value="&quot;condition.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -230,7 +282,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ConditionTest.mocking에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ConditionTest.날씨조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -243,31 +295,7 @@
           <list>
             <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.mocking에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;parser.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다&quot;" />
+            <option value="&quot;condition.ConditionTest.날씨조건_탐색에_성공해야한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -280,10 +308,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다" />
+        <item itemvalue="Gradle.ConditionTest.FM은_이전_예보를_완전히_대체한다" />
         <item itemvalue="Gradle.ConditionTest" />
         <item itemvalue="Gradle.ConditionTest.구름조건_탐색에_성공해야한다" />
-        <item itemvalue="Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다" />
-        <item itemvalue="Gradle.ConditionTest.mocking에_성공해야한다" />
       </list>
     </recent_temporary>
   </component>

@@ -1,5 +1,6 @@
 package condition.data;
 
+import lombok.Getter;
 import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
@@ -24,6 +25,7 @@ import static vo.weather.type.WeatherInensity.MODERATE;
 import static vo.weather.type.WeatherPhenomenon.BR;
 import static vo.weather.type.WeatherPhenomenon.RA;
 
+@Getter
 public class TestTafKJFK {
 
 	protected String rawText = """
@@ -33,7 +35,7 @@ public class TestTafKJFK {
 		FM091800 19012KT P6SM SCT050 BKN250
 		FM092100 19014KT P6SM BKN050 BKN200 PROB30 0922/1003 3SM TSRA BKN025CB
 		FM100300 23007KT P6SM BKN040 BKN150 PROB30 1003/1006 3SM TSRA BKN025CB
-		FM100600 22004KT P6SM VCSH BKN040 BKN100
+		FM100600 22004KT P6SM VCRA BKN040 BKN100
 		FM100900 VRB04KT 5SM -SHRA BR SCT025 OVC040
 		""";
 
@@ -47,10 +49,7 @@ public class TestTafKJFK {
 
 	protected TafSection headerSection = TafSection.of(
 		Modifier.HEADER,
-		ForecastPeriod.of(
-			ZonedDateTime.of(2025, 7, 9, 9, 0, 0, 0, ZoneOffset.UTC),
-			ZonedDateTime.of(2025, 7, 10, 12, 0, 0, 0, ZoneOffset.UTC)
-		),
+		validPeriod,
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(240), 10, 0, KT))
 			.visibility(Visibility.of(6, MILE))

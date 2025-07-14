@@ -3,6 +3,7 @@ package condition.data;
 import dto.taf.CloudConditionQuery;
 import dto.taf.WeatherConditionQuery;
 import org.mockito.stubbing.OngoingStubbing;
+import port.input.CloudConditionInputPort;
 import port.output.TafManagementOutputPort;
 import usecase.ConditionUseCase;
 import vo.taf.Taf;
@@ -36,12 +37,19 @@ public class ConditionTestData {
 	private void init() {
 		TestTafRKSS rkss = new TestTafRKSS();
 		TestTafKJFK kjfk = new TestTafKJFK();
-		tafMap.put("rkss", rkss.taf);
-		tafMap.put("kjfk", kjfk.taf);
+		TestTafLHSN lhsn = new TestTafLHSN();
+		TestTafZBHH zbhh = new TestTafZBHH();
+
+		tafMap.put("RKSS", rkss.getTaf());
+		tafMap.put("KJFK", kjfk.getTaf());
+		tafMap.put("LHSN", lhsn.getTaf());
+		tafMap.put("ZBHH", zbhh.getTaf());
 
 		tafManagementOutputPort = mock(TafManagementOutputPort.class);
-		when(tafManagementOutputPort.findByIcao("RKSS")).thenReturn(tafMap.get("rkss"));
-		when(tafManagementOutputPort.findByIcao("KJFK")).thenReturn(tafMap.get("kjfk"));
+		when(tafManagementOutputPort.findByIcao("RKSS")).thenReturn(tafMap.get("RKSS"));
+		when(tafManagementOutputPort.findByIcao("KJFK")).thenReturn(tafMap.get("KJFK"));
+		when(tafManagementOutputPort.findByIcao("LHSN")).thenReturn(tafMap.get("LHSN"));
+		when(tafManagementOutputPort.findByIcao("ZBHH")).thenReturn(tafMap.get("ZBHH"));
 	}
 
 }

@@ -10,16 +10,32 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import model.weather.WeatherCondition;
 import model.weather.WeatherConditionPredicate;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import port.input.CloudConditionInputPort;
 import port.input.WeatherConditionInputPort;
+import service.TafSnapshotExpander;
+import vo.taf.Taf;
+import vo.taf.field.WeatherSnapshot;
+import vo.weather.WeatherGroup;
+import vo.weather.Wind;
 import vo.weather.type.CloudType;
+import vo.weather.type.WeatherDescriptor;
 import vo.weather.type.WeatherPhenomenon;
 
+import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Map;
 
 public class ConditionTest extends ConditionTestData {
+
+	@BeforeEach
+	void init() {
+		cloudConditionUseCase = new CloudConditionInputPort(tafManagementOutputPort);
+		weatherConditionUseCase = new WeatherConditionInputPort(tafManagementOutputPort);
+	}
 
 	@Test
 	void 구름조건_탐색에_성공해야한다() {
@@ -37,7 +53,6 @@ public class ConditionTest extends ConditionTestData {
 	@Test
 	void 날씨조건_탐색에_성공해야한다() {
 		weatherConditionUseCase = new WeatherConditionInputPort(tafManagementOutputPort);
-
 		WeatherConditionQuery query = new WeatherConditionQuery(
 			"RKSS",
 			ofUTC(6, 25, 22, 0),
@@ -46,6 +61,63 @@ public class ConditionTest extends ConditionTestData {
 
 		Boolean actual = weatherConditionUseCase.execute(query);
 		assertEquals(true, actual);
+	}
+
+	@Test
+	void FM은_이전_예보를_완전히_대체한다() {
+		WeatherConditionQuery query100600 = new WeatherConditionQuery(
+			"KJFK",
+			ofUTC(7, 10, 6, 0),
+			new WeatherCondition(
+				WeatherConditionPredicate.HAS_DESCRIPTORS_AND_PHENOMENA,
+				List.of(WeatherDescriptor.VC, WeatherPhenomenon.RA))
+		);
+
+		WeatherConditionQuery query100900 = new WeatherConditionQuery(
+			"KJFK",
+			ofUTC(7, 10, 9, 0),
+			new WeatherCondition(
+				WeatherConditionPredicate.HAS_PHENOMENA,
+				List.of(WeatherPhenomenon.RA))
+		);
+
+		WeatherConditionQuery query100900_2 = new WeatherConditionQuery(
+			"KJFK",
+			ofUTC(7, 10, 9, 0),
+			new WeatherCondition(
+				WeatherConditionPredicate.HAS_DESCRIPTORS,
+				List.of(WeatherDescriptor.VC))
+		);
+
+		boolean fm100600 = weatherConditionUseCase.execute(query100600);
+		boolean fm100900 = weatherConditionUseCase.execute(query100900);
+		boolean fm100900_2 = weatherConditionUseCase.execute(query100900_2);
+
+		assertAll(
+			() -> assertTrue(fm100600),
+			() -> assertTrue(fm100900),
+			() -> assertFalse(fm100900_2)
+		);
+	}
+
+	@Test
+	void TEMPO는_동일_카테고리의_기상예보만을_대체한다() {
+		TafSnapshotExpander expander = new TafSnapshotExpander();
+		Map<ZonedDateTime, WeatherSnapshot> expanded = expander.expand(tafMap.get("KJFK"));
+
+		WeatherSnapshot fm092100 = expanded.get(ofUTC(7, 9, 21, 0));
+		WeatherSnapshot pb092200 = expanded.get(ofUTC(7, 9, 22, 0));
+
+		WeatherGroup wg092100 = fm092100.getWeatherGroup();
+		Wind w092100 = fm092100.getWind();
+
+		WeatherGroup wg092200 = pb092200.getWeatherGroup();
+		Wind w092200 = pb092200.getWind();
+
+		assertAll(
+			() -> assertEquals(w092100, w092200),
+			() -> assertNotEquals(wg092100, wg092200)
+		);
 	}
 
 }

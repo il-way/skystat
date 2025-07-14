@@ -17,7 +17,12 @@ public enum WeatherConditionPredicate {
                   wg.containsPhenomena(cast(target, WeatherPhenomenon.class))),
 
   HAS_DESCRIPTORS((wg, target) ->
-                   wg.containsDescriptors(cast(target, WeatherDescriptor.class)));
+                   wg.containsDescriptors(cast(target, WeatherDescriptor.class))),
+
+  HAS_DESCRIPTORS_AND_PHENOMENA((wg, target) ->
+                    wg.containsDescriptors(extract(target, WeatherDescriptor.class))
+                 && wg.containsPhenomena(extract(target, WeatherPhenomenon.class))
+  );
 
   private final BiPredicate<WeatherGroup, List<WeatherDescription>> tester;
 
@@ -38,6 +43,13 @@ public enum WeatherConditionPredicate {
     }
 
 	  return out;
+  }
+
+  private static <T> List<T> extract(List<WeatherDescription> src, Class<T> clazz) {
+    return src.stream()
+             .filter(clazz::isInstance)
+             .map(clazz::cast)
+             .toList();
   }
 
 }

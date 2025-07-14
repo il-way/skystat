@@ -2,6 +2,7 @@ package condition.data;
 
 import dto.taf.CloudConditionQuery;
 import dto.taf.WeatherConditionQuery;
+import lombok.Getter;
 import port.output.TafManagementOutputPort;
 import usecase.ConditionUseCase;
 import vo.taf.Taf;
@@ -25,6 +26,7 @@ import static vo.unit.SpeedUnit.KT;
 import static vo.weather.type.CloudCoverage.*;
 import static vo.weather.type.CloudType.NONE;
 
+@Getter
 public class TestTafRKSS {
 
 	protected String rawText = """
@@ -46,10 +48,7 @@ public class TestTafRKSS {
 
 	protected TafSection headerSection = TafSection.of(
 		Modifier.HEADER,
-		ForecastPeriod.of(
-			ZonedDateTime.of(2025, 6, 25, 12, 0, 0, 0, ZoneOffset.UTC),
-			ZonedDateTime.of(2025, 6, 26, 18, 0, 0, 0, ZoneOffset.UTC)
-		),
+		validPeriod,
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(30), 6, 0, KT))
 			.visibility(Visibility.of(6000, METERS))
