@@ -30,8 +30,8 @@ public class TestTafZBHH {
 
 	/* ───── 원문 ───── */
 	protected String rawText = """
-      AMD ZBHH 101222Z 1012/1112 10004MPS 9999 FEW040 TX28/1107Z TN18/1022Z
-      TEMPO 1012/1014 TS FEW040CB FEW040
+      AMD ZBHH 101222Z 1012/1112 10004MPS 9999 RA FEW040 TX28/1107Z TN18/1022Z
+      TEMPO 1013/1014 TS FEW040CB FEW040
       TEMPO 1020/1102 2800 -SHRA FEW040CB FEW040
       """;
 
@@ -52,7 +52,9 @@ public class TestTafZBHH {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(100), 4, 0, MPS))   // 10004MPS
 			.visibility(Visibility.of(9999, METERS))              // 9999 m
-			.weatherGroup(WeatherGroup.of(List.of()))             // CAVOK 아님->무현상
+			.weatherGroup(WeatherGroup.of(List.of(
+				Weather.of(MODERATE, List.of(), List.of(RA))
+			)))             // CAVOK 아님->무현상
 			.cloudGroup(CloudGroup.of(List.of(                    // FEW040
 				Cloud.of(FEW, 4000, NONE)
 			)))
@@ -63,7 +65,7 @@ public class TestTafZBHH {
 	protected TafSection tempo1214 = TafSection.of(
 		Modifier.TEMPO,
 		ForecastPeriod.of(
-			ZonedDateTime.of(2025, 7, 10, 12, 0, 0, 0, ZoneOffset.UTC),
+			ZonedDateTime.of(2025, 7, 10, 13, 0, 0, 0, ZoneOffset.UTC),
 			ZonedDateTime.of(2025, 7, 10, 14, 0, 0, 0, ZoneOffset.UTC)
 		),
 		WeatherSnapshot.builder()

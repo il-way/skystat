@@ -1,6 +1,5 @@
 package policy.modifier;
 
-import exception.GenericPolicyException;
 import vo.taf.field.WeatherSnapshot;
 import vo.taf.type.Modifier;
 

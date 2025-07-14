@@ -13,6 +13,8 @@ import vo.weather.Visibility;
 import vo.weather.WeatherGroup;
 import vo.weather.Wind;
 import vo.weather.WindDirection;
+import vo.weather.type.WeatherDescriptor;
+import vo.weather.type.WeatherPhenomenon;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -50,21 +52,23 @@ public class TafTest extends TestData {
 	}
 
 	@Test
-	void TEMPO는_동일_카테고리의_기상예보만을_대체한다() {
-		Map<ZonedDateTime, WeatherSnapshot> expanded = expander.expand(tafMap.get("KJFK"));
+	void TEMPO는_동일그룹의_일기현상이_아니면_기존_현상목록에_추가한다() {
+		Map<ZonedDateTime, WeatherSnapshot> expanded = expander.expand(tafMap.get("ZBHH"));
 
-		WeatherSnapshot fm092100 = expanded.get(ofUTC(7, 9, 21, 0));
-		WeatherSnapshot pb092200 = expanded.get(ofUTC(7, 9, 22, 0));
+		WeatherSnapshot header101200 = expanded.get(ofUTC(7, 10, 12, 0));
+		WeatherSnapshot tempo101300 = expanded.get(ofUTC(7, 10, 13, 0));
 
-		WeatherGroup wg092100 = fm092100.getWeatherGroup();
-		Wind w092100 = fm092100.getWind();
+		WeatherGroup wg101200 = header101200.getWeatherGroup();
+		WeatherGroup wg101300 = tempo101300.getWeatherGroup();
 
-		WeatherGroup wg092200 = pb092200.getWeatherGroup();
-		Wind w092200 = pb092200.getWind();
+		System.out.println(wg101200.toString());
+		System.out.println(wg101300.toString());
 
 		assertAll(
-			() -> assertEquals(w092100, w092200),
-			() -> assertNotEquals(wg092100, wg092200)
+			() -> assertTrue(wg101200.containsPhenomena(List.of(WeatherPhenomenon.RA))),
+			() -> assertTrue(wg101300.containsPhenomena(List.of(WeatherPhenomenon.RA))),
+			() -> assertFalse(wg101200.containsDescriptors(List.of(WeatherDescriptor.TS))),
+			() -> assertTrue(wg101300.containsDescriptors(List.of(WeatherDescriptor.TS)))
 		);
 	}
 
