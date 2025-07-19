@@ -9,6 +9,8 @@ import model.generic.Comparison;
 import model.weather.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static vo.unit.LengthUnit.FEET;
+import static vo.unit.LengthUnit.METERS;
 import static vo.unit.SpeedUnit.KT;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -21,6 +23,7 @@ import port.input.WeatherConditionInputPort;
 import service.TafSnapshotExpander;
 import vo.taf.Taf;
 import vo.taf.field.WeatherSnapshot;
+import vo.unit.LengthUnit;
 import vo.weather.WeatherGroup;
 import vo.weather.Wind;
 import vo.weather.type.CloudType;
@@ -80,8 +83,32 @@ public class ConditionTest extends ConditionTestData {
 	void 최대풍속_임계조건_탐색에_성공해야한다() {
 		ThresholdConditionQuery query = new ThresholdConditionQuery(
 			"KORF",
-			ofUTC(7, 19, 14, 0),
+			ofUTC(7, 19, 4, 0),
 			new ThresholdCondition(MetricField.PEAK_WIND, Comparison.GTE, 25, KT)
+		);
+
+		boolean actual = thresholdConditionUseCase.execute(query);
+		assertTrue(actual);
+	}
+
+	@Test
+	void 시정_임계조건_탐색에_성공해야한다() {
+		ThresholdConditionQuery query = new ThresholdConditionQuery(
+			"KORF",
+			ofUTC(7, 19, 4, 0),
+			new ThresholdCondition(MetricField.VISIBILITY, Comparison.LTE, 6000, METERS)
+		);
+
+		boolean actual = thresholdConditionUseCase.execute(query);
+		assertTrue(actual);
+	}
+
+	@Test
+	void 운저_임계조건_탐색에_성공해야한다() {
+		ThresholdConditionQuery query = new ThresholdConditionQuery(
+			"KJFK",
+			ofUTC(7, 9, 21, 0),
+			new ThresholdCondition(MetricField.LOWEST_CEILING, Comparison.LTE, 6000, FEET)
 		);
 
 		boolean actual = thresholdConditionUseCase.execute(query);

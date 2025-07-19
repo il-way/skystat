@@ -93,6 +93,7 @@
     "Gradle.ConditionTest.구름탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.날씨조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다.executor": "Run",
+    "Gradle.ConditionTest.시정_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.DewPointTest.executor": "Run",
     "Gradle.MetarParserTest.executor": "Run",
@@ -110,6 +111,7 @@
     "Gradle.TafTest.print.executor": "Run",
     "Gradle.TemperatureTest.executor": "Run",
     "Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.UnitConversionTest.길이단위_변환에_성공해야한다.executor": "Run",
     "Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다.executor": "Run",
     "Gradle.VisibilityTest.executor": "Run",
     "Gradle.WeatherTest.executor": "Run",
@@ -169,55 +171,7 @@
       <recent name="port.input" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다">
-    <configuration name="ConditionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;condition.ConditionTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="ConditionTest.날씨조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.날씨조건_탐색에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다">
     <configuration name="ConditionTest.바람_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -266,6 +220,54 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="ConditionTest.시정_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":application:test" />
+            <option value="--tests" />
+            <option value="&quot;condition.ConditionTest.시정_임계조건_탐색에_성공해야한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ConditionTest.운저_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":application:test" />
+            <option value="--tests" />
+            <option value="&quot;condition.ConditionTest.운저_임계조건_탐색에_성공해야한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="ConditionTest.날씨조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -290,7 +292,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UnitConversionTest.속도단위_변환에_성공해야_한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnitConversionTest.길이단위_변환에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -303,7 +305,7 @@
           <list>
             <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;unit.UnitConversionTest.속도단위_변환에_성공해야_한다&quot;" />
+            <option value="&quot;unit.UnitConversionTest.길이단위_변환에_성공해야한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -316,11 +318,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다" />
+        <item itemvalue="Gradle.ConditionTest.시정_임계조건_탐색에_성공해야한다" />
+        <item itemvalue="Gradle.UnitConversionTest.길이단위_변환에_성공해야한다" />
         <item itemvalue="Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다" />
         <item itemvalue="Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다" />
-        <item itemvalue="Gradle.ConditionTest.날씨조건_탐색에_성공해야한다" />
-        <item itemvalue="Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다" />
-        <item itemvalue="Gradle.ConditionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -348,10 +350,14 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/application/src/main/java/port/input/ThresholdConditionInputPort.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="4" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/domain/src/main/java/vo/weather/Wind.java</url>
+          <line>55</line>
+          <properties class="vo.weather.Wind" method="getPeakSpeed">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,6 +1,7 @@
 package condition.data;
 
 import lombok.Getter;
+import service.TimeOperation;
 import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
@@ -13,6 +14,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import static service.TimeOperation.ofLenientUtc;
 import static vo.unit.LengthUnit.MILE;
 import static vo.unit.SpeedUnit.KT;
 import static vo.weather.type.CloudCoverage.*;
@@ -42,8 +44,9 @@ public class TestTafKORF {
 		2025, 7, 19, 2, 41, 0, 0, ZoneOffset.UTC);
 
 	protected ForecastPeriod validPeriod = ForecastPeriod.of(
-		ZonedDateTime.of(2025, 7, 19, 3, 0, 0, 0, ZoneOffset.UTC),
-		ZonedDateTime.of(2025, 7, 19, 24, 0, 0, 0, ZoneOffset.UTC)); // 1924Z
+		ofLenientUtc(2025, 7, 19, 3, 0),
+		ofLenientUtc(2025, 7, 19, 24, 0)
+	);
 
 	/* ───── HEADER 10007KT P6SM VCTS BKN040CB ───── */
 	protected TafSection header = TafSection.of(

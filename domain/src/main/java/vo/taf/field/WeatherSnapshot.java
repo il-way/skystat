@@ -34,10 +34,10 @@ public class WeatherSnapshot implements MetricSource {
 		this.visibility = visibility;
 		this.weatherGroup = (weatherGroup == null)
 			                    ? WeatherGroup.ofEmpty()
-			                    : WeatherGroup.of(List.copyOf(weatherGroup.getWeatherList()));
+			                    : WeatherGroup.of(weatherGroup.getWeatherList());
 		this.cloudGroup = cloudGroup == null
 			                  ? CloudGroup.ofEmpty()
-			                  : CloudGroup.of(List.copyOf(cloudGroup.getCloudList()));
+			                  : CloudGroup.of(cloudGroup.getCloudList());
 		this.temperature = temperature;
 		this.altimeter = altimeter;
 		this.timestamp = timestamp;

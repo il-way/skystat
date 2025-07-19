@@ -8,6 +8,7 @@ import service.TafSnapshotExpander;
 import usecase.ConditionUseCase;
 import vo.taf.Taf;
 import vo.taf.field.WeatherSnapshot;
+import vo.unit.LengthUnit;
 
 
 @RequiredArgsConstructor

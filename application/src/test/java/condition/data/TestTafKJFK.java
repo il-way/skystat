@@ -28,6 +28,7 @@ import static vo.weather.type.WeatherPhenomenon.RA;
 @Getter
 public class TestTafKJFK {
 
+	/* ───── 원문 (2025-07-09) ───── */
 	protected String rawText = """
 		AMD KJFK 090843Z 0909/1012 24010KT P6SM BKN009 BKN250
 		TEMPO 0910/0912 SCT009
