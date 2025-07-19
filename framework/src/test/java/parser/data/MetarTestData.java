@@ -5,15 +5,15 @@ import vo.weather.type.CloudCoverage;
 import vo.weather.type.CloudType;
 import vo.weather.*;
 
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
 import java.util.List;
 
+import static service.TimeOperation.ofLenientUtc;
 import static vo.metar.ReportType.METAR;
 import static vo.unit.LengthUnit.MILE;
 import static vo.unit.PressureUnit.INHG;
 import static vo.unit.SpeedUnit.KT;
 import static vo.unit.TemperatureUnit.CELSIUS;
+import static vo.weather.WindDirection.fixed;
 
 public class MetarTestData {
 
@@ -22,9 +22,8 @@ public class MetarTestData {
           .rawText("KSFO 030953Z 29008KT 10SM FEW025 SCT250 18/12 A2995 RMK AO2 SLP142 T01780122=")
           .stationIcao("KSFO")
           .reportType(METAR)
-          .observationTime(generateTime("030953"))
-          .reportTime(generateTime("031000"))
-          .wind(generateWind(290,8,0))
+          .observationTime(ofLenientUtc(2025, 5, 3, 9, 53))
+          .wind(Wind.of(fixed(290), 8, 0, KT))
           .visibility(Visibility.of(10, MILE))
           .temperature(Temperature.of(18,CELSIUS))
           .dewPoint(Temperature.of(12,CELSIUS))
@@ -39,21 +38,5 @@ public class MetarTestData {
           .remarks("AO2 SLP142 T01780122=")
           .build()
   );
-
-  private static ZonedDateTime generateTime(String ddhhmm) {
-    return ZonedDateTime.of(
-        2025,
-        5,
-        Integer.parseInt(ddhhmm.substring(0, 2)),
-        Integer.parseInt(ddhhmm.substring(2, 4)),
-        Integer.parseInt(ddhhmm.substring(4, 6)),
-        0,
-        0,
-      ZoneOffset.UTC);
-  }
-
-  private static Wind generateWind(double dir, double speed, double gust) {
-    return Wind.of(WindDirection.fixed(dir), speed, gust, KT);
-  }
 
 }

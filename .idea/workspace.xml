@@ -94,6 +94,7 @@
     "Gradle.ConditionTest.날씨조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.시정_임계조건_탐색에_성공해야한다.executor": "Run",
+    "Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.DewPointTest.executor": "Run",
     "Gradle.MetarParserTest.executor": "Run",
@@ -171,31 +172,7 @@
       <recent name="port.input" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다">
-    <configuration name="ConditionTest.바람_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.바람_임계조건_탐색에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.MetarParserTest.메타_파싱에_성공해야한다">
     <configuration name="ConditionTest.최대풍속_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -292,6 +269,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="MetarParserTest.메타_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;parser.MetarParserTest.메타_파싱에_성공해야한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="UnitConversionTest.길이단위_변환에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -318,11 +319,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MetarParserTest.메타_파싱에_성공해야한다" />
         <item itemvalue="Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다" />
         <item itemvalue="Gradle.ConditionTest.시정_임계조건_탐색에_성공해야한다" />
         <item itemvalue="Gradle.UnitConversionTest.길이단위_변환에_성공해야한다" />
         <item itemvalue="Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다" />
-        <item itemvalue="Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다" />
       </list>
     </recent_temporary>
   </component>

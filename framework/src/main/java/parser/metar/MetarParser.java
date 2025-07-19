@@ -30,7 +30,6 @@ public class MetarParser {
               .stationIcao(require(map, STATION_ICAO))
               .reportType(require(map, REPORT_TYPE))
               .observationTime(require(map, OBSERVATION_TIME))
-              .reportTime(require(map, REPORT_TIME))
               .wind(require(map, WIND))
               .visibility(require(map, VISIBILITY))
               .temperature(require(map, TEMPERATURE))
@@ -68,7 +67,6 @@ public class MetarParser {
     var stationIcaoRegexParser = new StationIcaoRegexParser();
     var reportTypeRegexParser = new ReportTypeRegexParser();
     var observationTimeRegexParser = new ObservationTimeRegexParser(yearMonth);
-    var reportTimeRegexParser = new ReportTimeRegexParser(yearMonth);
     var windRegexParser = new WindRegexParser();
     var visibilityRegexParser = new VisibilityRegexParser();
     var temperatureRegexParser = new TemperatureRegexParser();
@@ -81,7 +79,6 @@ public class MetarParser {
     parser.add(stationIcaoRegexParser);
     parser.add(reportTypeRegexParser);
     parser.add(observationTimeRegexParser);
-    parser.add(reportTimeRegexParser);
     parser.add(windRegexParser);
     parser.add(visibilityRegexParser);
     parser.add(temperatureRegexParser);

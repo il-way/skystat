@@ -2,6 +2,7 @@ package parser.metar.entry;
 
 import lombok.Getter;
 import parser.shared.ReportRegexParser;
+import service.TimeOperation;
 import vo.metar.MetarField;
 import vo.metar.ReportType;
 
@@ -31,7 +32,7 @@ public class ReportTimeRegexParser extends ReportRegexParser<ZonedDateTime> {
     ZonedDateTime obsTime = obsTimeParser.parse(rawText);
 
     if (reportType == ReportType.METAR) {
-      return roundTo(obsTime);
+      return TimeOperation.toReportTime(obsTime);
     }
 
     return obsTime;
