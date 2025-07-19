@@ -7,14 +7,16 @@ import vo.weather.MetricSource;
 
 import java.util.function.BiFunction;
 
+import static vo.unit.LengthUnit.FEET;
+
 @RequiredArgsConstructor
 public enum MetricField {
 
-  VISIBILITY((m,u) -> u.convertTo(m.getVisibility().getValue(), m.getVisibility().getUnit())),
-  LOWEST_CEILING((m,u) -> u.convertTo(m.getCloudGroup().getLowestCeiling(), LengthUnit.FEET)),
-  PEAK_WIND((m,u) -> u.convertTo(m.getWind().getPeakSpeed(), m.getWind().getUnit())),
-  WIND_SPEED((m,u) -> u.convertTo(m.getWind().getSpeed(), m.getWind().getUnit())),
-  ALTIMETER((m,u) -> u.convertTo(m.getAltimeter().getValue(), m.getAltimeter().getUnit()));
+  VISIBILITY((m,u) -> m.getVisibility().getUnit().convertTo(m.getVisibility().getValue(), u)),
+  LOWEST_CEILING((m,u) -> FEET.convertTo(m.getCloudGroup().getLowestCeiling(), u)),
+  PEAK_WIND((m,u) -> m.getWind().getUnit().convertTo(m.getWind().getPeakSpeed(), u)),
+  WIND_SPEED((m,u) -> m.getWind().getUnit().convertTo(m.getWind().getSpeed(), u)),
+  ALTIMETER((m,u) -> m.getAltimeter().getUnit().convertTo(m.getAltimeter().getValue(), u));
 
   private final BiFunction<MetricSource, Unit, Double> extractor;
 

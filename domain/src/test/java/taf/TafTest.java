@@ -41,9 +41,6 @@ public class TafTest extends TestData {
 		Wind wind252300 = becmg252300.getWind();
 		WeatherGroup wg252300 = becmg252300.getWeatherGroup();
 
-		System.out.println(wg252000.toString());
-		System.out.println(wg252300.toString());
-
 		assertAll(
 			() -> assertNotEquals(vis252000, vis252300),
 			() -> assertNotEquals(wind252000, wind252300),
@@ -70,6 +67,11 @@ public class TafTest extends TestData {
 			() -> assertFalse(wg101200.containsDescriptors(List.of(WeatherDescriptor.TS))),
 			() -> assertTrue(wg101300.containsDescriptors(List.of(WeatherDescriptor.TS)))
 		);
+	}
+
+	@Test
+	void FM은_이전_예보를_완전히_대체한다() {
+
 	}
 
 }

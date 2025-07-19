@@ -7,6 +7,9 @@ public interface Unit {
 
   default double convertTo(double value, Unit targetUnit) {
     double base = targetUnit.toBase(value);
+    System.out.println("# convertTo toBase: " + base);
+    double result = fromBase(base);
+    System.out.println("# convertTo fromBase: " + result);
     return fromBase(base);
   }
 

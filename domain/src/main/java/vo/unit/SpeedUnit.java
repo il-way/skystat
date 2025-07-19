@@ -1,5 +1,6 @@
 package vo.unit;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -10,13 +11,11 @@ public enum SpeedUnit implements Unit {
   KPH(3.6, "KPH");
 
   private final double toMpsFactor;
+
+  @Getter
   private final String symbol;
 
-  public String getSymbol() {
-    return symbol;
-  }
-
-  @Override
+	@Override
   public double toBase(double value) {
     return value * toMpsFactor;
   }

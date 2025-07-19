@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/test/java/condition/data/ConditionTestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/test/java/condition/data/ConditionTestData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafKJFK.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafKJFK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafRKSS.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/test/java/condition/data/TestTafRKSS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/policy/modifier/TempoOverridePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/policy/modifier/TempoOverridePolicy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +46,8 @@
         <option value="Exception" />
         <option value="Record" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,6 +92,8 @@
     "Gradle.ConditionTest.구름조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.구름탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.날씨조건_탐색에_성공해야한다.executor": "Run",
+    "Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다.executor": "Run",
+    "Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.DewPointTest.executor": "Run",
     "Gradle.MetarParserTest.executor": "Run",
     "Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor": "Run",
@@ -109,6 +110,7 @@
     "Gradle.TafTest.print.executor": "Run",
     "Gradle.TemperatureTest.executor": "Run",
     "Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다.executor": "Run",
     "Gradle.VisibilityTest.executor": "Run",
     "Gradle.WeatherTest.executor": "Run",
     "Gradle.WeatherTest.관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다.executor": "Run",
@@ -160,14 +162,14 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="policy.modifier" />
       <recent name="condition.data" />
+      <recent name="policy.modifier" />
       <recent name="condition" />
       <recent name="model.taf" />
       <recent name="port.input" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TafTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다">
+  <component name="RunManager" selected="Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다">
     <configuration name="ConditionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -192,7 +194,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ConditionTest.FM은_이전_예보를_완전히_대체한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ConditionTest.날씨조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -205,7 +207,7 @@
           <list>
             <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.FM은_이전_예보를_완전히_대체한다&quot;" />
+            <option value="&quot;condition.ConditionTest.날씨조건_탐색에_성공해야한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -216,7 +218,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ConditionTest.바람_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -229,7 +231,31 @@
           <list>
             <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다&quot;" />
+            <option value="&quot;condition.ConditionTest.바람_임계조건_탐색에_성공해야한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ConditionTest.최대풍속_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":application:test" />
+            <option value="--tests" />
+            <option value="&quot;condition.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -264,31 +290,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ConditionTest.날씨조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.날씨조건_탐색에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="TafTest.BECMG은_이전예보를_대체한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnitConversionTest.속도단위_변환에_성공해야_한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -301,31 +303,7 @@
           <list>
             <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;taf.TafTest.BECMG은_이전예보를_대체한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="TafTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":domain:test" />
-            <option value="--tests" />
-            <option value="&quot;taf.TafTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다&quot;" />
+            <option value="&quot;unit.UnitConversionTest.속도단위_변환에_성공해야_한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -338,10 +316,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TafTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다" />
-        <item itemvalue="Gradle.TafTest.BECMG은_이전예보를_대체한다" />
-        <item itemvalue="Gradle.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다" />
-        <item itemvalue="Gradle.ConditionTest.FM은_이전_예보를_완전히_대체한다" />
+        <item itemvalue="Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다" />
+        <item itemvalue="Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다" />
+        <item itemvalue="Gradle.ConditionTest.날씨조건_탐색에_성공해야한다" />
+        <item itemvalue="Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다" />
         <item itemvalue="Gradle.ConditionTest" />
       </list>
     </recent_temporary>
@@ -366,6 +344,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/application/src/main/java/port/input/ThresholdConditionInputPort.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/skystat$CloudTest.ic" NAME="CloudTest 커버리지 결과" MODIFIED="1750160684504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

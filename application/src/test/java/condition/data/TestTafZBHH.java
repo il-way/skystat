@@ -3,6 +3,7 @@ package condition.data;
 
 
 import lombok.Getter;
+import service.TimeOperation;
 import vo.taf.Taf;
 import vo.taf.field.ForecastPeriod;
 import vo.taf.field.TafSection;
@@ -15,6 +16,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import static service.TimeOperation.*;
 import static vo.unit.LengthUnit.METERS;
 import static vo.unit.SpeedUnit.KT;
 import static vo.unit.SpeedUnit.MPS;
@@ -29,7 +31,7 @@ import static vo.weather.type.WeatherPhenomenon.RA;
 @Getter
 public class TestTafZBHH {
 
-	/* ───── 원문 ───── */
+	/* ───── 25년7월 원문 ───── */
 	protected String rawText = """
       AMD ZBHH 101222Z 1012/1112 10004MPS 9999 FEW040 TX28/1107Z TN18/1022Z
       TEMPO 1012/1014 TS FEW040CB FEW040
@@ -43,8 +45,9 @@ public class TestTafZBHH {
 		2025, 7, 10, 12, 22, 0, 0, ZoneOffset.UTC);
 
 	protected ForecastPeriod validPeriod = ForecastPeriod.of(
-		ZonedDateTime.of(2025, 7, 10, 12, 0, 0, 0, ZoneOffset.UTC),
-		ZonedDateTime.of(2025, 7, 11, 12, 0, 0, 0, ZoneOffset.UTC));
+		ofLenientUtc(2025, 7, 10, 12, 0),
+		ofLenientUtc(2025, 7, 11, 12, 0)
+	);
 
 	/* ───── HEADER 섹션 ───── */
 	protected TafSection headerSection = TafSection.of(
