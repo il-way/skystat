@@ -177,8 +177,8 @@
       <recent name="model.taf" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.'parser'에 있는 테스트">
-    <configuration name="ConditionTest.운저_임계조건_탐색에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ConditionTest">
+    <configuration name="ConditionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -191,7 +191,7 @@
           <list>
             <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;condition.ConditionTest.운저_임계조건_탐색에_성공해야한다&quot;" />
+            <option value="&quot;condition.ConditionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -324,6 +324,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ConditionTest" />
         <item itemvalue="Gradle.StatisticTest.풍속통계_생성에_성공해야한다" />
         <item itemvalue="Gradle.StatisticTest.읽기" />
         <item itemvalue="Gradle.'parser'에 있는 테스트" />

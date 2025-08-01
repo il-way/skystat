@@ -1,6 +1,7 @@
 package model.weather;
 
 import lombok.RequiredArgsConstructor;
+import service.WeatherOperation;
 import vo.weather.WeatherGroup;
 import vo.weather.type.WeatherDescription;
 import vo.weather.type.WeatherDescriptor;
@@ -14,15 +15,14 @@ import java.util.function.BiPredicate;
 public enum WeatherConditionPredicate {
 
   HAS_PHENOMENA((wg, target) ->
-                  wg.containsPhenomena(cast(target, WeatherPhenomenon.class))),
+                  WeatherOperation.containsPhenomena(wg, cast(target, WeatherPhenomenon.class))),
 
   HAS_DESCRIPTORS((wg, target) ->
-                   wg.containsDescriptors(cast(target, WeatherDescriptor.class))),
+                   WeatherOperation.containsDescriptors(wg, cast(target, WeatherDescriptor.class))),
 
   HAS_DESCRIPTORS_AND_PHENOMENA((wg, target) ->
-                    wg.containsDescriptors(extract(target, WeatherDescriptor.class))
-                 && wg.containsPhenomena(extract(target, WeatherPhenomenon.class))
-  );
+	                  WeatherOperation.containsDescriptors(wg, extract(target, WeatherDescriptor.class))
+                 && WeatherOperation.containsPhenomena(wg, extract(target, WeatherPhenomenon.class)));
 
   private final BiPredicate<WeatherGroup, List<WeatherDescription>> tester;
 

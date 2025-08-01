@@ -1,5 +1,6 @@
 package policy.modifier;
 
+import service.WeatherOperation;
 import vo.taf.field.WeatherSnapshot;
 import vo.taf.type.Modifier;
 import vo.weather.Weather;
@@ -36,7 +37,7 @@ public class TempoOverridePolicy implements OverridePolicy {
 
 	private WeatherGroup overrideWeatherGroup(WeatherGroup base, WeatherGroup patch) {
 		if (base.size() == 0) return patch;
-		if (patch.containsPhenomena(List.of(WeatherPhenomenon.NSW))) return patch;
+		if (WeatherOperation.containsPhenomena(patch, List.of(WeatherPhenomenon.NSW))) return patch;
 
 		List<Weather> merged         = new ArrayList<>();
 		List<Weather> remainingPatch = new ArrayList<>(patch.getWeatherList());
