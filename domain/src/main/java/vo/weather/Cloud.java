@@ -43,27 +43,6 @@ public class Cloud {
             .build();
   }
 
-  public boolean isAltitudeAtMost(int threshold, List<CloudCoverage> targetCoverages) {
-    for (CloudCoverage target : targetCoverages) {
-      if (!target.requiresAltitude()) {
-        throw new IllegalArgumentException(target + " has no fixed altitude.");
-      }
-    }
-
-    if (!targetCoverages.contains(coverage)) {
-      return false;
-    }
-
-    return getAltitudeOptional()
-            .map((altitude) -> altitude <= threshold)
-            .orElse(false);
-  }
-
-  public int getAltitudeOrThrow() {
-    return getAltitudeOptional()
-            .orElseThrow(() -> new IllegalStateException(coverage + " has no fixed altitude."));
-  }
-
   public Optional<Integer> getAltitudeOptional() {
     return Optional.ofNullable(altitude);
   }
