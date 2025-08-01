@@ -177,7 +177,7 @@
       <recent name="model.taf" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ConditionTest">
+  <component name="RunManager" selected="Gradle.StatisticTest">
     <configuration name="ConditionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -202,7 +202,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarParserTest.메타_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StatisticTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -213,9 +213,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;parser.MetarParserTest.메타_파싱에_성공해야한다&quot;" />
+            <option value="&quot;statistic.StatisticTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -324,11 +324,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StatisticTest" />
         <item itemvalue="Gradle.ConditionTest" />
         <item itemvalue="Gradle.StatisticTest.풍속통계_생성에_성공해야한다" />
         <item itemvalue="Gradle.StatisticTest.읽기" />
         <item itemvalue="Gradle.'parser'에 있는 테스트" />
-        <item itemvalue="Gradle.MetarParserTest.메타_파싱에_성공해야한다" />
       </list>
     </recent_temporary>
   </component>
