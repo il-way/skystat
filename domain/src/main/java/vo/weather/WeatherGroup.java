@@ -36,21 +36,6 @@ public class WeatherGroup {
             .build();
   }
 
-  public boolean contains(String target) {
-    return weatherList.stream()
-             .anyMatch(weather -> weather.contains(target));
-  }
-
-  public boolean containsDescriptors(List<WeatherDescriptor> target) {
-    return weatherList.stream()
-            .anyMatch(weather -> weather.containsDescriptors(target));
-  }
-
-  public boolean containsPhenomena(List<WeatherPhenomenon> target) {
-    return weatherList.stream()
-            .anyMatch(weather -> weather.containsPhenomena(target));
-  }
-
   public int size() {
     return weatherList.size();
   }
