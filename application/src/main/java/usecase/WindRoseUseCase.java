@@ -1,6 +1,6 @@
 package usecase;
 
-import dto.MetarRetrievalPeriod;
+import dto.RetrievalPeriod;
 import dto.windrose.DirectionBin;
 import dto.windrose.SpeedBin;
 import dto.windrose.WindRose;
@@ -13,7 +13,7 @@ public interface WindRoseUseCase {
 
 	Map<Month, WindRose> generateMonthlyWindRose(
 		String                icao,
-		MetarRetrievalPeriod  period,
+		RetrievalPeriod period,
 		List<SpeedBin>        speedBins,
 		List<DirectionBin>    directionBins
 	);

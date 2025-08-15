@@ -1,21 +1,18 @@
 package statistic;
 
-import dto.MetarRetrievalPeriod;
+import dto.RetrievalPeriod;
 import dto.statistic.ObservationStatisticResponse;
 import dto.statistic.ThresholdStatisticQuery;
 import dto.statistic.WeatherStatisticQuery;
 import model.generic.Comparison;
-import model.weather.MetricField;
 import model.weather.ThresholdCondition;
 import model.weather.WeatherCondition;
-import model.weather.WeatherConditionPredicate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import port.input.CloudStatisticInputPort;
 import port.input.ThresholdStatisticInputPort;
 import port.input.WeatherStatisticInputPort;
 import statistic.data.StatisticTestData;
-import vo.unit.LengthUnit;
 
 import java.util.List;
 
@@ -41,7 +38,7 @@ public class StatisticTest extends StatisticTestData {
 	void 시정통계_생성에_성공해야한다() {
 		ThresholdStatisticQuery query = new ThresholdStatisticQuery(
 			"RKSI",
-			new MetarRetrievalPeriod(
+			new RetrievalPeriod(
 				ofUTC(2024, 1, 1, 0, 0),
 				ofUTC(2024, 1, 1, 2, 0)
 			),
@@ -59,7 +56,7 @@ public class StatisticTest extends StatisticTestData {
 	void 풍속통계_생성에_성공해야한다() {
 		ThresholdStatisticQuery query = new ThresholdStatisticQuery(
 			"RKSI",
-			new MetarRetrievalPeriod(
+			new RetrievalPeriod(
 				ofUTC(2024, 1, 1, 0, 0),
 				ofUTC(2024, 1, 1, 2, 0)
 			),
@@ -77,7 +74,7 @@ public class StatisticTest extends StatisticTestData {
 	void 날씨통계_생성에_성공해야한다() {
 		WeatherStatisticQuery query = new WeatherStatisticQuery(
 			"RKSI",
-			new MetarRetrievalPeriod(
+			new RetrievalPeriod(
 				ofUTC(2024, 1, 1, 0, 0),
 				ofUTC(2024, 1, 1, 2, 0)
 			),

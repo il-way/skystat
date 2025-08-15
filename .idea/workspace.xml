@@ -108,6 +108,7 @@
     &quot;Gradle.RemarkTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ReportTypeTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.StationTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StatisticTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.StatisticTest.날씨통계_생성에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.StatisticTest.읽기.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.StatisticTest.풍속통계_생성에_성공해야한다.executor&quot;: &quot;Run&quot;,
@@ -166,6 +167,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\domain\src\test\java\taf\data" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\main\java" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -177,7 +181,7 @@
       <recent name="model.taf" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.StatisticTest">
+  <component name="RunManager" selected="Gradle.ConditionTest">
     <configuration name="ConditionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -324,8 +328,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.StatisticTest" />
         <item itemvalue="Gradle.ConditionTest" />
+        <item itemvalue="Gradle.StatisticTest" />
         <item itemvalue="Gradle.StatisticTest.풍속통계_생성에_성공해야한다" />
         <item itemvalue="Gradle.StatisticTest.읽기" />
         <item itemvalue="Gradle.'parser'에 있는 테스트" />

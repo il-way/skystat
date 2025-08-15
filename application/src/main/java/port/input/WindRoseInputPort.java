@@ -1,6 +1,6 @@
 package port.input;
 
-import dto.MetarRetrievalPeriod;
+import dto.RetrievalPeriod;
 import dto.windrose.DirectionBin;
 import dto.windrose.SpeedBin;
 import dto.windrose.WindRose;
@@ -21,7 +21,7 @@ public class WindRoseInputPort implements WindRoseUseCase {
 	private final MetarManagementOutputPort metarManagementOutputPort;
 
 	@Override
-	public Map<Month, WindRose> generateMonthlyWindRose(String icao, MetarRetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+	public Map<Month, WindRose> generateMonthlyWindRose(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
 		List<Metar> metarList = metarManagementOutputPort.findByIcaoAndPeriod(icao, period);
 
 		List<Metar> metarWithFixedDirectionWind = metarList.stream()

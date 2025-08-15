@@ -1,12 +1,10 @@
 package statistic.data;
 
-import dto.MetarRetrievalPeriod;
+import dto.RetrievalPeriod;
 import dto.statistic.CloudStatisticQuery;
 import dto.statistic.ThresholdStatisticQuery;
 import dto.statistic.WeatherStatisticQuery;
 import port.output.MetarManagementOutputPort;
-import port.output.TafManagementOutputPort;
-import service.TimeOperation;
 import usecase.StatisticUseCase;
 import vo.metar.Metar;
 
@@ -44,7 +42,7 @@ public class StatisticTestData {
 
 		metarManagementOutputPort = mock(MetarManagementOutputPort.class);
 		when(metarManagementOutputPort.findByIcaoAndPeriod("RKSI",
-			new MetarRetrievalPeriod(
+			new RetrievalPeriod(
 				ofUTC(2024, 1, 1, 0, 0),
 				ofUTC(2024, 1, 1, 2, 0)
 			)

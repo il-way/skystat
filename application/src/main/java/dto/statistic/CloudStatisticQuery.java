@@ -1,10 +1,10 @@
 package dto.statistic;
 
-import dto.MetarRetrievalPeriod;
+import dto.RetrievalPeriod;
 import model.weather.CloudCondition;
 
 public record CloudStatisticQuery(
 	String                  icao,
-	MetarRetrievalPeriod    period,
+	RetrievalPeriod period,
 	CloudCondition condition
 ) {}

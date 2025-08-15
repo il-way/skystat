@@ -1,6 +1,6 @@
 package port.output;
 
-import dto.MetarRetrievalPeriod;
+import dto.RetrievalPeriod;
 import vo.metar.Metar;
 
 import java.time.ZonedDateTime;
@@ -12,6 +12,6 @@ public interface MetarManagementOutputPort {
 
 	Metar findByIcao(String icao, ZonedDateTime reportTime);
 
-	List<Metar> findByIcaoAndPeriod(String icao, MetarRetrievalPeriod period);
+	List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period);
 
 }

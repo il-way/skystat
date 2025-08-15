@@ -3,9 +3,9 @@ package dto;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public record MetarRetrievalPeriod(ZonedDateTime from, ZonedDateTime to) {
+public record RetrievalPeriod(ZonedDateTime from, ZonedDateTime to) {
 
-  public MetarRetrievalPeriod {
+  public RetrievalPeriod {
     Objects.requireNonNull(from, "Time must not be nuil");
     Objects.requireNonNull(to, "Time must not be nuil");
 
