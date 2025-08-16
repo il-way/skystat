@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/port/output/MetarManagementOutputPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/port/output/MetarManagementOutputPort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/adapter/output/MetarManagementFileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/adapter/output/MetarManagementFileAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/java/dto/statistic/CloudStatisticQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/dto/statistic/CloudStatisticQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/java/adapter/input/rest/MetarManagementResourceFileAdapter.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -4,7 +4,7 @@ import dto.RetrievalPeriod;
 import model.weather.CloudCondition;
 
 public record CloudStatisticQuery(
-	String                  icao,
+	String icao,
 	RetrievalPeriod period,
 	CloudCondition condition
 ) {}
