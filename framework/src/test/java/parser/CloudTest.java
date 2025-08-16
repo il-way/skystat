@@ -3,6 +3,7 @@ package parser;
 import exception.GenericSpecificationExeception;
 import org.junit.jupiter.api.Test;
 import parser.metar.entry.CloudGroupRegexParser;
+import parser.metar.entry.CloudRegexParser;
 import parser.shared.ReportParser;
 import vo.weather.Cloud;
 import vo.weather.CloudGroup;
@@ -10,12 +11,14 @@ import vo.weather.type.CloudCoverage;
 import vo.weather.type.CloudType;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CloudTest {
 
   ReportParser<CloudGroup> parser = new CloudGroupRegexParser();
+  ReportParser<Cloud> cloudParser = new CloudRegexParser();
 
   @Test
   public void 고도가_없는_구름객체를_생성할때_고도를_넣으면_예외가_발생한다() {
@@ -44,16 +47,13 @@ public class CloudTest {
   }
 
   @Test
-  public void 고도가_필수인_구름객체를_생성할때_고도를_누락하면_예외가_발생한다() {
+  public void 고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다() {
     // given, when, then
-
-    assertThrows(GenericSpecificationExeception.class, () ->
-            Cloud.builder()
-                    .coverage(CloudCoverage.BKN)
-                    .altitude(null)
-                    .type(CloudType.NONE)
-                    .build()
-    );
+    String rawText = "RKSI 270700Z 22010KT 180V240 CAVOK 15/07 Q1016 TEMPO 9999 -RA FEW 030 OVC 080";
+    
+    assertThrows(IllegalArgumentException.class, () -> {
+      cloudParser.parse(rawText);
+    });
   }
 
   @Test
@@ -77,8 +77,8 @@ public class CloudTest {
 
     assertAll(
             () -> assertEquals(expected, cloudGroup),
-            () -> assertThrows(IllegalStateException.class, () ->
-                    cloudGroup.getCloudList().get(0).getAltitudeOrThrow()
+            () -> assertThrows(NoSuchElementException.class, () ->
+                    cloudGroup.getCloudList().get(0).getAltitudeOptional().orElseThrow()
             )
     );
   }

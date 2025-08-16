@@ -23,8 +23,8 @@ public class MetarParser {
   }
 
   public Metar parse(String rawText) {
-    Map<MetarField, Object> map = parser.parse(rawText);
     try {
+      Map<MetarField, Object> map = parser.parse(rawText);
       return Metar.builder()
               .rawText(rawText)
               .stationIcao(require(map, STATION_ICAO))
@@ -42,6 +42,9 @@ public class MetarParser {
     }
     catch (ClassCastException | NullPointerException e) {
       throw new MetarParseException("Failed to build Metar from raw: " + rawText, e);
+    }
+    catch (IllegalArgumentException e) {
+      throw new MetarParseException("Failed to parse Metar because " + e.getMessage(), e);
     }
   }
 

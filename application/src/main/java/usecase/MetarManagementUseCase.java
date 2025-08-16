@@ -10,7 +10,7 @@ public interface MetarManagementUseCase {
 
 	void save(Metar metar);
 
-	Metar findByIcao(String icao, ZonedDateTime reportTime);
+	List<Metar> findAllByIcao(String icao, ZonedDateTime reportTime);
 
 	List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period);
 

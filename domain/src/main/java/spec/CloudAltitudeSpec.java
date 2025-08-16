@@ -16,7 +16,7 @@ public class CloudAltitudeSpec extends AbstractSpecification<Cloud> {
   @Override
   public void check(Cloud t) throws GenericSpecificationExeception {
     if (!isSatisfiedBy(t)) {
-      throw new GenericSpecificationExeception("Cloud altitude can't be graeater than 100,000ft.");
+      throw new GenericSpecificationExeception("Cloud altitude can't be greater than 100,000ft.");
     }
   }
 

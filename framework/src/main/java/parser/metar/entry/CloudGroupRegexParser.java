@@ -23,8 +23,12 @@ public class CloudGroupRegexParser extends ReportRegexParser<CloudGroup> {
     List<Cloud> clouds = new ArrayList<>();
     while (matcher.find()) {
       String matchedCloudText = matcher.group(0);
-      Cloud cloud = cloudParser.parse(matchedCloudText);
-      clouds.add(cloud);
+      try {
+        Cloud cloud = cloudParser.parse(matchedCloudText);
+        clouds.add(cloud);
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(e.getMessage() + " (raw: " + rawText + ")");
+      }
     }
 
     return CloudGroup.of(clouds);
