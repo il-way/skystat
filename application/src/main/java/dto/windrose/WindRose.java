@@ -3,6 +3,8 @@ package dto.windrose;
 import lombok.Builder;
 import lombok.Getter;
 
+import static vo.unit.SpeedUnit.KT;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;

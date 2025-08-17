@@ -32,7 +32,7 @@ public record DirectionBin(double startDegInclusive, double endDegExclusive, Str
 		}
 	}
 
-	public static List<DirectionBin> of16Directions() {
+	public static List<DirectionBin> of16DirectionBins() {
 		String[] labels = {
 			"N", "NNE", "NE", "ENE",
 			"E", "ESE", "SE", "SSE",
