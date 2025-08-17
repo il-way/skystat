@@ -82,7 +82,6 @@ public class StatisticTest extends StatisticTestData {
 		);
 
 		ObservationStatisticResponse actual = weatherStatisticUseCase.execute(query);
-		System.out.println(actual.toString());
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
 			() -> assertEquals(3, actual.hourly().size())

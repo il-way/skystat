@@ -177,14 +177,14 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="adapter.input.rest" />
       <recent name="statistic.data" />
       <recent name="condition.data" />
       <recent name="policy.modifier" />
       <recent name="condition" />
-      <recent name="model.taf" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다">
+  <component name="RunManager" selected="Gradle.StatisticTest.날씨통계_생성에_성공해야한다">
     <configuration name="CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -331,6 +331,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StatisticTest.날씨통계_생성에_성공해야한다" />
         <item itemvalue="Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다" />
         <item itemvalue="Gradle.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다" />
         <item itemvalue="Gradle.CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다" />
