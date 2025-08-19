@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/dto/statistic/CloudStatisticQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/dto/statistic/CloudStatisticQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/adapter/input/rest/MetarManagementResourceFileAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/framework/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +103,7 @@
     &quot;Gradle.DewPointTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementResourceFileAdapterTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarParserTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MinimumCrosswindPolicy.executor&quot;: &quot;Run&quot;,
@@ -140,6 +143,9 @@
     &quot;Gradle.skystat:domain [:domain:Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.skystat:framework [:framework:Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.소스 다운로드.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.skystat.framework.test의 adapter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.skystat.framework.test의 parser (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.skystat.framework.test의 parser.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
@@ -153,7 +159,7 @@
     &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
@@ -185,158 +191,73 @@
       <recent name="condition" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.WindRoseTest.바람장미_생산에_성공해야한다">
-    <configuration name="CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="애플리케이션.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="skystat.bootstrap.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="skystat [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;parser.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다&quot;" />
+            <option value="dependencies" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;parser.CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="skystat.framework.test의 adapter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skystat.framework.test" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/framework/src/test/java/adapter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;adapter.output.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="skystat.framework.test의 parser (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skystat.framework.test" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/framework/src/test/java/parser" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;adapter.output.MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="StatisticTest.날씨통계_생성에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;statistic.StatisticTest.날씨통계_생성에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="WindRoseTest.바람장미_생산에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;windrose.WindRoseTest.바람장미_생산에_성공해야한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="skystat.framework.test의 parser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skystat.framework.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="parser" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.WindRoseTest.바람장미_생산에_성공해야한다" />
-        <item itemvalue="Gradle.StatisticTest.날씨통계_생성에_성공해야한다" />
-        <item itemvalue="Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다" />
-        <item itemvalue="Gradle.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다" />
-        <item itemvalue="Gradle.CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다" />
+        <item itemvalue="애플리케이션.App" />
+        <item itemvalue="JUnit.skystat.framework.test의 adapter" />
+        <item itemvalue="JUnit.skystat.framework.test의 parser (1)" />
+        <item itemvalue="Gradle.skystat [dependencies]" />
+        <item itemvalue="JUnit.skystat.framework.test의 parser" />
       </list>
     </recent_temporary>
   </component>
