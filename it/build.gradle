@@ -7,7 +7,9 @@ repositories {
 }
 
 dependencies {
-  testImplementation(':framework')
+  testImplementation project(':domain')
+  testImplementation project(':application')
+  testImplementation project(':framework')
 
   testImplementation platform('org.junit:junit-bom:5.10.0')
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
