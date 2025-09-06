@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MetarManagementResourceFileAdapterTest {
 
-	private MetarManagementOutputPort adapter = new MetarManagementResourceFileAdapter(
+	MetarManagementOutputPort adapter = new MetarManagementResourceFileAdapter(
 		new ClassPathResource("/data/metar/")
 	);
 

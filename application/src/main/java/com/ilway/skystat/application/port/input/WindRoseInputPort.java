@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.*;
+
 @RequiredArgsConstructor
 public class WindRoseInputPort implements WindRoseUseCase {
 
@@ -28,10 +30,10 @@ public class WindRoseInputPort implements WindRoseUseCase {
 			                   .filter(m -> !m.getWind().getDirection().isVariable())
 			                   .toList();
 
-		return metarWithFixedDirectionWind.stream().collect(Collectors.groupingBy(m ->
+		return metarWithFixedDirectionWind.stream().collect(groupingBy(m ->
 			Month.from(m.getReportTime()),
-				Collectors.collectingAndThen(
-					Collectors.toList(),
+				collectingAndThen(
+					toList(),
 					monthlyMetarList -> buildWindRoseForMonth(monthlyMetarList, speedBins, directionBins)
 			)));
 	}

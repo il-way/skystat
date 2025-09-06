@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/config/UseCaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/config/UseCaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/it/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/it/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/it/src/test/java/WindRoseUseCaseIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/it/src/test/java/WindRoseUseCaseIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +23,33 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/it">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="skystat" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="skystat" type="f1a62948:ProjectNode" />
+                <item name="it" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="skystat" type="f1a62948:ProjectNode" />
+                <item name="it" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="skystat" type="f1a62948:ProjectNode" />
+                <item name="it" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -149,12 +165,15 @@
     "JUnit.CloudGroupTest.executor": "Run",
     "JUnit.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor": "Run",
     "JUnit.ConditionTest.executor": "Run",
+    "JUnit.MetarManagementResourceFileAdapterTest.리소스파일에서_icao로_메타조회에_성공해야한다.executor": "Run",
     "JUnit.MetarManagementResourceFileAdapterTest.테스트.executor": "Run",
     "JUnit.StatisticTest.executor": "Run",
     "JUnit.TafTest.executor": "Run",
     "JUnit.UnitConversionTest.executor": "Run",
     "JUnit.WindRoseTest.executor": "Run",
+    "JUnit.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다.executor": "Run",
     "JUnit.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다.executor": "Run",
+    "JUnit.WindRoseUseCaseIT.debug.executor": "Run",
     "JUnit.WindRoseUseCaseIT.executor": "Run",
     "JUnit.skystat.framework.test의 adapter.executor": "Run",
     "JUnit.skystat.framework.test의 parser (1).executor": "Run",
@@ -168,7 +187,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/HangyulKim/Desktop/il-way/project/skystat/domain/src/test/java/taf/data",
+    "last_opened_file_path": "C:/Users/HangyulKim/Desktop/il-way/project/skystat",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -190,9 +209,11 @@
       <recent name="spec.shared" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\main\resources" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\domain\src\test\java\taf\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\main\resources\data" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\test\resources\data\metar" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\main\java" />
     </key>
@@ -207,16 +228,43 @@
       <recent name="condition" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
-      <module name="skystat.bootstrap.main" />
+  <component name="RunManager" selected="Gradle.WindRoseUseCaseIT">
+    <configuration name="WindRoseUseCaseIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":it:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.it.WindRoseUseCaseIT&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MetarManagementResourceFileAdapterTest.리소스파일에서_icao로_메타조회에_성공해야한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skystat.framework.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
+          <option name="PATTERN" value="com.ilway.skystat.framework.adapter.output.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.ilway.skystat.framework.adapter.output" />
+      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.framework.adapter.output.MetarManagementResourceFileAdapterTest" />
+      <option name="METHOD_NAME" value="리소스파일에서_icao로_메타조회에_성공해야한다" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -236,7 +284,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skystat.it.test" />
       <extension name="coverage">
         <pattern>
@@ -246,35 +294,35 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ilway.skystat.it" />
       <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.it.WindRoseUseCaseIT" />
-      <option name="METHOD_NAME" value="WindRoseUseCase_의존성_주입에_성공해야한다" />
+      <option name="METHOD_NAME" value="MonthlyWindRoseMap_생성에_성공해야한다" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="skystat.framework.test의 adapter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skystat.framework.test" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/framework/src/test/java/com/ilway/skystat/framework/adapter" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="skystat.framework.test의 parser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skystat.framework.test" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/framework/src/test/java/com/ilway/skystat/framework/parser" />
+    <configuration name="WindRoseUseCaseIT.debug" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skystat.it.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ilway.skystat.it.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ilway.skystat.it" />
+      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.it.WindRoseUseCaseIT" />
+      <option name="METHOD_NAME" value="debug" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다" />
+        <item itemvalue="Gradle.WindRoseUseCaseIT" />
+        <item itemvalue="JUnit.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다" />
+        <item itemvalue="JUnit.WindRoseUseCaseIT.debug" />
+        <item itemvalue="JUnit.MetarManagementResourceFileAdapterTest.리소스파일에서_icao로_메타조회에_성공해야한다" />
         <item itemvalue="JUnit.WindRoseUseCaseIT" />
-        <item itemvalue="애플리케이션.App" />
-        <item itemvalue="JUnit.skystat.framework.test의 parser" />
-        <item itemvalue="JUnit.skystat.framework.test의 adapter" />
       </list>
     </recent_temporary>
   </component>

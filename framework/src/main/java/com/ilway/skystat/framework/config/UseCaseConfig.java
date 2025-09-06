@@ -57,7 +57,7 @@ public class UseCaseConfig {
 
 	@Bean
 	public Resource metarResourceDir() {
-		return new ClassPathResource("/data/metar");
+		return new ClassPathResource("/data/metar/");
 	}
 
 }
