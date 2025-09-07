@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum CloudType implements WeatherDescription {
 
-  TCU("Towering Cumulus"),
+  TCU("Towering C2 umulus"),
   CB("Cumulonimbus"),
   NONE("None");
 
