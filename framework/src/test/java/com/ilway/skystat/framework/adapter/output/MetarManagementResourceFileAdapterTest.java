@@ -2,6 +2,8 @@ package com.ilway.skystat.framework.adapter.output;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import static org.junit.jupiter.api.Assertions.*;
+
+import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;

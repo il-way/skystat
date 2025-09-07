@@ -1,4 +1,4 @@
-package com.ilway.skystat.framework.adapter.output;
+package com.ilway.skystat.framework.adapter.output.resource;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +11,6 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
