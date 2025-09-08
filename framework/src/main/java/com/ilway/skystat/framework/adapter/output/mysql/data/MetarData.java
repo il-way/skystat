@@ -2,10 +2,7 @@ package com.ilway.skystat.framework.adapter.output.mysql.data;
 
 import com.ilway.skystat.domain.vo.weather.*;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -17,9 +14,10 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @Entity
-@Table(name = "metar_report")
+@Builder
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
+@Table(name = "metar_report")
 public class MetarData {
 
 	@Id

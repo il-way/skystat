@@ -9,6 +9,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @Entity
+@Builder
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
 @Table(name = "metar_cloud")
