@@ -1,6 +1,10 @@
 package com.ilway.skystat.framework.adapter.output.mysql.data;
 
-import com.ilway.skystat.domain.vo.weather.*;
+import com.ilway.skystat.domain.vo.metar.ReportType;
+import com.ilway.skystat.domain.vo.unit.LengthUnit;
+import com.ilway.skystat.domain.vo.unit.PressureUnit;
+import com.ilway.skystat.domain.vo.unit.SpeedUnit;
+import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,6 +13,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -26,28 +31,31 @@ public class MetarData {
 	private Long id;
 
 	@Column(name = "station_icao")
-	private String icao;
+	private String stationIcao;
 
 	@Column(name = "obs_time_utc")
-	private LocalDateTime observationTime;
+	private ZonedDateTime observationTime;
 
 	@Column(name = "report_time_utc")
 	private ZonedDateTime reportTime;
 
 	@Column(name = "report_type")
-	private String reportType;
+	@Enumerated(STRING)
+	private ReportType reportType;
 
 	@Column(name = "is_auto")
 	private Boolean isAuto;
 
 	@Column(name = "wind_dir_type")
-	private String windDirectionType;
+	@Enumerated(STRING)
+	private WindDirectionType windDirectionType;
 
 	@Column(name = "wind_unit")
-	private String windUnit;
+	@Enumerated(STRING)
+	private SpeedUnit windUnit;
 
 	@Column(name = "wind_dir_deg")
-	private Integer windDirection;
+	private Double windDirection;
 
 	@Column(name = "wind_speed")
 	private Integer windSpeed;
@@ -62,7 +70,8 @@ public class MetarData {
 	private Integer windVariableTo;
 
 	@Column(name = "visibility_unit")
-	private String visibilityUnit;
+	@Enumerated(STRING)
+	private LengthUnit visibilityUnit;
 
 	@Column(name = "visibility")
 	private Integer visibility;
@@ -74,7 +83,8 @@ public class MetarData {
 	private Integer dewPoint;
 
 	@Column(name = "altimeter_unit")
-	private String altimeterUnit;
+	@Enumerated(STRING)
+	private PressureUnit altimeterUnit;
 
 	@Column(name = "altimeter")
 	private Double altimeter;
@@ -82,8 +92,8 @@ public class MetarData {
 	@Column(name = "ceiling_ft")
 	private Integer ceiling;
 
-	@Column(name = "cloud_group_count")
-	private Integer cloudGroupCount;
+	@Column(name = "cloud_layer_count")
+	private Integer cloudLayerCount;
 
 	@Column(name = "weather_present")
 	private Boolean weatherPresent;
@@ -103,7 +113,7 @@ public class MetarData {
 	public void addCloud(CloudData c) {
 		cloudList.add(c);
 		c.setMetar(this);
-		cloudGroupCount--;
+		cloudLayerCount--;
 	}
 
 	public void removeCloud(CloudData c) {

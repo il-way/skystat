@@ -45,7 +45,7 @@ public class WeatherOperation {
 	}
 
 	public static boolean containsDescriptors(Weather w, List<WeatherDescriptor> target) {
-		return containsOrdered(w.getDescriptor(), target);
+		return containsOrdered(w.getDescriptors(), target);
 	}
 
 	public static boolean containsPhenomena(Weather w, List<WeatherPhenomenon> target) {

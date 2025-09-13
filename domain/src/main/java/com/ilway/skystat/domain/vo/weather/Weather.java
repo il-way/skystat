@@ -11,21 +11,21 @@ import java.util.List;
 @Value
 public class Weather {
 
-  private final List<WeatherDescriptor> descriptor;
+  private final List<WeatherDescriptor> descriptors;
   private final List<WeatherPhenomenon> phenomena;
   private final WeatherInensity intensity;
 
   @Builder
-  public Weather(WeatherInensity intensity, List<WeatherDescriptor> descriptor, List<WeatherPhenomenon> phenomena) {
+  public Weather(WeatherInensity intensity, List<WeatherDescriptor> descriptors, List<WeatherPhenomenon> phenomena) {
     this.intensity = intensity;
-    this.descriptor = descriptor != null ? List.copyOf(descriptor) : List.of();
+    this.descriptors = descriptors != null ? List.copyOf(descriptors) : List.of();
     this.phenomena = phenomena != null ? List.copyOf(phenomena) : List.of();
   }
 
-  public static Weather of(WeatherInensity intensity, List<WeatherDescriptor> descriptor, List<WeatherPhenomenon> phenomena) {
+  public static Weather of(WeatherInensity intensity, List<WeatherDescriptor> descriptors, List<WeatherPhenomenon> phenomena) {
     return Weather.builder()
             .intensity(intensity)
-            .descriptor(descriptor)
+            .descriptors(descriptors)
             .phenomena(phenomena)
             .build();
   }

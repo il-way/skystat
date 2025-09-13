@@ -232,7 +232,31 @@
       <recent name="condition" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.VisibilityTest">
+  <component name="RunManager" selected="Gradle.MinimumCrosswindPolicyTest">
+    <configuration name="MinimumCrosswindPolicyTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":domain:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.domain.policy.MinimumCrosswindPolicyTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="VisibilityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -281,22 +305,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarManagementResourceFileAdapterTest.리소스파일에서_icao로_메타조회에_성공해야한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skystat.framework.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ilway.skystat.framework.adapter.output.resource.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ilway.skystat.framework.adapter.output" />
-      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.framework.adapter.output.MetarManagementResourceFileAdapterTest" />
-      <option name="METHOD_NAME" value="리소스파일에서_icao로_메타조회에_성공해야한다" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skystat.it.test" />
       <extension name="coverage">
@@ -331,11 +339,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MinimumCrosswindPolicyTest" />
         <item itemvalue="Gradle.VisibilityTest" />
         <item itemvalue="Gradle.WindRoseUseCaseIT" />
         <item itemvalue="JUnit.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다" />
         <item itemvalue="JUnit.WindRoseUseCaseIT.debug" />
-        <item itemvalue="JUnit.MetarManagementResourceFileAdapterTest.리소스파일에서_icao로_메타조회에_성공해야한다" />
       </list>
     </recent_temporary>
   </component>

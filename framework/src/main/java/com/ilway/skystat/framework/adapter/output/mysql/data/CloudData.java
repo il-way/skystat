@@ -1,8 +1,11 @@
 package com.ilway.skystat.framework.adapter.output.mysql.data;
 
+import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
+import com.ilway.skystat.domain.vo.weather.type.CloudType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
@@ -26,14 +29,14 @@ public class CloudData {
 	private MetarData metar;
 
 	@Column(name = "coverage")
-	private String coverage;
+	@Enumerated(STRING)
+	private CloudCoverage coverage;
 
 	@Column(name = "altitude_ft")
-	private int altitude;
+	private Integer altitude;
 
 	@Column(name = "cloud_type")
-	private String cloudType;
-
-
+	@Enumerated(STRING)
+	private CloudType cloudType;
 
 }
