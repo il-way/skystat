@@ -9,6 +9,8 @@ public interface MetarManagementOutputPort {
 
 	void save(Metar metar);
 
+	void saveAll(List<Metar> metars);
+
 	List<Metar> findAllByIcao(String icao);
 
 	List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period);

@@ -28,6 +28,15 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	}
 
 	@Override
+	public void saveAll(List<Metar> metars) {
+		List<MetarData> metarData = metars.stream()
+			                       .map(MetarMySQLMapper::metarDomainToData)
+			                       .toList();
+
+		repository.saveAll(metarData);
+	}
+
+	@Override
 	public List<Metar> findAllByIcao(String icao) {
 		List<Long> ids = repository.findIdsByIcaoSorted(icao);
 		return retrieveMetarsInChunks(ids);
