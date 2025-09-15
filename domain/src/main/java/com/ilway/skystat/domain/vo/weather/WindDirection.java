@@ -2,6 +2,7 @@ package com.ilway.skystat.domain.vo.weather;
 
 import lombok.EqualsAndHashCode;
 import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
+import lombok.Getter;
 
 import java.util.Optional;
 
@@ -10,7 +11,9 @@ import static com.ilway.skystat.domain.vo.weather.type.WindDirectionType.VARIABL
 @EqualsAndHashCode
 public class WindDirection {
 
+  @Getter
   private final WindDirectionType type;
+
   private final Double degree;
 
   private WindDirection(WindDirectionType type, Double degree) {

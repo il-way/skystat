@@ -7,11 +7,14 @@ import com.ilway.skystat.domain.vo.unit.SpeedUnit;
 import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.FetchType.LAZY;
@@ -58,29 +61,29 @@ public class MetarData {
 	private Double windDirection;
 
 	@Column(name = "wind_speed")
-	private Integer windSpeed;
+	private Double windSpeed;
 
 	@Column(name = "wind_gust")
-	private Integer windGust;
+	private Double windGust;
 
 	@Column(name = "wind_var_from_deg")
-	private Integer windVariableFrom;
+	private Double windVariableFrom;
 
 	@Column(name = "wind_var_to_deg")
-	private Integer windVariableTo;
+	private Double windVariableTo;
 
 	@Column(name = "visibility_unit")
 	@Enumerated(STRING)
 	private LengthUnit visibilityUnit;
 
 	@Column(name = "visibility")
-	private Integer visibility;
+	private Double visibility;
 
 	@Column(name = "temp_c")
-	private Integer temperature;
+	private Double temperature;
 
 	@Column(name = "dewpoint_c")
-	private Integer dewPoint;
+	private Double dewPoint;
 
 	@Column(name = "altimeter_unit")
 	@Enumerated(STRING)
@@ -105,10 +108,12 @@ public class MetarData {
 	private String rawText;
 
 	@OneToMany(mappedBy = "metar", fetch = LAZY)
-	private List<CloudData> cloudList = new ArrayList<>();
+	@BatchSize(size = 100)
+	private Set<CloudData> cloudList = new LinkedHashSet<>();
 
 	@OneToMany(mappedBy = "metar", fetch = LAZY)
-	private List<WeatherData> weatherList = new ArrayList<>();
+	@BatchSize(size = 100)
+	private Set<WeatherData> weatherList = new LinkedHashSet<>();
 
 	public void addCloud(CloudData c) {
 		cloudList.add(c);
