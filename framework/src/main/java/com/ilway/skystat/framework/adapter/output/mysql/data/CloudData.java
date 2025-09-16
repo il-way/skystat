@@ -15,7 +15,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Builder
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
-@Table(name = "metar_cloud")
+@Table(name = "tbsst_metar_cloud")
 public class CloudData {
 
 	@Id

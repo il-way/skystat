@@ -122,6 +122,11 @@
     &quot;Gradle.DewPointTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.findAllByIcaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.findByIcaoAndPeriodTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.saveAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.saveTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarManagementResourceFileAdapterTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarParserTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
@@ -191,7 +196,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/HangyulKim/Desktop/il-way/project/skystat&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HangyulKim/Desktop/il-way/project/skystat/framework/src/test/java/com/ilway/skystat/framework/adapter/output/data&quot;,
     &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -213,6 +218,7 @@
       <recent name="spec.shared" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\test\java\com\ilway\skystat\framework\adapter\output\data" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\main\resources" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\domain\src\test\java\taf\data" />
     </key>
@@ -225,39 +231,15 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.framework.adapter.output.data.metar" />
       <recent name="adapter.input.rest" />
       <recent name="statistic.data" />
       <recent name="condition.data" />
       <recent name="policy.modifier" />
-      <recent name="condition" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MinimumCrosswindPolicyTest">
-    <configuration name="MinimumCrosswindPolicyTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":domain:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.domain.policy.MinimumCrosswindPolicyTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="VisibilityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.MetarManagementMySQLAdapterTest">
+    <configuration name="MetarManagementMySQLAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -270,7 +252,79 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.VisibilityTest&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MetarManagementMySQLAdapterTest.findAllByIcaoTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest.findAllByIcaoTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MetarManagementMySQLAdapterTest.findByIcaoAndPeriodTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest.findByIcaoAndPeriodTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MetarManagementMySQLAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest.saveAllTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -305,45 +359,13 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skystat.it.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ilway.skystat.it.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ilway.skystat.it" />
-      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.it.WindRoseUseCaseIT" />
-      <option name="METHOD_NAME" value="MonthlyWindRoseMap_생성에_성공해야한다" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WindRoseUseCaseIT.debug" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skystat.it.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ilway.skystat.it.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ilway.skystat.it" />
-      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.it.WindRoseUseCaseIT" />
-      <option name="METHOD_NAME" value="debug" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MinimumCrosswindPolicyTest" />
-        <item itemvalue="Gradle.VisibilityTest" />
+        <item itemvalue="Gradle.MetarManagementMySQLAdapterTest" />
         <item itemvalue="Gradle.WindRoseUseCaseIT" />
-        <item itemvalue="JUnit.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다" />
-        <item itemvalue="JUnit.WindRoseUseCaseIT.debug" />
+        <item itemvalue="Gradle.MetarManagementMySQLAdapterTest.findByIcaoAndPeriodTest" />
+        <item itemvalue="Gradle.MetarManagementMySQLAdapterTest.findAllByIcaoTest" />
+        <item itemvalue="Gradle.MetarManagementMySQLAdapterTest.saveAllTest" />
       </list>
     </recent_temporary>
   </component>

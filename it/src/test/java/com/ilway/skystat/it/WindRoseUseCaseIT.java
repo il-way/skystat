@@ -8,6 +8,7 @@ import com.ilway.skystat.application.port.input.WindRoseInputPort;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.domain.service.TimeOperation;
 import com.ilway.skystat.domain.vo.metar.Metar;
+import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WindRoseUseCaseIT {
 
 	@Autowired WindRoseUseCase windRoseUseCase;
-	@Autowired MetarManagementOutputPort outputPort;
+	@Autowired MetarManagementResourceFileAdapter outputPort;
 	@Autowired ApplicationContext ctx;
 
 

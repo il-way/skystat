@@ -25,7 +25,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Builder
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
-@Table(name = "metar_report")
+@Table(name = "tbsst_metar_report")
 public class MetarData {
 
 	@Id

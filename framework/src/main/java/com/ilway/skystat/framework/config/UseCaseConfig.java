@@ -7,6 +7,7 @@ import com.ilway.skystat.application.dto.taf.CloudConditionQuery;
 import com.ilway.skystat.application.dto.taf.ThresholdConditionQuery;
 import com.ilway.skystat.application.dto.taf.WeatherConditionQuery;
 import com.ilway.skystat.application.port.input.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
@@ -36,22 +37,22 @@ public class UseCaseConfig {
 //	}
 
 	@Bean
-	public StatisticUseCase<ThresholdStatisticQuery> thresholdStatisticUseCase(MetarManagementOutputPort outputPort) {
+	public StatisticUseCase<ThresholdStatisticQuery> thresholdStatisticUseCase(@Qualifier("metarManagementResourceFileAdapter") MetarManagementOutputPort outputPort) {
 		return new ThresholdStatisticInputPort(outputPort);
 	}
 
 	@Bean
-	public StatisticUseCase<WeatherStatisticQuery> weatherStatisticUseCase(MetarManagementOutputPort outputPort) {
+	public StatisticUseCase<WeatherStatisticQuery> weatherStatisticUseCase(@Qualifier("metarManagementResourceFileAdapter") MetarManagementOutputPort outputPort) {
 		return new WeatherStatisticInputPort(outputPort);
 	}
 
 	@Bean
-	public StatisticUseCase<CloudStatisticQuery> cloudStatisticUseCase(MetarManagementOutputPort outputPort) {
+	public StatisticUseCase<CloudStatisticQuery> cloudStatisticUseCase(@Qualifier("metarManagementResourceFileAdapter") MetarManagementOutputPort outputPort) {
 		return new CloudStatisticInputPort(outputPort);
 	}
 
 	@Bean
-	public WindRoseUseCase windRoseUseCase(MetarManagementOutputPort outputPort) {
+	public WindRoseUseCase windRoseUseCase(@Qualifier("metarManagementResourceFileAdapter") MetarManagementOutputPort outputPort) {
 		return new WindRoseInputPort(outputPort);
 	}
 
