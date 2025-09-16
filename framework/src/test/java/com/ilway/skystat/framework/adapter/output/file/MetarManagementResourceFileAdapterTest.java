@@ -20,7 +20,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@SpringBootTest(classes = { FrameworkTestApp.class, ResourceFileConfig.class })
+@SpringBootTest(classes = { ResourceFileConfig.class })
 @Transactional
 @RequiredArgsConstructor
 public class MetarManagementResourceFileAdapterTest {
@@ -31,7 +31,7 @@ public class MetarManagementResourceFileAdapterTest {
 
 	@Test
 	@DisplayName("리소스파일에서 icao로 METAR 조회에 성공해야한다.")
-	void findAllbyIcaoTest() {
+	void findAllByIcaoTest() {
 		String icao = "rksi";
 		List<Metar> metarList = adapter.findAllByIcao(icao);
 		assertTrue(metarList.size() > HOURS_OF_ONE_YEAR);
