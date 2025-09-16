@@ -4,10 +4,12 @@
       <w>becmg</w>
       <w>cloudtype</w>
       <w>icao</w>
+      <w>ilway</w>
       <w>kjfk</w>
       <w>metars</w>
       <w>nill</w>
       <w>rkss</w>
+      <w>skystat</w>
     </words>
   </dictionary>
 </component>

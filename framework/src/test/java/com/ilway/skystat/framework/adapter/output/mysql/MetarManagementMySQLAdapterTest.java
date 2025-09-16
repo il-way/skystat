@@ -1,7 +1,6 @@
 package com.ilway.skystat.framework.adapter.output.mysql;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
-import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.FrameworkTestApp;
 import com.ilway.skystat.framework.adapter.output.data.metar.MetarTestData;
@@ -9,7 +8,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import jakarta.persistence.EntityManager;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = FrameworkTestApp.class)
+@SpringBootTest(classes = { FrameworkTestApp.class, MySQLConfig.class })
 @Transactional
 @ActiveProfiles("test")
 public class MetarManagementMySQLAdapterTest extends MetarTestData {
@@ -48,7 +46,7 @@ public class MetarManagementMySQLAdapterTest extends MetarTestData {
 
 		adapter.save(expected);
 
-		MetarData metarData = em.find(MetarData.class, 1L);
+		MetarData metarData = repository.findAll().getFirst();
 		Metar actual = MetarMySQLMapper.metarDataToDomain(metarData);
 
 		assertEquals(actual, expected);
@@ -60,10 +58,9 @@ public class MetarManagementMySQLAdapterTest extends MetarTestData {
 		List<Metar> expected = metarListMap.get(TEST_ICAO);
 		adapter.saveAll(expected);
 
-		List<Metar> actual = IntStream.range(1, expected.size()+1)
-			                          .mapToObj(pk -> em.find(MetarData.class, (long) pk))
-			                          .map(MetarMySQLMapper::metarDataToDomain)
-			                          .toList();
+		List<Metar> actual = repository.findAll().stream()
+			                   .map(MetarMySQLMapper::metarDataToDomain)
+			                   .toList();
 
 		assertAll(
 			() -> assertEquals(expected.size(), actual.size()),
@@ -95,7 +92,5 @@ public class MetarManagementMySQLAdapterTest extends MetarTestData {
 
 		assertTrue(expected.containsAll(actual));
 	}
-
-
 
 }

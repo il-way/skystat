@@ -9,6 +9,7 @@ import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.domain.service.TimeOperation;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
+import com.ilway.skystat.it.config.UseCaseConfig;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
+import org.springframework.core.io.ClassPathResource;
 
 import java.time.Month;
 import java.util.Arrays;
@@ -26,14 +28,15 @@ import java.util.Set;
 import static com.ilway.skystat.domain.service.TimeOperation.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = ItTestApp.class)
+@SpringBootTest(classes = {ItTestApp.class, UseCaseConfig.class})
 @RequiredArgsConstructor
 public class WindRoseUseCaseIT {
 
-	@Autowired WindRoseUseCase windRoseUseCase;
-	@Autowired MetarManagementResourceFileAdapter outputPort;
-	@Autowired ApplicationContext ctx;
+	@Autowired MetarManagementResourceFileAdapter adapter;
 
+	@Autowired WindRoseUseCase windRoseUseCase;
+
+	@Autowired ApplicationContext ctx;
 
 	@Test
 	void WindRoseUseCase_의존성_주입에_성공해야한다() {
@@ -57,7 +60,6 @@ public class WindRoseUseCaseIT {
 		assertAll(
 			() -> assertEquals(12, windRoseMap.size())
 		);
-
 	}
 
 
