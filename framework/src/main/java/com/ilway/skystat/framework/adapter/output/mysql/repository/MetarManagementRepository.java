@@ -21,7 +21,7 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 		SELECT m.id
 		FROM MetarData m
 		WHERE UPPER(m.stationIcao) = UPPER(:icao)
-		ORDER BY m.reportTime DESC, m.id DESC
+		ORDER BY m.reportTime ASC, m.id ASC
 		""")
 	List<Long> findIdsByIcaoSorted(@Param("icao") String icao);
 
@@ -30,7 +30,7 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 		FROM MetarData m
 		WHERE UPPER(m.stationIcao) = UPPER(:icao)
 			AND m.reportTime between :#{#period.from} and :#{#period.to}
-		ORDER BY m.reportTime DESC, m.id DESC
+		ORDER BY m.reportTime ASC, m.id ASC
 		""")
 	List<Long> findIdsByIcaoAndPeriod(@Param("icao") String icao,
 	                                  @Param("period") RetrievalPeriod period);

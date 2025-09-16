@@ -22,7 +22,7 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = { FrameworkTestApp.class, MySQLConfig.class })
+@SpringBootTest(classes = { MySQLConfig.class })
 @Transactional
 @ActiveProfiles("test")
 public class MetarManagementMySQLAdapterTest extends MetarTestData {

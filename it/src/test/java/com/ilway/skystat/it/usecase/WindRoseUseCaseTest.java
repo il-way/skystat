@@ -1,36 +1,30 @@
-package com.ilway.skystat.it;
+package com.ilway.skystat.it.usecase;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
 import com.ilway.skystat.application.port.input.WindRoseInputPort;
-import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
-import com.ilway.skystat.domain.service.TimeOperation;
-import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
+import com.ilway.skystat.it.ItTestApp;
 import com.ilway.skystat.it.config.UseCaseConfig;
 import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
-import org.springframework.core.io.ClassPathResource;
 
 import java.time.Month;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import static com.ilway.skystat.domain.service.TimeOperation.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = {ItTestApp.class, UseCaseConfig.class})
+@SpringBootTest
 @RequiredArgsConstructor
-public class WindRoseUseCaseIT {
+public class WindRoseUseCaseTest {
 
 	@Autowired MetarManagementResourceFileAdapter adapter;
 
@@ -61,7 +55,5 @@ public class WindRoseUseCaseIT {
 			() -> assertEquals(12, windRoseMap.size())
 		);
 	}
-
-
 
 }
