@@ -34,6 +34,10 @@ public class MetarManagementResourceFileAdapterTest {
 	void findAllByIcaoTest() {
 		String icao = "rksi";
 		List<Metar> metarList = adapter.findAllByIcao(icao);
+		ZonedDateTime observationTime = metarList.getFirst()
+			                                .getObservationTime();
+
+		System.out.println(observationTime);
 		assertTrue(metarList.size() > HOURS_OF_ONE_YEAR);
 	}
 
