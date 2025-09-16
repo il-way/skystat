@@ -20,7 +20,7 @@ import com.ilway.skystat.domain.vo.weather.type.WeatherDescription;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@RequestMapping("/data/metar/statistic")
+@RequestMapping("/metar/statistic")
 @RestController
 @RequiredArgsConstructor
 public class MetarStatisticAdapter {
