@@ -53,7 +53,7 @@ public class WeatherTest {
     // then
     Weather expected = Weather.builder()
         .intensity(WeatherInensity.LIGHT)
-        .descriptor(List.of())
+        .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.RA))
         .build();
 
@@ -75,13 +75,13 @@ public class WeatherTest {
     // then
     Weather expected = Weather.builder()
         .intensity(WeatherInensity.MODERATE)
-        .descriptor(List.of())
+        .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.RA, WeatherPhenomenon.SN))
         .build();
 
     Weather unexpected = Weather.builder()
                          .intensity(WeatherInensity.MODERATE)
-                         .descriptor(List.of())
+                         .descriptors(List.of())
                          .phenomena(List.of(WeatherPhenomenon.SN, WeatherPhenomenon.RA))
                          .build();
 
@@ -103,19 +103,19 @@ public class WeatherTest {
     // then
     Weather expected1 = Weather.builder()
         .intensity(WeatherInensity.LIGHT)
-        .descriptor(List.of(WeatherDescriptor.TS))
+        .descriptors(List.of(WeatherDescriptor.TS))
         .phenomena(List.of(WeatherPhenomenon.SN, WeatherPhenomenon.RA))
         .build();
 
     Weather expected2 = Weather.builder()
         .intensity(WeatherInensity.LIGHT)
-        .descriptor(List.of())
+        .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.PL, WeatherPhenomenon.SN))
         .build();
 
     Weather expected3 = Weather.builder()
         .intensity(WeatherInensity.MODERATE)
-        .descriptor(List.of())
+        .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.BR))
         .build();
 

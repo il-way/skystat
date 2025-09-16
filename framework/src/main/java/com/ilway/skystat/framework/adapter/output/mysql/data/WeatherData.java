@@ -21,7 +21,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Builder
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
-@Table(name = "metar_weather")
+@Table(name = "tbsst_metar_weather")
 public class WeatherData {
 
 	@Id

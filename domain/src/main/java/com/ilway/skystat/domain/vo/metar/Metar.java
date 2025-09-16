@@ -37,14 +37,14 @@ public class Metar implements MetricSource {
   private static final TimeZoneSpec timeZoneSpec = new TimeZoneSpec();
 
   @Builder
-	public Metar(String rawText, String stationIcao, ReportType reportType, ZonedDateTime observationTime, Wind wind, Visibility visibility, Temperature temperature, Temperature dewPoint, Altimeter altimeter, WeatherGroup weatherGroup, CloudGroup cloudGroup, String remarks) {
+	public Metar(String rawText, String stationIcao, ReportType reportType, ZonedDateTime observationTime, ZonedDateTime reportTime, Wind wind, Visibility visibility, Temperature temperature, Temperature dewPoint, Altimeter altimeter, WeatherGroup weatherGroup, CloudGroup cloudGroup, String remarks) {
     timeZoneSpec.check(observationTime);
 
     this.rawText = rawText;
     this.stationIcao = stationIcao;
     this.reportType = reportType;
     this.observationTime = observationTime;
-    this.reportTime = TimeOperation.toReportTime(observationTime);
+    this.reportTime = reportTime == null ? TimeOperation.toReportTime(observationTime) : reportTime;
     this.wind = wind;
     this.visibility = visibility;
     this.temperature = temperature;
@@ -54,4 +54,5 @@ public class Metar implements MetricSource {
     this.cloudGroup = cloudGroup != null ? cloudGroup : CloudGroup.ofEmpty();
     this.remarks = remarks;
 	}
+
 }

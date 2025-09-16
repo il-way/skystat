@@ -9,6 +9,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManageme
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -23,11 +24,13 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	private final EntityManager em;
 
 	@Override
+	@Transactional
 	public void save(Metar metar) {
 		repository.save(MetarMySQLMapper.metarDomainToData(metar));
 	}
 
 	@Override
+	@Transactional
 	public void saveAll(List<Metar> metars) {
 		List<MetarData> metarData = metars.stream()
 			                       .map(MetarMySQLMapper::metarDomainToData)
@@ -37,12 +40,14 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Metar> findAllByIcao(String icao) {
 		List<Long> ids = repository.findIdsByIcaoSorted(icao);
 		return retrieveMetarsInChunks(ids);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period) {
 		List<Long> ids = repository.findIdsByIcaoAndPeriod(icao, period);
 		return retrieveMetarsInChunks(ids);

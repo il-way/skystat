@@ -33,6 +33,11 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 	}
 
 	@Override
+	public void saveAll(List<Metar> metars) {
+
+	}
+
+	@Override
 	public List<Metar> findAllByIcao(String icao) {
 		try (var reader = new BufferedReader(
 			new InputStreamReader(resolveResource(icao).getInputStream(), StandardCharsets.UTF_8)

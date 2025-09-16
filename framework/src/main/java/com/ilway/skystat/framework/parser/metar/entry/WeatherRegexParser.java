@@ -49,7 +49,7 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
 
     return Weather.builder()
             .intensity(intensity)
-            .descriptor(descriptor)
+            .descriptors(descriptor)
             .phenomena(phenomena)
             .build();
   }

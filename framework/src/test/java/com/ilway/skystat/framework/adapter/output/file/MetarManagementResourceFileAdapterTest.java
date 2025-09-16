@@ -1,4 +1,4 @@
-package com.ilway.skystat.framework.adapter.output;
+package com.ilway.skystat.framework.adapter.output.file;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,13 +19,13 @@ public class MetarManagementResourceFileAdapterTest {
 		new ClassPathResource("/data/metar/")
 	);
 
-	private final int HOURS_OF_YEAR = 8_760;
+	private final int HOURS_OF_ONE_YEAR = 8_760;
 
 	@Test
 	void 리소스파일에서_icao로_메타조회에_성공해야한다() {
 		String icao = "rksi";
 		List<Metar> metarList = adapter.findAllByIcao(icao);
-		assertTrue(metarList.size() > 1 * HOURS_OF_YEAR);
+		assertTrue(metarList.size() > HOURS_OF_ONE_YEAR);
 	}
 
 	@Test
@@ -37,6 +37,6 @@ public class MetarManagementResourceFileAdapterTest {
 		);
 		List<Metar> metarList = adapter.findByIcaoAndPeriod(icao, retrievalPeriod);
 
-		assertTrue(metarList.size() >= HOURS_OF_YEAR);
+		assertTrue(metarList.size() >= HOURS_OF_ONE_YEAR);
 	}
 }
