@@ -13,11 +13,15 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
+
+import static java.time.ZoneOffset.UTC;
 
 @Component
 @RequiredArgsConstructor
@@ -25,7 +29,6 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 
 	private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 	private final Resource resourceDir;
-	private final MetarParser parser = new MetarParser(YearMonth.now());
 
 	@Override
 	public void save(Metar metar) {
@@ -39,6 +42,8 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 
 	@Override
 	public List<Metar> findAllByIcao(String icao) {
+		MetarParser parser = new MetarParser(YearMonth.now());
+
 		try (var reader = new BufferedReader(
 			new InputStreamReader(resolveResource(icao).getInputStream(), StandardCharsets.UTF_8)
 		)) {
@@ -47,7 +52,7 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 				       .filter(s -> !s.isEmpty() && !s.startsWith("#"))
 				       .map(MetarManagementResourceFileAdapter::parseResourceFile)
 				       .filter(Objects::nonNull)
-				       .flatMap(this::parseMetarSafely)
+				       .flatMap(row -> parseMetarSafely(row, parser))
 				       .sorted(Comparator.comparing(Metar::getObservationTime))
 				       .toList();
 		} catch (IOException e) {
@@ -69,14 +74,14 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 		String raw = parts[2].trim();
 
 		try {
-			LocalDateTime time = LocalDateTime.parse(ts, FMT);
+			ZonedDateTime time = LocalDateTime.parse(ts, FMT).atZone(UTC);
 			return new MetarRow(icao, time, raw);
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	private Stream<Metar> parseMetarSafely(MetarRow r) {
+	private static Stream<Metar> parseMetarSafely(MetarRow r, MetarParser parser) {
 		try {
 			parser.setYearMonth(YearMonth.from(r.time()));
 			return Stream.ofNullable(parser.parse(r.raw()));
@@ -85,7 +90,7 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 		}
 	}
 
-	record MetarRow(String icao, LocalDateTime time, String raw){}
+	record MetarRow(String icao, ZonedDateTime time, String raw){}
 
 	private Resource resolveResource(String icao) throws IOException {
 		String safe = Objects.requireNonNull(icao, "icao").trim().toUpperCase();
