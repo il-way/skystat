@@ -33,9 +33,6 @@ public class MetarManagementMySQLAdapterTest extends MetarTestData {
 	@Autowired
 	private MetarManagementRepository repository;
 
-	@Autowired
-	private EntityManager em;
-
 	private static final String TEST_ICAO = "RKSI";
 
 	@Test

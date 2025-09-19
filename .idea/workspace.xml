@@ -98,126 +98,126 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.'parser'에 있는 테스트.executor": "Run",
-    "Gradle.AltimeterTest.executor": "Run",
-    "Gradle.AltimeterTest.헥토파스칼_단위의_기압정보를_정상적으로_파싱한다.executor": "Run",
-    "Gradle.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor": "Run",
-    "Gradle.CloudTest.executor": "Run",
-    "Gradle.CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다.executor": "Run",
-    "Gradle.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다.executor": "Run",
-    "Gradle.ConditionTest.FM은_이전_예보를_완전히_대체한다.executor": "Run",
-    "Gradle.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다.executor": "Run",
-    "Gradle.ConditionTest.executor": "Run",
-    "Gradle.ConditionTest.mocking에_성공해야한다.executor": "Run",
-    "Gradle.ConditionTest.구름조건_탐색에_성공해야한다.executor": "Run",
-    "Gradle.ConditionTest.구름탐색에_성공해야한다.executor": "Run",
-    "Gradle.ConditionTest.날씨조건_탐색에_성공해야한다.executor": "Run",
-    "Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다.executor": "Run",
-    "Gradle.ConditionTest.시정_임계조건_탐색에_성공해야한다.executor": "Run",
-    "Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다.executor": "Run",
-    "Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다.executor": "Run",
-    "Gradle.DewPointTest.executor": "Run",
-    "Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다.executor": "Run",
-    "Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다.executor": "Run",
-    "Gradle.MetarManagementMySQLAdapterTest.executor": "Run",
-    "Gradle.MetarManagementMySQLAdapterTest.findAllByIcaoTest.executor": "Run",
-    "Gradle.MetarManagementMySQLAdapterTest.findByIcaoAndPeriodTest.executor": "Run",
-    "Gradle.MetarManagementMySQLAdapterTest.saveAllTest.executor": "Run",
-    "Gradle.MetarManagementMySQLAdapterTest.saveTest.executor": "Run",
-    "Gradle.MetarManagementResourceFileAdapterTest.executor": "Run",
-    "Gradle.MetarManagementResourceFileAdapterTest.findAllByIcaoTest.executor": "Run",
-    "Gradle.MetarManagementTest.executor": "Run",
-    "Gradle.MetarManagementTest.saveAllTest.executor": "Run",
-    "Gradle.MetarParserTest.executor": "Run",
-    "Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor": "Run",
-    "Gradle.MinimumCrosswindPolicy.executor": "Run",
-    "Gradle.MinimumCrosswindPolicyTest.executor": "Run",
-    "Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다.executor": "Run",
-    "Gradle.ObservataionTimeTest.관측시간_파싱_성공.executor": "Run",
-    "Gradle.RemarkTest.executor": "Run",
-    "Gradle.ReportTypeTest.executor": "Run",
-    "Gradle.StationTest.executor": "Run",
-    "Gradle.StatisticTest.executor": "Run",
-    "Gradle.StatisticTest.날씨통계_생성에_성공해야한다.executor": "Run",
-    "Gradle.StatisticTest.읽기.executor": "Run",
-    "Gradle.StatisticTest.풍속통계_생성에_성공해야한다.executor": "Run",
-    "Gradle.TafTest.BECMG은_이전예보를_대체한다.executor": "Run",
-    "Gradle.TafTest.BECMG은_이전요소를_덮어쓴다.executor": "Run",
-    "Gradle.TafTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다.executor": "Run",
-    "Gradle.TafTest.print.executor": "Run",
-    "Gradle.TemperatureTest.executor": "Run",
-    "Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor": "Run",
-    "Gradle.UnitConversionTest.길이단위_변환에_성공해야한다.executor": "Run",
-    "Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다.executor": "Run",
-    "Gradle.VisibilityTest.CAVOK이_관측된_경우_시정값이_9999미터이다.executor": "Run",
-    "Gradle.VisibilityTest.executor": "Run",
-    "Gradle.WeatherTest.executor": "Run",
-    "Gradle.WeatherTest.관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다.executor": "Run",
-    "Gradle.WeatherTest.단일_기상현상만_관측된_경우_phenomena의_길이가_1인_Weather객체를_반환한다.executor": "Debug",
-    "Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다.executor": "Run",
-    "Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다.executor": "Run",
-    "Gradle.WindRoseTest.바람장미_생산에_성공해야한다.executor": "Run",
-    "Gradle.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다.executor": "Run",
-    "Gradle.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다.executor": "Run",
-    "Gradle.WindRoseUseCaseIT.executor": "Run",
-    "Gradle.WindRoseUseCaseTest.executor": "Run",
-    "Gradle.WindTest.executor": "Run",
-    "Gradle.parser.AltimeterTest 및 그 외 11개 (1).executor": "Run",
-    "Gradle.parser.AltimeterTest 및 그 외 11개 (2).executor": "Run",
-    "Gradle.parser.AltimeterTest 및 그 외 11개.executor": "Run",
-    "Gradle.parser.ObservataionTimeTest 및 그 외 7개.executor": "Run",
-    "Gradle.skystat [dependencies].executor": "Run",
-    "Gradle.skystat:application [:application:Main.main()].executor": "Run",
-    "Gradle.skystat:bootstrap [:bootstrap:Main.main()].executor": "Run",
-    "Gradle.skystat:domain [:domain:Main.main()].executor": "Run",
-    "Gradle.skystat:framework [:framework:Main.main()].executor": "Run",
-    "Gradle.소스 다운로드.executor": "Run",
-    "JUnit.CloudGroupTest.executor": "Run",
-    "JUnit.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor": "Run",
-    "JUnit.ConditionTest.executor": "Run",
-    "JUnit.MetarManagementResourceFileAdapterTest.리소스파일에서_icao로_메타조회에_성공해야한다.executor": "Run",
-    "JUnit.MetarManagementResourceFileAdapterTest.테스트.executor": "Run",
-    "JUnit.StatisticTest.executor": "Run",
-    "JUnit.TafTest.executor": "Run",
-    "JUnit.UnitConversionTest.executor": "Run",
-    "JUnit.WindRoseTest.executor": "Run",
-    "JUnit.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다.executor": "Run",
-    "JUnit.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다.executor": "Run",
-    "JUnit.WindRoseUseCaseIT.debug.executor": "Run",
-    "JUnit.WindRoseUseCaseIT.executor": "Run",
-    "JUnit.skystat.framework.test의 adapter.executor": "Run",
-    "JUnit.skystat.framework.test의 parser (1).executor": "Run",
-    "JUnit.skystat.framework.test의 parser.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/HangyulKim/Desktop/il-way/project/skystat/it/src/test/resources",
-    "project.structure.last.edited": "모듈",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "terminal",
-    "애플리케이션.App.executor": "Run",
-    "애플리케이션.ItTestApp.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.'parser'에 있는 테스트.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AltimeterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AltimeterTest.헥토파스칼_단위의_기압정보를_정상적으로_파싱한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CloudTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.FM은_이전_예보를_완전히_대체한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.mocking에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.구름조건_탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.구름탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.날씨조건_탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.바람_임계조건_탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.시정_임계조건_탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DewPointTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.findAllByIcaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.findByIcaoAndPeriodTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.saveAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementMySQLAdapterTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementResourceFileAdapterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementResourceFileAdapterTest.findAllByIcaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarManagementTest.saveAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarParserTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MinimumCrosswindPolicy.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MinimumCrosswindPolicyTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ObservataionTimeTest.관측시간_파싱_성공.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RemarkTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReportTypeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StationTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StatisticTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StatisticTest.날씨통계_생성에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StatisticTest.읽기.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StatisticTest.풍속통계_생성에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TafTest.BECMG은_이전예보를_대체한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TafTest.BECMG은_이전요소를_덮어쓴다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TafTest.TEMPO는_동일_카테고리의_기상예보만을_대체한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TafTest.print.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TemperatureTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UnitConversionTest.길이단위_변환에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VisibilityTest.CAVOK이_관측된_경우_시정값이_9999미터이다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VisibilityTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WeatherTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WeatherTest.관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WeatherTest.단일_기상현상만_관측된_경우_phenomena의_길이가_1인_Weather객체를_반환한다.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WindRoseTest.바람장미_생산에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WindRoseUseCaseIT.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WindRoseUseCaseTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.WindTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.parser.AltimeterTest 및 그 외 11개 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.parser.AltimeterTest 및 그 외 11개 (2).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.parser.AltimeterTest 및 그 외 11개.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.parser.ObservataionTimeTest 및 그 외 7개.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.skystat [dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.skystat:application [:application:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.skystat:bootstrap [:bootstrap:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.skystat:domain [:domain:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.skystat:framework [:framework:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.소스 다운로드.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CloudGroupTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CloudGroupTest.구름군에서_특정_구름타입의_존재여부_검증에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConditionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MetarManagementResourceFileAdapterTest.리소스파일에서_icao로_메타조회에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MetarManagementResourceFileAdapterTest.테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StatisticTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TafTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UnitConversionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WindRoseTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WindRoseUseCaseIT.debug.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WindRoseUseCaseIT.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.skystat.framework.test의 adapter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.skystat.framework.test의 parser (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.skystat.framework.test의 parser.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HangyulKim/Desktop/il-way/project/skystat/it/src/test/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;애플리케이션.App.executor&quot;: &quot;Run&quot;,
+    &quot;애플리케이션.ItTestApp.executor&quot;: &quot;Run&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.ilway.skystat.framework.adapter.input.rest.validator" />
@@ -245,7 +245,7 @@
       <recent name="policy.modifier" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MetarManagementResourceFileAdapterTest.findAllByIcaoTest">
+  <component name="RunManager" selected="Gradle.MetarManagementMySQLAdapterTest">
     <configuration name="MetarManagementMySQLAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -260,6 +260,30 @@
             <option value=":framework:test" />
             <option value="--tests" />
             <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MetarManagementMySQLAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest.saveAllTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -342,37 +366,13 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="WindRoseUseCaseTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":it:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.usecase.WindRoseUseCaseTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MetarManagementResourceFileAdapterTest.findAllByIcaoTest" />
         <item itemvalue="Gradle.MetarManagementMySQLAdapterTest" />
+        <item itemvalue="Gradle.MetarManagementMySQLAdapterTest.saveAllTest" />
+        <item itemvalue="Gradle.MetarManagementResourceFileAdapterTest.findAllByIcaoTest" />
         <item itemvalue="Gradle.MetarManagementResourceFileAdapterTest" />
         <item itemvalue="Gradle.MetarManagementTest.saveAllTest" />
-        <item itemvalue="Gradle.WindRoseUseCaseTest" />
       </list>
     </recent_temporary>
   </component>
