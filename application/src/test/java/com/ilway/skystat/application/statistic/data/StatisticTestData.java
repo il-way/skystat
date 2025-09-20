@@ -50,7 +50,7 @@ public class StatisticTestData {
 	}
 
 	protected ZonedDateTime ofUTC(int year, int month, int day, int hour, int min) {
-		return ZonedDateTime.of(2025, month, day, hour, min, 0, 0, ZoneOffset.UTC);
+		return ZonedDateTime.of(year, month, day, hour, min, 0, 0, ZoneOffset.UTC);
 	}
 
 }

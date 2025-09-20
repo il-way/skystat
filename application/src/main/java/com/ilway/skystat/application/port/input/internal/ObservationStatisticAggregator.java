@@ -1,5 +1,6 @@
 package com.ilway.skystat.application.port.input.internal;
 
+import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.HourlyCountDto;
 import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
 import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
@@ -7,14 +8,21 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static java.time.ZoneOffset.UTC;
 
 public final class ObservationStatisticAggregator {
 
-	public static ObservationStatisticResponse aggregate(List<Metar> metarList, Predicate<Metar> predicate) {
+	public static ObservationStatisticResponse aggregate(List<Metar> metarList,
+	                                                     Predicate<Metar> predicate,
+	                                                     RetrievalPeriod period) {
+
 		Stream<Metar> filtered = metarList.stream().filter(predicate);
 
 		HashMap<YearMonth, Set<LocalDate>> monthSet = new HashMap<>();
@@ -36,21 +44,72 @@ public final class ObservationStatisticAggregator {
 				.add(day);
 		});
 
-		List<MonthlyCountDto> monthly = monthSet.entrySet().stream()
-			                                .map(e -> new MonthlyCountDto(e.getKey(), e.getValue().size()))
-			                                .sorted(Comparator.comparing(MonthlyCountDto::yearMonth))
+		System.out.println(monthSet);
+		System.out.println(hourSet);
+
+		List<YearMonth> months = monthsBetween(period.from(), period.to());
+
+		List<MonthlyCountDto> monthly = months.stream()
+			                                .map(ym -> new MonthlyCountDto(ym, monthSet.getOrDefault(ym, Collections.emptySet()).size()))
 			                                .toList();
 
-		List<HourlyCountDto> hourly = hourSet.entrySet().stream()
-			                              .flatMap(e -> e.getValue().entrySet().stream()
-				                               .map(hr -> new HourlyCountDto(e.getKey(), hr.getKey(), hr.getValue().size()))
-			                              )
-			                              .sorted(Comparator
-				                               .comparing(HourlyCountDto::yearMonth)
-				                               .thenComparing(HourlyCountDto::hourUtc)
-			                              ).toList();
+		List<HourlyCountDto> hourly = months.stream()
+			                              .flatMap(ym -> {
+				                              Map<Integer, Set<LocalDate>> byHour = hourSet.getOrDefault(ym, Collections.emptyMap());
+				                              return IntStream.range(0,24)
+					                                     .mapToObj(h -> new HourlyCountDto(ym, h, byHour.getOrDefault(h, Collections.emptySet()).size()));
+			                              })
+			                              .toList();
+
 
 		return new ObservationStatisticResponse(monthly, hourly);
+	}
+
+	public static ObservationStatisticResponse aggregate(Map<YearMonth, Long> countMonthly,
+	                                                     Map<YearMonth, Map<Integer, Long>> countHourly,
+	                                                     RetrievalPeriod period) {
+
+		List<YearMonth> months = monthsBetween(period.from(), period.to());
+
+		List<MonthlyCountDto> monthly = months.stream()
+			                             .map(ym -> new MonthlyCountDto(ym, countMonthly.getOrDefault(ym, 0L)))
+			                             .toList();
+
+		List<HourlyCountDto> hourly = months.stream()
+			                              .flatMap(ym -> {
+				                              Map<Integer, Long> byHour = countHourly.getOrDefault(ym, Collections.emptyMap());
+																			return IntStream.range(0,24)
+																				       .mapToObj(h -> new HourlyCountDto(ym, h, byHour.getOrDefault(h, 0L)));
+			                              })
+			                              .toList();
+
+		return new ObservationStatisticResponse(monthly, hourly);
+	}
+
+	public static ObservationStatisticResponse peelOffZeroCount(ObservationStatisticResponse response) {
+		List<MonthlyCountDto> monthly = response.monthly().stream()
+			                                .filter(m -> m.count() != 0)
+			                                .toList();
+
+		List<HourlyCountDto> hourly = response.hourly().stream()
+			                              .filter(h -> h.count() != 0)
+			                              .toList();
+
+		return new ObservationStatisticResponse(monthly, hourly);
+	}
+
+	private static List<YearMonth> monthsBetween(ZonedDateTime fromInclusive, ZonedDateTime toExclusive) {
+		if (!fromInclusive.isBefore(toExclusive)) return List.of();
+
+		List<YearMonth> result = new ArrayList<>();
+		YearMonth fromYm = YearMonth.from(fromInclusive);
+		YearMonth toYm = YearMonth.from(toExclusive.minusNanos(1L));
+
+		for (YearMonth ym = fromYm; !ym.isAfter(toYm); ym = ym.plusMonths(1)) {
+			result.add(ym);
+		}
+
+		return result;
 	}
 
 }

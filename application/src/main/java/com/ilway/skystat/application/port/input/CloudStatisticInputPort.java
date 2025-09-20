@@ -24,6 +24,6 @@ public class CloudStatisticInputPort implements StatisticUseCase<CloudStatisticQ
 		CloudCondition condition = query.condition();
 		Predicate<Metar> predicate = m -> condition.predicate().test(m.getCloudGroup(), condition.target());
 
-		return ObservationStatisticAggregator.aggregate(metarList, predicate);
+		return ObservationStatisticAggregator.aggregate(metarList, predicate, query.period());
 	}
 }

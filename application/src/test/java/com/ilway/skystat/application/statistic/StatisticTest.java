@@ -7,6 +7,7 @@ import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.model.generic.Comparison;
 import com.ilway.skystat.application.model.weather.ThresholdCondition;
 import com.ilway.skystat.application.model.weather.WeatherCondition;
+import com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.ilway.skystat.application.port.input.CloudStatisticInputPort;
@@ -45,7 +46,9 @@ public class StatisticTest extends StatisticTestData {
 			new ThresholdCondition(VISIBILITY, Comparison.LTE, 4000, METERS)
 		);
 
-		ObservationStatisticResponse actual = thresholdStatisticUseCase.execute(query);
+		ObservationStatisticResponse response = thresholdStatisticUseCase.execute(query);
+		System.out.println(response.toString());
+		ObservationStatisticResponse actual = ObservationStatisticAggregator.peelOffZeroCount(response);
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
 			() -> assertEquals(1, actual.hourly().size())
@@ -63,7 +66,9 @@ public class StatisticTest extends StatisticTestData {
 			new ThresholdCondition(WIND_SPEED, Comparison.GTE, 5, KT)
 		);
 
-		ObservationStatisticResponse actual = thresholdStatisticUseCase.execute(query);
+		ObservationStatisticResponse response = thresholdStatisticUseCase.execute(query);
+		ObservationStatisticResponse actual = ObservationStatisticAggregator.peelOffZeroCount(response);
+
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
 			() -> assertEquals(1, actual.hourly().size())

@@ -27,6 +27,7 @@ public class ThresholdStatisticInputPort implements StatisticUseCase<ThresholdSt
 			return condition.comparison().test(value, condition.threshold());
 		};
 
-		return ObservationStatisticAggregator.aggregate(metarList, predicate);
+		return ObservationStatisticAggregator.aggregate(metarList, predicate, query.period());
 	}
+
 }

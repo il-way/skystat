@@ -66,9 +66,9 @@
         <option value="Exception" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -143,6 +143,7 @@
     "Gradle.StationTest.executor": "Run",
     "Gradle.StatisticTest.executor": "Run",
     "Gradle.StatisticTest.날씨통계_생성에_성공해야한다.executor": "Run",
+    "Gradle.StatisticTest.시정통계_생성에_성공해야한다.executor": "Run",
     "Gradle.StatisticTest.읽기.executor": "Run",
     "Gradle.StatisticTest.풍속통계_생성에_성공해야한다.executor": "Run",
     "Gradle.TafTest.BECMG은_이전예보를_대체한다.executor": "Run",
@@ -239,14 +240,14 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.application.port.input" />
+      <recent name="com.ilway.skystat.application.port.output" />
       <recent name="com.ilway.skystat.framework.adapter.input" />
       <recent name="com.ilway.skystat.framework.adapter.output.data.metar" />
       <recent name="adapter.input.rest" />
-      <recent name="statistic.data" />
-      <recent name="condition.data" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MetarManagementAdapterTest.saveAllTest">
+  <component name="RunManager" selected="Gradle.StatisticTest.풍속통계_생성에_성공해야한다">
     <configuration name="MetarManagementAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -295,7 +296,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarManagementMySQLAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StatisticTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -306,9 +307,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest.saveAllTest&quot;" />
+            <option value="&quot;com.ilway.skystat.application.statistic.StatisticTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -319,7 +320,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarManagementResourceFileAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StatisticTest.시정통계_생성에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -330,9 +331,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.output.file.MetarManagementResourceFileAdapterTest&quot;" />
+            <option value="&quot;com.ilway.skystat.application.statistic.StatisticTest.시정통계_생성에_성공해야한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -343,7 +344,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarManagementResourceFileAdapterTest.findAllByIcaoTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StatisticTest.풍속통계_생성에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -354,9 +355,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.output.file.MetarManagementResourceFileAdapterTest.findAllByIcaoTest&quot;" />
+            <option value="&quot;com.ilway.skystat.application.statistic.StatisticTest.풍속통계_생성에_성공해야한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -369,11 +370,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StatisticTest.풍속통계_생성에_성공해야한다" />
+        <item itemvalue="Gradle.StatisticTest.시정통계_생성에_성공해야한다" />
+        <item itemvalue="Gradle.StatisticTest" />
         <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
         <item itemvalue="Gradle.MetarManagementMySQLAdapterTest" />
-        <item itemvalue="Gradle.MetarManagementMySQLAdapterTest.saveAllTest" />
-        <item itemvalue="Gradle.MetarManagementResourceFileAdapterTest.findAllByIcaoTest" />
-        <item itemvalue="Gradle.MetarManagementResourceFileAdapterTest" />
       </list>
     </recent_temporary>
   </component>
