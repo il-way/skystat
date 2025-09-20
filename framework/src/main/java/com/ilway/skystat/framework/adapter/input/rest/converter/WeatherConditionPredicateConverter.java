@@ -2,7 +2,9 @@ package com.ilway.skystat.framework.adapter.input.rest.converter;
 
 import com.ilway.skystat.application.model.weather.WeatherConditionPredicate;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WeatherConditionPredicateConverter implements Converter<String, WeatherConditionPredicate> {
 	@Override
 	public WeatherConditionPredicate convert(String source) {
