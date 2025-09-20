@@ -15,9 +15,9 @@ import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.ilway.skystat.application.port.input.CloudConditionInputPort;
-import com.ilway.skystat.application.port.input.ThresholdConditionInputPort;
-import com.ilway.skystat.application.port.input.WeatherConditionInputPort;
+import com.ilway.skystat.application.port.input.taf.CloudConditionInputPort;
+import com.ilway.skystat.application.port.input.taf.ThresholdConditionInputPort;
+import com.ilway.skystat.application.port.input.taf.WeatherConditionInputPort;
 import com.ilway.skystat.domain.vo.weather.type.CloudType;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 

@@ -44,9 +44,6 @@ public final class ObservationStatisticAggregator {
 				.add(day);
 		});
 
-		System.out.println(monthSet);
-		System.out.println(hourSet);
-
 		List<YearMonth> months = monthsBetween(period.from(), period.to());
 
 		List<MonthlyCountDto> monthly = months.stream()

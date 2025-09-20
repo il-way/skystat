@@ -13,7 +13,7 @@ public record MetarSaveResponse(Integer successCount, Integer failureCount, List
 	}
 
 	public static MetarSaveResponse failure(String message) {
-		return new MetarSaveResponse(0, 0, List.of(), message);
+		return new MetarSaveResponse(0, 1, List.of(), message);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.ilway.skystat.application.port.input;
+package com.ilway.skystat.application.port.input.taf;
 
 import com.ilway.skystat.application.dto.taf.ThresholdConditionQuery;
 import lombok.RequiredArgsConstructor;

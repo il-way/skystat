@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 public enum TemperatureUnit implements Unit {
 
   CELSIUS(1.0),
-  FAHRENHEIT(1.8);
+  FAHRENHEIT(0.555555555);
 
   private final double toCelsiusFactor;
 
@@ -14,7 +14,7 @@ public enum TemperatureUnit implements Unit {
   public double toBase(double value) {
     return switch (this) {
       case CELSIUS -> value;
-      case FAHRENHEIT -> value * toCelsiusFactor + 32;
+      case FAHRENHEIT -> (value - 32) * toCelsiusFactor;
     };
   }
 
@@ -22,7 +22,7 @@ public enum TemperatureUnit implements Unit {
   public double fromBase(double baseValue) {
     return switch (this) {
       case CELSIUS -> baseValue;
-      case FAHRENHEIT -> (baseValue - 32) / toCelsiusFactor;
+      case FAHRENHEIT -> (baseValue / toCelsiusFactor) + 32;
     };
   }
 

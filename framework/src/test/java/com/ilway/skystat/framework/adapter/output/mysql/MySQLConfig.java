@@ -3,7 +3,7 @@ package com.ilway.skystat.framework.adapter.output.mysql;
 import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
-import com.ilway.skystat.application.port.input.*;
+import com.ilway.skystat.application.port.input.metar.*;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.application.usecase.StatisticUseCase;

@@ -10,7 +10,7 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
-import com.ilway.skystat.application.port.input.WindRoseInputPort;
+import com.ilway.skystat.application.port.input.metar.WindRoseInputPort;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import com.ilway.skystat.application.windrose.data.WindRoseTestData;
 
