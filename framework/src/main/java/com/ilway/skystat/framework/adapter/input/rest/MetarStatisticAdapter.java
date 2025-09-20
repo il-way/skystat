@@ -40,10 +40,6 @@ public class MetarStatisticAdapter {
 		@RequestParam("startDateTime") @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime ed
 	) {
-		System.out.println("##### comparison: " + comparison);
-		System.out.println("##### comparison: " + comparison);
-		System.out.println("##### comparison: " + comparison);
-
 		ThresholdStatisticQuery query = new ThresholdStatisticQuery(
 			icao,
 			new RetrievalPeriod(st, ed),
@@ -79,7 +75,7 @@ public class MetarStatisticAdapter {
 	public ResponseEntity<ObservationStatisticResponse> getCloudStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("condition") CloudConditionPredicate condition,
-		@RequestParam("list") WeatherDescription target,
+		@RequestParam("target") WeatherDescription target,
 		@RequestParam("startDateTime") @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime ed
 	) {

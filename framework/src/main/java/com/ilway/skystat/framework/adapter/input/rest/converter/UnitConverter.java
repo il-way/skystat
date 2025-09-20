@@ -5,7 +5,9 @@ import com.ilway.skystat.domain.vo.unit.PressureUnit;
 import com.ilway.skystat.domain.vo.unit.SpeedUnit;
 import com.ilway.skystat.domain.vo.unit.Unit;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UnitConverter implements Converter<String, Unit> {
 	@Override
 	public Unit convert(String source) {
