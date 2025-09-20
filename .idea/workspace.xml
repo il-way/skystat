@@ -67,8 +67,8 @@
         <option value="Record" />
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -120,7 +120,10 @@
     "Gradle.ConditionTest.운저_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.ConditionTest.최대풍속_임계조건_탐색에_성공해야한다.executor": "Run",
     "Gradle.DewPointTest.executor": "Run",
+    "Gradle.MetarManagementAdapterTest.executor": "Run",
     "Gradle.MetarManagementAdapterTest.saveAllTest.executor": "Run",
+    "Gradle.MetarManagementAdapterTest.saveTest.executor": "Run",
+    "Gradle.MetarManagementAdapterTest.saveTestFailure.executor": "Run",
     "Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다.executor": "Run",
     "Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다.executor": "Run",
     "Gradle.MetarManagementMySQLAdapterTest.executor": "Run",
@@ -134,6 +137,8 @@
     "Gradle.MetarManagementTest.saveAllTest.executor": "Run",
     "Gradle.MetarParserTest.executor": "Run",
     "Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.MetarStatisticAdapterTest.executor": "Run",
+    "Gradle.MetarStatisticAdapterTest.getThresholdStatisticTestSuccess.executor": "Run",
     "Gradle.MinimumCrosswindPolicy.executor": "Run",
     "Gradle.MinimumCrosswindPolicyTest.executor": "Run",
     "Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다.executor": "Run",
@@ -152,6 +157,9 @@
     "Gradle.TafTest.print.executor": "Run",
     "Gradle.TemperatureTest.executor": "Run",
     "Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.UnitConversionTest.c_to_f.executor": "Run",
+    "Gradle.UnitConversionTest.executor": "Run",
+    "Gradle.UnitConversionTest.meter_to_feet.executor": "Run",
     "Gradle.UnitConversionTest.길이단위_변환에_성공해야한다.executor": "Run",
     "Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다.executor": "Run",
     "Gradle.VisibilityTest.CAVOK이_관측된_경우_시정값이_9999미터이다.executor": "Run",
@@ -161,6 +169,7 @@
     "Gradle.WeatherTest.단일_기상현상만_관측된_경우_phenomena의_길이가_1인_Weather객체를_반환한다.executor": "Debug",
     "Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다.executor": "Run",
     "Gradle.WeatherTest.복합_기상현상이_존재하는_경우_phenomena의_길이가_1이상인_Weather객체를_반환한다.executor": "Run",
+    "Gradle.WindRoseTest.executor": "Run",
     "Gradle.WindRoseTest.바람장미_생산에_성공해야한다.executor": "Run",
     "Gradle.WindRoseUseCaseIT.MonthlyWindRoseMap_생성에_성공해야한다.executor": "Run",
     "Gradle.WindRoseUseCaseIT.WindRoseUseCase_의존성_주입에_성공해야한다.executor": "Run",
@@ -240,15 +249,15 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.framework.adapter.input" />
       <recent name="com.ilway.skystat.application.port.input" />
       <recent name="com.ilway.skystat.application.port.output" />
-      <recent name="com.ilway.skystat.framework.adapter.input" />
       <recent name="com.ilway.skystat.framework.adapter.output.data.metar" />
       <recent name="adapter.input.rest" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.StatisticTest.풍속통계_생성에_성공해야한다">
-    <configuration name="MetarManagementAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.UnitConversionTest.c_to_f">
+    <configuration name="MetarStatisticAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -261,7 +270,7 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarManagementAdapterTest.saveAllTest&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -272,7 +281,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarManagementMySQLAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnitConversionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -283,9 +292,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
+            <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTest&quot;" />
+            <option value="&quot;com.ilway.skystat.domain.unit.UnitConversionTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -296,7 +305,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="StatisticTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnitConversionTest.속도단위_변환에_성공해야_한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -307,9 +316,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":application:test" />
+            <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.application.statistic.StatisticTest&quot;" />
+            <option value="&quot;com.ilway.skystat.domain.unit.UnitConversionTest.속도단위_변환에_성공해야_한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -320,7 +329,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="StatisticTest.시정통계_생성에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnitConversionTest.c_to_f" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -331,9 +340,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":application:test" />
+            <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.application.statistic.StatisticTest.시정통계_생성에_성공해야한다&quot;" />
+            <option value="&quot;com.ilway.skystat.domain.unit.UnitConversionTest.c_to_f&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -344,7 +353,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="StatisticTest.풍속통계_생성에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnitConversionTest.meter_to_feet" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -355,9 +364,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":application:test" />
+            <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.application.statistic.StatisticTest.풍속통계_생성에_성공해야한다&quot;" />
+            <option value="&quot;com.ilway.skystat.domain.unit.UnitConversionTest.meter_to_feet&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -370,11 +379,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.StatisticTest.풍속통계_생성에_성공해야한다" />
-        <item itemvalue="Gradle.StatisticTest.시정통계_생성에_성공해야한다" />
-        <item itemvalue="Gradle.StatisticTest" />
-        <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
-        <item itemvalue="Gradle.MetarManagementMySQLAdapterTest" />
+        <item itemvalue="Gradle.UnitConversionTest.c_to_f" />
+        <item itemvalue="Gradle.UnitConversionTest" />
+        <item itemvalue="Gradle.UnitConversionTest.meter_to_feet" />
+        <item itemvalue="Gradle.UnitConversionTest.속도단위_변환에_성공해야_한다" />
+        <item itemvalue="Gradle.MetarStatisticAdapterTest" />
       </list>
     </recent_temporary>
   </component>

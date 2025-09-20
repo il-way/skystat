@@ -5,6 +5,7 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.input.rest.request.MetarFileUploadForm;
 import com.ilway.skystat.framework.adapter.input.rest.request.MetarSaveForm;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
+import com.ilway.skystat.framework.exception.MetarParseException;
 import com.ilway.skystat.framework.parser.metar.MetarParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +52,9 @@ public class MetarManagementAdapter {
 
 			return ResponseEntity.ok()
 				       .body(MetarSaveResponse.success(1, 0, List.of()));
+		} catch (MetarParseException e) {
+			return ResponseEntity.badRequest()
+				       .body(MetarSaveResponse.failure(e.getMessage()));
 		} catch (Exception e) {
 			return ResponseEntity.internalServerError()
 				       .body(MetarSaveResponse.failure(e.getMessage()));

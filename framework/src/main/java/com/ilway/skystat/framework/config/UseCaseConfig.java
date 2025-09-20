@@ -3,10 +3,10 @@
 //import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
 //import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 //import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
-//import com.ilway.skystat.application.port.input.CloudStatisticInputPort;
-//import com.ilway.skystat.application.port.input.ThresholdStatisticInputPort;
-//import com.ilway.skystat.application.port.input.WeatherStatisticInputPort;
-//import com.ilway.skystat.application.port.input.WindRoseInputPort;
+//import com.ilway.skystat.application.port.input.metar.CloudStatisticInputPort;
+//import com.ilway.skystat.application.port.input.metar.ThresholdStatisticInputPort;
+//import com.ilway.skystat.application.port.input.metar.WeatherStatisticInputPort;
+//import com.ilway.skystat.application.port.input.metar.WindRoseInputPort;
 //import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 //import com.ilway.skystat.application.usecase.StatisticUseCase;
 //import com.ilway.skystat.application.usecase.WindRoseUseCase;

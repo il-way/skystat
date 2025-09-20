@@ -1,4 +1,4 @@
-package com.ilway.skystat.application.port.input;
+package com.ilway.skystat.application.port.input.metar;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
@@ -6,7 +6,6 @@ import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import lombok.RequiredArgsConstructor;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor

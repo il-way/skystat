@@ -6,6 +6,7 @@ import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.model.weather.*;
+import com.ilway.skystat.domain.vo.unit.Unit;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.generic.Comparison;
 import static org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -35,10 +36,14 @@ public class MetarStatisticAdapter {
 		@RequestParam("field") MetricField field,
 		@RequestParam("comparison") Comparison comparison,
 		@RequestParam("threshold") double threshold,
-		@RequestParam("unit") LengthUnit unit,
+		@RequestParam("unit") Unit unit,
 		@RequestParam("startDateTime") @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime ed
 	) {
+		System.out.println("##### comparison: " + comparison);
+		System.out.println("##### comparison: " + comparison);
+		System.out.println("##### comparison: " + comparison);
+
 		ThresholdStatisticQuery query = new ThresholdStatisticQuery(
 			icao,
 			new RetrievalPeriod(st, ed),

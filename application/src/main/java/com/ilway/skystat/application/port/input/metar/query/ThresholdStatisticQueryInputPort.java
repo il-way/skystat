@@ -1,4 +1,4 @@
-package com.ilway.skystat.application.port.input;
+package com.ilway.skystat.application.port.input.metar.query;
 
 import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;

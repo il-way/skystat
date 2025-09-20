@@ -6,8 +6,8 @@ public interface Unit {
   double fromBase(double baseValue);
 
   default double convertTo(double value, Unit targetUnit) {
-    double base = targetUnit.toBase(value);
-    return fromBase(base);
+    double base = this.toBase(value);
+    return targetUnit.fromBase(base);
   }
 
 }

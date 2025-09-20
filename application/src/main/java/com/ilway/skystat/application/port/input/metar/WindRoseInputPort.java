@@ -1,4 +1,4 @@
-package com.ilway.skystat.application.port.input;
+package com.ilway.skystat.application.port.input.metar;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
@@ -13,7 +13,6 @@ import com.ilway.skystat.domain.vo.weather.Wind;
 import java.time.Month;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 

@@ -10,9 +10,9 @@ import com.ilway.skystat.application.model.weather.WeatherCondition;
 import com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.ilway.skystat.application.port.input.CloudStatisticInputPort;
-import com.ilway.skystat.application.port.input.ThresholdStatisticInputPort;
-import com.ilway.skystat.application.port.input.WeatherStatisticInputPort;
+import com.ilway.skystat.application.port.input.metar.CloudStatisticInputPort;
+import com.ilway.skystat.application.port.input.metar.ThresholdStatisticInputPort;
+import com.ilway.skystat.application.port.input.metar.WeatherStatisticInputPort;
 import com.ilway.skystat.application.statistic.data.StatisticTestData;
 
 import java.util.List;
@@ -86,7 +86,9 @@ public class StatisticTest extends StatisticTestData {
 			new WeatherCondition(HAS_PHENOMENA, List.of(BR))
 		);
 
-		ObservationStatisticResponse actual = weatherStatisticUseCase.execute(query);
+		ObservationStatisticResponse response = weatherStatisticUseCase.execute(query);
+		ObservationStatisticResponse actual = ObservationStatisticAggregator.peelOffZeroCount(response);
+
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
 			() -> assertEquals(3, actual.hourly().size())

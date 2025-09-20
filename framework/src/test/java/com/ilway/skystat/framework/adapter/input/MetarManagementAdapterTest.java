@@ -1,15 +1,10 @@
 package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
-import com.ilway.skystat.framework.FrameworkTestApp;
-import com.ilway.skystat.framework.adapter.input.rest.MetarManagementAdapter;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
-import com.ilway.skystat.framework.parser.metar.MetarParser;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,28 +13,18 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.LocalDateTime;
-import java.time.YearMonth;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
+import java.util.Map;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.time.ZoneOffset.UTC;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -97,6 +82,49 @@ public class MetarManagementAdapterTest {
 
 		log.info("# expectedTotalCount: {}", expectedTotalCount);
 		log.info("# errorList: {}", response.errorList());
+	}
+
+	@Test
+	void saveTestSuccess() throws Exception {
+		String icao = "RKSI";
+		String rawText = "RKSI 010000Z 07001KT CAVOK M06/M11 Q1034 NOSIG";
+		var body = Map.of(
+			"observationTime", "2019-01-01T00:00:00Z",
+			"rawText", rawText
+		);
+
+		mockMvc.perform(post("/metar/save/{icao}", icao)
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(objectMapper.writeValueAsString(body))
+		)
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.successCount").value(1))
+			.andExpect(jsonPath("$.failureCount").value(0));
+
+
+		List<Metar> list = metarManagementUseCase.findAllByIcao(icao);
+		assertEquals(rawText, list.getFirst().getRawText());
+	}
+
+	@Test
+	void saveTestFailure() throws Exception {
+		String icao = "RKSI";
+		String rawText = "RKSI ????";
+		var body = Map.of(
+			"observationTime", "2019-01-01T00:00:00Z",
+			"rawText", rawText
+		);
+
+		mockMvc.perform(post("/metar/save/{icao}", icao)
+			                .contentType(MediaType.APPLICATION_JSON)
+			                .content(objectMapper.writeValueAsString(body))
+			)
+			.andExpect(status().isBadRequest())
+			.andExpect(jsonPath("$.successCount").value(0))
+			.andExpect(jsonPath("$.failureCount").value(1));
+
+		List<Metar> list = metarManagementUseCase.findAllByIcao(icao);
+		assertEquals(0, list.size());
 	}
 
 

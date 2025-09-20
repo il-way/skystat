@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 public enum SpeedUnit implements Unit {
 
   MPS(1.0, "MPS"),
-  KT(1.94384, "KT"),
-  KPH(3.6, "KPH");
+  KT(0.51444, "KT"),
+  KPH(0.2778, "KPH");
 
   private final double toMpsFactor;
 
