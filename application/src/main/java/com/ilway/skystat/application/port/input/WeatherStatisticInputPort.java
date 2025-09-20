@@ -24,6 +24,6 @@ public class WeatherStatisticInputPort implements StatisticUseCase<WeatherStatis
 		WeatherCondition condition = query.condition();
 		Predicate<Metar> predicate = m -> condition.predicate().test(m.getWeatherGroup(), condition.target());
 
-		return ObservationStatisticAggregator.aggregate(metarList, predicate);
+		return ObservationStatisticAggregator.aggregate(metarList, predicate, query.period());
 	}
 }

@@ -5,6 +5,6 @@ import com.ilway.skystat.application.model.weather.ThresholdCondition;
 
 public record ThresholdStatisticQuery(
 	String                icao,
-	RetrievalPeriod period,
+	RetrievalPeriod       period,
 	ThresholdCondition    condition
 ) {}
