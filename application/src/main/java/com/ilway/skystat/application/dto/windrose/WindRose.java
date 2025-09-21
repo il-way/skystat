@@ -14,15 +14,15 @@ public class WindRose {
 	private final List<SpeedBin> speedBins;
 	private final List<DirectionBin> directionBins;
 	private final Map<BinPair, Long> frequencyMap;
-	private final long totalCount;
+	private final long sampleSize;
 
 	public record BinPair(SpeedBin speedBin, DirectionBin directionBin) {}
 
 	@Builder
-	public WindRose(List<SpeedBin> speedBins, List<DirectionBin> directionBins, Map<BinPair, Long> frequencyMap, long totalCount) {
+	public WindRose(List<SpeedBin> speedBins, List<DirectionBin> directionBins, Map<BinPair, Long> frequencyMap, long sampleSize) {
 		this.speedBins = List.copyOf(speedBins);
 		this.directionBins = List.copyOf(directionBins);
-		this.totalCount = totalCount;
+		this.sampleSize = sampleSize;
 
 		LinkedHashMap<BinPair, Long> map = initFrequencyMap(speedBins, directionBins);
 
@@ -35,8 +35,8 @@ public class WindRose {
 	}
 
 	public double getRate(SpeedBin speedBin, DirectionBin directionBin) {
-		if (totalCount == 0) return 0;
-		return (double) getFrequency(speedBin, directionBin) * 100 / totalCount;
+		if (sampleSize == 0) return 0;
+		return (double) getFrequency(speedBin, directionBin) * 100 / sampleSize;
 	}
 
 	public static LinkedHashMap<BinPair, Long> initFrequencyMap(List<SpeedBin> speedBins, List<DirectionBin> directionBins) {

@@ -4,6 +4,7 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
+import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,14 +24,14 @@ public class WindRoseAdapter {
 	private final WindRoseUseCase windRoseUseCase;
 
 	@GetMapping("/{icao}")
-	public ResponseEntity<Map<Month, WindRose>> getWindRose(
+	public ResponseEntity<WindRoseResult> getWindRose(
 		@PathVariable("icao") String icao,
 		@RequestParam("startDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed
 	) {
 		List<SpeedBin> speedBins = SpeedBin.of5KtSpeedBins();
 		List<DirectionBin> directionBins = DirectionBin.of16DirectionBins();
-		Map<Month, WindRose> windRose = windRoseUseCase.generateMonthlyWindRose(
+		WindRoseResult result = windRoseUseCase.generateMonthlyWindRose(
 			icao,
 			new RetrievalPeriod(st, ed),
 			speedBins,
@@ -38,6 +39,6 @@ public class WindRoseAdapter {
 		);
 
 		return ResponseEntity.ok()
-			       .body(windRose);
+			       .body(result);
 	}
 }
