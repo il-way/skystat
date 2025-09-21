@@ -1,9 +1,11 @@
 package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
+import com.ilway.skystat.framework.config.MySQLConfigData;
+import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,23 +32,26 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @Slf4j
-@SpringBootTest(classes = {CommonConfig.class})
+@SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class MetarManagementAdapterTest {
+public class MetarManagementAdapterTest extends MySQLConfigData {
 
 	@Autowired MockMvc mockMvc;
 	@Autowired ObjectMapper objectMapper;
-	@Autowired MetarManagementUseCase metarManagementUseCase;
 
-	@Value("classpath:windRoseMap/metar/RKSI.txt")
+	public MetarManagementAdapterTest(@Autowired MetarManagementRepository repository, @Autowired EntityManager em) {
+		super(repository, em);
+	}
+
+	@Value("classpath:data/metar/RKSI.txt")
 	Resource rksiMetarFile;
 
 	private static final String TEST_ICAO = "RKSI";
 	private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	@Test
-	@DisplayName("파입 업로드를 통해 여러 METAR 저장에 성공해야 한다 (multipart/form-windRoseMap)")
+	@DisplayName("파입 업로드를 통해 여러 METAR 저장에 성공해야 한다 (multipart/form-data)")
 	void saveAllTest() throws Exception {
 		MockMultipartFile mockFile = new MockMultipartFile(
 			"file",
