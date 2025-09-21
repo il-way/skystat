@@ -1,9 +1,9 @@
 package com.ilway.skystat.application.usecase;
 
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 
 public interface StatisticUseCase<T> {
 
-	ObservationStatisticResponse execute(T query);
+	ObservationStatisticResult execute(T query);
 
 }

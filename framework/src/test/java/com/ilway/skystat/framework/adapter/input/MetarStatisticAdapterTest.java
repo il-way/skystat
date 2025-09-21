@@ -1,7 +1,7 @@
 package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.framework.adapter.output.file.ResourceFileConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -44,9 +44,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -65,9 +65,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -86,9 +86,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -107,9 +107,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -128,9 +128,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -147,9 +147,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -166,9 +166,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -185,9 +185,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -204,9 +204,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 
@@ -223,9 +223,9 @@ public class MetarStatisticAdapterTest {
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		ObservationStatisticResponse response = objectMapper.readValue(
+		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			ObservationStatisticResponse.class
+			ObservationStatisticResult.class
 		);
 	}
 

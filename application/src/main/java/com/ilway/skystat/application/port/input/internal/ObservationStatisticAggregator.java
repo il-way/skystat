@@ -3,25 +3,22 @@ package com.ilway.skystat.application.port.input.internal;
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.HourlyCountDto;
 import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.domain.vo.metar.Metar;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static java.time.ZoneOffset.UTC;
-
 public final class ObservationStatisticAggregator {
 
-	public static ObservationStatisticResponse aggregate(List<Metar> metarList,
-	                                                     Predicate<Metar> predicate,
-	                                                     RetrievalPeriod period) {
+	public static ObservationStatisticResult aggregate(List<Metar> metarList,
+	                                                   Predicate<Metar> predicate,
+	                                                   RetrievalPeriod period) {
 
 		Stream<Metar> filtered = metarList.stream().filter(predicate);
 
@@ -59,12 +56,12 @@ public final class ObservationStatisticAggregator {
 			                              .toList();
 
 
-		return new ObservationStatisticResponse(monthly, hourly);
+		return new ObservationStatisticResult(monthly, hourly);
 	}
 
-	public static ObservationStatisticResponse aggregate(Map<YearMonth, Long> countMonthly,
-	                                                     Map<YearMonth, Map<Integer, Long>> countHourly,
-	                                                     RetrievalPeriod period) {
+	public static ObservationStatisticResult aggregate(Map<YearMonth, Long> countMonthly,
+	                                                   Map<YearMonth, Map<Integer, Long>> countHourly,
+	                                                   RetrievalPeriod period) {
 
 		List<YearMonth> months = monthsBetween(period.from(), period.to());
 
@@ -80,10 +77,10 @@ public final class ObservationStatisticAggregator {
 			                              })
 			                              .toList();
 
-		return new ObservationStatisticResponse(monthly, hourly);
+		return new ObservationStatisticResult(monthly, hourly);
 	}
 
-	public static ObservationStatisticResponse peelOffZeroCount(ObservationStatisticResponse response) {
+	public static ObservationStatisticResult peelOffZeroCount(ObservationStatisticResult response) {
 		List<MonthlyCountDto> monthly = response.monthly().stream()
 			                                .filter(m -> m.count() != 0)
 			                                .toList();
@@ -92,7 +89,7 @@ public final class ObservationStatisticAggregator {
 			                              .filter(h -> h.count() != 0)
 			                              .toList();
 
-		return new ObservationStatisticResponse(monthly, hourly);
+		return new ObservationStatisticResult(monthly, hourly);
 	}
 
 	private static List<YearMonth> monthsBetween(ZonedDateTime fromInclusive, ZonedDateTime toExclusive) {
