@@ -2,7 +2,7 @@ package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
-import com.ilway.skystat.framework.adapter.output.file.ResourceFileConfig;
+import com.ilway.skystat.framework.config.ResourceFileConfigData;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,10 +19,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
-@SpringBootTest(classes = {ResourceFileConfig.class})
+@SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class MetarStatisticAdapterTest {
+public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 
 	@Autowired
 	MockMvc mockMvc;

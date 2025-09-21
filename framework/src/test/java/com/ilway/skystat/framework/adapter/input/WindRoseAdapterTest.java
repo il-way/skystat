@@ -1,10 +1,8 @@
 package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ilway.skystat.application.dto.windrose.WindRose;
-import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import com.ilway.skystat.framework.adapter.input.rest.response.WindRoseResponse;
-import com.ilway.skystat.framework.adapter.output.file.ResourceFileConfig;
+import com.ilway.skystat.framework.config.ResourceFileConfigData;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,19 +13,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.nio.charset.StandardCharsets;
-import java.time.Month;
-import java.util.Map;
-
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
-@SpringBootTest(classes = {ResourceFileConfig.class})
+@SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class WindRoseAdapterTest {
+public class WindRoseAdapterTest extends ResourceFileConfigData {
 
 	@Autowired
 	MockMvc mockMvc;

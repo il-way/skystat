@@ -1,8 +1,10 @@
 package com.ilway.skystat.framework.adapter.output.resource;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.framework.profile.Default;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.generic.IntervalInclusion;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import com.ilway.skystat.framework.parser.metar.MetarParser;
@@ -23,12 +25,11 @@ import java.util.stream.Stream;
 
 import static java.time.ZoneOffset.UTC;
 
-@Component
 @RequiredArgsConstructor
 public class MetarManagementResourceFileAdapter implements MetarManagementOutputPort {
 
 	private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-	private final Resource resourceDir;
+	private final Resource resourceDir = new ClassPathResource("/data/metar/");
 
 	@Override
 	public void save(Metar metar) {
