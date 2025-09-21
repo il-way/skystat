@@ -1,6 +1,6 @@
 package com.ilway.skystat.application.port.input.metar;
 
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.weather.WeatherCondition;
@@ -18,7 +18,7 @@ public class WeatherStatisticInputPort implements StatisticUseCase<WeatherStatis
 	private final MetarManagementOutputPort metarManagementOutputPort;
 
 	@Override
-	public ObservationStatisticResponse execute(WeatherStatisticQuery query) {
+	public ObservationStatisticResult execute(WeatherStatisticQuery query) {
 		List<Metar> metarList = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
 
 		WeatherCondition condition = query.condition();

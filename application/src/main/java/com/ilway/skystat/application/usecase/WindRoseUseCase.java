@@ -12,10 +12,10 @@ import java.util.Map;
 public interface WindRoseUseCase {
 
 	Map<Month, WindRose> generateMonthlyWindRose(
-		String                icao,
+		String icao,
 		RetrievalPeriod period,
-		List<SpeedBin>        speedBins,
-		List<DirectionBin>    directionBins
+		List<SpeedBin> speedBins,
+		List<DirectionBin> directionBins
 	);
 
 }

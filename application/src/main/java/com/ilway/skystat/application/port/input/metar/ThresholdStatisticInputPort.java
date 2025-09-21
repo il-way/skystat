@@ -1,6 +1,6 @@
 package com.ilway.skystat.application.port.input.metar;
 
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.weather.ThresholdCondition;
@@ -18,7 +18,7 @@ public class ThresholdStatisticInputPort implements StatisticUseCase<ThresholdSt
 	private final MetarManagementOutputPort metarManagementOutputPort;
 
 	@Override
-	public ObservationStatisticResponse execute(ThresholdStatisticQuery query) {
+	public ObservationStatisticResult execute(ThresholdStatisticQuery query) {
 		List<Metar> metarList = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
 
 		ThresholdCondition condition = query.condition();

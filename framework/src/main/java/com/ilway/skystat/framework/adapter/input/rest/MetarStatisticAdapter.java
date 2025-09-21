@@ -2,7 +2,7 @@ package com.ilway.skystat.framework.adapter.input.rest;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.model.weather.*;
@@ -15,7 +15,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ilway.skystat.application.usecase.StatisticUseCase;
-import com.ilway.skystat.domain.vo.unit.LengthUnit;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescription;
 
 import java.time.ZonedDateTime;
@@ -31,7 +30,7 @@ public class MetarStatisticAdapter {
 	private final StatisticUseCase<CloudStatisticQuery> cloudUseCase;
 
 	@GetMapping("/threshold/{icao}")
-	public ResponseEntity<ObservationStatisticResponse> getThresholdStatistic(
+	public ResponseEntity<ObservationStatisticResult> getThresholdStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("field") MetricField field,
 		@RequestParam("comparison") Comparison comparison,
@@ -46,14 +45,14 @@ public class MetarStatisticAdapter {
 			new ThresholdCondition(field, comparison, threshold, unit)
 		);
 
-		ObservationStatisticResponse execute = thresholdUseCase.execute(query);
+		ObservationStatisticResult execute = thresholdUseCase.execute(query);
 		return ResponseEntity.ok()
 			       .body(execute);
 
 	}
 
 	@GetMapping("/weather/{icao}")
-	public ResponseEntity<ObservationStatisticResponse> getWeatherStatistic(
+	public ResponseEntity<ObservationStatisticResult> getWeatherStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("condition") WeatherConditionPredicate condition,
 		@RequestParam("list") List<WeatherDescription> list,
@@ -66,13 +65,13 @@ public class MetarStatisticAdapter {
 			new WeatherCondition(condition, list)
 		);
 
-		ObservationStatisticResponse execute = weatherUseCase.execute(query);
+		ObservationStatisticResult execute = weatherUseCase.execute(query);
 		return ResponseEntity.ok()
 			       .body(execute);
 	}
 
 	@GetMapping("/cloud/{icao}")
-	public ResponseEntity<ObservationStatisticResponse> getCloudStatistic(
+	public ResponseEntity<ObservationStatisticResult> getCloudStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("condition") CloudConditionPredicate condition,
 		@RequestParam("target") WeatherDescription target,
@@ -85,7 +84,7 @@ public class MetarStatisticAdapter {
 			new CloudCondition(condition, target)
 		);
 
-		ObservationStatisticResponse execute = cloudUseCase.execute(query);
+		ObservationStatisticResult execute = cloudUseCase.execute(query);
 		return ResponseEntity.ok()
 			       .body(execute);
 	}

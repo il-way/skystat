@@ -1,7 +1,7 @@
 package com.ilway.skystat.application.port.input.metar.query;
 
 import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator;
 import com.ilway.skystat.application.port.output.CloudStatisticQueryOutputPort;
 import com.ilway.skystat.application.usecase.StatisticUseCase;
@@ -16,7 +16,7 @@ public class CloudStatisticQueryInputPort implements StatisticUseCase<CloudStati
 	private final CloudStatisticQueryOutputPort port;
 
 	@Override
-	public ObservationStatisticResponse execute(CloudStatisticQuery query) {
+	public ObservationStatisticResult execute(CloudStatisticQuery query) {
 		Map<YearMonth, Long> countMonthly = port.countDistinctDaysByMonth(query.icao(), query.period(), query.condition());
 		Map<YearMonth, Map<Integer, Long>> countHourly = port.countDistinctHoursByMonth(query.icao(), query.period(), query.condition());
 

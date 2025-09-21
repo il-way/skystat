@@ -1,6 +1,6 @@
 package com.ilway.skystat.application.port.input.metar.query;
 
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator;
 import com.ilway.skystat.application.port.output.WeatherStatisticQueryOutputPort;
@@ -16,7 +16,7 @@ public class WeatherStatisticQueryInputPort implements StatisticUseCase<WeatherS
 	private final WeatherStatisticQueryOutputPort port;
 
 	@Override
-	public ObservationStatisticResponse execute(WeatherStatisticQuery query) {
+	public ObservationStatisticResult execute(WeatherStatisticQuery query) {
 		Map<YearMonth, Long> countMonthly = port.countDistinctDaysByMonth(query.icao(), query.period(), query.condition());
 		Map<YearMonth, Map<Integer, Long>> countHourly = port.countDistinctHoursByMonth(query.icao(), query.period(), query.condition());
 

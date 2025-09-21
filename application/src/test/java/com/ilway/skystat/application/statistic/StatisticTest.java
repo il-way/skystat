@@ -1,7 +1,7 @@
 package com.ilway.skystat.application.statistic;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResponse;
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.model.generic.Comparison;
@@ -46,9 +46,9 @@ public class StatisticTest extends StatisticTestData {
 			new ThresholdCondition(VISIBILITY, Comparison.LTE, 4000, METERS)
 		);
 
-		ObservationStatisticResponse response = thresholdStatisticUseCase.execute(query);
+		ObservationStatisticResult response = thresholdStatisticUseCase.execute(query);
 		System.out.println(response.toString());
-		ObservationStatisticResponse actual = ObservationStatisticAggregator.peelOffZeroCount(response);
+		ObservationStatisticResult actual = ObservationStatisticAggregator.peelOffZeroCount(response);
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
 			() -> assertEquals(1, actual.hourly().size())
@@ -66,8 +66,8 @@ public class StatisticTest extends StatisticTestData {
 			new ThresholdCondition(WIND_SPEED, Comparison.GTE, 5, KT)
 		);
 
-		ObservationStatisticResponse response = thresholdStatisticUseCase.execute(query);
-		ObservationStatisticResponse actual = ObservationStatisticAggregator.peelOffZeroCount(response);
+		ObservationStatisticResult response = thresholdStatisticUseCase.execute(query);
+		ObservationStatisticResult actual = ObservationStatisticAggregator.peelOffZeroCount(response);
 
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
@@ -86,8 +86,8 @@ public class StatisticTest extends StatisticTestData {
 			new WeatherCondition(HAS_PHENOMENA, List.of(BR))
 		);
 
-		ObservationStatisticResponse response = weatherStatisticUseCase.execute(query);
-		ObservationStatisticResponse actual = ObservationStatisticAggregator.peelOffZeroCount(response);
+		ObservationStatisticResult response = weatherStatisticUseCase.execute(query);
+		ObservationStatisticResult actual = ObservationStatisticAggregator.peelOffZeroCount(response);
 
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
