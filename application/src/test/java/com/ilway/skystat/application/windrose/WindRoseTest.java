@@ -42,7 +42,7 @@ public class WindRoseTest extends WindRoseTestData {
 		WindRose.BinPair binPair12004KT = new WindRose.BinPair(speedBins.get(1), directionBins.get(5));
 		WindRose.BinPair binPair14005KT = new WindRose.BinPair(speedBins.get(1), directionBins.get(6));
 
-		long expectedCount = jan.getTotalCount();
+		long expectedCount = jan.getSampleSize();
 		long actualCount = 5L;
 
 		double expectedRate = jan.getRate(speedBins.get(1), directionBins.get(4));

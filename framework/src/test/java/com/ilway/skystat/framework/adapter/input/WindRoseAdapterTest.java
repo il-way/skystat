@@ -2,6 +2,7 @@ package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilway.skystat.application.dto.windrose.WindRose;
+import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import com.ilway.skystat.framework.adapter.output.file.ResourceFileConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -45,10 +46,8 @@ public class WindRoseAdapterTest {
 
 		objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-
+			WindRoseResult.class
 		);
-
-		log.info("# wind-rose result: {}" + );
 
 	}
 

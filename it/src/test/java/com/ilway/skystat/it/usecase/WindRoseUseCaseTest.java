@@ -4,6 +4,7 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
+import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import com.ilway.skystat.application.port.input.metar.WindRoseInputPort;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import lombok.RequiredArgsConstructor;
@@ -47,10 +48,10 @@ public class WindRoseUseCaseTest {
 		List<SpeedBin> speedBins = SpeedBin.of5KtSpeedBins();
 		List<DirectionBin> directionBins = DirectionBin.of16DirectionBins();
 
-		Map<Month, WindRose> windRoseMap = windRoseUseCase.generateMonthlyWindRose(icao, period, speedBins, directionBins);
+		WindRoseResult windRoseResult = windRoseUseCase.generateMonthlyWindRose(icao, period, speedBins, directionBins);
 
 		assertAll(
-			() -> assertEquals(12, windRoseMap.size())
+			() -> assertEquals(12, windRoseResult.data().size())
 		);
 	}
 
