@@ -35,6 +35,7 @@ public class ResourceFileConfig {
 
 	@Bean
 	public WindRoseUseCase windRoseUseCase() {
+
 		return new WindRoseInputPort(metarManagementOutputPort());
 	}
 
