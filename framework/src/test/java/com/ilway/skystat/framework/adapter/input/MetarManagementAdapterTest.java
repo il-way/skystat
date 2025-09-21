@@ -39,14 +39,14 @@ public class MetarManagementAdapterTest {
 	@Autowired ObjectMapper objectMapper;
 	@Autowired MetarManagementUseCase metarManagementUseCase;
 
-	@Value("classpath:data/metar/RKSI.txt")
+	@Value("classpath:windRoseMap/metar/RKSI.txt")
 	Resource rksiMetarFile;
 
 	private static final String TEST_ICAO = "RKSI";
 	private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	@Test
-	@DisplayName("파입 업로드를 통해 여러 METAR 저장에 성공해야 한다 (multipart/form-data)")
+	@DisplayName("파입 업로드를 통해 여러 METAR 저장에 성공해야 한다 (multipart/form-windRoseMap)")
 	void saveAllTest() throws Exception {
 		MockMultipartFile mockFile = new MockMultipartFile(
 			"file",

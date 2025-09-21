@@ -7,6 +7,6 @@ public record WindRoseResult(
 	int totalCount,
 	int sampleSize,
 	int missingCount,
-	Map<Month, WindRose> data
+	Map<Month, WindRose> windRoseMap
 ) {
 }

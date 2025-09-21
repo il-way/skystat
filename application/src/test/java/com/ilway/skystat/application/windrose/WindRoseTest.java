@@ -4,6 +4,7 @@ import java.time.Month;
 import java.util.List;
 import java.util.Map;
 
+import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import org.junit.jupiter.api.Test;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
@@ -25,16 +26,16 @@ public class WindRoseTest extends WindRoseTestData {
 		List<SpeedBin> speedBins = SpeedBin.of5KtSpeedBins();
 		List<DirectionBin> directionBins = DirectionBin.of16DirectionBins();
 
-		Map<Month, WindRose> windRoseMap = useCase.generateMonthlyWindRose(
-			"RKSI", 
+		WindRoseResult windRoseResult = useCase.generateMonthlyWindRose(
+			"RKSI",
 			new RetrievalPeriod(
 				ofUTC(2024, 1, 1, 0, 0),
 				ofUTC(2025, 1, 1, 0, 0)
 			),
-			speedBins, 
+			speedBins,
 			directionBins);
 
-		WindRose jan = windRoseMap.get(Month.JANUARY);
+		WindRose jan = windRoseResult.windRoseMap().get(Month.JANUARY);
 
 		WindRose.BinPair binPair07002KT = new WindRose.BinPair(speedBins.get(1), directionBins.get(3));
 		WindRose.BinPair binPair10004KT = new WindRose.BinPair(speedBins.get(1), directionBins.get(4));

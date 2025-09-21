@@ -3,6 +3,7 @@ package com.ilway.skystat.framework.adapter.input;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilway.skystat.application.dto.windrose.WindRose;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
+import com.ilway.skystat.framework.adapter.input.rest.response.WindRoseResponse;
 import com.ilway.skystat.framework.adapter.output.file.ResourceFileConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -38,16 +39,21 @@ public class WindRoseAdapterTest {
 	@DisplayName("바람장미(windrose) 조회에 성공해야 한다")
 	void getWindRoseTest() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/windrose/{}", icao)
+		MvcResult mvcResult = mockMvc.perform(get("/windrose/{icao}", icao)
 			                                      .param("startDateTime", "2019-01-01T00:00:00Z")
 			                                      .param("endDateTime", "2024-01-01T00:00:00Z"))
 			                      .andExpect(status().isOk())
 			                      .andReturn();
 
-		objectMapper.readValue(
+		WindRoseResponse windRoseResponse = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
-			WindRoseResult.class
+			WindRoseResponse.class
 		);
+
+		log.info("# windrose total count : {}", windRoseResponse.totalCount());
+		log.info("# windrose sample size : {}", windRoseResponse.sampleSize());
+		log.info("# windrose missing count : {}", windRoseResponse.missingCount());
+		log.info("# windrose data : {}", windRoseResponse.data());
 
 	}
 

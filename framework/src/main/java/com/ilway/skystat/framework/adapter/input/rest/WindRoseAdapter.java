@@ -6,6 +6,7 @@ import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
+import com.ilway.skystat.framework.adapter.input.rest.response.WindRoseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class WindRoseAdapter {
 	private final WindRoseUseCase windRoseUseCase;
 
 	@GetMapping("/{icao}")
-	public ResponseEntity<WindRoseResult> getWindRose(
+	public ResponseEntity<WindRoseResponse> getWindRose(
 		@PathVariable("icao") String icao,
 		@RequestParam("startDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed
@@ -38,7 +39,8 @@ public class WindRoseAdapter {
 			directionBins
 		);
 
+		WindRoseResponse windRoseResponse = WindRoseResponse.from(speedBins, directionBins, result);
 		return ResponseEntity.ok()
-			       .body(result);
+			       .body(windRoseResponse);
 	}
 }

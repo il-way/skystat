@@ -30,7 +30,7 @@ public record SpeedBin(int lowerInclusive, int upperExclusive, SpeedUnit unit, S
 
 	public static List<SpeedBin> of5KtSpeedBins() {
 		return List.of(
-			new SpeedBin(0, 1, SpeedUnit.KT, "calm"),
+			new SpeedBin(0, 1, SpeedUnit.KT, "CALM"),
 			new SpeedBin(1, 5, SpeedUnit.KT, "1-5KT"),
 			new SpeedBin(5, 10, SpeedUnit.KT, "5-10KT"),
 			new SpeedBin(10, 15, SpeedUnit.KT, "10-15KT"),

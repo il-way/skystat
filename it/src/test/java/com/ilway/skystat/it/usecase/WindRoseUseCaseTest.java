@@ -3,7 +3,6 @@ package com.ilway.skystat.it.usecase;
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
-import com.ilway.skystat.application.dto.windrose.WindRose;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import com.ilway.skystat.application.port.input.metar.WindRoseInputPort;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
@@ -14,9 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 
-import java.time.Month;
 import java.util.List;
-import java.util.Map;
 
 import static com.ilway.skystat.domain.service.TimeOperation.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -51,7 +48,7 @@ public class WindRoseUseCaseTest {
 		WindRoseResult windRoseResult = windRoseUseCase.generateMonthlyWindRose(icao, period, speedBins, directionBins);
 
 		assertAll(
-			() -> assertEquals(12, windRoseResult.data().size())
+			() -> assertEquals(12, windRoseResult.windRoseMap().size())
 		);
 	}
 
