@@ -13,7 +13,7 @@ import static com.ilway.skystat.domain.vo.unit.LengthUnit.FEET;
 public enum MetricField {
 
   VISIBILITY((m,u) -> m.getVisibility().getUnit().convertTo(m.getVisibility().getValue(), u)),
-  LOWEST_CEILING((m,u) -> FEET.convertTo(CloudOperation.getLowestCeiling(m.getCloudGroup()), u)),
+  LOWEST_CEILING((m,u) -> FEET.convertTo(CloudOperation.getLowestCeiling(m.getClouds()), u)),
   PEAK_WIND((m,u) -> m.getWind().getUnit().convertTo(m.getWind().getPeakSpeed(), u)),
   WIND_SPEED((m,u) -> m.getWind().getUnit().convertTo(m.getWind().getSpeed(), u)),
   ALTIMETER((m,u) -> m.getAltimeter().getUnit().convertTo(m.getAltimeter().getValue(), u));

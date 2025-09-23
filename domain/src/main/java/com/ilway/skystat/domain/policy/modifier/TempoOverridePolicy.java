@@ -4,7 +4,7 @@ import com.ilway.skystat.domain.service.WeatherOperation;
 import com.ilway.skystat.domain.vo.taf.field.WeatherSnapshot;
 import com.ilway.skystat.domain.vo.taf.type.Modifier;
 import com.ilway.skystat.domain.vo.weather.Weather;
-import com.ilway.skystat.domain.vo.weather.WeatherGroup;
+import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenonGroup;
 
@@ -22,25 +22,25 @@ public class TempoOverridePolicy implements OverridePolicy {
 			       .sourceModifier(modifier)
 			       .wind(patch.getWind() != null ? patch.getWind() : base.getWind())
 			       .visibility(patch.getVisibility() != null ? patch.getVisibility() : base.getVisibility())
-			       .weatherGroup(patch.getWeatherGroup() != null && patch.getWeatherGroup().size() != 0
-				                     ? overrideWeatherGroup(base.getWeatherGroup(), patch.getWeatherGroup())
-				                     : base.getWeatherGroup())
-			       .cloudGroup(patch.getCloudGroup() != null && patch.getCloudGroup().size() != 0
-				                   ? patch.getCloudGroup()
-				                   : base.getCloudGroup())
+			       .weathers(patch.getWeathers() != null && patch.getWeathers().size() != 0
+				                     ? overrideWeatherGroup(base.getWeathers(), patch.getWeathers())
+				                     : base.getWeathers())
+			       .clouds(patch.getClouds() != null && patch.getClouds().size() != 0
+				                   ? patch.getClouds()
+				                   : base.getClouds())
 			       .temperature(patch.getTemperature() != null ? patch.getTemperature() : base.getTemperature())
 			       .altimeter(patch.getAltimeter() != null ? patch.getAltimeter() : base.getAltimeter())
 			       .build();
 	}
 
-	private WeatherGroup overrideWeatherGroup(WeatherGroup base, WeatherGroup patch) {
+	private Weathers overrideWeatherGroup(Weathers base, Weathers patch) {
 		if (base.size() == 0) return patch;
 		if (WeatherOperation.containsPhenomena(patch, List.of(WeatherPhenomenon.NSW))) return patch;
 
 		List<Weather> merged         = new ArrayList<>();
-		List<Weather> remainingPatch = new ArrayList<>(patch.getWeatherList());
+		List<Weather> remainingPatch = new ArrayList<>(patch.getWeathers());
 
-		for (Weather bw : base.getWeatherList()) {
+		for (Weather bw : base.getWeathers()) {
 			Weather replacement = remainingPatch.stream()
 				                      .filter(pw -> groupsEqual(bw.getPhenomena(), pw.getPhenomena()))
 				                      .findFirst()
@@ -55,7 +55,7 @@ public class TempoOverridePolicy implements OverridePolicy {
 		}
 
 		merged.addAll(remainingPatch);
-		return WeatherGroup.of(merged);
+		return Weathers.of(merged);
 	}
 
 	private boolean groupsEqual(List<WeatherPhenomenon> w1, List<WeatherPhenomenon> w2) {

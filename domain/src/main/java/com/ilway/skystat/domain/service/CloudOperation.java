@@ -1,7 +1,7 @@
 package com.ilway.skystat.domain.service;
 
 import com.ilway.skystat.domain.vo.weather.Cloud;
-import com.ilway.skystat.domain.vo.weather.CloudGroup;
+import com.ilway.skystat.domain.vo.weather.Clouds;
 import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
 import com.ilway.skystat.domain.vo.weather.type.CloudType;
 
@@ -11,13 +11,13 @@ import java.util.OptionalInt;
 
 public class CloudOperation {
 
-	public static int getLowestCeiling(CloudGroup cg) {
+	public static int getLowestCeiling(Clouds cg) {
 		return getLowestCeiling(cg, List.of(CloudCoverage.BKN, CloudCoverage.OVC, CloudCoverage.VV))
 			       .orElse(Integer.MAX_VALUE);
 	}
 
-	public static OptionalInt getLowestCeiling(CloudGroup cg, List<CloudCoverage> coverages) {
-		return cg.getCloudList().stream()
+	public static OptionalInt getLowestCeiling(Clouds cg, List<CloudCoverage> coverages) {
+		return cg.getClouds().stream()
 			       .filter(cloud -> coverages.contains(cloud.getCoverage()))
 			       .map(Cloud::getAltitudeOptional)
 			       .flatMap(Optional::stream)
@@ -25,13 +25,13 @@ public class CloudOperation {
 			       .min();
 	}
 
-	public static boolean containsCloudType(CloudGroup cg, CloudType target) {
-		return cg.getCloudList().stream()
+	public static boolean containsCloudType(Clouds cg, CloudType target) {
+		return cg.getClouds().stream()
 			       .anyMatch(cloud -> cloud.containCloudType(target));
 	}
 
-	public static boolean containsCloudCoverage(CloudGroup cg, CloudCoverage target) {
-		return cg.getCloudList().stream()
+	public static boolean containsCloudCoverage(Clouds cg, CloudCoverage target) {
+		return cg.getClouds().stream()
 			       .anyMatch(cloud -> cloud.containCloudCoverage(target));
 	}
 

@@ -8,7 +8,7 @@ import com.ilway.skystat.domain.service.TafSnapshotExpander;
 import com.ilway.skystat.domain.taf.data.TestData;
 import com.ilway.skystat.domain.vo.taf.field.WeatherSnapshot;
 import com.ilway.skystat.domain.vo.weather.Visibility;
-import com.ilway.skystat.domain.vo.weather.WeatherGroup;
+import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.domain.vo.weather.Wind;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
@@ -30,11 +30,11 @@ public class TafTest extends TestData {
 
 		Visibility vis252000 = becmg252000.getVisibility();
 		Wind wind252000 = becmg252000.getWind();
-		WeatherGroup wg252000 = becmg252000.getWeatherGroup();
+		Weathers wg252000 = becmg252000.getWeathers();
 
 		Visibility vis252300 = becmg252300.getVisibility();
 		Wind wind252300 = becmg252300.getWind();
-		WeatherGroup wg252300 = becmg252300.getWeatherGroup();
+		Weathers wg252300 = becmg252300.getWeathers();
 
 		assertAll(
 			() -> assertNotEquals(vis252000, vis252300),
@@ -50,8 +50,8 @@ public class TafTest extends TestData {
 		WeatherSnapshot header101200 = expanded.get(ofUTC(7, 10, 12, 0));
 		WeatherSnapshot tempo101300 = expanded.get(ofUTC(7, 10, 13, 0));
 
-		WeatherGroup wg101200 = header101200.getWeatherGroup();
-		WeatherGroup wg101300 = tempo101300.getWeatherGroup();
+		Weathers wg101200 = header101200.getWeathers();
+		Weathers wg101300 = tempo101300.getWeathers();
 
 		System.out.println(wg101200.toString());
 		System.out.println(wg101300.toString());

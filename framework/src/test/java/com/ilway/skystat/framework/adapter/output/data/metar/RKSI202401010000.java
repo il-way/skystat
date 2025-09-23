@@ -34,10 +34,10 @@ public class RKSI202401010000 {
 			.temperature(Temperature.of(1,  CELSIUS))
 			.dewPoint   (Temperature.of(0,  CELSIUS))
 			.altimeter  (Altimeter.of(1029, HPA))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, null, List.of(BR))
 			)))
-			.cloudGroup(CloudGroup.of(List.of()))   // NSC
+			.clouds(Clouds.of(List.of()))   // NSC
 			.remarks("NOSIG")
 			.build();
 

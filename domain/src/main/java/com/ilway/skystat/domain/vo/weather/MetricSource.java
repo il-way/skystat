@@ -5,6 +5,6 @@ public interface MetricSource {
 	Visibility getVisibility();
 	Wind getWind();
 	Altimeter getAltimeter();
-	CloudGroup getCloudGroup();
+	Clouds getClouds();
 
 }

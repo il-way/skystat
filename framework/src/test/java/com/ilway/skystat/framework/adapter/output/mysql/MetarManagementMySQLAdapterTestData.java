@@ -124,10 +124,10 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 				.temperature(Temperature.of(1,  CELSIUS))
 				.dewPoint   (Temperature.of(0,  CELSIUS))
 				.altimeter  (Altimeter.of(1029, HPA))
-				.weatherGroup(WeatherGroup.of(List.of(
+				.weathers(Weathers.of(List.of(
 					Weather.of(MODERATE, null, List.of(BR))
 				)))
-				.cloudGroup(CloudGroup.of(List.of()))   // NSC
+				.clouds(Clouds.of(List.of()))   // NSC
 				.remarks("NOSIG")
 				.build();
 
@@ -151,10 +151,10 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 				.temperature(Temperature.of(3,  CELSIUS))             // 03 °C
 				.dewPoint   (Temperature.of(1,  CELSIUS))             // 01 °C
 				.altimeter  (Altimeter.of(1030, HPA))                 // Q1030
-				.weatherGroup(WeatherGroup.of(List.of(
+				.weathers(Weathers.of(List.of(
 					Weather.of(MODERATE, null, List.of(BR))           // BR
 				)))
-				.cloudGroup(CloudGroup.of(List.of()))                 // NSC
+				.clouds(Clouds.of(List.of()))                 // NSC
 				.remarks("NOSIG")
 				.build();
 

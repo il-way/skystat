@@ -12,12 +12,12 @@ public class BasicOverridePolicy implements OverridePolicy {
 			       .sourceModifier(modifier)
 			       .wind(patch.getWind() != null ? patch.getWind() : base.getWind())
 			       .visibility(patch.getVisibility() != null ? patch.getVisibility() : base.getVisibility())
-			       .weatherGroup(patch.getWeatherGroup() != null && patch.getWeatherGroup().size() != 0
-				                     ? patch.getWeatherGroup()
-				                     : base.getWeatherGroup())
-			       .cloudGroup(patch.getCloudGroup() != null && patch.getCloudGroup().size() != 0
-				                   ? patch.getCloudGroup()
-				                   : base.getCloudGroup())
+			       .weathers(patch.getWeathers() != null && patch.getWeathers().size() != 0
+				                     ? patch.getWeathers()
+				                     : base.getWeathers())
+			       .clouds(patch.getClouds() != null && patch.getClouds().size() != 0
+				                   ? patch.getClouds()
+				                   : base.getClouds())
 			       .temperature(patch.getTemperature() != null ? patch.getTemperature() : base.getTemperature())
 			       .altimeter(patch.getAltimeter() != null ? patch.getAltimeter() : base.getAltimeter())
 			       .build();

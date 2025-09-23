@@ -2,7 +2,7 @@ package com.ilway.skystat.application.model.weather;
 
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.domain.service.WeatherOperation;
-import com.ilway.skystat.domain.vo.weather.WeatherGroup;
+import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescription;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
@@ -24,9 +24,9 @@ public enum WeatherConditionPredicate {
 	                  WeatherOperation.containsDescriptors(wg, extract(target, WeatherDescriptor.class))
                  && WeatherOperation.containsPhenomena(wg, extract(target, WeatherPhenomenon.class)));
 
-  private final BiPredicate<WeatherGroup, List<WeatherDescription>> tester;
+  private final BiPredicate<Weathers, List<WeatherDescription>> tester;
 
-  public boolean test(WeatherGroup wg, List<WeatherDescription> target ) {
+  public boolean test(Weathers wg, List<WeatherDescription> target ) {
     return tester.test(wg, target);
   }
 

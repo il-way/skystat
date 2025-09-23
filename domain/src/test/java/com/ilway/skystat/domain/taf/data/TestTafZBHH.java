@@ -52,10 +52,10 @@ public class TestTafZBHH {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(100), 4, 0, MPS))   // 10004MPS
 			.visibility(Visibility.of(9999, METERS))              // 9999 m
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, List.of(), List.of(RA))
 			)))             // CAVOK 아님->무현상
-			.cloudGroup(CloudGroup.of(List.of(                    // FEW040
+			.clouds(Clouds.of(List.of(                    // FEW040
 				Cloud.of(FEW, 4000, NONE)
 			)))
 			.build()
@@ -69,10 +69,10 @@ public class TestTafZBHH {
 			ZonedDateTime.of(2025, 7, 10, 14, 0, 0, 0, ZoneOffset.UTC)
 		),
 		WeatherSnapshot.builder()
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, List.of(TS), List.of())          // TS (descriptor)
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(FEW, 4000, CB),
 				Cloud.of(FEW, 4000, NONE)
 			)))
@@ -88,10 +88,10 @@ public class TestTafZBHH {
 		),
 		WeatherSnapshot.builder()
 			.visibility(Visibility.of(2800, METERS))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(LIGHT, List.of(SH), List.of(RA))       // -SHRA
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(FEW, 4000, CB),
 				Cloud.of(FEW, 4000, NONE)
 			)))

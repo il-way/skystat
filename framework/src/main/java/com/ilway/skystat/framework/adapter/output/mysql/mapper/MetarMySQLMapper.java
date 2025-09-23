@@ -2,15 +2,12 @@ package com.ilway.skystat.framework.adapter.output.mysql.mapper;
 
 import com.ilway.skystat.domain.service.CloudOperation;
 import com.ilway.skystat.domain.vo.metar.Metar;
-import com.ilway.skystat.domain.vo.metar.ReportType;
-import com.ilway.skystat.domain.vo.unit.TemperatureUnit;
 import com.ilway.skystat.domain.vo.weather.*;
 import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
 import com.ilway.skystat.framework.adapter.output.mysql.data.CloudData;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.data.WeatherData;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.ilway.skystat.domain.vo.metar.ReportType.AUTO;
@@ -62,13 +59,13 @@ public class MetarMySQLMapper {
 			       .temperature(Temperature.of(metarData.getTemperature(), CELSIUS))
 			       .dewPoint(Temperature.of(metarData.getDewPoint(), CELSIUS))
 			       .altimeter(Altimeter.of(metarData.getAltimeter(), metarData.getAltimeterUnit()))
-			       .weatherGroup(WeatherGroup.of(
-				       metarData.getWeatherList().stream()
+			       .weathers(Weathers.of(
+				       metarData.getWeathers().stream()
 					       .map(MetarMySQLMapper::weatherDataToDomain)
 					       .toList()
 			       ))
-			       .cloudGroup(CloudGroup.of(
-				       metarData.getCloudList().stream()
+			       .clouds(Clouds.of(
+				       metarData.getClouds().stream()
 					       .map(MetarMySQLMapper::cloudDataToDomain)
 					       .toList()
 			       ))
@@ -98,15 +95,15 @@ public class MetarMySQLMapper {
 				          .toBase(metar.getDewPoint().getValue()))
 			.altimeterUnit(metar.getAltimeter().getUnit())
 			.altimeter(metar.getAltimeter().getValue())
-			.ceiling(CloudOperation.getLowestCeiling(metar.getCloudGroup()))
-			.cloudLayerCount(metar.getCloudGroup().size())
-			.weatherPresent(metar.getWeatherGroup().size() > 0)
+			.ceiling(CloudOperation.getLowestCeiling(metar.getClouds()))
+			.cloudLayerCount(metar.getClouds().size())
+			.weatherPresent(metar.getWeathers().size() > 0)
 			.remarks(metar.getRemarks())
 			.rawText(metar.getRawText())
-			.cloudList(metar.getCloudGroup().getCloudList().stream()
+			.clouds(metar.getClouds().getClouds().stream()
 				           .map(MetarMySQLMapper::cloudDomainToData)
 				           .collect(Collectors.toSet()))
-			.weatherList(metar.getWeatherGroup().getWeatherList().stream()
+			.weathers(metar.getWeathers().getWeathers().stream()
 				             .map(MetarMySQLMapper::weatherDomainToData)
 				             .collect(Collectors.toSet()))
 			.build();

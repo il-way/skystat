@@ -28,8 +28,8 @@ public class MetarTestData {
           .temperature(Temperature.of(18,CELSIUS))
           .dewPoint(Temperature.of(12,CELSIUS))
           .altimeter(Altimeter.of(29.95, INHG))
-          .weatherGroup(WeatherGroup.of(List.of()))
-          .cloudGroup(CloudGroup.of(
+          .weathers(Weathers.of(List.of()))
+          .clouds(Clouds.of(
               List.of(
                   Cloud.of(CloudCoverage.FEW, 2500, CloudType.NONE),
                   Cloud.of(CloudCoverage.SCT, 25000, CloudType.NONE)

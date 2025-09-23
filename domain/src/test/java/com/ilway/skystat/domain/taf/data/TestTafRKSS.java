@@ -46,8 +46,8 @@ public class TestTafRKSS {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(30), 6, 0, KT))
 			.visibility(Visibility.of(6000, METERS))
-			.weatherGroup(WeatherGroup.of(List.of()))
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(Weathers.of(List.of()))
+			.clouds(Clouds.of(List.of(
 				Cloud.of(FEW, 1000, NONE),
 				Cloud.of(BKN, 2700, NONE),
 				Cloud.of(BKN, 7000, NONE)
@@ -64,8 +64,8 @@ public class TestTafRKSS {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(200), 5, 0, KT))
 			.visibility(null)
-			.weatherGroup(null)
-			.cloudGroup(null)
+			.weathers(null)
+			.clouds(null)
 			.build()
 	);
 
@@ -78,10 +78,10 @@ public class TestTafRKSS {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(170), 5, 0, KT))
 			.visibility(Visibility.of(4000, METERS))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(WeatherInensity.MODERATE, null, List.of(WeatherPhenomenon.BR))
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, NONE)
 			)))
 			.build()
@@ -96,11 +96,11 @@ public class TestTafRKSS {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(260), 7, 0, KT))
 			.visibility(Visibility.of(9999, METERS))
-			.weatherGroup(WeatherGroup.of(
+			.weathers(Weathers.of(
 					Weather.of(WeatherInensity.MODERATE, null, List.of(WeatherPhenomenon.NSW))
 				)
 			)
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, NONE)
 			)))
 			.build()
@@ -115,8 +115,8 @@ public class TestTafRKSS {
 		WeatherSnapshot.builder()
 			.wind(null)
 			.visibility(null)
-			.weatherGroup(null)
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(null)
+			.clouds(Clouds.of(List.of(
 				Cloud.of(SCT, 4000, NONE)
 			)))
 			.build()
@@ -131,8 +131,8 @@ public class TestTafRKSS {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(200), 5, 0, KT))
 			.visibility(Visibility.of(6000, METERS))
-			.weatherGroup(null)
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(null)
+			.clouds(Clouds.of(List.of(
 				Cloud.of(FEW, 1000, NONE),
 				Cloud.of(BKN, 3000, NONE)
 			)))

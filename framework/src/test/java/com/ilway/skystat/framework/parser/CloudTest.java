@@ -2,11 +2,11 @@ package com.ilway.skystat.framework.parser;
 
 import com.ilway.skystat.domain.exception.GenericSpecificationExeception;
 import org.junit.jupiter.api.Test;
-import com.ilway.skystat.framework.parser.metar.entry.CloudGroupRegexParser;
+import com.ilway.skystat.framework.parser.metar.entry.CloudsRegexParser;
 import com.ilway.skystat.framework.parser.metar.entry.CloudRegexParser;
 import com.ilway.skystat.framework.parser.shared.ReportParser;
 import com.ilway.skystat.domain.vo.weather.Cloud;
-import com.ilway.skystat.domain.vo.weather.CloudGroup;
+import com.ilway.skystat.domain.vo.weather.Clouds;
 import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
 import com.ilway.skystat.domain.vo.weather.type.CloudType;
 
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CloudTest {
 
-  ReportParser<CloudGroup> parser = new CloudGroupRegexParser();
+  ReportParser<Clouds> parser = new CloudsRegexParser();
   ReportParser<Cloud> cloudParser = new CloudRegexParser();
 
   @Test
@@ -61,8 +61,8 @@ public class CloudTest {
     String rawText = "KHYI 010056Z AUTO 20004MPS 10SM CLR 09/07 A2999 RMK AO2 SLP153 T00940072";
 
     // when
-    CloudGroupRegexParser parser = new CloudGroupRegexParser();
-    CloudGroup cloudGroup = parser.parse(rawText);
+    CloudsRegexParser parser = new CloudsRegexParser();
+    Clouds clouds = parser.parse(rawText);
 
     // then
     Cloud cloud = Cloud.builder()
@@ -71,14 +71,14 @@ public class CloudTest {
             .type(CloudType.NONE)
             .build();
 
-    CloudGroup expected = CloudGroup.builder()
-            .cloudList(List.of(cloud))
+    Clouds expected = Clouds.builder()
+            .clouds(List.of(cloud))
             .build();
 
     assertAll(
-            () -> assertEquals(expected, cloudGroup),
+            () -> assertEquals(expected, clouds),
             () -> assertThrows(NoSuchElementException.class, () ->
-                    cloudGroup.getCloudList().get(0).getAltitudeOptional().orElseThrow()
+                    clouds.getClouds().get(0).getAltitudeOptional().orElseThrow()
             )
     );
   }
@@ -88,7 +88,7 @@ public class CloudTest {
     String rawText = "RKSI 010300Z 17008KT 4000 -RA SCT006 13/13 Q1007 NOSIG";
 
     // when
-    CloudGroup cloudGroup = parser.parse(rawText);
+    Clouds clouds = parser.parse(rawText);
 
     // then
     Cloud expected1 = Cloud.builder()
@@ -97,11 +97,11 @@ public class CloudTest {
             .type(CloudType.NONE)
             .build();
 
-    CloudGroup expected = CloudGroup.builder()
-            .cloudList(List.of(expected1))
+    Clouds expected = Clouds.builder()
+            .clouds(List.of(expected1))
             .build();
 
-    assertEquals(expected, cloudGroup);
+    assertEquals(expected, clouds);
   }
 
 
@@ -110,7 +110,7 @@ public class CloudTest {
     String rawText = "RKSI 010300Z 17008KT 4000 -RA SCT006 BKN025 OVC070CB 13/13 Q1007 NOSIG";
 
     // when
-    CloudGroup cloudGroup = parser.parse(rawText);
+    Clouds clouds = parser.parse(rawText);
 
     // then
     Cloud expected1 = Cloud.builder()
@@ -132,20 +132,20 @@ public class CloudTest {
             .type(CloudType.CB)
             .build();
 
-    CloudGroup expected = CloudGroup.builder()
-            .cloudList(List.of(expected1, expected2, expected3))
+    Clouds expected = Clouds.builder()
+            .clouds(List.of(expected1, expected2, expected3))
             .build();
 
-    assertEquals(expected, cloudGroup);
+    assertEquals(expected, clouds);
   }
 
   @Test
   public void 구름정보가_없는_메타_파싱성공() {
     String metar = "RKSI 010300Z 17008KT 4000 -RA 13/13 Q1007 NOSIG";
 
-    CloudGroup cloudGroup = parser.parse(metar);
+    Clouds clouds = parser.parse(metar);
 
-    assertEquals(cloudGroup.size(), 0);
+    assertEquals(clouds.size(), 0);
   }
 
   @Test
@@ -156,10 +156,10 @@ public class CloudTest {
     String rawText1c = " SCT006 ";
 
     // when
-    CloudGroup cloudGroup1 = parser.parse(rawText1);
-    CloudGroup cloudGroup1a = parser.parse(rawText1a);
-    CloudGroup cloudGroup1b = parser.parse(rawText1b);
-    CloudGroup cloudGroup1c = parser.parse(rawText1c);
+    Clouds clouds1 = parser.parse(rawText1);
+    Clouds clouds1A = parser.parse(rawText1a);
+    Clouds clouds1B = parser.parse(rawText1b);
+    Clouds clouds1C = parser.parse(rawText1c);
 
     // then
     Cloud expected1 = Cloud.builder()
@@ -168,15 +168,15 @@ public class CloudTest {
             .type(CloudType.NONE)
             .build();
 
-    CloudGroup expected = CloudGroup.builder()
-            .cloudList(List.of(expected1))
+    Clouds expected = Clouds.builder()
+            .clouds(List.of(expected1))
             .build();
 
     assertAll(
-            () -> assertEquals(expected, cloudGroup1),
-            () -> assertEquals(expected, cloudGroup1a),
-            () -> assertEquals(expected, cloudGroup1b),
-            () -> assertEquals(expected, cloudGroup1c)
+            () -> assertEquals(expected, clouds1),
+            () -> assertEquals(expected, clouds1A),
+            () -> assertEquals(expected, clouds1B),
+            () -> assertEquals(expected, clouds1C)
     );
   }
 
@@ -187,9 +187,9 @@ public class CloudTest {
     String rawText1b = " SCT006  BKN025";
 
     // when
-    CloudGroup cloudGroup1 = parser.parse(rawText1);
-    CloudGroup cloudGroup1a = parser.parse(rawText1a);
-    CloudGroup cloudGroup1b = parser.parse(rawText1b);
+    Clouds clouds1 = parser.parse(rawText1);
+    Clouds clouds1A = parser.parse(rawText1a);
+    Clouds clouds1B = parser.parse(rawText1b);
 
     // then
     Cloud expected1 = Cloud.builder()
@@ -205,14 +205,14 @@ public class CloudTest {
             .type(CloudType.NONE)
             .build();
 
-    CloudGroup expected = CloudGroup.builder()
-            .cloudList(List.of(expected1, expected2))
+    Clouds expected = Clouds.builder()
+            .clouds(List.of(expected1, expected2))
             .build();
 
     assertAll(
-            () -> assertEquals(expected, cloudGroup1),
-            () -> assertEquals(expected, cloudGroup1a),
-            () -> assertEquals(expected, cloudGroup1b)
+            () -> assertEquals(expected, clouds1),
+            () -> assertEquals(expected, clouds1A),
+            () -> assertEquals(expected, clouds1B)
     );
   }
 

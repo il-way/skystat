@@ -62,8 +62,8 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 
 			List<MetarData> chunk = repository.findAllById(chunkIds);
 			chunk.forEach(m -> {
-				m.getCloudList().size();
-				m.getWeatherList().size();
+				m.getClouds().size();
+				m.getWeathers().size();
 			});
 
 			List<Metar> chunkData = chunk.stream()

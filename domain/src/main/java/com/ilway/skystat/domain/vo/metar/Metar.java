@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.ToString;
 import com.ilway.skystat.domain.service.TimeOperation;
 import com.ilway.skystat.domain.spec.TimeZoneSpec;
-import com.ilway.skystat.domain.vo.weather.*;
 
 @Getter
 @ToString
@@ -30,14 +29,14 @@ public class Metar implements MetricSource {
   private final Altimeter altimeter;
   
   // optional fields (ICAO Annex 3)
-  private final WeatherGroup weatherGroup;
-  private final CloudGroup cloudGroup;
+  private final Weathers weathers;
+  private final Clouds clouds;
   private final String remarks;
 
   private static final TimeZoneSpec timeZoneSpec = new TimeZoneSpec();
 
   @Builder
-	public Metar(String rawText, String stationIcao, ReportType reportType, ZonedDateTime observationTime, ZonedDateTime reportTime, Wind wind, Visibility visibility, Temperature temperature, Temperature dewPoint, Altimeter altimeter, WeatherGroup weatherGroup, CloudGroup cloudGroup, String remarks) {
+	public Metar(String rawText, String stationIcao, ReportType reportType, ZonedDateTime observationTime, ZonedDateTime reportTime, Wind wind, Visibility visibility, Temperature temperature, Temperature dewPoint, Altimeter altimeter, Weathers weathers, Clouds clouds, String remarks) {
     timeZoneSpec.check(observationTime);
 
     this.rawText = rawText;
@@ -50,8 +49,8 @@ public class Metar implements MetricSource {
     this.temperature = temperature;
     this.dewPoint = dewPoint;
     this.altimeter = altimeter;
-    this.weatherGroup = weatherGroup != null ? weatherGroup : WeatherGroup.ofEmpty();
-    this.cloudGroup = cloudGroup != null ? cloudGroup : CloudGroup.ofEmpty();
+    this.weathers = weathers != null ? weathers : Weathers.ofEmpty();
+    this.clouds = clouds != null ? clouds : Clouds.ofEmpty();
     this.remarks = remarks;
 	}
 

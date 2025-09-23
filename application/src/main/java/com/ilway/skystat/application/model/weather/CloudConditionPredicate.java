@@ -2,7 +2,7 @@ package com.ilway.skystat.application.model.weather;
 
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.domain.service.CloudOperation;
-import com.ilway.skystat.domain.vo.weather.CloudGroup;
+import com.ilway.skystat.domain.vo.weather.Clouds;
 import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
 import com.ilway.skystat.domain.vo.weather.type.CloudType;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescription;
@@ -20,9 +20,9 @@ public enum CloudConditionPredicate {
     return CloudOperation.containsCloudCoverage(cg, cast(target, CloudCoverage.class));
   });
 
-  private final BiPredicate<CloudGroup, WeatherDescription> tester;
+  private final BiPredicate<Clouds, WeatherDescription> tester;
 
-  public boolean test(CloudGroup cg, WeatherDescription target) {
+  public boolean test(Clouds cg, WeatherDescription target) {
     return tester.test(cg, target);
   }
 
