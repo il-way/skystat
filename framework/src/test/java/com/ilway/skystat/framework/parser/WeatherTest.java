@@ -1,11 +1,11 @@
 package com.ilway.skystat.framework.parser;
 
 import org.junit.jupiter.api.Test;
-import com.ilway.skystat.framework.parser.metar.entry.WeatherGroupRegexParser;
+import com.ilway.skystat.framework.parser.metar.entry.WeathersRegexParser;
 import com.ilway.skystat.framework.parser.metar.entry.WeatherRegexParser;
 import com.ilway.skystat.framework.parser.shared.ReportParser;
 import com.ilway.skystat.domain.vo.weather.Weather;
-import com.ilway.skystat.domain.vo.weather.WeatherGroup;
+import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherInensity;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
@@ -18,7 +18,7 @@ import static org.springframework.test.util.AssertionErrors.assertNull;
 public class WeatherTest {
 
   ReportParser<Weather> wxParser = new WeatherRegexParser();
-  ReportParser<WeatherGroup> wxGroupParser = new WeatherGroupRegexParser();
+  ReportParser<Weathers> wxGroupParser = new WeathersRegexParser();
 
   @Test
   public void 관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다() {
@@ -34,9 +34,9 @@ public class WeatherTest {
   public void 관측된_기상현상이_없는_경우_날씨군파서는_빈_리스트를_갖는_날씨씨군객체를_반환한다() {
     String rawText = "KSFO 030953Z 29008KT 10SM FEW025 SCT250 18/12 A2995 RMK AO2 SLP142 T01780122=";
 
-    WeatherGroup actual = wxGroupParser.parse(rawText);
-    WeatherGroup expected = WeatherGroup.builder()
-        .weatherList(List.of())
+    Weathers actual = wxGroupParser.parse(rawText);
+    Weathers expected = Weathers.builder()
+        .weathers(List.of())
         .build();
 
     assertEquals(expected, actual);
@@ -98,7 +98,7 @@ public class WeatherTest {
     String rawText ="METAR RKTU 030300Z 04002KT 1200 -TSSNRA -PLSN BR BKN010 OVC030 08/08 Q1008 RMK CIG010 SLP085 8/7// 9/8//=";
 
     // when
-    WeatherGroup weatherGroup = wxGroupParser.parse(rawText);
+    Weathers weathers = wxGroupParser.parse(rawText);
 
     // then
     Weather expected1 = Weather.builder()
@@ -119,11 +119,11 @@ public class WeatherTest {
         .phenomena(List.of(WeatherPhenomenon.BR))
         .build();
 
-    WeatherGroup expected = WeatherGroup.builder()
-        .weatherList(List.of(expected1, expected2, expected3))
+    Weathers expected = Weathers.builder()
+        .weathers(List.of(expected1, expected2, expected3))
         .build();
 
-    assertEquals(expected, weatherGroup);
+    assertEquals(expected, weathers);
   }
 
 }

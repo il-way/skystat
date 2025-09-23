@@ -17,8 +17,8 @@ public class FromOverridePolicy implements OverridePolicy {
 			       .sourceModifier(Modifier.FM)
 			       .wind(patch.getWind())
 			       .visibility(patch.getVisibility())
-			       .weatherGroup(patch.getWeatherGroup())
-			       .cloudGroup(patch.getCloudGroup())
+			       .weathers(patch.getWeathers())
+			       .clouds(patch.getClouds())
 			       .temperature(patch.getTemperature())
 			       .altimeter(patch.getAltimeter())
 			       .build();

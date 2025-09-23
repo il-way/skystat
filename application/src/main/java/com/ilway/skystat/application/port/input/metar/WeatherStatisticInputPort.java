@@ -19,11 +19,11 @@ public class WeatherStatisticInputPort implements StatisticUseCase<WeatherStatis
 
 	@Override
 	public ObservationStatisticResult execute(WeatherStatisticQuery query) {
-		List<Metar> metarList = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
+		List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
 
 		WeatherCondition condition = query.condition();
-		Predicate<Metar> predicate = m -> condition.predicate().test(m.getWeatherGroup(), condition.target());
+		Predicate<Metar> predicate = m -> condition.predicate().test(m.getWeathers(), condition.target());
 
-		return ObservationStatisticAggregator.aggregate(metarList, predicate, query.period());
+		return ObservationStatisticAggregator.aggregate(metars, predicate, query.period());
 	}
 }

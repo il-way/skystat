@@ -102,6 +102,7 @@
     "Downloaded.Files.Path.Enabled": "false",
     "Gradle.'com.ilway.skystat.application'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.application.windrose'에 있는 테스트.executor": "Run",
+    "Gradle.'com.ilway.skystat.domain'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.framework'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.framework.adapter.output'에 있는 테스트.executor": "Run",
@@ -277,7 +278,7 @@
       <recent name="com.ilway.skystat.application.port.output" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트">
+  <component name="RunManager" selected="Gradle.'com.ilway.skystat.framework'에 있는 테스트">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
       <module name="skystat.bootstrap.main" />
@@ -291,7 +292,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MetarStatisticAdapterTest.getPeakWindThresholdStatisticTestSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="'com.ilway.skystat.application'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -302,9 +303,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest.getPeakWindThresholdStatisticTestSuccess&quot;" />
+            <option value="&quot;com.ilway.skystat.application.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -315,7 +316,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="WindRoseAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="'com.ilway.skystat.domain'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -326,9 +327,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":framework:test" />
+            <option value=":domain:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.input.WindRoseAdapterTest&quot;" />
+            <option value="&quot;com.ilway.skystat.domain.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -409,19 +410,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.bootstrap" />
+      <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
+      <item itemvalue="Gradle.'com.ilway.skystat.domain'에 있는 테스트" />
       <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
       <item itemvalue="Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트" />
-      <item itemvalue="Gradle.MetarStatisticAdapterTest.getPeakWindThresholdStatisticTestSuccess" />
-      <item itemvalue="Gradle.WindRoseAdapterTest" />
       <item itemvalue="애플리케이션.App" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트" />
         <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
+        <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
+        <item itemvalue="Gradle.'com.ilway.skystat.domain'에 있는 테스트" />
+        <item itemvalue="Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트" />
         <item itemvalue="애플리케이션.App" />
-        <item itemvalue="Gradle.WindRoseAdapterTest" />
-        <item itemvalue="Gradle.MetarStatisticAdapterTest.getPeakWindThresholdStatisticTestSuccess" />
       </list>
     </recent_temporary>
   </component>

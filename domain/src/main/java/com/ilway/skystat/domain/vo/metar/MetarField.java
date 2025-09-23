@@ -12,9 +12,9 @@ public enum MetarField {
   DEW_POINT,
   ALTIMETER,
   WEATHER,
-  WEATHER_GROUP,
+  WEATHERS,
   CLOUD,
-  CLOUD_GROUP,
+  CLOUDS,
   REMARKS;
 
 }

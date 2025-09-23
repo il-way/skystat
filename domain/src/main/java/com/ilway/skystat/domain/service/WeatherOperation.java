@@ -1,7 +1,7 @@
 package com.ilway.skystat.domain.service;
 
 import com.ilway.skystat.domain.vo.weather.Weather;
-import com.ilway.skystat.domain.vo.weather.WeatherGroup;
+import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 
@@ -10,18 +10,18 @@ import java.util.List;
 
 public class WeatherOperation {
 
-	public static boolean contains(WeatherGroup wg, String target) {
-		return wg.getWeatherList().stream()
+	public static boolean contains(Weathers wg, String target) {
+		return wg.getWeathers().stream()
 			       .anyMatch(w -> contains(w, target));
 	}
 
-	public static boolean containsPhenomena(WeatherGroup wg, List<WeatherPhenomenon> target) {
-		return wg.getWeatherList().stream()
+	public static boolean containsPhenomena(Weathers wg, List<WeatherPhenomenon> target) {
+		return wg.getWeathers().stream()
 			       .anyMatch(w -> containsPhenomena(w, target));
 	}
 
-	public static boolean containsDescriptors(WeatherGroup wg, List<WeatherDescriptor> target) {
-		return wg.getWeatherList().stream()
+	public static boolean containsDescriptors(Weathers wg, List<WeatherDescriptor> target) {
+		return wg.getWeathers().stream()
 			.anyMatch(w -> containsDescriptors(w, target));
 	}
 

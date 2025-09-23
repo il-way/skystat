@@ -109,32 +109,32 @@ public class MetarData {
 
 	@OneToMany(mappedBy = "metar", fetch = LAZY)
 	@BatchSize(size = 100)
-	private Set<CloudData> cloudList = new LinkedHashSet<>();
+	private Set<CloudData> clouds = new LinkedHashSet<>();
 
 	@OneToMany(mappedBy = "metar", fetch = LAZY)
 	@BatchSize(size = 100)
-	private Set<WeatherData> weatherList = new LinkedHashSet<>();
+	private Set<WeatherData> weathers = new LinkedHashSet<>();
 
 	public void addCloud(CloudData c) {
-		cloudList.add(c);
+		clouds.add(c);
 		c.setMetar(this);
 		cloudLayerCount--;
 	}
 
 	public void removeCloud(CloudData c) {
-		cloudList.remove(c);
+		clouds.remove(c);
 		c.setMetar(null);
 	}
 
 	public void addWeather(WeatherData w) {
-		weatherList.add(w);
+		weathers.add(w);
 		w.setMetar(this);
 	}
 
 	public void removeWeather(WeatherData w) {
-		weatherList.remove(w);
+		weathers.remove(w);
 		w.setMetar(null);
-		if (weatherList.isEmpty()) {
+		if (weathers.isEmpty()) {
 			weatherPresent = false;
 		}
 	}

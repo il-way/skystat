@@ -16,11 +16,11 @@ import java.util.stream.Stream;
 
 public final class ObservationStatisticAggregator {
 
-	public static ObservationStatisticResult aggregate(List<Metar> metarList,
+	public static ObservationStatisticResult aggregate(List<Metar> metars,
 	                                                   Predicate<Metar> predicate,
 	                                                   RetrievalPeriod period) {
 
-		Stream<Metar> filtered = metarList.stream().filter(predicate);
+		Stream<Metar> filtered = metars.stream().filter(predicate);
 
 		HashMap<YearMonth, Set<LocalDate>> monthSet = new HashMap<>();
 		HashMap<YearMonth, Map<Integer, Set<LocalDate>>> hourSet = new HashMap<>();

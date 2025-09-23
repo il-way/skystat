@@ -3,20 +3,20 @@ package com.ilway.skystat.framework.parser.metar.entry;
 import com.ilway.skystat.framework.parser.metar.regex.CloudRegexes;
 import com.ilway.skystat.framework.parser.shared.ReportRegexParser;
 import com.ilway.skystat.domain.vo.weather.Cloud;
-import com.ilway.skystat.domain.vo.weather.CloudGroup;
+import com.ilway.skystat.domain.vo.weather.Clouds;
 import com.ilway.skystat.domain.vo.metar.MetarField;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
-public class CloudGroupRegexParser extends ReportRegexParser<CloudGroup> {
+public class CloudsRegexParser extends ReportRegexParser<Clouds> {
 
-  private static final MetarField FIELD_TYPE = MetarField.CLOUD_GROUP;
+  private static final MetarField FIELD_TYPE = MetarField.CLOUDS;
   private static final String CLOUD_REGEX = CloudRegexes.fullPattern();
 
   @Override
-  public CloudGroup parse(String rawText) {
+  public Clouds parse(String rawText) {
     Matcher matcher = getMatcher(rawText, CLOUD_REGEX);
     CloudRegexParser cloudParser = new CloudRegexParser();
 
@@ -31,7 +31,7 @@ public class CloudGroupRegexParser extends ReportRegexParser<CloudGroup> {
       }
     }
 
-    return CloudGroup.of(clouds);
+    return Clouds.of(clouds);
   }
 
   @Override

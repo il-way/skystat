@@ -5,8 +5,8 @@ import com.ilway.skystat.framework.parser.metar.composite.CompositeRegexParser;
 import com.ilway.skystat.framework.parser.metar.entry.*;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.metar.MetarField;
-import com.ilway.skystat.domain.vo.weather.CloudGroup;
-import com.ilway.skystat.domain.vo.weather.WeatherGroup;
+import com.ilway.skystat.domain.vo.weather.Clouds;
+import com.ilway.skystat.domain.vo.weather.Weathers;
 
 import java.time.YearMonth;
 import java.util.Map;
@@ -35,8 +35,8 @@ public class MetarParser {
               .temperature(require(map, TEMPERATURE))
               .dewPoint(require(map, DEW_POINT))
               .altimeter(require(map, ALTIMETER))
-              .weatherGroup((WeatherGroup) map.getOrDefault(WEATHER_GROUP, WeatherGroup.ofEmpty()))
-              .cloudGroup((CloudGroup) map.getOrDefault(CLOUD_GROUP, CloudGroup.ofEmpty()))
+              .weathers((Weathers) map.getOrDefault(WEATHERS, Weathers.ofEmpty()))
+              .clouds((Clouds) map.getOrDefault(CLOUDS, Clouds.ofEmpty()))
               .remarks((String) map.getOrDefault(REMARKS, ""))
               .build();
     }
@@ -75,8 +75,8 @@ public class MetarParser {
     var temperatureRegexParser = new TemperatureRegexParser();
     var dewPointRegexParser = new DewPointRegexParser();
     var altimeterRegexParser = new AltimeterRegexParser();
-    var weatherGroupRegexParser = new WeatherGroupRegexParser();
-    var cloudGroupRegexParser = new CloudGroupRegexParser();
+    var weatherGroupRegexParser = new WeathersRegexParser();
+    var cloudGroupRegexParser = new CloudsRegexParser();
     var remarkRegexParser = new RemarkRegexParser();
 
     parser.add(stationIcaoRegexParser);

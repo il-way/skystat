@@ -52,8 +52,8 @@ public class TestTafLHSN {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(310), 12, 0, KT))
 			.visibility(Visibility.of(9999, METERS))       // CAVOK
-			.weatherGroup(WeatherGroup.of(List.of()))
-			.cloudGroup(CloudGroup.of(List.of()))          // CAVOK = NSC
+			.weathers(Weathers.of(List.of()))
+			.clouds(Clouds.of(List.of()))          // CAVOK = NSC
 			.build()
 	);
 
@@ -67,10 +67,10 @@ public class TestTafLHSN {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(300), 16, 28, KT))
 			.visibility(Visibility.of(9999, METERS))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(LIGHT, List.of(SH), List.of(RA))   // -SHRA
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(SCT, 3500, TCU),
 				Cloud.of(BKN, 5000, NONE)
 			)))

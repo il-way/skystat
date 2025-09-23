@@ -52,10 +52,10 @@ public class TestTafKORF {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(100), 7, 0, KT))
 			.visibility(Visibility.of(6, MILE))                    // P6SM
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, List.of(VC, TS), List.of())   // VCTS
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, CB)
 			)))
 			.build()
@@ -71,10 +71,10 @@ public class TestTafKORF {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.variable(), 15, 30, KT))
 			.visibility(Visibility.of(3, MILE))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(LIGHT, List.of(WeatherDescriptor.SH), List.of(RA))        // -SHRA
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, NONE)
 			)))
 			.build()
@@ -90,10 +90,10 @@ public class TestTafKORF {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(0), 0, 0, KT))       // Calm
 			.visibility(Visibility.of(6, MILE))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, List.of(VC, SH), List.of())   // VCSH
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4500, NONE)
 			)))
 			.build()
@@ -109,7 +109,7 @@ public class TestTafKORF {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.variable(), 5, 0, KT))
 			.visibility(Visibility.of(6, MILE))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 3000, NONE)
 			)))
 			.build()

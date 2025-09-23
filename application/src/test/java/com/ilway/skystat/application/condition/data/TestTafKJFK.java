@@ -54,8 +54,8 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(240), 10, 0, KT))
 			.visibility(Visibility.of(6, MILE))
-			.weatherGroup(WeatherGroup.of(List.of()))
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(Weathers.of(List.of()))
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 900, NONE),
 				Cloud.of(BKN, 25000, NONE)
 			)))
@@ -71,8 +71,8 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(null)
 			.visibility(null)
-			.weatherGroup(null)
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(null)
+			.clouds(Clouds.of(List.of(
 					Cloud.of(SCT, 900, NONE)
 				))
 			)
@@ -88,8 +88,8 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(240), 7, 0, KT))
 			.visibility(Visibility.of(6, MILE))
-			.weatherGroup(null)
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(null)
+			.clouds(Clouds.of(List.of(
 				Cloud.of(FEW, 5000, NONE),
 				Cloud.of(SCT, 25000, NONE)
 			)))
@@ -105,8 +105,8 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(190), 12, 0, KT))
 			.visibility(Visibility.of(6, MILE))
-			.weatherGroup(null)
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(null)
+			.clouds(Clouds.of(List.of(
 				Cloud.of(SCT, 5000, NONE),
 				Cloud.of(BKN, 25000, NONE)
 			)))
@@ -122,8 +122,8 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(190), 14, 0, KT))
 			.visibility(Visibility.of(6, MILE))
-			.weatherGroup(null)
-			.cloudGroup(CloudGroup.of(List.of(
+			.weathers(null)
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 5000, NONE),
 				Cloud.of(BKN, 20000, NONE)
 			)))
@@ -137,10 +137,10 @@ public class TestTafKJFK {
 			ZonedDateTime.of(2025, 7, 10, 3, 0, 0, 0, ZoneOffset.UTC)
 		),
 		WeatherSnapshot.builder()
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, List.of(TS), List.of(RA))
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 2500, CB)
 			)))
 			.build()
@@ -155,7 +155,7 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(230), 7, 0, KT))
 			.visibility(Visibility.of(6, MILE))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, NONE),
 				Cloud.of(BKN, 15500, NONE)
 			)))
@@ -170,10 +170,10 @@ public class TestTafKJFK {
 		),
 		WeatherSnapshot.builder()
 			.visibility(Visibility.of(3, MILE))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, List.of(TS), List.of(RA))
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, CB),
 				Cloud.of(BKN, 10000, CB)
 			)))
@@ -189,10 +189,10 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.fixed(220), 4, 0, KT))
 			.visibility(Visibility.of(6, MILE))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(MODERATE, List.of(VC), List.of(RA))
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, CB),
 				Cloud.of(BKN, 10000, CB)
 			)))
@@ -208,11 +208,11 @@ public class TestTafKJFK {
 		WeatherSnapshot.builder()
 			.wind(Wind.of(WindDirection.variable(), 4, 0, KT))
 			.visibility(Visibility.of(5, MILE))
-			.weatherGroup(WeatherGroup.of(List.of(
+			.weathers(Weathers.of(List.of(
 				Weather.of(LIGHT, List.of(SH), List.of(RA)),
 				Weather.of(MODERATE, List.of(), List.of(BR))
 			)))
-			.cloudGroup(CloudGroup.of(List.of(
+			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 2500, CB)
 			)))
 			.build()

@@ -16,8 +16,8 @@ public class WeatherSnapshot implements MetricSource {
 	// Basic Elements(Optional)
 	private final Wind wind;
 	private final Visibility visibility;
-	private final WeatherGroup weatherGroup;
-	private final CloudGroup cloudGroup;
+	private final Weathers weathers;
+	private final Clouds clouds;
 
 	// Optional
 	private final Temperature temperature;
@@ -28,15 +28,15 @@ public class WeatherSnapshot implements MetricSource {
 	private final Modifier sourceModifier;
 
 	@Builder
-	public WeatherSnapshot(Wind wind, Visibility visibility, WeatherGroup weatherGroup, CloudGroup cloudGroup, Temperature temperature, Altimeter altimeter, ZonedDateTime timestamp, Modifier sourceModifier) {
+	public WeatherSnapshot(Wind wind, Visibility visibility, Weathers weathers, Clouds clouds, Temperature temperature, Altimeter altimeter, ZonedDateTime timestamp, Modifier sourceModifier) {
 		this.wind = wind;
 		this.visibility = visibility;
-		this.weatherGroup = (weatherGroup == null)
-			                    ? WeatherGroup.ofEmpty()
-			                    : WeatherGroup.of(weatherGroup.getWeatherList());
-		this.cloudGroup = cloudGroup == null
-			                  ? CloudGroup.ofEmpty()
-			                  : CloudGroup.of(cloudGroup.getCloudList());
+		this.weathers = (weathers == null)
+			                    ? Weathers.ofEmpty()
+			                    : Weathers.of(weathers.getWeathers());
+		this.clouds = clouds == null
+			                  ? Clouds.ofEmpty()
+			                  : Clouds.of(clouds.getClouds());
 		this.temperature = temperature;
 		this.altimeter = altimeter;
 		this.timestamp = timestamp;
@@ -46,8 +46,8 @@ public class WeatherSnapshot implements MetricSource {
 	public static WeatherSnapshot empty(ZonedDateTime ts) {
 		return WeatherSnapshot.builder()
 			       .timestamp(ts)
-			       .weatherGroup(WeatherGroup.ofEmpty())
-			       .cloudGroup(CloudGroup.ofEmpty())
+			       .weathers(Weathers.ofEmpty())
+			       .clouds(Clouds.ofEmpty())
 			       .sourceModifier(Modifier.NONE)
 			       .build();
 	}

@@ -24,9 +24,9 @@ public class WindRoseInputPort implements WindRoseUseCase {
 
 	@Override
 	public WindRoseResult generateMonthlyWindRose(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
-		List<Metar> metarList = metarManagementOutputPort.findByIcaoAndPeriod(icao, period);
+		List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(icao, period);
 
-		Map<Boolean, List<Metar>> partitionedByFixedDirectionExist = metarList.stream()
+		Map<Boolean, List<Metar>> partitionedByFixedDirectionExist = metars.stream()
 			                                                             .collect(partitioningBy(m -> !m.getWind().getDirection().isVariable()));
 
 
@@ -37,21 +37,21 @@ public class WindRoseInputPort implements WindRoseUseCase {
 			.collect(groupingBy(m -> Month.from(m.getReportTime()),
 				collectingAndThen(
 					toList(),
-					monthlyMetarList -> buildWindRoseForMonth(monthlyMetarList, speedBins, directionBins))
+					monthlyMetars -> buildWindRoseForMonth(monthlyMetars, speedBins, directionBins))
 			));
 
 		return new WindRoseResult(
-			metarList.size(),
+			metars.size(),
 			fixedDirections.size(),
 			variableDirections.size(),
 			windrose
 		);
 	}
 
-	private WindRose buildWindRoseForMonth(List<Metar> metarList, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+	private WindRose buildWindRoseForMonth(List<Metar> metars, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
 		Map<WindRose.BinPair, Long> freq = WindRose.initFrequencyMap(speedBins, directionBins);
 
-		for (Metar metar : metarList) {
+		for (Metar metar : metars) {
 			Wind w = metar.getWind();
 			double deg = w.getDirection().getDegreeOrThrow();
 
@@ -66,7 +66,7 @@ public class WindRoseInputPort implements WindRoseUseCase {
 				.ifPresent(bin -> freq.put(bin, freq.get(bin) + 1));
 		}
 
-		return new WindRose(speedBins, directionBins, freq, metarList.size());
+		return new WindRose(speedBins, directionBins, freq, metars.size());
 	}
 
 }

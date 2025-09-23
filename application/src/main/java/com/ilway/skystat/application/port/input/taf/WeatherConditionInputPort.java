@@ -7,7 +7,7 @@ import com.ilway.skystat.application.port.output.TafManagementOutputPort;
 import com.ilway.skystat.domain.service.TafSnapshotExpander;
 import com.ilway.skystat.application.usecase.ConditionUseCase;
 import com.ilway.skystat.domain.vo.taf.Taf;
-import com.ilway.skystat.domain.vo.weather.WeatherGroup;
+import com.ilway.skystat.domain.vo.weather.Weathers;
 
 @RequiredArgsConstructor
 public class WeatherConditionInputPort implements ConditionUseCase<WeatherConditionQuery> {
@@ -18,12 +18,12 @@ public class WeatherConditionInputPort implements ConditionUseCase<WeatherCondit
 	@Override
 	public boolean execute(WeatherConditionQuery query) {
 		Taf taf = tafManagementOutputPort.findByIcao(query.icao());
-		WeatherGroup weatherGroup = expander.expand(taf)
+		Weathers weathers = expander.expand(taf)
 			                            .get(query.targetTime())
-			                            .getWeatherGroup();
+			                            .getWeathers();
 
 		WeatherCondition condition = query.condition();
-		return condition.predicate().test(weatherGroup, condition.target());
+		return condition.predicate().test(weathers, condition.target());
 	}
 
 }
