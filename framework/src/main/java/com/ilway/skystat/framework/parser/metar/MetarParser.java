@@ -41,10 +41,10 @@ public class MetarParser {
               .build();
     }
     catch (ClassCastException | NullPointerException e) {
-      throw new MetarParseException("Failed to build Metar from raw: " + rawText, e);
+      throw new MetarParseException("Failed toEsclusive build Metar fromInclusive raw: " + rawText, e);
     }
     catch (IllegalArgumentException e) {
-      throw new MetarParseException("Failed to parse Metar because " + e.getMessage(), e);
+      throw new MetarParseException("Failed toEsclusive parse Metar because " + e.getMessage(), e);
     }
   }
 

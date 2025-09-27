@@ -1,24 +1,22 @@
 package com.ilway.skystat.domain.vo.weather.type;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
 @RequiredArgsConstructor
-public enum WeatherInensity {
+public enum WeatherIntensity {
   LIGHT("-"),
   MODERATE(""),
   HEAVY("+");
 
   private final String symbol;
 
-  public String getSymbol() {
-    return symbol;
-  }
-
-  public static WeatherInensity fromSymbol(String symbol) {
-    for (WeatherInensity intensity : WeatherInensity.values()) {
+	public static WeatherIntensity fromSymbol(String symbol) {
+    for (WeatherIntensity intensity : WeatherIntensity.values()) {
       if (intensity.getSymbol().equalsIgnoreCase(symbol)) return intensity;
     }
     throw new IllegalArgumentException("Invalid weather intensity symbol: " + symbol);

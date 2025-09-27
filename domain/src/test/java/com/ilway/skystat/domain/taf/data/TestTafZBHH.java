@@ -21,8 +21,8 @@ import static com.ilway.skystat.domain.vo.weather.type.CloudType.CB;
 import static com.ilway.skystat.domain.vo.weather.type.CloudType.NONE;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor.SH;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor.TS;
-import static com.ilway.skystat.domain.vo.weather.type.WeatherInensity.LIGHT;
-import static com.ilway.skystat.domain.vo.weather.type.WeatherInensity.MODERATE;
+import static com.ilway.skystat.domain.vo.weather.type.WeatherIntensity.LIGHT;
+import static com.ilway.skystat.domain.vo.weather.type.WeatherIntensity.MODERATE;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon.RA;
 
 @Getter

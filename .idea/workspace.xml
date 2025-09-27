@@ -63,10 +63,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Exception" />
-        <option value="Record" />
-        <option value="Interface" />
         <option value="Enum" />
         <option value="AnnotationType" />
+        <option value="Record" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -106,6 +106,7 @@
     "Gradle.'com.ilway.skystat.framework'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.framework.adapter.output'에 있는 테스트.executor": "Run",
+    "Gradle.'com.ilway.skystat.it'에 있는 테스트.executor": "Run",
     "Gradle.'parser'에 있는 테스트.executor": "Run",
     "Gradle.'skystat.framework.test'에 있는 테스트.executor": "Run",
     "Gradle.AltimeterTest.executor": "Run",
@@ -130,6 +131,7 @@
     "Gradle.MetarManagementAdapterTest.saveAllTest.executor": "Run",
     "Gradle.MetarManagementAdapterTest.saveTest.executor": "Run",
     "Gradle.MetarManagementAdapterTest.saveTestFailure.executor": "Run",
+    "Gradle.MetarManagementAdapterTest.saveTestSuccess.executor": "Run",
     "Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao_및_기간별_메타조회에_성공해야한다.executor": "Run",
     "Gradle.MetarManagementFileAdapterTest.리소스파일에서_icao로_메타조회_및_파싱에_성공해야한다.executor": "Run",
     "Gradle.MetarManagementMySQLAdapterTest.executor": "Run",
@@ -137,9 +139,16 @@
     "Gradle.MetarManagementMySQLAdapterTest.findByIcaoAndPeriodTest.executor": "Run",
     "Gradle.MetarManagementMySQLAdapterTest.saveAllTest.executor": "Run",
     "Gradle.MetarManagementMySQLAdapterTest.saveTest.executor": "Run",
+    "Gradle.MetarManagementMySQLAdapterTestData.executor": "Run",
+    "Gradle.MetarManagementMySQLAdapterTestData.findByIcaoAndPeriodTest.executor": "Run",
+    "Gradle.MetarManagementMySQLAdapterTestData.saveAllTest.executor": "Run",
+    "Gradle.MetarManagementMySQLAdapterTestData.saveTest.executor": "Run",
     "Gradle.MetarManagementResourceFileAdapterTest.executor": "Run",
     "Gradle.MetarManagementResourceFileAdapterTest.findAllByIcaoTest.executor": "Run",
     "Gradle.MetarManagementResourceFileAdapterTest.findByIcaoAndPeriodTest.executor": "Run",
+    "Gradle.MetarManagementResourceFileAdapterTestData.executor": "Run",
+    "Gradle.MetarManagementResourceFileAdapterTestData.findAllByIcaoTest.executor": "Run",
+    "Gradle.MetarManagementResourceFileAdapterTestData.findByIcaoAndPeriodTest.executor": "Run",
     "Gradle.MetarManagementTest.executor": "Run",
     "Gradle.MetarManagementTest.saveAllTest.executor": "Run",
     "Gradle.MetarParserTest.executor": "Run",
@@ -147,7 +156,7 @@
     "Gradle.MetarStatisticAdapterTest.executor": "Run",
     "Gradle.MetarStatisticAdapterTest.getCloudCoverageStatisticTestSuccess.executor": "Run",
     "Gradle.MetarStatisticAdapterTest.getCloudStatisticTestSuccess.executor": "Run",
-    "Gradle.MetarStatisticAdapterTest.getPeakWindThresholdStatisticTestSuccess.executor": "Run",
+    "Gradle.MetarStatisticAdapterTest.getPeakWindThresholdStatisticTestSuccess.executor": "Debug",
     "Gradle.MetarStatisticAdapterTest.getThresholdStatisticAltimeterTestSuccess.executor": "Run",
     "Gradle.MetarStatisticAdapterTest.getThresholdStatisticCeilingTestSuccess.executor": "Run",
     "Gradle.MetarStatisticAdapterTest.getThresholdStatisticTestSuccess.executor": "Run",
@@ -183,6 +192,7 @@
     "Gradle.VisibilityTest.CAVOK이_관측된_경우_시정값이_9999미터이다.executor": "Run",
     "Gradle.VisibilityTest.executor": "Run",
     "Gradle.WeatherTest.executor": "Run",
+    "Gradle.WeatherTest.test.executor": "Run",
     "Gradle.WeatherTest.관측된_기상현상이_없는_경우_날씨파서는_NULL을_반환한다.executor": "Run",
     "Gradle.WeatherTest.단일_기상현상만_관측된_경우_phenomena의_길이가_1인_Weather객체를_반환한다.executor": "Debug",
     "Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다.executor": "Run",
@@ -271,76 +281,15 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.framework.adapter.output.mysql.repository" />
       <recent name="com.ilway.skystat.framework.config" />
       <recent name="com.ilway.skystat.framework.adapter.input" />
       <recent name="com.ilway.skystat.bootstrap.profile" />
       <recent name="com.ilway.skystat.application.port.input" />
-      <recent name="com.ilway.skystat.application.port.output" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.'com.ilway.skystat.framework'에 있는 테스트">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
-      <module name="skystat.bootstrap.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="'com.ilway.skystat.application'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.application.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="'com.ilway.skystat.domain'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":domain:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.domain.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="'com.ilway.skystat.framework'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.MetarManagementAdapterTest.saveTestSuccess">
+    <configuration name="MetarManagementAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -353,7 +302,7 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.*&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarManagementAdapterTest.saveAllTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -364,7 +313,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="'com.ilway.skystat.framework.adapter'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MetarManagementAdapterTest.saveTestSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -377,7 +326,79 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.*&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarManagementAdapterTest.saveTestSuccess&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.WeatherTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.WeatherTest.test&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -410,19 +431,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.bootstrap" />
-      <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
-      <item itemvalue="Gradle.'com.ilway.skystat.domain'에 있는 테스트" />
-      <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
-      <item itemvalue="Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트" />
-      <item itemvalue="애플리케이션.App" />
+      <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
+      <item itemvalue="Gradle.MetarManagementAdapterTest.saveTestSuccess" />
+      <item itemvalue="Gradle.WeatherTest" />
+      <item itemvalue="Gradle.WeatherTest.test" />
+      <item itemvalue="Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
-        <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
-        <item itemvalue="Gradle.'com.ilway.skystat.domain'에 있는 테스트" />
-        <item itemvalue="Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트" />
-        <item itemvalue="애플리케이션.App" />
+        <item itemvalue="Gradle.MetarManagementAdapterTest.saveTestSuccess" />
+        <item itemvalue="Gradle.WeatherTest" />
+        <item itemvalue="Gradle.WeatherTest.test" />
+        <item itemvalue="Gradle.WeatherTest.복합_기상현상이_여러개_존재하는_경우_WeatherGroup의_size가_1이상이고_WeatherList의_사이즈도_1이상이다" />
+        <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
       </list>
     </recent_temporary>
   </component>
@@ -446,6 +467,32 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/framework/src/main/java/com/ilway/skystat/framework/adapter/input/rest/WindRoseAdapter.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/framework/src/main/java/com/ilway/skystat/framework/adapter/input/rest/WindRoseAdapter.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/application/src/main/java/com/ilway/skystat/application/port/input/metar/WindRoseInputPort.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/application/src/main/java/com/ilway/skystat/application/port/input/metar/WindRoseInputPort.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/skystat$CloudTest.ic" NAME="CloudTest 커버리지 결과" MODIFIED="1750160684504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

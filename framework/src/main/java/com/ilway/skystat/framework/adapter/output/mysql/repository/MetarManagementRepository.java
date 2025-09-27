@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public interface MetarManagementRepository extends JpaRepository<MetarData, Long> {
@@ -29,11 +30,13 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 		SELECT m.id
 		FROM MetarData m
 		WHERE UPPER(m.stationIcao) = UPPER(:icao)
-			AND m.reportTime between :#{#period.from} and :#{#period.to}
+			AND m.reportTime >= :fromInclusive
+		  AND m.reportTime <  :toExclusive
 		ORDER BY m.reportTime ASC, m.id ASC
 		""")
 	List<Long> findIdsByIcaoAndPeriod(@Param("icao") String icao,
-	                                  @Param("period") RetrievalPeriod period);
+	                                  @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                  @Param("toExclusive") ZonedDateTime toExclusive);
 
 
 }

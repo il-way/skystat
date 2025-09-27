@@ -3,13 +3,13 @@ package com.ilway.skystat.application.dto;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public record RetrievalPeriod(ZonedDateTime from, ZonedDateTime to) {
+public record RetrievalPeriod(ZonedDateTime fromInclusive, ZonedDateTime toEsclusive) {
 
   public RetrievalPeriod {
-    Objects.requireNonNull(from, "Time must not be nuil");
-    Objects.requireNonNull(to, "Time must not be nuil");
+    Objects.requireNonNull(fromInclusive, "Time must not be nuil");
+    Objects.requireNonNull(toEsclusive, "Time must not be nuil");
 
-    if (!from.isBefore(to)) {
+    if (!fromInclusive.isBefore(toEsclusive)) {
       throw new IllegalArgumentException("Start time must be before end time");
     }
   }

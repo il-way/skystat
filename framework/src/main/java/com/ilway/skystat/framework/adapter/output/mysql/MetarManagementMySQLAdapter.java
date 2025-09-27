@@ -6,15 +6,11 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
-import com.ilway.skystat.framework.profile.Default;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @RequiredArgsConstructor
 public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
@@ -32,11 +28,17 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	@Override
 	@Transactional
 	public void saveAll(List<Metar> metars) {
-		List<MetarData> metarData = metars.stream()
-			                       .map(MetarMySQLMapper::metarDomainToData)
-			                       .toList();
+		for (int from = 0; from < metars.size(); from+=CHUNK_SIZE) {
+			int to = Math.min(from+CHUNK_SIZE, metars.size());
 
-		repository.saveAll(metarData);
+			List<MetarData> batch = metars.subList(from, to).stream()
+				                            .map(MetarMySQLMapper::metarDomainToData)
+				                            .toList();
+
+			repository.saveAll(batch);
+			em.flush();
+			em.clear();
+		}
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period) {
-		List<Long> ids = repository.findIdsByIcaoAndPeriod(icao, period);
+		List<Long> ids = repository.findIdsByIcaoAndPeriod(icao, period.fromInclusive(), period.toEsclusive());
 		return retrieveMetarsInChunks(ids);
 	}
 
@@ -60,19 +62,27 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 			int to = Math.min(from+CHUNK_SIZE, ids.size());
 			List<Long> chunkIds = ids.subList(from, to);
 
+			Map<Long, Integer> order = new HashMap<>();
+			for (int i = 0; i < chunkIds.size(); i++) {
+				order.put(chunkIds.get(i), i);
+			}
+
 			List<MetarData> chunk = repository.findAllById(chunkIds);
 			chunk.forEach(m -> {
 				m.getClouds().size();
 				m.getWeathers().size();
+
+				m.getWeathers().forEach(w -> {
+					w.getPhenomena().size();
+					w.getDescriptors().size();
+				});
 			});
 
+			chunk.sort(Comparator.comparing(md -> order.get(md.getId())));
 			List<Metar> chunkData = chunk.stream()
 				                        .map(MetarMySQLMapper::metarDataToDomain)
 				                        .toList();
-
 			result.addAll(chunkData);
-
-			em.flush();
 			em.clear();
 		}
 

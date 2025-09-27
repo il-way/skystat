@@ -12,7 +12,7 @@ import static com.ilway.skystat.domain.vo.unit.LengthUnit.METERS;
 import static com.ilway.skystat.domain.vo.unit.PressureUnit.HPA;
 import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import static com.ilway.skystat.domain.vo.unit.TemperatureUnit.CELSIUS;
-import static com.ilway.skystat.domain.vo.weather.type.WeatherInensity.MODERATE;
+import static com.ilway.skystat.domain.vo.weather.type.WeatherIntensity.MODERATE;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon.BR;
 
 @Getter

@@ -20,7 +20,7 @@ import static com.ilway.skystat.domain.vo.unit.SpeedUnit.*;
 import static com.ilway.skystat.domain.vo.weather.type.CloudCoverage.*;
 import static com.ilway.skystat.domain.vo.weather.type.CloudType.*;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor.*;
-import static com.ilway.skystat.domain.vo.weather.type.WeatherInensity.*;
+import static com.ilway.skystat.domain.vo.weather.type.WeatherIntensity.*;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon.*;
 
 @Getter

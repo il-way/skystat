@@ -8,7 +8,7 @@ import com.ilway.skystat.domain.vo.taf.field.TafSection;
 import com.ilway.skystat.domain.vo.taf.field.WeatherSnapshot;
 import com.ilway.skystat.domain.vo.taf.type.Modifier;
 import com.ilway.skystat.domain.vo.taf.type.ReportType;
-import com.ilway.skystat.domain.vo.weather.type.WeatherInensity;
+import com.ilway.skystat.domain.vo.weather.type.WeatherIntensity;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 
 import java.time.ZoneOffset;
@@ -79,7 +79,7 @@ public class TestTafRKSS {
 			.wind(Wind.of(WindDirection.fixed(170), 5, 0, KT))
 			.visibility(Visibility.of(4000, METERS))
 			.weathers(Weathers.of(List.of(
-				Weather.of(WeatherInensity.MODERATE, null, List.of(WeatherPhenomenon.BR))
+				Weather.of(WeatherIntensity.MODERATE, null, List.of(WeatherPhenomenon.BR))
 			)))
 			.clouds(Clouds.of(List.of(
 				Cloud.of(BKN, 4000, NONE)

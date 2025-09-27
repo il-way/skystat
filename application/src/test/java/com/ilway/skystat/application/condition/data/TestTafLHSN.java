@@ -22,7 +22,7 @@ import static com.ilway.skystat.domain.vo.weather.type.CloudCoverage.SCT;
 import static com.ilway.skystat.domain.vo.weather.type.CloudType.NONE;
 import static com.ilway.skystat.domain.vo.weather.type.CloudType.TCU;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor.SH;
-import static com.ilway.skystat.domain.vo.weather.type.WeatherInensity.LIGHT;
+import static com.ilway.skystat.domain.vo.weather.type.WeatherIntensity.LIGHT;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon.RA;
 
 @Getter

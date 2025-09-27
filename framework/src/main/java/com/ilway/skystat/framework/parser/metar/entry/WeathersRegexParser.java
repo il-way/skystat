@@ -24,7 +24,9 @@ public class WeathersRegexParser extends ReportRegexParser<Weathers> {
     while (matcher.find()) {
       String matchedWeatherText = matcher.group(0);
       Weather weather = weatherParser.parse(matchedWeatherText);
-      weathers.add(weather);
+      if (weather != null) {
+        weathers.add(weather);
+      }
     }
 
     return Weathers.builder()

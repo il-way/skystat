@@ -1,12 +1,10 @@
 package com.ilway.skystat.framework.adapter.output.resource;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
-import com.ilway.skystat.framework.profile.Default;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.generic.IntervalInclusion;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
 import com.ilway.skystat.framework.parser.metar.MetarParser;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.domain.vo.metar.Metar;
@@ -15,7 +13,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
-import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
@@ -64,7 +61,7 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 	@Override
 	public List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period) {
 		return findAllByIcao(icao).stream()
-				.filter(m -> IntervalInclusion.CLOSED.test(m.getReportTime(), period.from(), period.to()))
+				.filter(m -> IntervalInclusion.CLOSED.test(m.getReportTime(), period.fromInclusive(), period.toEsclusive()))
 				.toList();
 	}
 

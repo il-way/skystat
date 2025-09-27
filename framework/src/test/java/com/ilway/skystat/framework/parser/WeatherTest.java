@@ -7,7 +7,7 @@ import com.ilway.skystat.framework.parser.shared.ReportParser;
 import com.ilway.skystat.domain.vo.weather.Weather;
 import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
-import com.ilway.skystat.domain.vo.weather.type.WeatherInensity;
+import com.ilway.skystat.domain.vo.weather.type.WeatherIntensity;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 
 import java.util.List;
@@ -52,7 +52,7 @@ public class WeatherTest {
 
     // then
     Weather expected = Weather.builder()
-        .intensity(WeatherInensity.LIGHT)
+        .intensity(WeatherIntensity.LIGHT)
         .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.RA))
         .build();
@@ -74,13 +74,13 @@ public class WeatherTest {
 
     // then
     Weather expected = Weather.builder()
-        .intensity(WeatherInensity.MODERATE)
+        .intensity(WeatherIntensity.MODERATE)
         .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.RA, WeatherPhenomenon.SN))
         .build();
 
     Weather unexpected = Weather.builder()
-                         .intensity(WeatherInensity.MODERATE)
+                         .intensity(WeatherIntensity.MODERATE)
                          .descriptors(List.of())
                          .phenomena(List.of(WeatherPhenomenon.SN, WeatherPhenomenon.RA))
                          .build();
@@ -102,19 +102,19 @@ public class WeatherTest {
 
     // then
     Weather expected1 = Weather.builder()
-        .intensity(WeatherInensity.LIGHT)
+        .intensity(WeatherIntensity.LIGHT)
         .descriptors(List.of(WeatherDescriptor.TS))
         .phenomena(List.of(WeatherPhenomenon.SN, WeatherPhenomenon.RA))
         .build();
 
     Weather expected2 = Weather.builder()
-        .intensity(WeatherInensity.LIGHT)
+        .intensity(WeatherIntensity.LIGHT)
         .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.PL, WeatherPhenomenon.SN))
         .build();
 
     Weather expected3 = Weather.builder()
-        .intensity(WeatherInensity.MODERATE)
+        .intensity(WeatherIntensity.MODERATE)
         .descriptors(List.of())
         .phenomena(List.of(WeatherPhenomenon.BR))
         .build();
@@ -125,5 +125,18 @@ public class WeatherTest {
 
     assertEquals(expected, weathers);
   }
+
+  @Test
+  void test() {
+    String rawText = "RKSI 010000Z 07001KT 800 TS -RASN FZFG FEW008 FEW100 FEW150 SCT200 SCT250 M06/M11 Q1034 NOSIG";
+
+    // missing Weather(descriptors=[TS], phenomena=[], intensity=MODERATE)
+    Weathers parse = wxGroupParser.parse(rawText); // Weathers(weathers=[Weather(descriptors=[], phenomena=[RA, SN], intensity=LIGHT), Weather(descriptors=[FZ], phenomena=[FG], intensity=MODERATE)])
+
+    System.out.println(parse);
+  }
+
+
+
 
 }
