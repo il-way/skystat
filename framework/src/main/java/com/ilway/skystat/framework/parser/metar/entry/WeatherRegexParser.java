@@ -5,7 +5,7 @@ import com.ilway.skystat.framework.parser.shared.ReportRegexParser;
 import com.ilway.skystat.domain.vo.weather.Weather;
 import com.ilway.skystat.domain.vo.metar.MetarField;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
-import com.ilway.skystat.domain.vo.weather.type.WeatherInensity;
+import com.ilway.skystat.domain.vo.weather.type.WeatherIntensity;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 
 import java.util.ArrayList;
@@ -27,9 +27,9 @@ public class WeatherRegexParser extends ReportRegexParser<Weather> {
     }
 
     String intensityMatch = matcher.group(WeatherRegexes.INTENSITY.getGroupName());
-    WeatherInensity intensity = intensityMatch != null
-            ? WeatherInensity.fromSymbol(intensityMatch)
-            : WeatherInensity.MODERATE;
+    WeatherIntensity intensity = intensityMatch != null
+            ? WeatherIntensity.fromSymbol(intensityMatch)
+            : WeatherIntensity.MODERATE;
 
     List<WeatherDescriptor> descriptor = parseTokens(
       matcher.group(WeatherRegexes.DESCRIPTOR.getGroupName()),

@@ -7,9 +7,11 @@ import com.ilway.skystat.domain.spec.CloudAltitudeSpec;
 import com.ilway.skystat.domain.spec.CloudCoverageSpec;
 import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
 import com.ilway.skystat.domain.vo.weather.type.CloudType;
+import lombok.ToString;
 
 import java.util.Optional;
 
+@ToString
 @EqualsAndHashCode
 public class Cloud {
 

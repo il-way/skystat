@@ -3,7 +3,7 @@ package com.ilway.skystat.framework.parser.metar.regex;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
-import com.ilway.skystat.domain.vo.weather.type.WeatherInensity;
+import com.ilway.skystat.domain.vo.weather.type.WeatherIntensity;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 
 import java.util.Arrays;
@@ -22,11 +22,11 @@ public enum WeatherRegexes {
 
   public static String fullPattern() {
     return String.format(
-            "(?:^|\\s)" +
+            "(?<!\\S)" +
             "(?<%1$s>%2$s)?" +
             "(?<%3$s>(%4$s){1,3})?" +
-            "(?<%5$s>(?:%6$s){1,3})" +
-            "(?=(?:\\s|$))",
+            "(?<%5$s>(?:%6$s){1,3})?" +
+            "(?!\\S)",
             INTENSITY.groupName, INTENSITY.regex,
             DESCRIPTOR.groupName, DESCRIPTOR.regex,
             PHENOMENON.groupName, PHENOMENON.regex
@@ -34,8 +34,8 @@ public enum WeatherRegexes {
   }
 
   private static String getIntensityRegex() {
-    return Arrays.stream(WeatherInensity.values())
-        .map(WeatherInensity::getSymbol)
+    return Arrays.stream(WeatherIntensity.values())
+        .map(WeatherIntensity::getSymbol)
         .filter(symbol -> !symbol.isEmpty())
         .map(Pattern::quote)
         .collect(Collectors.joining("|"));

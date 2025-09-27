@@ -24,7 +24,7 @@ import static com.ilway.skystat.domain.vo.unit.LengthUnit.METERS;
 import static com.ilway.skystat.domain.vo.unit.PressureUnit.HPA;
 import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import static com.ilway.skystat.domain.vo.unit.TemperatureUnit.CELSIUS;
-import static com.ilway.skystat.domain.vo.weather.type.WeatherInensity.MODERATE;
+import static com.ilway.skystat.domain.vo.weather.type.WeatherIntensity.MODERATE;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon.BR;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,7 +98,7 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 		metarManagementUseCase.saveAll(expected);
 
 		ZonedDateTime from = expected.getFirst().getReportTime();
-		ZonedDateTime to = expected.getLast().getReportTime();
+		ZonedDateTime to = expected.getLast().getReportTime().plusNanos(1);
 		RetrievalPeriod period = new RetrievalPeriod(from, to);
 
 		List<Metar> actual = metarManagementUseCase.findByIcaoAndPeriod(TEST_ICAO, period);

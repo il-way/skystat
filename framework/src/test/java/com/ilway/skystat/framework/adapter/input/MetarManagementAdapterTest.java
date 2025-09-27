@@ -2,6 +2,10 @@ package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilway.skystat.domain.vo.metar.Metar;
+import com.ilway.skystat.domain.vo.weather.Clouds;
+import com.ilway.skystat.domain.vo.weather.Weathers;
+import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
+import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.config.MySQLConfigData;
@@ -92,7 +96,7 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 	@Test
 	void saveTestSuccess() throws Exception {
 		String icao = "RKSI";
-		String rawText = "RKSI 010000Z 07001KT CAVOK M06/M11 Q1034 NOSIG";
+		String rawText = "RKSI 010000Z 07001KT 800 TS -RASN FZFG FEW008 FEW100 FEW150 SCT200 SCT250 M06/M11 Q1034 NOSIG";
 		var body = Map.of(
 			"observationTime", "2019-01-01T00:00:00Z",
 			"rawText", rawText
@@ -108,6 +112,13 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 
 
 		List<Metar> list = metarManagementUseCase.findAllByIcao(icao);
+		Weathers weathers = list.getFirst().getWeathers();
+		Clouds clouds = list.getFirst().getClouds();
+
+		log.info("# weathers : {}", weathers);
+		log.info("# clouds : {}", clouds);
+
+
 		assertEquals(rawText, list.getFirst().getRawText());
 	}
 

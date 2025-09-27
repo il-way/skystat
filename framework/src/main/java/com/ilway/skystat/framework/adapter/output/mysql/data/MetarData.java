@@ -16,6 +16,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -63,8 +64,17 @@ public class MetarData {
 	@Column(name = "wind_speed")
 	private Double windSpeed;
 
+	@Column(name = "wind_speed_kt", updatable = false, insertable = false)
+	private Double windSpeedKt;
+
 	@Column(name = "wind_gust")
 	private Double windGust;
+
+	@Column(name = "wind_gust_kt", updatable = false, insertable = false)
+	private Double windGustKt;
+
+	@Column(name = "wind_peak_kt", updatable = false, insertable = false)
+	private Double windPeakKt;
 
 	@Column(name = "wind_var_from_deg")
 	private Double windVariableFrom;
@@ -79,6 +89,9 @@ public class MetarData {
 	@Column(name = "visibility")
 	private Double visibility;
 
+	@Column(name = "visibility_m", updatable = false, insertable = false)
+	private Double visibilityM;
+
 	@Column(name = "temp_c")
 	private Double temperature;
 
@@ -91,6 +104,9 @@ public class MetarData {
 
 	@Column(name = "altimeter")
 	private Double altimeter;
+
+	@Column(name = "altimeterHpa", updatable = false, insertable = false)
+	private Double altimeterHpa;
 
 	@Column(name = "ceiling_ft")
 	private Integer ceiling;
@@ -107,11 +123,11 @@ public class MetarData {
 	@Column(name = "raw_text")
 	private String rawText;
 
-	@OneToMany(mappedBy = "metar", fetch = LAZY)
+	@OneToMany(mappedBy = "metar", cascade = ALL, orphanRemoval = true, fetch = LAZY)
 	@BatchSize(size = 100)
 	private Set<CloudData> clouds = new LinkedHashSet<>();
 
-	@OneToMany(mappedBy = "metar", fetch = LAZY)
+	@OneToMany(mappedBy = "metar", cascade = ALL, orphanRemoval = true, fetch = LAZY)
 	@BatchSize(size = 100)
 	private Set<WeatherData> weathers = new LinkedHashSet<>();
 
