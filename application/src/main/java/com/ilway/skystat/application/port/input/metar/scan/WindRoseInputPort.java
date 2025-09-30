@@ -1,4 +1,4 @@
-package com.ilway.skystat.application.port.input.metar;
+package com.ilway.skystat.application.port.input.metar.scan;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;

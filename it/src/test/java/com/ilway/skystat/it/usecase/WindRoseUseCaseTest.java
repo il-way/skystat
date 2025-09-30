@@ -4,7 +4,7 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
-import com.ilway.skystat.application.port.input.metar.WindRoseInputPort;
+import com.ilway.skystat.application.port.input.metar.scan.WindRoseInputPort;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;

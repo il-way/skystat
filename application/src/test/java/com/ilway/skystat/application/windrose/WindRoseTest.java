@@ -2,7 +2,6 @@ package com.ilway.skystat.application.windrose;
 
 import java.time.Month;
 import java.util.List;
-import java.util.Map;
 
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
-import com.ilway.skystat.application.port.input.metar.WindRoseInputPort;
+import com.ilway.skystat.application.port.input.metar.scan.WindRoseInputPort;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import com.ilway.skystat.application.windrose.data.WindRoseTestData;
 
