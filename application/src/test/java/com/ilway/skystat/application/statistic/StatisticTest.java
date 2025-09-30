@@ -10,9 +10,9 @@ import com.ilway.skystat.application.model.weather.WeatherCondition;
 import com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.ilway.skystat.application.port.input.metar.CloudStatisticInputPort;
-import com.ilway.skystat.application.port.input.metar.ThresholdStatisticInputPort;
-import com.ilway.skystat.application.port.input.metar.WeatherStatisticInputPort;
+import com.ilway.skystat.application.port.input.metar.scan.CloudStatisticInputPort;
+import com.ilway.skystat.application.port.input.metar.scan.ThresholdStatisticInputPort;
+import com.ilway.skystat.application.port.input.metar.scan.WeatherStatisticInputPort;
 import com.ilway.skystat.application.statistic.data.StatisticTestData;
 
 import java.util.List;
