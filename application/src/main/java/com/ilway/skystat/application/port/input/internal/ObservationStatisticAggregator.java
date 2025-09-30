@@ -44,14 +44,24 @@ public final class ObservationStatisticAggregator {
 		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toEsclusive());
 
 		List<MonthlyCountDto> monthly = months.stream()
-			                                .map(ym -> new MonthlyCountDto(ym, monthSet.getOrDefault(ym, Collections.emptySet()).size()))
+			                                .map(ym -> new MonthlyCountDto(
+				                                ym.getYear(),
+				                                ym.getMonthValue(),
+				                                monthSet.getOrDefault(ym, Collections.emptySet()).size())
+			                                )
 			                                .toList();
 
 		List<HourlyCountDto> hourly = months.stream()
 			                              .flatMap(ym -> {
 				                              Map<Integer, Set<LocalDate>> byHour = hourSet.getOrDefault(ym, Collections.emptyMap());
-				                              return IntStream.range(0,24)
-					                                     .mapToObj(h -> new HourlyCountDto(ym, h, byHour.getOrDefault(h, Collections.emptySet()).size()));
+				                              return IntStream.range(0, 24)
+					                                     .mapToObj(h -> new HourlyCountDto(
+							                                     ym.getYear(),
+							                                     ym.getMonthValue(),
+							                                     h,
+							                                     byHour.getOrDefault(h, Collections.emptySet()).size()
+						                                     )
+					                                     );
 			                              })
 			                              .toList();
 
@@ -66,14 +76,23 @@ public final class ObservationStatisticAggregator {
 		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toEsclusive());
 
 		List<MonthlyCountDto> monthly = months.stream()
-			                             .map(ym -> new MonthlyCountDto(ym, countMonthly.getOrDefault(ym, 0L)))
-			                             .toList();
+			                                .map(ym -> new MonthlyCountDto(
+				                                ym.getYear(),
+				                                ym.getMonthValue(),
+				                                countMonthly.getOrDefault(ym, 0L))
+			                                )
+			                                .toList();
 
 		List<HourlyCountDto> hourly = months.stream()
 			                              .flatMap(ym -> {
 				                              Map<Integer, Long> byHour = countHourly.getOrDefault(ym, Collections.emptyMap());
-																			return IntStream.range(0,24)
-																				       .mapToObj(h -> new HourlyCountDto(ym, h, byHour.getOrDefault(h, 0L)));
+				                              return IntStream.range(0, 24)
+					                                     .mapToObj(h -> new HourlyCountDto(
+						                                     ym.getYear(),
+						                                     ym.getMonthValue(),
+						                                     h,
+						                                     byHour.getOrDefault(h, 0L))
+					                                     );
 			                              })
 			                              .toList();
 

@@ -1,8 +1,4 @@
 package com.ilway.skystat.application.dto.statistic;
 
-import java.time.YearMonth;
-
-public record MonthlyCountDto(
-	YearMonth yearMonth,
-	long count
-) {}
+public record MonthlyCountDto(int year, int month, long count) {
+}
