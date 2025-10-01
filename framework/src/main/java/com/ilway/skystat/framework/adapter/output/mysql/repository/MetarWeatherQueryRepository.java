@@ -31,10 +31,10 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
     ORDER BY YEAR(m.reportTime), MONTH(m.reportTime)
 	""")
 	List<MonthlyCountQueryDto> countPhenomenaDaysByMonth(@Param("icao") String icao,
-	                                                     @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                     @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                     @Param("phenomena") List<WeatherPhenomenon> phenomena,
-	                                                     @Param("phenomenaCount") int phenomenaCount);
+	                                                    @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                    @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                    @Param("phenomena") List<WeatherPhenomenon> phenomena,
+	                                                    @Param("phenomenaCount") int phenomenaCount);
 
 	@Query("""
 		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
@@ -54,10 +54,10 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 		ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 	""")
 	List<HourlyCountQueryDto> countPhenomenaDaysByMonthHour(@Param("icao") String icao,
-	                                                        @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                        @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                        @Param("phenomena") List<WeatherPhenomenon> phenomena,
-	                                                        @Param("phenomenaCount") int phenomenaCount);
+	                                                         @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                         @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                         @Param("phenomena") List<WeatherPhenomenon> phenomena,
+	                                                         @Param("phenomenaCount") int phenomenaCount);
 
 	@Query("""
 		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
@@ -76,10 +76,10 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
     ORDER BY YEAR(m.reportTime), MONTH(m.reportTime)
 	""")
 	List<MonthlyCountQueryDto> countDescriptorDaysByMonth(@Param("icao") String icao,
-	                                                      @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                      @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                      @Param("descriptors") List<WeatherDescriptor> descriptors,
-	                                                      @Param("descriptorsCount") int descriptorsCount);
+	                                                     @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                     @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                     @Param("descriptors") List<WeatherDescriptor> descriptors,
+	                                                     @Param("descriptorsCount") int descriptorsCount);
 
 	@Query("""
 		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
@@ -99,10 +99,10 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 		ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 	""")
 	List<HourlyCountQueryDto> countDescriptorDaysByMonthHour(@Param("icao") String icao,
-	                                                         @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                         @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                         @Param("descriptors") List<WeatherDescriptor> descriptors,
-	                                                         @Param("descriptorsCount") int descriptorsCount);
+	                                                          @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                          @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                          @Param("descriptors") List<WeatherDescriptor> descriptors,
+	                                                          @Param("descriptorsCount") int descriptorsCount);
 
 	@Query("""
 		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
@@ -124,12 +124,12 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
     ORDER BY YEAR(m.reportTime), MONTH(m.reportTime)
 	""")
 	List<MonthlyCountQueryDto> countDescriptorAndPhenomenaDaysByMonth(@Param("icao") String icao,
-	                                                                  @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                                  @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                                  @Param("phenomena") List<WeatherPhenomenon> phenomena,
-	                                                                  @Param("descriptors") List<WeatherDescriptor> descriptors,
-	                                                                  @Param("phenomenaCount") int phenomenaCount,
-	                                                                  @Param("descriptorsCount") int descriptorsCount);
+	                                                                 @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                                 @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                                 @Param("phenomena") List<WeatherPhenomenon> phenomena,
+	                                                                 @Param("descriptors") List<WeatherDescriptor> descriptors,
+	                                                                 @Param("phenomenaCount") int phenomenaCount,
+	                                                                 @Param("descriptorsCount") int descriptorsCount);
 
 	@Query("""
 		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
@@ -152,12 +152,12 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 		ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 	""")
 	List<HourlyCountQueryDto> countDescriptorAndPhenomenaDaysByMonthHour(@Param("icao") String icao,
-	                                                                     @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                                     @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                                     @Param("phenomena") List<WeatherPhenomenon> phenomena,
-	                                                                     @Param("descriptors") List<WeatherDescriptor> descriptors,
-	                                                                     @Param("phenomenaCount") int phenomenaCount,
-	                                                                     @Param("descriptorsCount") int descriptorsCount);
+	                                                                      @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                                      @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                                      @Param("phenomena") List<WeatherPhenomenon> phenomena,
+	                                                                      @Param("descriptors") List<WeatherDescriptor> descriptors,
+	                                                                      @Param("phenomenaCount") int phenomenaCount,
+	                                                                      @Param("descriptorsCount") int descriptorsCount);
 //	@Query("""
 //		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDtoyDto(
 //			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
@@ -174,10 +174,10 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 //    GROUP BY YEAR(m.reportTime), MONTH(m.reportTime)
 //    ORDER BY YEAR(m.reportTime), MONTH(m.reportTime)
 //	""")
-//	List<HourlyCountQueryDto> countDescriptorAndPhenomenaDaysByMonth(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, WeatherDescriptor descriptor, WeatherPhenomenon phenomenon);
+//	List<MonthlyCountQueryDto> countDescriptorAndPhenomenaDaysByMonth(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, WeatherDescriptor descriptor, WeatherPhenomenon phenomenon);
 //
 //	@Query("""
-//		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
+//		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 //			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 //			COUNT(DISTINCT DAY(m.reportTime))
 //		)
@@ -193,6 +193,6 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 //		GROUP BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 //		ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 //	""")
-//	List<MonthlyCountQueryDto> countDescriptorAndPhenomenaDaysByMonthHour(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, WeatherDescriptor descriptor);
+//	List<HourlyCountQueryDto> countDescriptorAndPhenomenaDaysByMonthHour(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, WeatherDescriptor descriptor);
 
 }
