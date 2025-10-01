@@ -15,7 +15,7 @@ import java.util.List;
 public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long> {
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
     FROM MetarData m
@@ -29,12 +29,12 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
     ORDER BY YEAR(m.reportTime), MONTH(m.reportTime)
 	""")
 	List<MonthlyCountQueryDto> countCloudTypeDaysByMonth(@Param("icao") String icao,
-	                                                     @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                     @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                     @Param("cloudType") CloudType cloudType);
+	                                                    @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                    @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                    @Param("cloudType") CloudType cloudType);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyHourlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
@@ -49,12 +49,12 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
 		ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 	""")
 	List<HourlyCountQueryDto> countCloudTypeDaysByMonthHour(@Param("icao") String icao,
-	                                                        @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                        @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                        @Param("cloudType") CloudType cloudType);
+	                                                         @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                         @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                         @Param("cloudType") CloudType cloudType);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
     FROM MetarData m
@@ -68,12 +68,12 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
     ORDER BY YEAR(m.reportTime), MONTH(m.reportTime)
 	""")
 	List<MonthlyCountQueryDto> countCloudCoverageDaysByMonth(@Param("icao") String icao,
-	                                                         @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                         @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                         @Param("type") CloudCoverage coverage);
+	                                                        @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                        @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                        @Param("type") CloudCoverage coverage);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyHourlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
@@ -88,8 +88,8 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
 		ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 	""")
 	List<HourlyCountQueryDto> countCloudCoverageDaysByMonthHour(@Param("icao") String icao,
-	                                                            @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                            @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                            @Param("coverage") CloudCoverage coverage);
+	                                                             @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                             @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                             @Param("coverage") CloudCoverage coverage);
 
 }

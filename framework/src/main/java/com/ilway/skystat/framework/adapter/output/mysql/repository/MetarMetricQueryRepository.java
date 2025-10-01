@@ -12,7 +12,7 @@ import java.util.List;
 public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Long> {
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
 		FROM MetarData m
@@ -25,7 +25,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<MonthlyCountQueryDto> countWindSpeedKtGteByMonth(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyHourlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
@@ -39,7 +39,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<HourlyCountQueryDto> countWindSpeedKtGteByMonthHour(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
 		FROM MetarData m
@@ -52,7 +52,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<MonthlyCountQueryDto> countWindPeakKtGteByMonth(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyHourlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
@@ -66,7 +66,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<HourlyCountQueryDto> countWindPeakKtGteByMonthHour(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
 		FROM MetarData m
@@ -79,7 +79,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<MonthlyCountQueryDto> countVisibilityMeterLteByMonth(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyHourlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
@@ -93,7 +93,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<HourlyCountQueryDto> countVisibilityMeterLteByMonthHour(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
 		FROM MetarData m
@@ -106,7 +106,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<MonthlyCountQueryDto> countCeilingLteByMonth(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyHourlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
@@ -120,7 +120,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<HourlyCountQueryDto> countCeilingLteByMonthHour(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
 		FROM MetarData m
@@ -133,7 +133,7 @@ public interface MetarMetricQueryRepository extends JpaRepository<MetarData, Lon
 	List<MonthlyCountQueryDto> countAltimeterHpaLteByMonth(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive, double threshold);
 
 	@Query("""
-		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyHourlyDayCount(
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
 			YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime),
 			COUNT(DISTINCT DAY(m.reportTime))
 		)

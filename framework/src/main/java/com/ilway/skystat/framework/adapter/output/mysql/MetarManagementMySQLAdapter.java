@@ -51,7 +51,7 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period) {
-		List<Long> ids = repository.findIdsByIcaoAndPeriod(icao, period.fromInclusive(), period.toEsclusive());
+		List<Long> ids = repository.findIdsByIcaoAndPeriod(icao, period.fromInclusive(), period.toExclusive());
 		return retrieveMetarsInChunks(ids);
 	}
 

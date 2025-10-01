@@ -45,7 +45,7 @@ public enum WeatherConditionPredicate {
 	  return out;
   }
 
-  private static <T> List<T> extract(List<WeatherDescription> src, Class<T> clazz) {
+  public static <T> List<T> extract(List<WeatherDescription> src, Class<T> clazz) {
     return src.stream()
              .filter(clazz::isInstance)
              .map(clazz::cast)

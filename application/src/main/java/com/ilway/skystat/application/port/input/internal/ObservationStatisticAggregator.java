@@ -41,7 +41,7 @@ public final class ObservationStatisticAggregator {
 				.add(day);
 		});
 
-		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toEsclusive());
+		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toExclusive());
 
 		List<MonthlyCountDto> monthly = months.stream()
 			                                .map(ym -> new MonthlyCountDto(
@@ -73,7 +73,7 @@ public final class ObservationStatisticAggregator {
 	                                                   Map<YearMonth, Map<Integer, Long>> countHourly,
 	                                                   RetrievalPeriod period) {
 
-		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toEsclusive());
+		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toExclusive());
 
 		List<MonthlyCountDto> monthly = months.stream()
 			                                .map(ym -> new MonthlyCountDto(
