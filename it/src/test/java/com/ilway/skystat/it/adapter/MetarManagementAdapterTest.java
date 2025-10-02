@@ -3,23 +3,35 @@ package com.ilway.skystat.it.adapter;
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
+import com.ilway.skystat.it.config.MySQLConfigData;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@RequiredArgsConstructor
-public class MetarManagementAdapterTest {
+@Transactional
+public class MetarManagementAdapterTest extends MySQLConfigData {
 
-	@Autowired MetarManagementResourceFileAdapter fileAdapter;
-	@Autowired MetarManagementMySQLAdapter sqlAdapter;
+	private final MetarManagementResourceFileAdapter fileAdapter;
+	private final MetarManagementMySQLAdapter sqlAdapter;
+
+	@Autowired
+	public MetarManagementAdapterTest(MetarManagementRepository repository,
+	                                  EntityManager em) {
+		super(repository, em);
+		this.fileAdapter = new MetarManagementResourceFileAdapter();
+		this.sqlAdapter = new MetarManagementMySQLAdapter(repository, em);
+	}
 
 	private final static String ICAO = "rksi";
 

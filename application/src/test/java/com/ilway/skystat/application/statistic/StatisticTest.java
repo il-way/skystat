@@ -47,7 +47,6 @@ public class StatisticTest extends StatisticTestData {
 		);
 
 		ObservationStatisticResult response = thresholdStatisticUseCase.execute(query);
-		System.out.println(response.toString());
 		ObservationStatisticResult actual = ObservationStatisticAggregator.peelOffZeroCount(response);
 		assertAll(
 			() -> assertEquals(1, actual.monthly().size()),
