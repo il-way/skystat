@@ -69,32 +69,8 @@ public final class ObservationStatisticAggregator {
 		return new ObservationStatisticResult(monthly, hourly);
 	}
 
-	public static ObservationStatisticResult aggregate(Map<YearMonth, Long> countMonthly,
-	                                                   Map<YearMonth, Map<Integer, Long>> countHourly,
-	                                                   RetrievalPeriod period) {
-
-		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toExclusive());
-
-		List<MonthlyCountDto> monthly = months.stream()
-			                                .map(ym -> new MonthlyCountDto(
-				                                ym.getYear(),
-				                                ym.getMonthValue(),
-				                                countMonthly.getOrDefault(ym, 0L))
-			                                )
-			                                .toList();
-
-		List<HourlyCountDto> hourly = months.stream()
-			                              .flatMap(ym -> {
-				                              Map<Integer, Long> byHour = countHourly.getOrDefault(ym, Collections.emptyMap());
-				                              return IntStream.range(0, 24)
-					                                     .mapToObj(h -> new HourlyCountDto(
-						                                     ym.getYear(),
-						                                     ym.getMonthValue(),
-						                                     h,
-						                                     byHour.getOrDefault(h, 0L))
-					                                     );
-			                              })
-			                              .toList();
+	public static ObservationStatisticResult aggregate(List<MonthlyCountDto> monthly,
+	                                                   List<HourlyCountDto> hourly) {
 
 		return new ObservationStatisticResult(monthly, hourly);
 	}
