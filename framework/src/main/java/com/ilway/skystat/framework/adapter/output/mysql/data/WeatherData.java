@@ -7,7 +7,9 @@ import com.ilway.skystat.framework.adapter.output.mysql.data.converter.WeatherDe
 import com.ilway.skystat.framework.adapter.output.mysql.data.converter.WeatherPhenomenaConverter;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Array;
 import org.hibernate.annotations.BatchSize;
+import org.springframework.core.annotation.Order;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -38,17 +40,22 @@ public class WeatherData {
 	@JoinColumn(name = "metar_id")
 	private MetarData metar;
 
+	@Column(name = "raw_code")
+	private String rawCode;
+
 	@Column(name = "intensity")
 	@Enumerated(STRING)
 	private WeatherIntensity intensity;
 
 	@OneToMany(mappedBy = "weather", cascade = ALL, orphanRemoval = true, fetch = LAZY)
+	@OrderColumn(name = "descriptor_order")
 	@BatchSize(size = 100)
-	private Set<WeatherDescriptorData> descriptors = new LinkedHashSet<>();
+	private List<WeatherDescriptorData> descriptors = new ArrayList<>();
 
 	@OneToMany(mappedBy = "weather", cascade = ALL, orphanRemoval = true, fetch = LAZY)
+	@OrderColumn(name = "phenomenon_order")
 	@BatchSize(size = 100)
-	private Set<WeatherPhenomenonData> phenomena = new LinkedHashSet<>();
+	private List<WeatherPhenomenonData> phenomena = new ArrayList<>();
 
 	public void addDescriptor(WeatherDescriptorData d) {
 		descriptors.add(d);

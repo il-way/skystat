@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import static com.ilway.skystat.domain.vo.metar.ReportType.AUTO;
 import static com.ilway.skystat.domain.vo.unit.TemperatureUnit.CELSIUS;
+import static java.util.stream.Collectors.joining;
 
 public class MetarMySQLMapper {
 
@@ -49,15 +50,17 @@ public class MetarMySQLMapper {
 			                    .intensity(weather.getIntensity())
 			                    .descriptors(weather.getDescriptors().stream()
 				                                 .map(MetarMySQLMapper::weatherDescriptorDomainToData)
-				                                 .collect(Collectors.toSet())
+				                                 .collect(Collectors.toList())
 			                    )
 			                    .phenomena(weather.getPhenomena().stream()
 				                               .map(MetarMySQLMapper::weatherPhenomenonDomainToData)
-				                               .collect(Collectors.toSet()))
+				                               .collect(Collectors.toList()))
+			                    .rawCode(buildWeatherRawCode(weather))
 			                    .build();
 
 		wd.getDescriptors().forEach(d -> d.setWeather(wd));
 		wd.getPhenomena().forEach(p -> p.setWeather(wd));
+
 		return wd;
 	}
 
@@ -157,6 +160,14 @@ public class MetarMySQLMapper {
 		WindDirectionType windDirectionType = metarData.getWindDirectionType();
 		WindDirection windDirection = WindDirection.of(windDirectionType, metarData.getWindDirection());
 		return Wind.of(windDirection, metarData.getWindSpeed(), metarData.getWindGust(), metarData.getWindUnit());
+	}
+
+	private static String buildWeatherRawCode(Weather w) {
+		String intensity = w.getIntensity().getSymbol();
+		String desc = w.getDescriptors().stream().map(Enum::name).collect(joining());
+		String phenomena = w.getPhenomena().stream().map(Enum::name).collect(joining());
+
+		return (intensity + desc + phenomena).toUpperCase();
 	}
 
 }

@@ -2,18 +2,15 @@ package com.ilway.skystat.domain.service;
 
 import com.ilway.skystat.domain.vo.weather.Weather;
 import com.ilway.skystat.domain.vo.weather.Weathers;
+import com.ilway.skystat.domain.vo.weather.type.WeatherDescription;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class WeatherOperation {
-
-	public static boolean contains(Weathers wg, String target) {
-		return wg.getWeathers().stream()
-			       .anyMatch(w -> contains(w, target));
-	}
 
 	public static boolean containsPhenomena(Weathers wg, List<WeatherPhenomenon> target) {
 		return wg.getWeathers().stream()
@@ -25,31 +22,49 @@ public class WeatherOperation {
 			.anyMatch(w -> containsDescriptors(w, target));
 	}
 
-	public static boolean contains(Weather w, String target) {
-		List<WeatherPhenomenon> targetPhenomena = new ArrayList<>();
+	public static boolean containsDescriptorsAndPhenomena(Weathers wg, List<WeatherDescription> target) {
+		if (target == null) {
+			throw new IllegalArgumentException("target must not be null");
+		}
+		if (target.isEmpty()) {
+			return true;
+		}
+
 		List<WeatherDescriptor> targetDescriptors = new ArrayList<>();
+		List<WeatherPhenomenon> targetPhenomena = new ArrayList<>();
 
-		for (int idx=0; idx<target.length(); idx+=2) {
-			String targetCode = target.substring(2 * idx, 2 * (idx + 1));
-			if (WeatherPhenomenon.names().contains(targetCode)) {
-				targetPhenomena.add(WeatherPhenomenon.valueOf(targetCode));
-				continue;
-			}
-
-			if (WeatherDescriptor.names().contains(targetCode)) {
-				targetDescriptors.add(WeatherDescriptor.valueOf(targetCode));
+		boolean seenPhenomenon = false;
+		for (WeatherDescription d : target) {
+			if (d instanceof WeatherDescriptor wd) {
+				if (seenPhenomenon) return false; // 현상(Phenomena) 뒤에 기술(Descriptor)이 나오면 형식 위반
+				targetDescriptors.add(wd);
+			} else if (d instanceof WeatherPhenomenon wp) {
+				seenPhenomenon = true;
+				targetPhenomena.add(wp);
+			} else {
+				return false; // 이 타입 외에는 허용하지 않음
 			}
 		}
 
-		return containsDescriptors(w, targetDescriptors) && containsPhenomena(w, targetPhenomena);
+		// 둘 다 존재해야 "Descriptors AND Phenomena" 의미 충족
+		if (targetDescriptors.isEmpty() || targetPhenomena.isEmpty()) {
+			return false;
+		}
+
+		// 2) 어떤 Weather 하나라도 "정확히 같은 리스트(순서+길이)"면 존재
+		return wg.getWeathers().stream()
+			       .anyMatch(w -> w.getDescriptors().equals(targetDescriptors)
+				                      && w.getPhenomena().equals(targetPhenomena));
 	}
 
 	public static boolean containsDescriptors(Weather w, List<WeatherDescriptor> target) {
-		return containsOrdered(w.getDescriptors(), target);
+		return w.getDescriptors().equals(target);
+		//		return containsOrdered(w.getDescriptors(), target);
 	}
 
 	public static boolean containsPhenomena(Weather w, List<WeatherPhenomenon> target) {
-		return containsOrdered(w.getPhenomena(), target);
+		return w.getPhenomena().equals(target);
+//		return containsOrdered(w.getPhenomena(), target);
 	}
 
 	private static <T> boolean containsOrdered(List<T> source, List<T> target) {

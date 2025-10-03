@@ -11,9 +11,9 @@ import java.util.List;
 @Value
 public class Weather {
 
+  private final WeatherIntensity intensity;
   private final List<WeatherDescriptor> descriptors;
   private final List<WeatherPhenomenon> phenomena;
-  private final WeatherIntensity intensity;
 
   @Builder
   public Weather(WeatherIntensity intensity, List<WeatherDescriptor> descriptors, List<WeatherPhenomenon> phenomena) {

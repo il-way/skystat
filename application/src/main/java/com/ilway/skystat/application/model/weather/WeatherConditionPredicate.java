@@ -11,22 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiPredicate;
 
+import static com.ilway.skystat.domain.service.WeatherOperation.*;
+import static com.ilway.skystat.domain.service.WeatherOperation.containsDescriptors;
+
 @RequiredArgsConstructor
 public enum WeatherConditionPredicate {
 
   HAS_PHENOMENA((wg, target) ->
-                  WeatherOperation.containsPhenomena(wg, cast(target, WeatherPhenomenon.class))),
+                  containsPhenomena(wg, cast(target, WeatherPhenomenon.class))),
 
   HAS_DESCRIPTORS((wg, target) ->
-                   WeatherOperation.containsDescriptors(wg, cast(target, WeatherDescriptor.class))),
+                   containsDescriptors(wg, cast(target, WeatherDescriptor.class))),
 
-  HAS_DESCRIPTORS_AND_PHENOMENA((wg, target) ->
-	                  WeatherOperation.containsDescriptors(wg, extract(target, WeatherDescriptor.class))
-                 && WeatherOperation.containsPhenomena(wg, extract(target, WeatherPhenomenon.class)));
+  HAS_DESCRIPTORS_AND_PHENOMENA(WeatherOperation::containsDescriptorsAndPhenomena);
 
   private final BiPredicate<Weathers, List<WeatherDescription>> tester;
 
-  public boolean test(Weathers wg, List<WeatherDescription> target ) {
+  public boolean test(Weathers wg, List<WeatherDescription> target) {
     return tester.test(wg, target);
   }
 

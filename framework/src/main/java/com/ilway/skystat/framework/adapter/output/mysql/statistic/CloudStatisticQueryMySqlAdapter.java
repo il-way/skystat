@@ -21,7 +21,6 @@ public class CloudStatisticQueryMySqlAdapter implements CloudStatisticQueryOutpu
 
 	private final MetarCloudQueryRepository cloudQueryRepository;
 
-
 	@Override
 	public List<MonthlyCountDto> countDistinctDaysByMonth(String icao, RetrievalPeriod period, CloudCondition condition) {
 		CloudConditionPredicate predicate = condition.predicate();
