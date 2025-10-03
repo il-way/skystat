@@ -6,6 +6,7 @@ import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
 import com.ilway.skystat.application.model.weather.WeatherCondition;
 import com.ilway.skystat.application.model.weather.WeatherConditionPredicate;
 import com.ilway.skystat.application.port.output.WeatherStatisticQueryOutputPort;
+import com.ilway.skystat.domain.vo.weather.type.WeatherDescription;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMapper;
@@ -15,13 +16,15 @@ import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCo
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.ilway.skystat.application.model.weather.WeatherConditionPredicate.extract;
+import static java.util.stream.Collectors.*;
 
 @RequiredArgsConstructor
 public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryOutputPort {
 
-	private MetarWeatherQueryRepository weatherQueryRepository;
+	private final MetarWeatherQueryRepository weatherQueryRepository;
 
 	@Override
 	public List<MonthlyCountDto> countDistinctDaysByMonth(String icao, RetrievalPeriod period, WeatherCondition condition) {
@@ -32,25 +35,34 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 				period.fromInclusive(),
 				period.toExclusive(),
 				extract(condition.target(), WeatherPhenomenon.class),
-				condition.target().size()
+				condition.target().size(),
+				extract(condition.target(), WeatherPhenomenon.class).stream()
+					.map(Enum::name)
+					.collect(joining())
 			);
 			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorDaysByMonth(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
 				extract(condition.target(), WeatherDescriptor.class),
-				condition.target().size()
+				condition.target().size(),
+				extract(condition.target(), WeatherDescriptor.class).stream()
+					.map(Enum::name)
+					.collect(joining())
 			);
 			case HAS_DESCRIPTORS_AND_PHENOMENA -> {
-				List<WeatherPhenomenon> wp = extract(condition.target(), WeatherPhenomenon.class);
 				List<WeatherDescriptor> wd = extract(condition.target(), WeatherDescriptor.class);
+				List<WeatherPhenomenon> wp = extract(condition.target(), WeatherPhenomenon.class);
+				String wdCode = wd.stream().map(Enum::name).collect(joining());
+				String wpCode = wp.stream().map(Enum::name).collect(joining());
 
 				yield weatherQueryRepository.countDescriptorAndPhenomenaDaysByMonth(
 					icao, period.fromInclusive(), period.toExclusive(),
-					wp,
 					wd,
+					wp,
+					wd.size(),
 					wp.size(),
-					wd.size()
+					(wdCode + wpCode)
 				);
 			}
 		};
@@ -67,25 +79,34 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 				period.fromInclusive(),
 				period.toExclusive(),
 				extract(condition.target(), WeatherPhenomenon.class),
-				condition.target().size()
+				condition.target().size(),
+				extract(condition.target(), WeatherPhenomenon.class).stream()
+					.map(Enum::name)
+					.collect(joining())
 			);
 			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorDaysByMonthHour(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
 				extract(condition.target(), WeatherDescriptor.class),
-				condition.target().size()
+				condition.target().size(),
+				extract(condition.target(), WeatherDescriptor.class).stream()
+					.map(Enum::name)
+					.collect(joining())
 			);
 			case HAS_DESCRIPTORS_AND_PHENOMENA -> {
-				List<WeatherPhenomenon> wp = extract(condition.target(), WeatherPhenomenon.class);
 				List<WeatherDescriptor> wd = extract(condition.target(), WeatherDescriptor.class);
+				List<WeatherPhenomenon> wp = extract(condition.target(), WeatherPhenomenon.class);
+				String wdCode = wd.stream().map(Enum::name).collect(joining());
+				String wpCode = wp.stream().map(Enum::name).collect(joining());
 
 				yield weatherQueryRepository.countDescriptorAndPhenomenaDaysByMonthHour(
 					icao, period.fromInclusive(), period.toExclusive(),
-					wp,
 					wd,
+					wp,
+					wd.size(),
 					wp.size(),
-					wd.size()
+					(wdCode + wpCode)
 				);
 			}
 		};
