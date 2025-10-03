@@ -70,7 +70,7 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
 	List<MonthlyCountQueryDto> countCloudCoverageDaysByMonth(@Param("icao") String icao,
 	                                                        @Param("fromInclusive") ZonedDateTime fromInclusive,
 	                                                        @Param("toExclusive") ZonedDateTime toExclusive,
-	                                                        @Param("type") CloudCoverage coverage);
+	                                                        @Param("coverage") CloudCoverage coverage);
 
 	@Query("""
 		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto(
