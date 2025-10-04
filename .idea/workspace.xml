@@ -318,7 +318,20 @@
       <recent name="com.ilway.skystat.bootstrap.profile" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ThresholdStatisticQueryTest">
+  <component name="RunManager" selected="애플리케이션.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
+      <module name="skystat.bootstrap.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ThresholdStatisticQueryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -391,30 +404,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ThresholdStatisticQueryTest.windPeakGteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":it:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest.windPeakGteTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="ThresholdStatisticQueryTest.windSpeedGteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -464,16 +453,16 @@
       <item itemvalue="Gradle.ThresholdStatisticQueryTest" />
       <item itemvalue="Gradle.ThresholdStatisticQueryTest.altimeterLteTest" />
       <item itemvalue="Gradle.ThresholdStatisticQueryTest.ceilingLteTest" />
-      <item itemvalue="Gradle.ThresholdStatisticQueryTest.windPeakGteTest" />
       <item itemvalue="Gradle.ThresholdStatisticQueryTest.windSpeedGteTest" />
+      <item itemvalue="애플리케이션.App" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.App" />
         <item itemvalue="Gradle.ThresholdStatisticQueryTest" />
         <item itemvalue="Gradle.ThresholdStatisticQueryTest.altimeterLteTest" />
         <item itemvalue="Gradle.ThresholdStatisticQueryTest.ceilingLteTest" />
         <item itemvalue="Gradle.ThresholdStatisticQueryTest.windSpeedGteTest" />
-        <item itemvalue="Gradle.ThresholdStatisticQueryTest.windPeakGteTest" />
       </list>
     </recent_temporary>
   </component>
