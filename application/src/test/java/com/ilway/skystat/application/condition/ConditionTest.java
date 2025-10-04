@@ -73,7 +73,7 @@ public class ConditionTest extends ConditionTestData {
 		ThresholdConditionQuery query = new ThresholdConditionQuery(
 			"KORF",
 			ofUTC(7, 19, 4, 0),
-			new ThresholdCondition(MetricField.PEAK_WIND, Comparison.GTE, 25, KT)
+			new ThresholdCondition(MetricField.WIND_PEAK, Comparison.GTE, 25, KT)
 		);
 
 		boolean actual = thresholdConditionUseCase.execute(query);

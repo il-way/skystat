@@ -36,4 +36,8 @@ public class WindOperation {
     return roundingPolicy.apply(policyMap.get(policyType).calculate(wind, runways));
   }
 
+  public static double getWindPeak(Wind wind) {
+    return Math.max(wind.getSpeed(), wind.getGusts());
+  }
+
 }

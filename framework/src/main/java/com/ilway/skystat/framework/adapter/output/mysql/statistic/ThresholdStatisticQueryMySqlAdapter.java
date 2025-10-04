@@ -3,7 +3,6 @@ package com.ilway.skystat.framework.adapter.output.mysql.statistic;
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.HourlyCountDto;
 import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
-import com.ilway.skystat.application.exception.AggregationUnavailableException;
 import com.ilway.skystat.application.model.generic.Comparison;
 import com.ilway.skystat.application.model.weather.*;
 import com.ilway.skystat.application.port.output.ThresholdStatisticQueryOutputPort;
@@ -14,7 +13,6 @@ import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCo
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import static com.ilway.skystat.application.model.generic.Comparison.GTE;
 import static com.ilway.skystat.application.model.generic.Comparison.LTE;
@@ -46,7 +44,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				period.toExclusive(),
 				condition.unit().convertTo(condition.threshold(), KT)
 			));
-			case PEAK_WIND -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindPeakKtGteByMonth(
+			case WIND_PEAK -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindPeakKtGteByMonth(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -86,7 +84,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				period.toExclusive(),
 				condition.unit().convertTo(condition.threshold(), KT)
 			));
-			case PEAK_WIND -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindPeakKtGteByMonthHour(
+			case WIND_PEAK -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindPeakKtGteByMonthHour(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),

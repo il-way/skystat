@@ -191,6 +191,12 @@
     "Gradle.TafTest.print.executor": "Run",
     "Gradle.TemperatureTest.executor": "Run",
     "Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor": "Run",
+    "Gradle.ThresholdStatisticQueryTest.altimeterLteTest.executor": "Run",
+    "Gradle.ThresholdStatisticQueryTest.ceilingLteTest.executor": "Run",
+    "Gradle.ThresholdStatisticQueryTest.executor": "Run",
+    "Gradle.ThresholdStatisticQueryTest.visibilityLteTest.executor": "Run",
+    "Gradle.ThresholdStatisticQueryTest.windPeakGteTest.executor": "Run",
+    "Gradle.ThresholdStatisticQueryTest.windSpeedGteTest.executor": "Run",
     "Gradle.UnitConversionTest.c_to_f.executor": "Run",
     "Gradle.UnitConversionTest.executor": "Run",
     "Gradle.UnitConversionTest.f_to_c.executor": "Run",
@@ -312,32 +318,8 @@
       <recent name="com.ilway.skystat.bootstrap.profile" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ThresholdStatisticQueryTest.visibilityLteTest">
-    <configuration name="CloudOperationTest.getCeilingTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":domain:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.domain.service.CloudOperationTest.getCeilingTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="CloudStatisticQueryTest.hasCloudCoverageTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ThresholdStatisticQueryTest">
+    <configuration name="ThresholdStatisticQueryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -350,7 +332,7 @@
           <list>
             <option value=":it:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.CloudStatisticQueryTest.hasCloudCoverageTest&quot;" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -361,7 +343,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="CloudStatisticQueryTest.hasCloudTypeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThresholdStatisticQueryTest.altimeterLteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -374,7 +356,7 @@
           <list>
             <option value=":it:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.CloudStatisticQueryTest.hasCloudTypeTest&quot;" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest.altimeterLteTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -385,7 +367,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ThresholdStatisticQueryTest.visibilityLteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThresholdStatisticQueryTest.ceilingLteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -398,7 +380,7 @@
           <list>
             <option value=":it:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest.visibilityLteTest&quot;" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest.ceilingLteTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -409,7 +391,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="WeatherStatisticQueryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThresholdStatisticQueryTest.windPeakGteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -422,7 +404,31 @@
           <list>
             <option value=":it:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.WeatherStatisticQueryTest&quot;" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest.windPeakGteTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ThresholdStatisticQueryTest.windSpeedGteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":it:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest.windSpeedGteTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -455,19 +461,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.bootstrap" />
-      <item itemvalue="Gradle.CloudOperationTest.getCeilingTest" />
-      <item itemvalue="Gradle.CloudStatisticQueryTest.hasCloudCoverageTest" />
-      <item itemvalue="Gradle.CloudStatisticQueryTest.hasCloudTypeTest" />
-      <item itemvalue="Gradle.ThresholdStatisticQueryTest.visibilityLteTest" />
-      <item itemvalue="Gradle.WeatherStatisticQueryTest" />
+      <item itemvalue="Gradle.ThresholdStatisticQueryTest" />
+      <item itemvalue="Gradle.ThresholdStatisticQueryTest.altimeterLteTest" />
+      <item itemvalue="Gradle.ThresholdStatisticQueryTest.ceilingLteTest" />
+      <item itemvalue="Gradle.ThresholdStatisticQueryTest.windPeakGteTest" />
+      <item itemvalue="Gradle.ThresholdStatisticQueryTest.windSpeedGteTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ThresholdStatisticQueryTest.visibilityLteTest" />
-        <item itemvalue="Gradle.CloudOperationTest.getCeilingTest" />
-        <item itemvalue="Gradle.CloudStatisticQueryTest.hasCloudCoverageTest" />
-        <item itemvalue="Gradle.CloudStatisticQueryTest.hasCloudTypeTest" />
-        <item itemvalue="Gradle.WeatherStatisticQueryTest" />
+        <item itemvalue="Gradle.ThresholdStatisticQueryTest" />
+        <item itemvalue="Gradle.ThresholdStatisticQueryTest.altimeterLteTest" />
+        <item itemvalue="Gradle.ThresholdStatisticQueryTest.ceilingLteTest" />
+        <item itemvalue="Gradle.ThresholdStatisticQueryTest.windSpeedGteTest" />
+        <item itemvalue="Gradle.ThresholdStatisticQueryTest.windPeakGteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -504,16 +510,6 @@
           <url>file://$PROJECT_DIR$/framework/src/main/java/com/ilway/skystat/framework/adapter/input/rest/WindRoseAdapter.java</url>
           <line>34</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/application/src/main/java/com/ilway/skystat/application/port/input/metar/scan/WindRoseInputPort.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/application/src/main/java/com/ilway/skystat/application/port/input/metar/scan/WindRoseInputPort.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
