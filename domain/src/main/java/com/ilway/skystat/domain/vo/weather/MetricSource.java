@@ -6,5 +6,6 @@ public interface MetricSource {
 	Wind getWind();
 	Altimeter getAltimeter();
 	Clouds getClouds();
+	Temperature getTemperature();
 
 }
