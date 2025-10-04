@@ -65,8 +65,8 @@
         <option value="Enum" />
         <option value="AnnotationType" />
         <option value="Record" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -277,7 +277,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.intentionPowerPack",
     "애플리케이션.App.executor": "Run",
     "애플리케이션.ItTestApp.executor": "Run"
   },
@@ -311,11 +311,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.application.dto.statistic" />
       <recent name="com.ilway.skystat.application.port.input.metar.delegator" />
       <recent name="com.ilway.skystat.framework.adapter.output.mysql.repository" />
       <recent name="com.ilway.skystat.framework.config" />
       <recent name="com.ilway.skystat.framework.adapter.input" />
-      <recent name="com.ilway.skystat.bootstrap.profile" />
     </key>
   </component>
   <component name="RunManager" selected="애플리케이션.App">
