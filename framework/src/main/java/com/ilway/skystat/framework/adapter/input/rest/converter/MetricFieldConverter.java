@@ -12,7 +12,7 @@ public class MetricFieldConverter implements Converter<String, MetricField> {
 		return switch (s) {
 			case "ceiling" -> MetricField.LOWEST_CEILING;
 			case "visibility" -> MetricField.VISIBILITY;
-			case "peakwind" -> MetricField.PEAK_WIND;
+			case "windpeak" -> MetricField.WIND_PEAK;
 			case "windspeed" -> MetricField.WIND_SPEED;
 			case "altimeter" -> MetricField.ALTIMETER;
 			default -> throw new IllegalArgumentException("Unsupported field: " + s);

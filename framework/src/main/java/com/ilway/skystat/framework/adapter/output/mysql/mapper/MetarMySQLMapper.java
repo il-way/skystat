@@ -1,17 +1,22 @@
 package com.ilway.skystat.framework.adapter.output.mysql.mapper;
 
 import com.ilway.skystat.domain.service.CloudOperation;
+import com.ilway.skystat.domain.service.WindOperation;
 import com.ilway.skystat.domain.vo.metar.Metar;
+import com.ilway.skystat.domain.vo.unit.PressureUnit;
+import com.ilway.skystat.domain.vo.unit.SpeedUnit;
 import com.ilway.skystat.domain.vo.weather.*;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
 import com.ilway.skystat.framework.adapter.output.mysql.data.*;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.ilway.skystat.domain.vo.metar.ReportType.AUTO;
+import static com.ilway.skystat.domain.vo.unit.LengthUnit.METERS;
+import static com.ilway.skystat.domain.vo.unit.PressureUnit.HPA;
+import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import static com.ilway.skystat.domain.vo.unit.TemperatureUnit.CELSIUS;
 import static java.util.stream.Collectors.joining;
 
@@ -27,10 +32,10 @@ public class MetarMySQLMapper {
 
 	public static CloudData cloudDomainToData(Cloud cloud) {
 		return CloudData.builder()
-			.coverage(cloud.getCoverage())
-			.altitude(cloud.getAltitudeOptional().orElse(null))
-			.cloudType(cloud.getType())
-			.build();
+			       .coverage(cloud.getCoverage())
+			       .altitude(cloud.getAltitudeOptional().orElse(null))
+			       .cloudType(cloud.getType())
+			       .build();
 	}
 
 	public static Weather weatherDataToDomain(WeatherData weatherData) {
@@ -47,16 +52,16 @@ public class MetarMySQLMapper {
 
 	public static WeatherData weatherDomainToData(Weather weather) {
 		WeatherData wd = WeatherData.builder()
-			                    .intensity(weather.getIntensity())
-			                    .descriptors(weather.getDescriptors().stream()
-				                                 .map(MetarMySQLMapper::weatherDescriptorDomainToData)
-				                                 .collect(Collectors.toList())
-			                    )
-			                    .phenomena(weather.getPhenomena().stream()
-				                               .map(MetarMySQLMapper::weatherPhenomenonDomainToData)
-				                               .collect(Collectors.toList()))
-			                    .rawCode(buildWeatherRawCode(weather))
-			                    .build();
+			                 .intensity(weather.getIntensity())
+			                 .descriptors(weather.getDescriptors().stream()
+				                              .map(MetarMySQLMapper::weatherDescriptorDomainToData)
+				                              .collect(Collectors.toList())
+			                 )
+			                 .phenomena(weather.getPhenomena().stream()
+				                            .map(MetarMySQLMapper::weatherPhenomenonDomainToData)
+				                            .collect(Collectors.toList()))
+			                 .rawCode(buildWeatherRawCode(weather))
+			                 .build();
 
 		wd.getDescriptors().forEach(d -> d.setWeather(wd));
 		wd.getPhenomena().forEach(p -> p.setWeather(wd));
@@ -113,38 +118,53 @@ public class MetarMySQLMapper {
 
 	public static MetarData metarDomainToData(Metar metar) {
 		MetarData md = MetarData.builder()
-			                  .stationIcao(metar.getStationIcao())
-			                  .observationTime(metar.getObservationTime())
-			                  .reportTime(metar.getReportTime())
-			                  .reportType(metar.getReportType())
-			                  .isAuto(metar.getReportType().equals(AUTO))
-			                  .windDirectionType(metar.getWind().getDirection().getType())
-			                  .windUnit(metar.getWind().getUnit())
-			                  .windDirection(metar.getWind().getDirection().getDegreeOptional().orElse(null))
-			                  .windSpeed(metar.getWind().getSpeed())
-			                  .windGust(metar.getWind().getGusts())
-			                  .windVariableFrom(null)
-			                  .windVariableTo(null)
-			                  .visibilityUnit(metar.getVisibility().getUnit())
-			                  .visibility(metar.getVisibility().getValue())
-			                  .temperature(metar.getTemperature().getUnit()
-				                               .toBase(metar.getTemperature().getValue()))
-			                  .dewPoint(metar.getDewPoint().getUnit()
-				                            .toBase(metar.getDewPoint().getValue()))
-			                  .altimeterUnit(metar.getAltimeter().getUnit())
-			                  .altimeter(metar.getAltimeter().getValue())
-			                  .ceiling(CloudOperation.getLowestCeiling(metar.getClouds()))
-			                  .cloudLayerCount(metar.getClouds().size())
-			                  .weatherPresent(metar.getWeathers().size() > 0)
-			                  .remarks(metar.getRemarks())
-			                  .rawText(metar.getRawText())
-			                  .clouds(metar.getClouds().getClouds().stream()
-				                          .map(MetarMySQLMapper::cloudDomainToData)
-				                          .collect(Collectors.toSet()))
-			                  .weathers(metar.getWeathers().getWeathers().stream()
-				                            .map(MetarMySQLMapper::weatherDomainToData)
-				                            .collect(Collectors.toSet()))
-			                  .build();
+			               .stationIcao(metar.getStationIcao())
+			               .observationTime(metar.getObservationTime())
+			               .reportTime(metar.getReportTime())
+			               .reportType(metar.getReportType())
+			               .isAuto(metar.getReportType().equals(AUTO))
+			               .windDirectionType(metar.getWind().getDirection().getType())
+			               .windUnit(metar.getWind().getUnit())
+			               .windDirection(metar.getWind().getDirection().getDegreeOptional().orElse(null))
+			               .windSpeed(metar.getWind().getSpeed())
+			               .windSpeedKt(metar.getWind().getUnit().convertTo(
+											 metar.getWind().getSpeed(), KT
+			               ))
+			               .windGust(metar.getWind().getGusts())
+			               .windGustKt(metar.getWind().getUnit().convertTo(
+				               metar.getWind().getGusts(), KT
+			               ))
+			               .windPeakKt(metar.getWind().getUnit().convertTo(
+				               WindOperation.getWindPeak(metar.getWind()), KT
+			               ))
+			               .windVariableFrom(null)
+			               .windVariableTo(null)
+			               .visibilityUnit(metar.getVisibility().getUnit())
+			               .visibility(metar.getVisibility().getValue())
+			               .visibilityM(metar.getVisibility().getUnit().convertTo(
+				               metar.getVisibility().getValue(), METERS
+			               ))
+			               .temperature(metar.getTemperature().getUnit()
+				                            .toBase(metar.getTemperature().getValue()))
+			               .dewPoint(metar.getDewPoint().getUnit()
+				                         .toBase(metar.getDewPoint().getValue()))
+			               .altimeterUnit(metar.getAltimeter().getUnit())
+			               .altimeter(metar.getAltimeter().getValue())
+			               .altimeterHpa(metar.getAltimeter().getUnit().convertTo(
+											 metar.getAltimeter().getValue(), HPA
+			               ))
+			               .ceiling(CloudOperation.getLowestCeiling(metar.getClouds()))
+			               .cloudLayerCount(metar.getClouds().size())
+			               .weatherPresent(metar.getWeathers().size() > 0)
+			               .remarks(metar.getRemarks())
+			               .rawText(metar.getRawText())
+			               .clouds(metar.getClouds().getClouds().stream()
+				                       .map(MetarMySQLMapper::cloudDomainToData)
+				                       .collect(Collectors.toSet()))
+			               .weathers(metar.getWeathers().getWeathers().stream()
+				                         .map(MetarMySQLMapper::weatherDomainToData)
+				                         .collect(Collectors.toSet()))
+			               .build();
 
 		md.getClouds().forEach(c -> c.setMetar(md));
 		md.getWeathers().forEach(w -> {

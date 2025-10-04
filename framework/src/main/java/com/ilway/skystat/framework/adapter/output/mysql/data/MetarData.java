@@ -64,16 +64,16 @@ public class MetarData {
 	@Column(name = "wind_speed")
 	private Double windSpeed;
 
-	@Column(name = "wind_speed_kt", updatable = false, insertable = false)
+	@Column(name = "wind_speed_kt", updatable = false)
 	private Double windSpeedKt;
 
 	@Column(name = "wind_gust")
 	private Double windGust;
 
-	@Column(name = "wind_gust_kt", updatable = false, insertable = false)
+	@Column(name = "wind_gust_kt", updatable = false)
 	private Double windGustKt;
 
-	@Column(name = "wind_peak_kt", updatable = false, insertable = false)
+	@Column(name = "wind_peak_kt", updatable = false)
 	private Double windPeakKt;
 
 	@Column(name = "wind_var_from_deg")
@@ -89,7 +89,7 @@ public class MetarData {
 	@Column(name = "visibility")
 	private Double visibility;
 
-	@Column(name = "visibility_m", updatable = false, insertable = false)
+	@Column(name = "visibility_m", updatable = false)
 	private Double visibilityM;
 
 	@Column(name = "temp_c")
@@ -105,7 +105,7 @@ public class MetarData {
 	@Column(name = "altimeter")
 	private Double altimeter;
 
-	@Column(name = "altimeterHpa", updatable = false, insertable = false)
+	@Column(name = "altimeterHpa", updatable = false)
 	private Double altimeterHpa;
 
 	@Column(name = "ceiling_ft")
