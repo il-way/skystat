@@ -1,7 +1,9 @@
 package com.ilway.skystat.application.dto.statistic.temperature;
 
+import java.util.List;
+
 public record TemperatureStatisticResult(
-	MonthlyTemperatureStatDto monthly,
-	HourlyTemperatureStatDto hourly,
-	YearlyTemperatureStatDto yearly) {
+	List<MonthlyTemperatureStatDto> monthly,
+	List<HourlyTemperatureStatDto> hourly,
+	List<YearlyTemperatureStatDto> yearly) {
 }

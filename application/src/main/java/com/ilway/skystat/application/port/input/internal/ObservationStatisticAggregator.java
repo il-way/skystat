@@ -16,6 +16,8 @@ import java.util.stream.Stream;
 
 public final class ObservationStatisticAggregator {
 
+	private ObservationStatisticAggregator() {}
+
 	public static ObservationStatisticResult aggregate(List<Metar> metars,
 	                                                   Predicate<Metar> predicate,
 	                                                   RetrievalPeriod period) {
