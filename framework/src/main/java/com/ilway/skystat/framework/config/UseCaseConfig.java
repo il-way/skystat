@@ -10,16 +10,14 @@ import com.ilway.skystat.application.port.input.metar.fallback.WeatherStatisticF
 import com.ilway.skystat.application.port.input.metar.query.CloudStatisticQueryInputPort;
 import com.ilway.skystat.application.port.input.metar.query.ThresholdStatisticQueryInputPort;
 import com.ilway.skystat.application.port.input.metar.query.WeatherStatisticQueryInputPort;
-import com.ilway.skystat.application.port.input.metar.scan.CloudStatisticInputPort;
-import com.ilway.skystat.application.port.input.metar.scan.ThresholdStatisticInputPort;
-import com.ilway.skystat.application.port.input.metar.scan.WeatherStatisticInputPort;
-import com.ilway.skystat.application.port.input.metar.scan.WindRoseInputPort;
+import com.ilway.skystat.application.port.input.metar.scan.*;
 import com.ilway.skystat.application.port.output.CloudStatisticQueryOutputPort;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.port.output.ThresholdStatisticQueryOutputPort;
 import com.ilway.skystat.application.port.output.WeatherStatisticQueryOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.application.usecase.StatisticUseCase;
+import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import com.ilway.skystat.framework.profile.Default;
 import org.springframework.context.annotation.Bean;
@@ -57,13 +55,18 @@ public class UseCaseConfig {
 	}
 
 	@Bean
-	public WindRoseUseCase windRoseUseCase(MetarManagementOutputPort outputPort) {
-		return new WindRoseInputPort(outputPort);
+	public TemperatureStatisticUseCase temperatureStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort) {
+		return new TemperatureStatisticInputPort(metarManagementOutputPort);
 	}
 
 	@Bean
-	public MetarManagementUseCase metarManagementUseCase(MetarManagementOutputPort outputPort) {
-		return new MetarManagementInputPort(outputPort);
+	public WindRoseUseCase windRoseUseCase(MetarManagementOutputPort metarManagementOutputPort) {
+		return new WindRoseInputPort(metarManagementOutputPort);
+	}
+
+	@Bean
+	public MetarManagementUseCase metarManagementUseCase(MetarManagementOutputPort metarManagementOutputPort) {
+		return new MetarManagementInputPort(metarManagementOutputPort);
 	}
 
 }

@@ -191,6 +191,7 @@
     &quot;Gradle.TafTest.print.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.TemperatureTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.TemperatureTest.양의_온도쌍을_가진_메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TemperatureUseCaseTest.test.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ThresholdStatisticQueryTest.altimeterLteTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ThresholdStatisticQueryTest.ceilingLteTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ThresholdStatisticQueryTest.executor&quot;: &quot;Run&quot;,
@@ -318,7 +319,7 @@
       <recent name="com.ilway.skystat.framework.adapter.input" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.App">
+  <component name="RunManager" selected="Gradle.TemperatureUseCaseTest.test">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
       <module name="skystat.bootstrap.main" />
@@ -331,6 +332,30 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="TemperatureUseCaseTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":it:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.it.usecase.TemperatureUseCaseTest.test&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
     <configuration name="ThresholdStatisticQueryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -404,30 +429,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ThresholdStatisticQueryTest.windSpeedGteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":it:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.ThresholdStatisticQueryTest.windSpeedGteTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="bootstrap" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -450,19 +451,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.bootstrap" />
+      <item itemvalue="Gradle.TemperatureUseCaseTest.test" />
       <item itemvalue="Gradle.ThresholdStatisticQueryTest" />
       <item itemvalue="Gradle.ThresholdStatisticQueryTest.altimeterLteTest" />
       <item itemvalue="Gradle.ThresholdStatisticQueryTest.ceilingLteTest" />
-      <item itemvalue="Gradle.ThresholdStatisticQueryTest.windSpeedGteTest" />
       <item itemvalue="애플리케이션.App" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TemperatureUseCaseTest.test" />
         <item itemvalue="애플리케이션.App" />
         <item itemvalue="Gradle.ThresholdStatisticQueryTest" />
         <item itemvalue="Gradle.ThresholdStatisticQueryTest.altimeterLteTest" />
         <item itemvalue="Gradle.ThresholdStatisticQueryTest.ceilingLteTest" />
-        <item itemvalue="Gradle.ThresholdStatisticQueryTest.windSpeedGteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -486,22 +487,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/framework/src/main/java/com/ilway/skystat/framework/adapter/input/rest/WindRoseAdapter.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/framework/src/main/java/com/ilway/skystat/framework/adapter/input/rest/WindRoseAdapter.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/skystat$CloudTest.ic" NAME="CloudTest 커버리지 결과" MODIFIED="1750160684504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

@@ -1,10 +1,7 @@
 package com.ilway.skystat.application.port.input.internal;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
-import com.ilway.skystat.application.dto.statistic.temperature.HourlyTemperatureStatDto;
-import com.ilway.skystat.application.dto.statistic.temperature.MonthlyTemperatureStatDto;
-import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticResult;
-import com.ilway.skystat.application.dto.statistic.temperature.YearlyTemperatureStatDto;
+import com.ilway.skystat.application.dto.statistic.temperature.*;
 import com.ilway.skystat.domain.vo.metar.Metar;
 
 import java.time.LocalDate;
@@ -32,9 +29,51 @@ public final class TemperatureStatisticAggregator {
 		return new TemperatureStatisticResult(monthly, hourly, yearly);
 	}
 
+	public static List<MonthlyTemperatureStatDto> monthly(List<DailyTemperatureStatDto> dailies) {
+		Map<YearMonth, List<DailyTemperatureStatDto>> byYearMonth = dailies.stream().collect(
+			groupingBy(d -> YearMonth.of(d.year(), d.month()))
+		);
+
+		return byYearMonth.entrySet().stream()
+			       .sorted(Map.Entry.comparingByKey())
+			       .map(entry -> {
+				       YearMonth ym = entry.getKey();
+				       List<DailyTemperatureStatDto> daily = entry.getValue();
+
+				       List<Double> dailyMeans = daily.stream().map(DailyTemperatureStatDto::dailyMean).toList();
+				       List<Double> dailyMaxes = daily.stream().map(DailyTemperatureStatDto::dailyMax).toList();
+					     List<Double> dailyMins = daily.stream().map(DailyTemperatureStatDto::dailyMin).toList();
+
+				       Double dailyMeanAvg = avgOrNull(dailyMeans);
+				       Double dailyMaxAvg = avgOrNull(dailyMaxes);
+				       Double dailyMinAvg = avgOrNull(dailyMins);
+
+				       Double monthlyMax = dailyMaxes.stream()
+					                           .filter(Objects::nonNull)
+					                           .filter(Double::isFinite)
+					                           .max(Comparator.naturalOrder())
+					                           .orElse(null);
+
+				       Double monthlyMin = dailyMins.stream()
+					                           .filter(Objects::nonNull)
+					                           .filter(Double::isFinite)
+					                           .min(Comparator.naturalOrder())
+					                           .orElse(null);
+
+				       return new MonthlyTemperatureStatDto(
+					       ym.getYear(),
+					       ym.getMonthValue(),
+					       dailyMeanAvg, dailyMaxAvg, dailyMinAvg,
+					       monthlyMax, monthlyMin
+				       );
+			       })
+			       .toList();
+	}
+
 	public static List<MonthlyTemperatureStatDto> monthly(List<Metar> metars, RetrievalPeriod period) {
-		Map<YearMonth, List<Metar>> byYearMonth = metars.stream()
-			                                          .collect(groupingBy(TemperatureStatisticAggregator::getYearMonthFrom));
+		Map<YearMonth, List<Metar>> byYearMonth = metars.stream().collect(
+			groupingBy(TemperatureStatisticAggregator::getYearMonthFrom)
+		);
 
 		return byYearMonth.entrySet().stream()
 			       .sorted(Map.Entry.comparingByKey())
@@ -42,7 +81,9 @@ public final class TemperatureStatisticAggregator {
 				       YearMonth ym = entry.getKey();
 				       List<Metar> ms = entry.getValue();
 
-				       Map<LocalDate, List<Metar>> byDate = ms.stream().collect(groupingBy(TemperatureStatisticAggregator::getDateFrom));
+				       Map<LocalDate, List<Metar>> byDate = ms.stream().collect(
+					       groupingBy(TemperatureStatisticAggregator::getDateFrom)
+				       );
 
 				       List<Double> dailyMeans = new ArrayList<>();
 				       List<Double> dailyMaxes = new ArrayList<>();
@@ -102,6 +143,46 @@ public final class TemperatureStatisticAggregator {
 			       .toList();
 	}
 
+	public static List<YearlyTemperatureStatDto> yearly(List<DailyTemperatureStatDto> dailies) {
+		Map<Integer, List<DailyTemperatureStatDto>> byYear = dailies.stream().collect(
+			groupingBy(DailyTemperatureStatDto::year)
+		);
+
+		return byYear.entrySet().stream()
+			       .sorted(Map.Entry.comparingByKey())
+			       .map(e -> {
+				       int year = e.getKey();
+				       List<DailyTemperatureStatDto> yearly = e.getValue();
+
+				       List<Double> dailyMeans = yearly.stream().map(DailyTemperatureStatDto::dailyMean).toList();
+				       List<Double> dailyMaxes = yearly.stream().map(DailyTemperatureStatDto::dailyMax).toList();
+				       List<Double> dailyMins = yearly.stream().map(DailyTemperatureStatDto::dailyMin).toList();
+
+				       Double dailyMeanAvg = avgOrNull(dailyMeans);
+				       Double dailyMaxAvg = avgOrNull(dailyMaxes);
+				       Double dailyMinAvg = avgOrNull(dailyMins);
+
+				       Double yearlyMax = dailyMaxes.stream()
+					                           .filter(Objects::nonNull)
+					                           .filter(Double::isFinite)
+					                           .max(Comparator.naturalOrder())
+					                           .orElse(null);
+
+				       Double yearlyMin = dailyMins.stream()
+					                           .filter(Objects::nonNull)
+					                           .filter(Double::isFinite)
+					                           .min(Comparator.naturalOrder())
+					                           .orElse(null);
+
+				       return new YearlyTemperatureStatDto(
+					       year,
+					       dailyMeanAvg, dailyMaxAvg, dailyMinAvg,
+					       yearlyMax, yearlyMin
+				       );
+			       })
+			       .toList();
+	}
+
 	public static List<YearlyTemperatureStatDto> yearly(List<Metar> metars, RetrievalPeriod period) {
 		Map<Integer, List<Metar>> byYear = metars.stream()
 			                                   .collect(groupingBy(m -> m.getReportTime().getYear()));
@@ -121,9 +202,9 @@ public final class TemperatureStatisticAggregator {
 				       for (List<Metar> dailyMetar : byDate.values()) {
 					       List<Double> temps = extractCelsiusTemps(dailyMetar);
 					       if (temps.isEmpty()) continue;
-								 dailyMeans.add(avgOrNan(temps));
-								 dailyMaxes.add(max(temps));
-								 dailyMins.add(min(temps));
+					       dailyMeans.add(avgOrNan(temps));
+					       dailyMaxes.add(max(temps));
+					       dailyMins.add(min(temps));
 				       }
 
 				       Double dailyMeanAvg = avgOrNull(dailyMeans);
@@ -134,9 +215,9 @@ public final class TemperatureStatisticAggregator {
 				       Double yearlyMax = yearlyTemps.isEmpty() ? null : max(yearlyTemps);
 				       Double yearlyMin = yearlyTemps.isEmpty() ? null : min(yearlyTemps);
 
-							 return new YearlyTemperatureStatDto(
-								 year, dailyMeanAvg, dailyMaxAvg, dailyMinAvg, yearlyMax, yearlyMin
-							 );
+				       return new YearlyTemperatureStatDto(
+					       year, dailyMeanAvg, dailyMaxAvg, dailyMinAvg, yearlyMax, yearlyMin
+				       );
 			       })
 			       .toList();
 	}
