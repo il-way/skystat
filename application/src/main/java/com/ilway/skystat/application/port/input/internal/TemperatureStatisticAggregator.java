@@ -2,11 +2,13 @@ package com.ilway.skystat.application.port.input.internal;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.temperature.*;
+import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.domain.vo.metar.Metar;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.*;
+import java.util.stream.Stream;
 
 import static com.ilway.skystat.domain.vo.unit.TemperatureUnit.CELSIUS;
 import static java.util.Collections.max;
@@ -21,10 +23,66 @@ public final class TemperatureStatisticAggregator {
 	record YearMonthHour(YearMonth ym, int hour) {
 	}
 
-	public static TemperatureStatisticResult aggregate(List<Metar> metars, RetrievalPeriod period) {
-		List<MonthlyTemperatureStatDto> monthly = monthly(metars, period);
-		List<HourlyTemperatureStatDto> hourly = hourly(metars, period);
-		List<YearlyTemperatureStatDto> yearly = yearly(metars, period);
+	public static TemperatureStatisticResult aggregate(List<HourlyTemperatureStatDto> hourly, List<DailyTemperatureStatDto> dailies, RoundingPolicy policy) {
+		List<HourlyTemperatureStatDto> hourlyRounded = hourly.stream()
+			                                                 .map(dto -> new HourlyTemperatureStatDto(
+				                                                 dto.year(), dto.month(), dto.hour(),
+				                                                 policy.apply(dto.meanTempAtHour()),
+				                                                 policy.apply(dto.maxTempAtHour()),
+				                                                 policy.apply(dto.minTempAtHour())
+			                                                 )).toList();
+
+		List<MonthlyTemperatureStatDto> monthly = monthly(dailies).stream()
+			                                          .map(dto -> new MonthlyTemperatureStatDto(
+				                                          dto.year(), dto.month(),
+				                                          policy.apply(dto.dailyMeanAvg()),
+				                                          policy.apply(dto.dailyMaxAvg()),
+				                                          policy.apply(dto.dailyMinAvg()),
+				                                          policy.apply(dto.monthlyMax()),
+				                                          policy.apply(dto.monthlyMin())
+			                                          )).toList();
+
+		List<YearlyTemperatureStatDto> yearly = yearly(dailies).stream()
+			                                      .map(dto -> new YearlyTemperatureStatDto(
+				                                      dto.year(),
+				                                      policy.apply(dto.dailyMeanAvg()),
+				                                      policy.apply(dto.dailyMaxAvg()),
+				                                      policy.apply(dto.dailyMinAvg()),
+				                                      policy.apply(dto.yearlyMax()),
+				                                      policy.apply(dto.yearlyMin())
+			                                      )).toList();
+
+		return new TemperatureStatisticResult(monthly, hourlyRounded, yearly);
+	}
+
+	public static TemperatureStatisticResult aggregate(List<Metar> metars, RetrievalPeriod period, RoundingPolicy policy) {
+		List<MonthlyTemperatureStatDto> monthly = monthly(metars, period).stream()
+			                                          .map(dto -> new MonthlyTemperatureStatDto(
+				                                          dto.year(), dto.month(),
+				                                          policy.apply(dto.dailyMeanAvg()),
+				                                          policy.apply(dto.dailyMaxAvg()),
+				                                          policy.apply(dto.dailyMinAvg()),
+				                                          policy.apply(dto.monthlyMax()),
+				                                          policy.apply(dto.monthlyMin())
+			                                          )).toList();
+
+		List<HourlyTemperatureStatDto> hourly = hourly(metars, period).stream()
+			                                        .map(dto -> new HourlyTemperatureStatDto(
+				                                        dto.year(), dto.month(), dto.hour(),
+				                                        policy.apply(dto.meanTempAtHour()),
+				                                        policy.apply(dto.maxTempAtHour()),
+				                                        policy.apply(dto.minTempAtHour())
+			                                        )).toList();
+
+		List<YearlyTemperatureStatDto> yearly = yearly(metars, period).stream()
+			                                        .map(dto -> new YearlyTemperatureStatDto(
+				                                        dto.year(),
+				                                        policy.apply(dto.dailyMeanAvg()),
+				                                        policy.apply(dto.dailyMaxAvg()),
+				                                        policy.apply(dto.dailyMinAvg()),
+				                                        policy.apply(dto.yearlyMax()),
+				                                        policy.apply(dto.yearlyMin())
+			                                        )).toList();
 
 		return new TemperatureStatisticResult(monthly, hourly, yearly);
 	}
@@ -42,7 +100,7 @@ public final class TemperatureStatisticAggregator {
 
 				       List<Double> dailyMeans = daily.stream().map(DailyTemperatureStatDto::dailyMean).toList();
 				       List<Double> dailyMaxes = daily.stream().map(DailyTemperatureStatDto::dailyMax).toList();
-					     List<Double> dailyMins = daily.stream().map(DailyTemperatureStatDto::dailyMin).toList();
+				       List<Double> dailyMins = daily.stream().map(DailyTemperatureStatDto::dailyMin).toList();
 
 				       Double dailyMeanAvg = avgOrNull(dailyMeans);
 				       Double dailyMaxAvg = avgOrNull(dailyMaxes);
@@ -163,16 +221,16 @@ public final class TemperatureStatisticAggregator {
 				       Double dailyMinAvg = avgOrNull(dailyMins);
 
 				       Double yearlyMax = dailyMaxes.stream()
-					                           .filter(Objects::nonNull)
-					                           .filter(Double::isFinite)
-					                           .max(Comparator.naturalOrder())
-					                           .orElse(null);
+					                          .filter(Objects::nonNull)
+					                          .filter(Double::isFinite)
+					                          .max(Comparator.naturalOrder())
+					                          .orElse(null);
 
 				       Double yearlyMin = dailyMins.stream()
-					                           .filter(Objects::nonNull)
-					                           .filter(Double::isFinite)
-					                           .min(Comparator.naturalOrder())
-					                           .orElse(null);
+					                          .filter(Objects::nonNull)
+					                          .filter(Double::isFinite)
+					                          .min(Comparator.naturalOrder())
+					                          .orElse(null);
 
 				       return new YearlyTemperatureStatDto(
 					       year,

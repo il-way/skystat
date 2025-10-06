@@ -5,10 +5,14 @@ import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatis
 import com.ilway.skystat.application.port.input.internal.TemperatureStatisticAggregator;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
+import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import lombok.RequiredArgsConstructor;
 
+import java.math.RoundingMode;
 import java.util.List;
+
+import static java.math.RoundingMode.HALF_UP;
 
 @RequiredArgsConstructor
 public class TemperatureStatisticInputPort implements TemperatureStatisticUseCase {
@@ -18,6 +22,6 @@ public class TemperatureStatisticInputPort implements TemperatureStatisticUseCas
 	@Override
 	public TemperatureStatisticResult execute(TemperatureStatisticQuery query) {
 		List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
-		return TemperatureStatisticAggregator.aggregate(metars, query.period());
+		return TemperatureStatisticAggregator.aggregate(metars, query.period(), RoundingPolicy.of(2, HALF_UP));
 	}
 }
