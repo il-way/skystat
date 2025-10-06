@@ -93,15 +93,15 @@ public class MetarStatisticAdapter {
 			       .body(execute);
 	}
 
-	@GetMapping("/threshold/{icao}")
+	@GetMapping("/temperature/{icao}")
 	public ResponseEntity<TemperatureStatisticResult> getTemperatureStatistic(
 		@PathVariable("icao") String icao,
-		@RequestParam("fromYear") Integer fromYear,
-		@RequestParam("toYear") Integer toYear
+		@RequestParam("startYear") Integer startYear,
+		@RequestParam("endYear") Integer endYear
 	) {
 		TemperatureStatisticQuery query = new TemperatureStatisticQuery(
 			icao,
-			RetrievalPeriod.of(fromYear, (toYear-fromYear))
+			RetrievalPeriod.of(startYear, (endYear-startYear))
 		);
 
 		TemperatureStatisticResult execute = temperatureUseCase.execute(query);

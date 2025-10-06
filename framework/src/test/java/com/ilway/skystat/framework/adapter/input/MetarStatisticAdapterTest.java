@@ -2,6 +2,10 @@ package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
+import com.ilway.skystat.application.dto.statistic.temperature.HourlyTemperatureStatDto;
+import com.ilway.skystat.application.dto.statistic.temperature.MonthlyTemperatureStatDto;
+import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticResult;
+import com.ilway.skystat.application.dto.statistic.temperature.YearlyTemperatureStatDto;
 import com.ilway.skystat.framework.config.ResourceFileConfigData;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +21,8 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -254,6 +260,23 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 		ObservationStatisticResult response = objectMapper.readValue(
 			mvcResult.getResponse().getContentAsString(UTF_8),
 			ObservationStatisticResult.class
+		);
+	}
+
+	@Test
+	@DisplayName("temperature 조회에 성공해야 한다.")
+	void getTemperatureStatisticTest() throws Exception {
+		String icao = "RKSI";
+		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/temperature/{icao}", icao)
+			                                      .param("startYear", "2019")
+			                                      .param("endYear", "2023")
+			                                      .accept(MediaType.APPLICATION_JSON))
+			                      .andExpect(status().isOk())
+			                      .andReturn();
+
+		TemperatureStatisticResult response = objectMapper.readValue(
+			mvcResult.getResponse().getContentAsString(UTF_8),
+			TemperatureStatisticResult.class
 		);
 	}
 

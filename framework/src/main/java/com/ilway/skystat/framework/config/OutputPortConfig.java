@@ -1,15 +1,10 @@
 package com.ilway.skystat.framework.config;
 
-import com.ilway.skystat.application.port.output.CloudStatisticQueryOutputPort;
-import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
-import com.ilway.skystat.application.port.output.ThresholdStatisticQueryOutputPort;
-import com.ilway.skystat.application.port.output.WeatherStatisticQueryOutputPort;
+import com.ilway.skystat.application.port.output.*;
 import com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapter;
-import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarCloudQueryRepository;
-import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
-import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarMetricQueryRepository;
-import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarWeatherQueryRepository;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.*;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.CloudStatisticQueryMySqlAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.statistic.TemperatureStatisticQueryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.ThresholdStatisticQueryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.WeatherStatisticQueryMySqlAdapter;
 import com.ilway.skystat.framework.profile.Default;
@@ -39,6 +34,11 @@ public class OutputPortConfig {
 	@Bean
 	public ThresholdStatisticQueryOutputPort thresholdStatisticQueryOutputPort(MetarMetricQueryRepository metricQueryRepository) {
 		return new ThresholdStatisticQueryMySqlAdapter(metricQueryRepository);
+	}
+
+	@Bean
+	public TemperatureStatisticQueryOutputPort temperatureStatisticQueryOutputPort(MetarTemperatureQueryRepository temperatureQueryRepository) {
+		return new TemperatureStatisticQueryMySqlAdapter(temperatureQueryRepository);
 	}
 
 }

@@ -63,11 +63,6 @@ public class UseCaseConfig {
 	}
 
 	@Bean
-	public TemperatureStatisticUseCase temperatureStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort) {
-		return new TemperatureStatisticInputPort(metarManagementOutputPort);
-	}
-
-	@Bean
 	public WindRoseUseCase windRoseUseCase(MetarManagementOutputPort metarManagementOutputPort) {
 		return new WindRoseInputPort(metarManagementOutputPort);
 	}
