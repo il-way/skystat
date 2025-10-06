@@ -1,0 +1,23 @@
+package com.ilway.skystat.application.port.input.metar.fallback;
+
+import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticQuery;
+import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticResult;
+import com.ilway.skystat.application.exception.AggregationUnavailableException;
+import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class TemperatureStatisticFallbackInputPort implements TemperatureStatisticUseCase {
+
+	private final TemperatureStatisticUseCase dbUseCase;
+	private final TemperatureStatisticUseCase scanUseCase;
+
+	@Override
+	public TemperatureStatisticResult execute(TemperatureStatisticQuery query) {
+		try {
+			return dbUseCase.execute(query);
+		} catch (AggregationUnavailableException e) {
+			return scanUseCase.execute(query);
+		}
+	}
+}

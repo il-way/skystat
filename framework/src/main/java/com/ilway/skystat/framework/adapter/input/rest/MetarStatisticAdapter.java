@@ -5,7 +5,10 @@ import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
+import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticQuery;
+import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticResult;
 import com.ilway.skystat.application.model.weather.*;
+import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
 import com.ilway.skystat.domain.vo.unit.Unit;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.generic.Comparison;
@@ -28,6 +31,7 @@ public class MetarStatisticAdapter {
 	private final StatisticUseCase<ThresholdStatisticQuery> thresholdUseCase;
 	private final StatisticUseCase<WeatherStatisticQuery> weatherUseCase;
 	private final StatisticUseCase<CloudStatisticQuery> cloudUseCase;
+	private final TemperatureStatisticUseCase temperatureUseCase;
 
 	@GetMapping("/threshold/{icao}")
 	public ResponseEntity<ObservationStatisticResult> getThresholdStatistic(
@@ -85,6 +89,22 @@ public class MetarStatisticAdapter {
 		);
 
 		ObservationStatisticResult execute = cloudUseCase.execute(query);
+		return ResponseEntity.ok()
+			       .body(execute);
+	}
+
+	@GetMapping("/threshold/{icao}")
+	public ResponseEntity<TemperatureStatisticResult> getTemperatureStatistic(
+		@PathVariable("icao") String icao,
+		@RequestParam("fromYear") Integer fromYear,
+		@RequestParam("toYear") Integer toYear
+	) {
+		TemperatureStatisticQuery query = new TemperatureStatisticQuery(
+			icao,
+			RetrievalPeriod.of(fromYear, (toYear-fromYear))
+		);
+
+		TemperatureStatisticResult execute = temperatureUseCase.execute(query);
 		return ResponseEntity.ok()
 			       .body(execute);
 	}
