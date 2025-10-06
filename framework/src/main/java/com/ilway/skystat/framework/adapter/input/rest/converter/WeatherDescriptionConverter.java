@@ -28,6 +28,6 @@ public class WeatherDescriptionConverter implements Converter<String, WeatherDes
 			if (wd.name().equals(s)) return wd;
 		}
 
-		throw new IllegalArgumentException("Unsupported unit: " + source);
+		throw new IllegalArgumentException("Unsupported weather description: " + source);
 	}
 }

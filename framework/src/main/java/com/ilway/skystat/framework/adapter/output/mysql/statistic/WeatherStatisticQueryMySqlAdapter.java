@@ -13,6 +13,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMappe
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarWeatherQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
+import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 import static com.ilway.skystat.application.model.weather.WeatherConditionPredicate.extract;
 import static java.util.stream.Collectors.*;
 
+@TranslateDbExceptions("querying weather statistic")
 @RequiredArgsConstructor
 public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryOutputPort {
 

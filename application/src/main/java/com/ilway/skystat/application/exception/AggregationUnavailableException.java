@@ -1,13 +1,13 @@
 package com.ilway.skystat.application.exception;
 
-public class AggregationUnavailableException extends RuntimeException {
+public class AggregationUnavailableException extends BusinessException {
 
-	public AggregationUnavailableException(String msg) {
-		super(msg);
+	public AggregationUnavailableException(String message, Throwable cause) {
+		super(503, "AGGREGATION_UNAVAILABLE", message, cause);
 	}
 
-	public AggregationUnavailableException(String msg, Throwable cause) {
-		super(msg, cause);
+	public AggregationUnavailableException(String message) {
+		this(message, null);
 	}
 
 }

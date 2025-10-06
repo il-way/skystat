@@ -6,6 +6,7 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
+import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 @RequiredArgsConstructor
+@TranslateDbExceptions("metar management")
 public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 
 	private static final int CHUNK_SIZE = 1_000;

@@ -12,10 +12,12 @@ import com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMappe
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarCloudQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
+import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+@TranslateDbExceptions("querying cloud statistic")
 @RequiredArgsConstructor
 public class CloudStatisticQueryMySqlAdapter implements CloudStatisticQueryOutputPort {
 

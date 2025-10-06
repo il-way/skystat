@@ -5,10 +5,12 @@ import com.ilway.skystat.application.dto.statistic.temperature.DailyTemperatureS
 import com.ilway.skystat.application.dto.statistic.temperature.HourlyTemperatureStatDto;
 import com.ilway.skystat.application.port.output.TemperatureStatisticQueryOutputPort;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarTemperatureQueryRepository;
+import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+@TranslateDbExceptions("querying temperature statistic")
 @RequiredArgsConstructor
 public class TemperatureStatisticQueryMySqlAdapter implements TemperatureStatisticQueryOutputPort {
 

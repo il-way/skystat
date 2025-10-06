@@ -5,6 +5,7 @@ import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
+import com.ilway.skystat.application.exception.BusinessException;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
@@ -24,28 +25,34 @@ public class WindRoseInputPort implements WindRoseUseCase {
 
 	@Override
 	public WindRoseResult generateMonthlyWindRose(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
-		List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(icao, period);
+		try {
+			List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(icao, period);
 
-		Map<Boolean, List<Metar>> partitionedByFixedDirectionExist = metars.stream()
-			                                                             .collect(partitioningBy(m -> !m.getWind().getDirection().isVariable()));
+			Map<Boolean, List<Metar>> partitionedByFixedDirectionExist = metars.stream()
+				                                                             .collect(partitioningBy(m -> !m.getWind().getDirection().isVariable()));
 
 
-		List<Metar> fixedDirections = partitionedByFixedDirectionExist.get(true);
-		List<Metar> variableDirections = partitionedByFixedDirectionExist.get(false);
+			List<Metar> fixedDirections = partitionedByFixedDirectionExist.get(true);
+			List<Metar> variableDirections = partitionedByFixedDirectionExist.get(false);
 
-		Map<Month, WindRose> windrose = fixedDirections.stream()
-			.collect(groupingBy(m -> Month.from(m.getReportTime()),
-				collectingAndThen(
-					toList(),
-					monthlyMetars -> buildWindRoseForMonth(monthlyMetars, speedBins, directionBins))
-			));
+			Map<Month, WindRose> windrose = fixedDirections.stream()
+				                                .collect(groupingBy(m -> Month.from(m.getReportTime()),
+					                                collectingAndThen(
+						                                toList(),
+						                                monthlyMetars -> buildWindRoseForMonth(monthlyMetars, speedBins, directionBins))
+				                                ));
 
-		return new WindRoseResult(
-			metars.size(),
-			fixedDirections.size(),
-			variableDirections.size(),
-			windrose
-		);
+			return new WindRoseResult(
+				metars.size(),
+				fixedDirections.size(),
+				variableDirections.size(),
+				windrose
+			);
+		} catch (BusinessException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new BusinessException(500, "UNEXPECTED", "Unexpected error while processing Windrose statistics", e);
+		}
 	}
 
 	private WindRose buildWindRoseForMonth(List<Metar> metars, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {

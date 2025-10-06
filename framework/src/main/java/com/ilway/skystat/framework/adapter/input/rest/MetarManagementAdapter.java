@@ -5,8 +5,8 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.input.rest.request.MetarFileUploadForm;
 import com.ilway.skystat.framework.adapter.input.rest.request.MetarSaveForm;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
-import com.ilway.skystat.framework.exception.MetarParseException;
 import com.ilway.skystat.framework.parser.metar.MetarParser;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,42 +23,35 @@ import java.util.Map;
 import java.util.Objects;
 
 import static com.ilway.skystat.framework.adapter.output.resource.ResourceFileOperation.*;
-import static com.ilway.skystat.framework.adapter.output.resource.ResourceFileOperation.parseMetarSafely;
-import static com.ilway.skystat.framework.adapter.output.resource.ResourceFileOperation.parseUploadFile;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Collectors.partitioningBy;
 
 @RequestMapping("/metar")
 @RestController
 @RequiredArgsConstructor
+@Validated
 public class MetarManagementAdapter {
 
 	private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	private final MetarManagementUseCase metarManagementUseCase;
 
-	record MetarRow(String icao, ZonedDateTime time, String raw){}
+	record MetarRow(String icao, ZonedDateTime time, String raw) {
+	}
 
 	@PostMapping("/save/{icao}")
 	public ResponseEntity<MetarSaveResponse> save(
 		@PathVariable("icao") String icao,
-		@RequestBody MetarSaveForm form
-		) {
+		@RequestBody @NotNull MetarSaveForm form
+	) {
 		ZonedDateTime observationTime = form.getObservationTime();
 		MetarParser parser = new MetarParser(YearMonth.from(observationTime));
-		try {
-			Metar metar = parser.parse(form.getRawText());
-			metarManagementUseCase.save(metar);
+		Metar metar = parser.parse(form.getRawText());
+		metarManagementUseCase.save(metar);
 
-			return ResponseEntity.ok()
-				       .body(MetarSaveResponse.success(1, 0, List.of()));
-		} catch (MetarParseException e) {
-			return ResponseEntity.badRequest()
-				       .body(MetarSaveResponse.failure(e.getMessage()));
-		} catch (Exception e) {
-			return ResponseEntity.internalServerError()
-				       .body(MetarSaveResponse.failure(e.getMessage()));
-		}
+		return ResponseEntity.ok()
+			       .body(MetarSaveResponse.success(1, 0, List.of()));
+
 	}
 
 	@PostMapping("/save/upload/{icao}")
@@ -72,22 +65,22 @@ public class MetarManagementAdapter {
 			new InputStreamReader(form.getFile().getInputStream(), UTF_8)
 		)) {
 			Map<Boolean, List<ParseResult>> parseResultMap = reader.lines()
-				                                          .map(String::trim)
-				                                          .filter(s -> !s.isEmpty() && !s.startsWith("#"))
-				                                          .map(line -> parseUploadFile(line, FMT))
-				                                          .filter(Objects::nonNull)
-				                                          .map(r -> parseMetarSafely(r, parser))
-				                                          .collect(
-																										partitioningBy(ParseResult::isSuccess)
-				                                          );
+				                                                 .map(String::trim)
+				                                                 .filter(s -> !s.isEmpty() && !s.startsWith("#"))
+				                                                 .map(line -> parseUploadFile(line, FMT))
+				                                                 .filter(Objects::nonNull)
+				                                                 .map(r -> parseMetarSafely(r, parser))
+				                                                 .collect(
+					                                                 partitioningBy(ParseResult::isSuccess)
+				                                                 );
 
 			List<Metar> parsedMetars = parseResultMap.get(true).stream()
-				                   .map(ParseResult::metar)
-				                   .toList();
+				                           .map(ParseResult::metar)
+				                           .toList();
 
 			List<ParseError> errorList = parseResultMap.get(false).stream()
-				                        .map(ParseResult::error)
-				                        .toList();
+				                             .map(ParseResult::error)
+				                             .toList();
 
 			metarManagementUseCase.saveAll(parsedMetars);
 
@@ -95,8 +88,7 @@ public class MetarManagementAdapter {
 				MetarSaveResponse.success(parsedMetars.size(), errorList.size(), errorList)
 			);
 		} catch (IOException e) {
-			return ResponseEntity.internalServerError()
-				       .body(MetarSaveResponse.failure(e.getMessage()));
+			throw new RuntimeException("Failed to read upload file", e);
 		}
 	}
 

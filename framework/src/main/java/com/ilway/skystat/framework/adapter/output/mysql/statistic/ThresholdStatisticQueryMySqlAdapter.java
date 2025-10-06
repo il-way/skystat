@@ -10,6 +10,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMappe
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarMetricQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
+import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -22,6 +23,7 @@ import static com.ilway.skystat.domain.vo.unit.PressureUnit.HPA;
 import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import static com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMapper.when;
 
+@TranslateDbExceptions("querying threshold statistic")
 @RequiredArgsConstructor
 public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQueryOutputPort {
 

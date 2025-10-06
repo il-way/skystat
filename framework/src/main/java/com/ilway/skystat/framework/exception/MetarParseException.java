@@ -1,11 +1,16 @@
 package com.ilway.skystat.framework.exception;
 
-public class MetarParseException extends RuntimeException {
-  public MetarParseException(String message) {
-    super(message);
-  }
+import com.ilway.skystat.application.exception.BusinessException;
+import org.springframework.http.HttpStatus;
+
+public class MetarParseException extends BusinessException {
 
   public MetarParseException(String message, Throwable cause) {
-    super(message, cause);
+    super(HttpStatus.BAD_REQUEST.value(), "INVALID_METAR", message, cause);
   }
+
+  public MetarParseException(String message) {
+    this(message, null);
+  }
+
 }
