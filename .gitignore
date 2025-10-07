@@ -40,3 +40,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Config ###
+application.yml
+application-*.yml
+.env
+.env.*
