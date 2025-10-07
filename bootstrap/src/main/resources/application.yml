@@ -36,6 +36,10 @@ logging:
     root: INFO
     com.ilway.skystat: DEBUG
     org.hibernate.SQL: INFO
+
+log:
+  aop:
+    slow-threshold-ms: 1000
 ---
 spring:
   config:
@@ -75,3 +79,7 @@ logging:
     root: INFO
     com.ilway.skystat: INFO
     org.hibernate: WARN
+
+log:
+  aop:
+    slow-threshold-ms: 1000
