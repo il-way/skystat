@@ -128,15 +128,12 @@ public class WeatherTest {
 
   @Test
   void test() {
-    String rawText = "RKSI 010000Z 07001KT 800 TS -RASN FZFG FEW008 FEW100 FEW150 SCT200 SCT250 M06/M11 Q1034 NOSIG";
+    String rawText = "KJFK 201726Z 2018/2124 22013KT P6SM FEW050 SCT120 SCT250 FM202100 19012KT P6SM FEW060 SCT120 SCT250 FM210000 23010KT P6SM SCT250 FM210300 26008KT P6SM SCT250 FM211200 27010KT P6SM FEW050 SCT250 FM211700 23013KT P6SM SCT050 BKN150 RMK AO2 SLP099 T03560250 10356 20283 58013";
 
     // missing Weather(descriptors=[TS], phenomena=[], intensity=MODERATE)
     Weathers parse = wxGroupParser.parse(rawText); // Weathers(weathers=[Weather(descriptors=[], phenomena=[RA, SN], intensity=LIGHT), Weather(descriptors=[FZ], phenomena=[FG], intensity=MODERATE)])
 
     System.out.println(parse);
   }
-
-
-
 
 }

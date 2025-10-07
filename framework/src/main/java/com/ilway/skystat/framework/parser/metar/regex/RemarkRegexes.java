@@ -15,7 +15,11 @@ public enum RemarkRegexes {
     return String.format("(?:^|\\s)(%s)(?=(?:\\s|$))", getRemarkRegex());
   }
 
+  public static String remarkTokens() {
+    return "(RMK|REMARKS|REMARK|RMKS)";
+  }
+
   private static String getRemarkRegex() {
-    return "RMK(?<rmk>[\\s\\S]+)";
+    return remarkTokens() + "(?<rmk>[\\s\\S]+)";
   }
 }

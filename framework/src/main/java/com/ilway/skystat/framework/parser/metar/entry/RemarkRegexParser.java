@@ -13,7 +13,7 @@ public class RemarkRegexParser extends ReportRegexParser<String> {
 
   @Override
   public String parse(String rawText) {
-    Matcher matcher = getMatcher(rawText, REMARK_REGEX);
+    Matcher matcher = getMatcher(rawText, REMARK_REGEX, false);
 
     if (!check(matcher)) {
       return "";

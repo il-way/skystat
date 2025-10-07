@@ -64,12 +64,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Record" />
         <option value="Interface" />
         <option value="Exception" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -109,6 +109,7 @@
     "Gradle.'com.ilway.skystat.framework.adapter'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.framework.adapter.output'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.framework.adapter.output.mysql'에 있는 테스트.executor": "Run",
+    "Gradle.'com.ilway.skystat.framework.parser'에 있는 테스트.executor": "Run",
     "Gradle.'com.ilway.skystat.it'에 있는 테스트.executor": "Run",
     "Gradle.'parser'에 있는 테스트.executor": "Run",
     "Gradle.'skystat.framework.test'에 있는 테스트.executor": "Run",
@@ -120,6 +121,7 @@
     "Gradle.CloudStatisticQueryTest.hasCloudTypeTest.executor": "Run",
     "Gradle.CloudTest.executor": "Run",
     "Gradle.CloudTest.test.executor": "Run",
+    "Gradle.CloudTest.고도가_없는_구름객체를_생성할때_고도를_넣으면_예외가_발생한다.executor": "Run",
     "Gradle.CloudTest.고도가_없는_구름정보의_경우_altitude가_null인_구름객체를_포함하는_구름군_객체를_반환한다.executor": "Run",
     "Gradle.CloudTest.고도가_존재하는_구름군이_존재하는_경우_해당_구름군_객체를_반환한다.executor": "Run",
     "Gradle.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다.executor": "Run",
@@ -181,7 +183,11 @@
     "Gradle.MinimumCrosswindPolicyTest.executor": "Run",
     "Gradle.MinimumCrosswindPolicyTest.단일활주로의_측풍최소치_정책_연산에_성공해야한다.executor": "Run",
     "Gradle.ObservataionTimeTest.관측시간_파싱_성공.executor": "Run",
+    "Gradle.RemarkTest.bulkTest.executor": "Run",
     "Gradle.RemarkTest.executor": "Run",
+    "Gradle.RemarkTest.test.executor": "Run",
+    "Gradle.RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다.executor": "Run",
+    "Gradle.RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다.executor": "Run",
     "Gradle.ReportTypeTest.executor": "Run",
     "Gradle.StationTest.executor": "Run",
     "Gradle.StatisticTest.executor": "Run",
@@ -330,26 +336,8 @@
       <recent name="com.ilway.skystat.framework.adapter.input" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <envs>
-        <env name="DB_USER" value="root" />
-        <env name="SPRING_DATASOURCE_PASSWORD" value="dnfl653538@" />
-      </envs>
-      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
-      <module name="skystat.bootstrap.main" />
-      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=staging" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MetarStatisticAdapterTest.getTemperatureStatisticTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.WeatherTest.test">
+    <configuration name="CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -362,7 +350,127 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest.getTemperatureStatisticTest&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.parser.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="RemarkTest.bulkTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.bulkTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="RemarkTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.test&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.parser.WeatherTest.test&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -399,87 +507,21 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="skystat:bootstrap [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/bootstrap" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="bootJar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="skystat:bootstrap [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/bootstrap" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="skystat:bootstrap [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/bootstrap" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Gradle.bootstrap" />
-      <item itemvalue="Gradle.skystat:bootstrap [bootJar]" />
-      <item itemvalue="Gradle.skystat:bootstrap [build]" />
-      <item itemvalue="Gradle.skystat:bootstrap [jar]" />
-      <item itemvalue="Gradle.MetarStatisticAdapterTest.getTemperatureStatisticTest" />
-      <item itemvalue="애플리케이션.App" />
+      <item itemvalue="Gradle.RemarkTest.bulkTest" />
+      <item itemvalue="Gradle.RemarkTest.test" />
+      <item itemvalue="Gradle.RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다" />
+      <item itemvalue="Gradle.RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다" />
+      <item itemvalue="Gradle.WeatherTest.test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.skystat:bootstrap [bootJar]" />
-        <item itemvalue="Gradle.skystat:bootstrap [jar]" />
-        <item itemvalue="Gradle.skystat:bootstrap [build]" />
-        <item itemvalue="애플리케이션.App" />
-        <item itemvalue="Gradle.MetarStatisticAdapterTest.getTemperatureStatisticTest" />
+        <item itemvalue="Gradle.WeatherTest.test" />
+        <item itemvalue="Gradle.RemarkTest.bulkTest" />
+        <item itemvalue="Gradle.RemarkTest.test" />
+        <item itemvalue="Gradle.RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다" />
+        <item itemvalue="Gradle.RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다" />
       </list>
     </recent_temporary>
   </component>

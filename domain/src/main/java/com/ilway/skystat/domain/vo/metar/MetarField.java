@@ -15,6 +15,7 @@ public enum MetarField {
   WEATHERS,
   CLOUD,
   CLOUDS,
+  TRENDS,
   REMARKS;
 
 }

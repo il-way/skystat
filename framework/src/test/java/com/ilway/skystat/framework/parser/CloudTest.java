@@ -49,7 +49,7 @@ public class CloudTest {
   @Test
   public void 고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다() {
     // given, when, then
-    String rawText = "RKSI 270700Z 22010KT 180V240 CAVOK 15/07 Q1016 TEMPO 9999 -RA FEW 030 OVC 080";
+    String rawText = "RKSI 270700Z 22010KT 180V240 CAVOK 15/07 Q1016 -RA FEW 030 OVC 080";
     
     assertThrows(IllegalArgumentException.class, () -> {
       cloudParser.parse(rawText);
