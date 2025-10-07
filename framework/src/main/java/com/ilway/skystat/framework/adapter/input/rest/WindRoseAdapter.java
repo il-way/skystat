@@ -7,9 +7,11 @@ import com.ilway.skystat.application.dto.windrose.WindRose;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import com.ilway.skystat.framework.adapter.input.rest.response.WindRoseResponse;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Month;
@@ -17,6 +19,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 
+@Validated
 @RequestMapping("/windrose")
 @RestController
 @RequiredArgsConstructor
@@ -27,8 +30,8 @@ public class WindRoseAdapter {
 	@GetMapping("/{icao}")
 	public ResponseEntity<WindRoseResponse> getWindRose(
 		@PathVariable("icao") String icao,
-		@RequestParam("startDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
-		@RequestParam("endDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed
+		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
+		@RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed
 	) {
 		List<SpeedBin> speedBins = SpeedBin.of5KtSpeedBins();
 		List<DirectionBin> directionBins = DirectionBin.of16DirectionBins();

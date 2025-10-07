@@ -42,7 +42,7 @@ public class MetarManagementAdapter {
 	@PostMapping("/save/{icao}")
 	public ResponseEntity<MetarSaveResponse> save(
 		@PathVariable("icao") String icao,
-		@RequestBody @NotNull MetarSaveForm form
+		@RequestBody @Validated MetarSaveForm form
 	) {
 		ZonedDateTime observationTime = form.getObservationTime();
 		MetarParser parser = new MetarParser(YearMonth.from(observationTime));
