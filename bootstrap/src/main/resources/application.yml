@@ -1,0 +1,77 @@
+spring:
+  config:
+    activate:
+      on-profile: staging
+  datasource:
+    url: jdbc:mysql://localhost:3306/skystat_test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USER}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc.batch_size: 100
+        order_inserts: true
+        format_sql: true
+    show-sql: false
+  aop:
+    proxy-target-class: true
+
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: ./logs/access
+      prefix: access
+      suffix: .log
+      pattern: '%{X-Correlation-Id}i %h %l %u %t "%r" %s %b %D'
+
+logging:
+  file:
+    path: ./logs
+  level:
+    root: INFO
+    com.ilway.skystat: DEBUG
+    org.hibernate.SQL: INFO
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/skystat?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USER}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc.batch_size: 100
+        order_inserts: true
+        format_sql: true
+      show-sql: true
+  aop:
+    proxy-target-class: true
+
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: ./logs/access
+      prefix: access
+      suffix: .log
+      pattern: '%{X-Correlation-Id}i %h %l %u %t "%r" %s %b %D'
+
+logging:
+  file:
+    path: ./logs
+  level:
+    root: INFO
+    com.ilway.skystat: INFO
+    org.hibernate: WARN
