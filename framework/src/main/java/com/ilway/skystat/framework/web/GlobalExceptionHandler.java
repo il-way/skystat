@@ -2,6 +2,9 @@ package com.ilway.skystat.framework.web;
 
 import com.ilway.skystat.application.exception.AggregationUnavailableException;
 import com.ilway.skystat.application.exception.BusinessException;
+import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
+import com.ilway.skystat.framework.exception.DuplicateMetarException;
+import com.ilway.skystat.framework.exception.MetarParseException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +28,24 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorBody> handleUnavailable(AggregationUnavailableException e, HttpServletRequest req) {
 		log.warn("503 path={} msg={}", req.getRequestURI(), e.getMessage());
 		return ResponseEntity.status(503).body(new ErrorBody("SERVICE_UNAVAILABLE", e.getMessage()));
+	}
+
+	@ExceptionHandler(DuplicateMetarException.class)
+	public ResponseEntity<MetarSaveResponse> handleDuplicatedMetar(DuplicateMetarException e, HttpServletRequest req) {
+		int status = e.getHttpStatus();
+		String code = e.getCode();
+
+		log.warn("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage());
+		return ResponseEntity.status(status).body(MetarSaveResponse.failure(0, 1, e.getMessage()));
+	}
+
+	@ExceptionHandler(MetarParseException.class)
+	public ResponseEntity<MetarSaveResponse> handleDuplicatedMetar(MetarParseException e, HttpServletRequest req) {
+		int status = e.getHttpStatus();
+		String code = e.getCode();
+
+		log.warn("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage());
+		return ResponseEntity.status(status).body(MetarSaveResponse.failure(1, 0, e.getMessage()));
 	}
 
 	@ExceptionHandler(BusinessException.class) // 필요 시 도메인/앱 예외로 교체

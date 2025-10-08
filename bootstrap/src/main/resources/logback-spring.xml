@@ -1,6 +1,6 @@
 <configuration>
   <property name="PATTERN"
-            value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] corr=%X{corrId:-} %logger{36} - %msg%n"/>
+            value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread][corr][%X{corrId}][%logger{36}] %msg%n"/>
   <property name="LOG_DIR" value="./logs"/>
   <property name="APP_NAME" value="skystat"/>
 

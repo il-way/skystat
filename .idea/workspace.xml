@@ -64,12 +64,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Record" />
         <option value="Interface" />
-        <option value="Exception" />
         <option value="AnnotationType" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="Exception" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -336,8 +336,21 @@
       <recent name="com.ilway.skystat.framework.adapter.input" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.WeatherTest.test">
-    <configuration name="CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.MetarManagementAdapterTest.saveAllTest">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
+      <module name="skystat.bootstrap.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MetarManagementAdapterTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -350,7 +363,7 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.CloudTest.고도가_필수인_구름객체를_파싱할때_고도를_누락하면_예외가_발생한다&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarManagementAdapterTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -361,7 +374,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MetarManagementAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -374,7 +387,7 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarManagementAdapterTest.saveAllTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -385,7 +398,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MetarManagementAdapterTest.saveTestFailure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -398,7 +411,7 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarManagementAdapterTest.saveTestFailure&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -409,7 +422,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RemarkTest.bulkTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MetarManagementAdapterTest.saveTestSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -422,55 +435,7 @@
           <list>
             <option value=":framework:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.bulkTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="RemarkTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.test&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="WeatherTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.WeatherTest.test&quot;" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarManagementAdapterTest.saveTestSuccess&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -509,19 +474,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.bootstrap" />
-      <item itemvalue="Gradle.RemarkTest.bulkTest" />
-      <item itemvalue="Gradle.RemarkTest.test" />
-      <item itemvalue="Gradle.RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다" />
-      <item itemvalue="Gradle.RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다" />
-      <item itemvalue="Gradle.WeatherTest.test" />
+      <item itemvalue="Gradle.MetarManagementAdapterTest" />
+      <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
+      <item itemvalue="Gradle.MetarManagementAdapterTest.saveTestFailure" />
+      <item itemvalue="Gradle.MetarManagementAdapterTest.saveTestSuccess" />
+      <item itemvalue="애플리케이션.App" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.WeatherTest.test" />
-        <item itemvalue="Gradle.RemarkTest.bulkTest" />
-        <item itemvalue="Gradle.RemarkTest.test" />
-        <item itemvalue="Gradle.RemarkTest.리마크가_존재하지_않는_메타는_공백문자열이_파싱된다" />
-        <item itemvalue="Gradle.RemarkTest.리마크가_존재하는_메타의_파싱에_성공해야한다" />
+        <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
+        <item itemvalue="Gradle.MetarManagementAdapterTest.saveTestFailure" />
+        <item itemvalue="Gradle.MetarManagementAdapterTest.saveTestSuccess" />
+        <item itemvalue="Gradle.MetarManagementAdapterTest" />
+        <item itemvalue="애플리케이션.App" />
       </list>
     </recent_temporary>
   </component>

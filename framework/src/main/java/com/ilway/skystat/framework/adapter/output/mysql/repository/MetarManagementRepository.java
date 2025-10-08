@@ -8,8 +8,20 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface MetarManagementRepository extends JpaRepository<MetarData, Long> {
+
+	@Query("""
+			SELECT (COUNT(m) > 0)
+			FROM MetarData m
+			WHERE UPPER(m.stationIcao) = UPPER(:icao)
+				AND m.observationTime = :observationTime
+				AND m.rawText = :rawText
+		""")
+	boolean existsByIcaoAndObsTimeAndRawText(@Param("icao") String icao,
+	                                         @Param("observationTime") ZonedDateTime observationTime,
+	                                         @Param("rawText") String rawText);
 
 	@Query("""
 		SELECT m.id

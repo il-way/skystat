@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.weather.Clouds;
 import com.ilway.skystat.domain.vo.weather.Weathers;
-import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
-import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.config.MySQLConfigData;
@@ -76,10 +74,13 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			MetarSaveResponse.class
 		);
 
+		log.info("# response > {}", response);
+
 		Path path = Path.of(rksiMetarFile.getURI());
 		int expectedTotalCount = Files.readAllLines(path).size();
-		Integer expectedSuccessCount = response.successCount();
-		Integer expectedFailureCount = response.failureCount();
+		int expectedSuccessCount = response.successCount();
+		int expectedFailureCount = response.parseFailureCount();
+		int expectedDuplicatedCount = response.duplicatedCount();
 
 		List<Metar> actual = metarManagementUseCase.findAllByIcao(TEST_ICAO);
 		int actualSuccessCount = actual.size();
@@ -90,7 +91,7 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 		);
 
 		log.info("# expectedTotalCount: {}", expectedTotalCount);
-		log.info("# errorList: {}", response.errorList());
+		log.info("# errorList: {}", response.parsedErrors());
 	}
 
 	@Test
@@ -108,7 +109,8 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 		)
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.successCount").value(1))
-			.andExpect(jsonPath("$.failureCount").value(0));
+			.andExpect(jsonPath("$.parseFailureCount").value(0))
+			.andExpect(jsonPath("$.duplicatedCount").value(0));
 
 
 		List<Metar> list = metarManagementUseCase.findAllByIcao(icao);
@@ -137,7 +139,8 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			)
 			.andExpect(status().isBadRequest())
 			.andExpect(jsonPath("$.successCount").value(0))
-			.andExpect(jsonPath("$.failureCount").value(1));
+			.andExpect(jsonPath("$.parseFailureCount").value(1))
+			.andExpect(jsonPath("$.duplicatedCount").value(0));
 
 		List<Metar> list = metarManagementUseCase.findAllByIcao(icao);
 		assertEquals(0, list.size());

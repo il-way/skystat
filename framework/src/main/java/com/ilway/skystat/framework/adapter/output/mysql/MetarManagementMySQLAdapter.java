@@ -7,10 +7,13 @@ import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.exception.DuplicateMetarException;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZonedDateTime;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -24,6 +27,14 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	@Override
 	@Transactional
 	public void save(Metar metar) {
+		String icao = metar.getStationIcao();
+		ZonedDateTime obsTime = metar.getObservationTime();
+		String rawText = metar.getRawText();
+
+		if (repository.existsByIcaoAndObsTimeAndRawText(icao, obsTime, rawText)) {
+			throw new DuplicateMetarException(icao, obsTime, rawText);
+		}
+
 		repository.save(MetarMySQLMapper.metarDomainToData(metar));
 	}
 
