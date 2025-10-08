@@ -14,6 +14,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarWeatherQ
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 	private final MetarWeatherQueryRepository weatherQueryRepository;
 
 	@Override
-	public List<MonthlyCountDto> countDistinctDaysByMonth(String icao, RetrievalPeriod period, WeatherCondition condition) {
+	public List<MonthlyCountDto> countDistinctDaysByMonth(@UppercaseParam String icao, RetrievalPeriod period, WeatherCondition condition) {
 		WeatherConditionPredicate predicate = condition.predicate();
 		List<MonthlyCountQueryDto> counts = switch (predicate) {
 			case HAS_PHENOMENA -> weatherQueryRepository.countPhenomenaDaysByMonth(
@@ -73,7 +74,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 	}
 
 	@Override
-	public List<HourlyCountDto> countDistinctHoursByMonth(String icao, RetrievalPeriod period, WeatherCondition condition) {
+	public List<HourlyCountDto> countDistinctHoursByMonth(@UppercaseParam String icao, RetrievalPeriod period, WeatherCondition condition) {
 		WeatherConditionPredicate predicate = condition.predicate();
 		List<HourlyCountQueryDto> counts = switch (predicate) {
 			case HAS_PHENOMENA -> weatherQueryRepository.countPhenomenaDaysByMonthHour(

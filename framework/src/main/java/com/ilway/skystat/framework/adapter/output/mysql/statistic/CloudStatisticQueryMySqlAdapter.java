@@ -13,6 +13,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarCloudQue
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class CloudStatisticQueryMySqlAdapter implements CloudStatisticQueryOutpu
 	private final MetarCloudQueryRepository cloudQueryRepository;
 
 	@Override
-	public List<MonthlyCountDto> countDistinctDaysByMonth(String icao, RetrievalPeriod period, CloudCondition condition) {
+	public List<MonthlyCountDto> countDistinctDaysByMonth(@UppercaseParam String icao, RetrievalPeriod period, CloudCondition condition) {
 		CloudConditionPredicate predicate = condition.predicate();
 		List<MonthlyCountQueryDto> counts = switch (predicate) {
 			case HAS_CLOUDTYPE -> cloudQueryRepository.countCloudTypeDaysByMonth(
@@ -45,7 +46,7 @@ public class CloudStatisticQueryMySqlAdapter implements CloudStatisticQueryOutpu
 	}
 
 	@Override
-	public List<HourlyCountDto> countDistinctHoursByMonth(String icao, RetrievalPeriod period, CloudCondition condition) {
+	public List<HourlyCountDto> countDistinctHoursByMonth(@UppercaseParam String icao, RetrievalPeriod period, CloudCondition condition) {
 		CloudConditionPredicate predicate = condition.predicate();
 		List<HourlyCountQueryDto> counts = switch (predicate) {
 			case HAS_CLOUDTYPE -> cloudQueryRepository.countCloudTypeDaysByMonthHour(

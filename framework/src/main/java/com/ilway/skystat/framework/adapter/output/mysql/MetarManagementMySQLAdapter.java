@@ -7,6 +7,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import com.ilway.skystat.framework.exception.DuplicateMetarException;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -56,14 +57,14 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Metar> findAllByIcao(String icao) {
+	public List<Metar> findAllByIcao(@UppercaseParam String icao) {
 		List<Long> ids = repository.findIdsByIcaoSorted(icao);
 		return retrieveMetarsInChunks(ids);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period) {
+	public List<Metar> findByIcaoAndPeriod(@UppercaseParam String icao, RetrievalPeriod period) {
 		List<Long> ids = repository.findIdsByIcaoAndPeriod(icao, period.fromInclusive(), period.toExclusive());
 		return retrieveMetarsInChunks(ids);
 	}

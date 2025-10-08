@@ -19,7 +19,7 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
     FROM MetarData m
-    WHERE UPPER(m.stationIcao) = UPPER(:icao)
+    WHERE m.stationIcao = :icao
       AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
       AND EXISTS (
         SELECT 1 FROM CloudData c
@@ -39,7 +39,7 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
 		FROM MetarData m
-		WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		WHERE m.stationIcao = :icao
 			AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 			AND EXISTS (
 				SELECT 1 FROM CloudData c
@@ -58,7 +58,7 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
 			YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 		)
     FROM MetarData m
-    WHERE UPPER(m.stationIcao) = UPPER(:icao)
+    WHERE m.stationIcao = :icao
       AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
       AND EXISTS (
         SELECT 1 FROM CloudData c
@@ -78,7 +78,7 @@ public interface MetarCloudQueryRepository extends JpaRepository<MetarData, Long
 			COUNT(DISTINCT DAY(m.reportTime))
 		)
 		FROM MetarData m
-		WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		WHERE m.stationIcao = :icao
 			AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 			AND EXISTS (
 				SELECT 1 FROM CloudData c

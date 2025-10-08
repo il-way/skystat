@@ -6,6 +6,7 @@ import com.ilway.skystat.application.dto.statistic.temperature.HourlyTemperature
 import com.ilway.skystat.application.port.output.TemperatureStatisticQueryOutputPort;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarTemperatureQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -17,12 +18,12 @@ public class TemperatureStatisticQueryMySqlAdapter implements TemperatureStatist
 	private final MetarTemperatureQueryRepository repository;
 
 	@Override
-	public List<DailyTemperatureStatDto> findDailyTemperatureStatistic(String icao, RetrievalPeriod period) {
+	public List<DailyTemperatureStatDto> findDailyTemperatureStatistic(@UppercaseParam String icao, RetrievalPeriod period) {
 		return repository.findDailyStatistic(icao, period.fromInclusive(), period.toExclusive());
 	}
 
 	@Override
-	public List<HourlyTemperatureStatDto> findHourlyTemperatureStatistic(String icao, RetrievalPeriod period) {
+	public List<HourlyTemperatureStatDto> findHourlyTemperatureStatistic(@UppercaseParam String icao, RetrievalPeriod period) {
 		return repository.findHourlyStatistic(icao, period.fromInclusive(), period.toExclusive());
 	}
 }

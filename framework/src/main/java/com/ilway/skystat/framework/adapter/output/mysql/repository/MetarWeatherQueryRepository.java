@@ -19,7 +19,7 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 				YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 			)
 		   FROM MetarData m
-		   WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		   WHERE m.stationIcao = :icao
 		     AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 		     AND EXISTS (
 		       SELECT 1 FROM WeatherData w JOIN w.phenomena wp
@@ -44,7 +44,7 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 				COUNT(DISTINCT DAY(m.reportTime))
 			)
 			FROM MetarData m
-			WHERE UPPER(m.stationIcao) = UPPER(:icao)
+			WHERE m.stationIcao = :icao
 				AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 				AND EXISTS (
 					SELECT 1 FROM WeatherData w JOIN w.phenomena wp
@@ -68,7 +68,7 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 				YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 			)
 		   FROM MetarData m
-		   WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		   WHERE m.stationIcao = :icao
 		     AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 		     AND EXISTS (
 		       SELECT 1 FROM WeatherData w JOIN w.descriptors wd
@@ -93,7 +93,7 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 				COUNT(DISTINCT DAY(m.reportTime))
 			)
 			FROM MetarData m
-			WHERE UPPER(m.stationIcao) = UPPER(:icao)
+			WHERE m.stationIcao = :icao
 				AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 				AND EXISTS (
 					SELECT 1 FROM WeatherData w JOIN w.descriptors wd
@@ -117,7 +117,7 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 				YEAR(m.reportTime), MONTH(m.reportTime), COUNT(DISTINCT DAY(m.reportTime))
 			)
 		   FROM MetarData m
-		   WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		   WHERE m.stationIcao = :icao
 		     AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 		     AND EXISTS (
 		       SELECT 1 FROM WeatherData w JOIN w.phenomena wp JOIN w.descriptors wd
@@ -146,7 +146,7 @@ public interface MetarWeatherQueryRepository extends JpaRepository<MetarData, Lo
 				COUNT(DISTINCT DAY(m.reportTime))
 			)
 			FROM MetarData m
-			WHERE UPPER(m.stationIcao) = UPPER(:icao)
+			WHERE m.stationIcao = :icao
 				AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 				AND EXISTS (
 		       SELECT 1 FROM WeatherData w JOIN w.phenomena wp JOIN w.descriptors wd

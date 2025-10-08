@@ -1,6 +1,7 @@
 package com.ilway.skystat.framework.adapter.output.resource;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.generic.IntervalInclusion;
 import org.springframework.core.io.ClassPathResource;
@@ -39,7 +40,7 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 	}
 
 	@Override
-	public List<Metar> findAllByIcao(String icao) {
+	public List<Metar> findAllByIcao(@UppercaseParam String icao) {
 		MetarParser parser = new MetarParser(YearMonth.now());
 
 		try (var reader = new BufferedReader(
@@ -59,7 +60,7 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 	}
 
 	@Override
-	public List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period) {
+	public List<Metar> findByIcaoAndPeriod(@UppercaseParam String icao, RetrievalPeriod period) {
 		return findAllByIcao(icao).stream()
 				.filter(m -> IntervalInclusion.CLOSED.test(m.getReportTime(), period.fromInclusive(), period.toExclusive()))
 				.toList();

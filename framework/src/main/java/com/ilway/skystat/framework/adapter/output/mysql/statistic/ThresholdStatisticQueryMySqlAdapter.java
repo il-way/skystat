@@ -11,6 +11,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarMetricQu
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 	private final MetarMetricQueryRepository metricQueryRepository;
 
 	@Override
-	public List<MonthlyCountDto> countDistinctDaysByMonth(String icao, RetrievalPeriod period, ThresholdCondition condition) {
+	public List<MonthlyCountDto> countDistinctDaysByMonth(@UppercaseParam String icao, RetrievalPeriod period, ThresholdCondition condition) {
 		MetricField field = condition.field();
 		Comparison comparison = condition.comparison();
 		List<MonthlyCountQueryDto> counts = switch (field) {
@@ -70,7 +71,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 	}
 
 	@Override
-	public List<HourlyCountDto> countDistinctHoursByMonth(String icao, RetrievalPeriod period, ThresholdCondition condition) {
+	public List<HourlyCountDto> countDistinctHoursByMonth(@UppercaseParam String icao, RetrievalPeriod period, ThresholdCondition condition) {
 		MetricField field = condition.field();
 		Comparison comparison = condition.comparison();
 		List<HourlyCountQueryDto> counts = switch (field) {

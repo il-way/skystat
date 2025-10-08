@@ -65,11 +65,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Enum" />
         <option value="Exception" />
         <option value="Record" />
+        <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>

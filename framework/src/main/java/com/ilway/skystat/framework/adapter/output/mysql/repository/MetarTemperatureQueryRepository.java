@@ -20,7 +20,7 @@ public interface MetarTemperatureQueryRepository extends JpaRepository<MetarData
 				MIN(m.temperature)
 			)
 			FROM MetarData m
-			WHERE UPPER(m.stationIcao) = UPPER(:icao)
+			WHERE m.stationIcao = :icao
 				AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 			GROUP BY YEAR(m.reportTime), MONTH(m.reportTime), DAY(m.reportTime)
 			ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), DAY(m.reportTime)
@@ -38,7 +38,7 @@ public interface MetarTemperatureQueryRepository extends JpaRepository<MetarData
 				MIN(m.temperature)
 			)
 			FROM MetarData m
-			WHERE UPPER(m.stationIcao) = UPPER(:icao)
+			WHERE m.stationIcao = :icao
 				AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
 			GROUP BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)
 			ORDER BY YEAR(m.reportTime), MONTH(m.reportTime), HOUR(m.reportTime)

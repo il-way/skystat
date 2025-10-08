@@ -15,7 +15,7 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 	@Query("""
 			SELECT (COUNT(m) > 0)
 			FROM MetarData m
-			WHERE UPPER(m.stationIcao) = UPPER(:icao)
+			WHERE m.stationIcao = :icao
 				AND m.observationTime = :observationTime
 				AND m.rawText = :rawText
 		""")
@@ -26,14 +26,14 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 	@Query("""
 		SELECT m.id
 		FROM MetarData m
-		WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		WHERE m.stationIcao = :icao
 		""")
 	List<Long> findIdsByIcao(@Param("icao") String icao);
 
 	@Query("""
 		SELECT m.id
 		FROM MetarData m
-		WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		WHERE m.stationIcao = :icao
 		ORDER BY m.reportTime ASC, m.id ASC
 		""")
 	List<Long> findIdsByIcaoSorted(@Param("icao") String icao);
@@ -41,7 +41,7 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 	@Query("""
 		SELECT m.id
 		FROM MetarData m
-		WHERE UPPER(m.stationIcao) = UPPER(:icao)
+		WHERE m.stationIcao = :icao
 			AND m.reportTime >= :fromInclusive
 		  AND m.reportTime <  :toExclusive
 		ORDER BY m.reportTime ASC, m.id ASC
