@@ -23,6 +23,10 @@ public class RoundingPolicy {
     return new RoundingPolicy(scale, roundingMode);
   }
 
+  public static RoundingPolicy ofDefault() {
+    return new RoundingPolicy(2, RoundingMode.HALF_UP);
+  }
+
   public BigDecimal apply(BigDecimal value) {
     Objects.requireNonNull(value, "value must not be null.");
     return value.setScale(scale, roundingMode);

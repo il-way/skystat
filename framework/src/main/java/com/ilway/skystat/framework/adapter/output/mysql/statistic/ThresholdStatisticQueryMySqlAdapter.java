@@ -6,6 +6,7 @@ import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
 import com.ilway.skystat.application.model.generic.Comparison;
 import com.ilway.skystat.application.model.weather.*;
 import com.ilway.skystat.application.port.output.ThresholdStatisticQueryOutputPort;
+import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarMetricQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
@@ -14,6 +15,7 @@ import com.ilway.skystat.framework.common.annotation.TranslateDbExceptions;
 import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
+import java.math.RoundingMode;
 import java.util.List;
 
 import static com.ilway.skystat.application.model.generic.Comparison.GTE;
@@ -23,6 +25,7 @@ import static com.ilway.skystat.domain.vo.unit.LengthUnit.METERS;
 import static com.ilway.skystat.domain.vo.unit.PressureUnit.HPA;
 import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import static com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMapper.when;
+import static java.math.RoundingMode.HALF_UP;
 
 @TranslateDbExceptions("querying threshold statistic")
 @RequiredArgsConstructor
@@ -39,19 +42,19 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), METERS)
+				condition.unit().convertTo(condition.threshold(), METERS, RoundingPolicy.of(0, HALF_UP))
 			));
 			case WIND_SPEED -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindSpeedKtGteByMonth(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), KT)
+				condition.unit().convertTo(condition.threshold(), KT, RoundingPolicy.of(0, HALF_UP))
 			));
 			case WIND_PEAK -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindPeakKtGteByMonth(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), KT)
+				condition.unit().convertTo(condition.threshold(), KT, RoundingPolicy.of(0, HALF_UP))
 			));
 			case LOWEST_CEILING -> when(comparison.equals(LTE), () -> metricQueryRepository.countCeilingLteByMonth(
 				icao,
@@ -63,7 +66,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), HPA)
+				condition.unit().convertTo(condition.threshold(), HPA, RoundingPolicy.of(2, HALF_UP))
 			));
 		};
 
@@ -79,19 +82,19 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), METERS)
+				condition.unit().convertTo(condition.threshold(), METERS, RoundingPolicy.of(0, HALF_UP))
 			));
 			case WIND_SPEED -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindSpeedKtGteByMonthHour(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), KT)
+				condition.unit().convertTo(condition.threshold(), KT, RoundingPolicy.of(0, HALF_UP))
 			));
 			case WIND_PEAK -> when(comparison.equals(GTE), () -> metricQueryRepository.countWindPeakKtGteByMonthHour(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), KT)
+				condition.unit().convertTo(condition.threshold(), KT, RoundingPolicy.of(0, HALF_UP))
 			));
 			case LOWEST_CEILING -> when(comparison.equals(LTE), () -> metricQueryRepository.countCeilingLteByMonthHour(
 				icao,
@@ -103,7 +106,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
-				condition.unit().convertTo(condition.threshold(), HPA)
+				condition.unit().convertTo(condition.threshold(), HPA, RoundingPolicy.of(2, HALF_UP))
 			));
 		};
 

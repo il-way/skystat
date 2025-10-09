@@ -1,5 +1,6 @@
 package com.ilway.skystat.framework.adapter.output.mysql.mapper;
 
+import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.domain.service.CloudOperation;
 import com.ilway.skystat.domain.service.WindOperation;
 import com.ilway.skystat.domain.vo.metar.Metar;
@@ -11,6 +12,7 @@ import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
 import com.ilway.skystat.framework.adapter.output.mysql.data.*;
 
+import java.math.RoundingMode;
 import java.util.stream.Collectors;
 
 import static com.ilway.skystat.domain.vo.metar.ReportType.AUTO;
@@ -18,6 +20,7 @@ import static com.ilway.skystat.domain.vo.unit.LengthUnit.METERS;
 import static com.ilway.skystat.domain.vo.unit.PressureUnit.HPA;
 import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import static com.ilway.skystat.domain.vo.unit.TemperatureUnit.CELSIUS;
+import static java.math.RoundingMode.HALF_UP;
 import static java.util.stream.Collectors.joining;
 
 public class MetarMySQLMapper {
@@ -128,21 +131,21 @@ public class MetarMySQLMapper {
 			               .windDirection(metar.getWind().getDirection().getDegreeOptional().orElse(null))
 			               .windSpeed(metar.getWind().getSpeed())
 			               .windSpeedKt(metar.getWind().getUnit().convertTo(
-											 metar.getWind().getSpeed(), KT
+											 metar.getWind().getSpeed(), KT, RoundingPolicy.of(0, HALF_UP)
 			               ))
 			               .windGust(metar.getWind().getGusts())
 			               .windGustKt(metar.getWind().getUnit().convertTo(
-				               metar.getWind().getGusts(), KT
+				               metar.getWind().getGusts(), KT, RoundingPolicy.of(0, HALF_UP)
 			               ))
 			               .windPeakKt(metar.getWind().getUnit().convertTo(
-				               WindOperation.getWindPeak(metar.getWind()), KT
+				               WindOperation.getWindPeak(metar.getWind()), KT, RoundingPolicy.of(0, HALF_UP)
 			               ))
 			               .windVariableFrom(null)
 			               .windVariableTo(null)
 			               .visibilityUnit(metar.getVisibility().getUnit())
 			               .visibility(metar.getVisibility().getValue())
 			               .visibilityM(metar.getVisibility().getUnit().convertTo(
-				               metar.getVisibility().getValue(), METERS
+				               metar.getVisibility().getValue(), METERS, RoundingPolicy.of(0, HALF_UP)
 			               ))
 			               .temperature(metar.getTemperature().getUnit()
 				                            .toBase(metar.getTemperature().getValue()))
@@ -151,7 +154,7 @@ public class MetarMySQLMapper {
 			               .altimeterUnit(metar.getAltimeter().getUnit())
 			               .altimeter(metar.getAltimeter().getValue())
 			               .altimeterHpa(metar.getAltimeter().getUnit().convertTo(
-											 metar.getAltimeter().getValue(), HPA
+											 metar.getAltimeter().getValue(), HPA, RoundingPolicy.of(2, HALF_UP)
 			               ))
 			               .ceiling(CloudOperation.getLowestCeiling(metar.getClouds()))
 			               .cloudLayerCount(metar.getClouds().size())
