@@ -21,7 +21,7 @@ public class TemperatureStatisticInputPort implements TemperatureStatisticUseCas
 
 	@Override
 	public TemperatureStatisticResult execute(TemperatureStatisticQuery query) {
-		List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
+		List<Metar> metars = metarManagementOutputPort.findByIcaoAndReportTimePeriod(query.icao(), query.period());
 		return TemperatureStatisticAggregator.aggregate(metars, query.period(), RoundingPolicy.of(2, HALF_UP));
 	}
 }

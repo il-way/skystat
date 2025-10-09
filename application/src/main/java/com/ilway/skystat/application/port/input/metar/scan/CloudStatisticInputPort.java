@@ -19,7 +19,7 @@ public class CloudStatisticInputPort implements StatisticUseCase<CloudStatisticQ
 
 	@Override
 	public ObservationStatisticResult execute(CloudStatisticQuery query) {
-		List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(query.icao(), query.period());
+		List<Metar> metars = metarManagementOutputPort.findByIcaoAndReportTimePeriod(query.icao(), query.period());
 
 		CloudCondition condition = query.condition();
 		Predicate<Metar> predicate = m -> condition.predicate().test(m.getClouds(), condition.target());

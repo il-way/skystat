@@ -12,7 +12,7 @@ import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.application.usecase.StatisticUseCase;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
-import com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import jakarta.persistence.EntityManager;
 import org.springframework.core.io.ClassPathResource;

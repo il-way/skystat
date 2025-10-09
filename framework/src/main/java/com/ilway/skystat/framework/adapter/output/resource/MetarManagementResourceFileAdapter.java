@@ -60,7 +60,14 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 	}
 
 	@Override
-	public List<Metar> findByIcaoAndPeriod(@UppercaseParam String icao, RetrievalPeriod period) {
+	public List<Metar> findByIcaoAndObservationTimePeriod(@UppercaseParam String icao, RetrievalPeriod period) {
+		return findAllByIcao(icao).stream()
+			       .filter(m -> IntervalInclusion.CLOSED.test(m.getReportTime(), period.fromInclusive(), period.toExclusive()))
+			       .toList();
+	}
+
+	@Override
+	public List<Metar> findByIcaoAndReportTimePeriod(@UppercaseParam String icao, RetrievalPeriod period) {
 		return findAllByIcao(icao).stream()
 				.filter(m -> IntervalInclusion.CLOSED.test(m.getReportTime(), period.fromInclusive(), period.toExclusive()))
 				.toList();

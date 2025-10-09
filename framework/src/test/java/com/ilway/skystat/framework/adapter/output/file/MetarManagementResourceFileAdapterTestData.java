@@ -31,14 +31,14 @@ public class MetarManagementResourceFileAdapterTestData extends ResourceFileConf
 	}
 
 	@Test
-	@DisplayName("리소스파일에서 icao와 period로 METAR 조회에 성공해야한다.")
+	@DisplayName("리소스파일에서 icao와 report time period로 METAR 조회에 성공해야한다.")
 	void findByIcaoAndPeriodTest() {
 		String icao = "rksi";
 		RetrievalPeriod retrievalPeriod = new RetrievalPeriod(
 			ZonedDateTime.of(2023, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC),
 			ZonedDateTime.of(2023, 12, 31, 23, 59, 0, 0, ZoneOffset.UTC)
 		);
-		List<Metar> metarList = metarManagementUseCase.findByIcaoAndPeriod(icao, retrievalPeriod);
+		List<Metar> metarList = metarManagementUseCase.findByIcaoAndReportTimePeriod(icao, retrievalPeriod);
 
 		assertTrue(metarList.size() >= HOURS_OF_ONE_YEAR);
 	}

@@ -1,4 +1,4 @@
-package com.ilway.skystat.framework.adapter.output.mysql.support;
+package com.ilway.skystat.framework.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

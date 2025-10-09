@@ -6,19 +6,17 @@ import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
 import com.ilway.skystat.application.model.weather.WeatherCondition;
 import com.ilway.skystat.application.model.weather.WeatherConditionPredicate;
 import com.ilway.skystat.application.port.output.WeatherStatisticQueryOutputPort;
-import com.ilway.skystat.domain.vo.weather.type.WeatherDescription;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarWeatherQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
-import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.TranslateDbExceptions;
 import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.ilway.skystat.application.model.weather.WeatherConditionPredicate.extract;
 import static java.util.stream.Collectors.*;

@@ -1,6 +1,5 @@
 package com.ilway.skystat.framework.adapter.output.mysql.repository;
 
-import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Optional;
 
 public interface MetarManagementRepository extends JpaRepository<MetarData, Long> {
 
@@ -46,9 +44,20 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 		  AND m.reportTime <  :toExclusive
 		ORDER BY m.reportTime ASC, m.id ASC
 		""")
-	List<Long> findIdsByIcaoAndPeriod(@Param("icao") String icao,
-	                                  @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                  @Param("toExclusive") ZonedDateTime toExclusive);
+	List<Long> findIdsByIcaoAndReportTimePeriod(@Param("icao") String icao,
+	                                            @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                            @Param("toExclusive") ZonedDateTime toExclusive);
 
+	@Query("""
+		SELECT m.id
+		FROM MetarData m
+		WHERE m.stationIcao = :icao
+			AND m.observationTime >= :fromInclusive
+		  AND m.observationTime <  :toExclusive
+		ORDER BY m.observationTime ASC, m.id ASC
+		""")
+	List<Long> findIdsByIcaoAndObservationTimePeriod(@Param("icao") String icao,
+	                                                 @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                                 @Param("toExclusive") ZonedDateTime toExclusive);
 
 }

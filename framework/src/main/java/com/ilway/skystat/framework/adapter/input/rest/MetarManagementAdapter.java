@@ -98,7 +98,7 @@ public class MetarManagementAdapter {
 	}
 
 	private Set<UniqueKey> findExistingKeys(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive) {
-		List<Metar> exists = metarManagementUseCase.findByIcaoAndPeriod(icao, new RetrievalPeriod(fromInclusive, toExclusive.plusSeconds(1)));
+		List<Metar> exists = metarManagementUseCase.findByIcaoAndObservationTimePeriod(icao, new RetrievalPeriod(fromInclusive, toExclusive.plusSeconds(1)));
 		return exists.stream().map(UniqueKey::from)
 			       .collect(Collectors.toSet());
 	}

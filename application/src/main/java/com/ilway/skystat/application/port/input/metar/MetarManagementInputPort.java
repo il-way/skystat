@@ -29,7 +29,13 @@ public class MetarManagementInputPort implements MetarManagementUseCase {
 	}
 
 	@Override
-	public List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period) {
-		return metarManagementOutputPort.findByIcaoAndPeriod(icao, period);
+	public List<Metar> findByIcaoAndObservationTimePeriod(String icao, RetrievalPeriod period) {
+		return metarManagementOutputPort.findByIcaoAndObservationTimePeriod(icao, period);
 	}
+
+	@Override
+	public List<Metar> findByIcaoAndReportTimePeriod(String icao, RetrievalPeriod period) {
+		return metarManagementOutputPort.findByIcaoAndReportTimePeriod(icao, period);
+	}
+
 }

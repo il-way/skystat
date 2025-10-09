@@ -1,9 +1,8 @@
 package com.ilway.skystat.bootstrap.config.staging;
 
 import com.ilway.skystat.application.port.output.*;
-import com.ilway.skystat.bootstrap.profile.Production;
 import com.ilway.skystat.bootstrap.profile.Staging;
-import com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.*;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.CloudStatisticQueryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.TemperatureStatisticQueryMySqlAdapter;

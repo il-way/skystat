@@ -101,7 +101,7 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 		ZonedDateTime to = expected.getLast().getReportTime().plusNanos(1);
 		RetrievalPeriod period = new RetrievalPeriod(from, to);
 
-		List<Metar> actual = metarManagementUseCase.findByIcaoAndPeriod(TEST_ICAO, period);
+		List<Metar> actual = metarManagementUseCase.findByIcaoAndReportTimePeriod(TEST_ICAO, period);
 
 		assertTrue(expected.containsAll(actual));
 	}

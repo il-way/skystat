@@ -14,6 +14,8 @@ public interface MetarManagementOutputPort {
 
 	List<Metar> findAllByIcao(String icao);
 
-	List<Metar> findByIcaoAndPeriod(String icao, RetrievalPeriod period);
+	List<Metar> findByIcaoAndObservationTimePeriod(String icao, RetrievalPeriod period);
+
+	List<Metar> findByIcaoAndReportTimePeriod(String icao, RetrievalPeriod period);
 
 }

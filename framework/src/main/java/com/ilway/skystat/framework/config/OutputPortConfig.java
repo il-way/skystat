@@ -1,7 +1,7 @@
 package com.ilway.skystat.framework.config;
 
 import com.ilway.skystat.application.port.output.*;
-import com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.*;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.CloudStatisticQueryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.TemperatureStatisticQueryMySqlAdapter;

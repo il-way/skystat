@@ -10,7 +10,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.mapper.StatisticDtoMappe
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarMetricQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.HourlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
-import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.TranslateDbExceptions;
 import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 

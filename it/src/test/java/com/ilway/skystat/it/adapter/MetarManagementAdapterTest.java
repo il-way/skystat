@@ -2,12 +2,11 @@ package com.ilway.skystat.it.adapter;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.domain.vo.metar.Metar;
-import com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import com.ilway.skystat.it.config.MySQLConfigData;
 import jakarta.persistence.EntityManager;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

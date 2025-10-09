@@ -5,7 +5,7 @@ import com.ilway.skystat.application.dto.statistic.temperature.DailyTemperatureS
 import com.ilway.skystat.application.dto.statistic.temperature.HourlyTemperatureStatDto;
 import com.ilway.skystat.application.port.output.TemperatureStatisticQueryOutputPort;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarTemperatureQueryRepository;
-import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.TranslateDbExceptions;
 import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 

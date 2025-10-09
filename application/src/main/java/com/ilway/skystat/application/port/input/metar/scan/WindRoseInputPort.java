@@ -26,7 +26,7 @@ public class WindRoseInputPort implements WindRoseUseCase {
 	@Override
 	public WindRoseResult generateMonthlyWindRose(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
 		try {
-			List<Metar> metars = metarManagementOutputPort.findByIcaoAndPeriod(icao, period);
+			List<Metar> metars = metarManagementOutputPort.findByIcaoAndReportTimePeriod(icao, period);
 
 			Map<Boolean, List<Metar>> partitionedByFixedDirectionExist = metars.stream()
 				                                                             .collect(partitioningBy(m -> !m.getWind().getDirection().isVariable()));

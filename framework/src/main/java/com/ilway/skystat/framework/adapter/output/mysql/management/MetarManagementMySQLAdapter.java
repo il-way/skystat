@@ -1,4 +1,4 @@
-package com.ilway.skystat.framework.adapter.output.mysql;
+package com.ilway.skystat.framework.adapter.output.mysql.management;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
@@ -6,12 +6,11 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
-import com.ilway.skystat.framework.adapter.output.mysql.support.TranslateDbExceptions;
+import com.ilway.skystat.framework.common.annotation.TranslateDbExceptions;
 import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import com.ilway.skystat.framework.exception.DuplicateMetarException;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
@@ -64,8 +63,15 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Metar> findByIcaoAndPeriod(@UppercaseParam String icao, RetrievalPeriod period) {
-		List<Long> ids = repository.findIdsByIcaoAndPeriod(icao, period.fromInclusive(), period.toExclusive());
+	public List<Metar> findByIcaoAndObservationTimePeriod(@UppercaseParam String icao, RetrievalPeriod period) {
+		List<Long> ids = repository.findIdsByIcaoAndObservationTimePeriod(icao, period.fromInclusive(), period.toExclusive());
+		return retrieveMetarsInChunks(ids);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Metar> findByIcaoAndReportTimePeriod(@UppercaseParam String icao, RetrievalPeriod period) {
+		List<Long> ids = repository.findIdsByIcaoAndReportTimePeriod(icao, period.fromInclusive(), period.toExclusive());
 		return retrieveMetarsInChunks(ids);
 	}
 
