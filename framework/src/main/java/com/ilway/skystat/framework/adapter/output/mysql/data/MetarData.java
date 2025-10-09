@@ -5,6 +5,7 @@ import com.ilway.skystat.domain.vo.unit.LengthUnit;
 import com.ilway.skystat.domain.vo.unit.PressureUnit;
 import com.ilway.skystat.domain.vo.unit.SpeedUnit;
 import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
+import com.ilway.skystat.framework.common.data.BaseTimeData;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
@@ -27,7 +28,7 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
 @Table(name = "tbsst_metar_report")
-public class MetarData {
+public class MetarData extends BaseTimeData {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,16 +65,16 @@ public class MetarData {
 	@Column(name = "wind_speed")
 	private Double windSpeed;
 
-	@Column(name = "wind_speed_kt", updatable = false)
+	@Column(name = "wind_speed_kt")
 	private Double windSpeedKt;
 
 	@Column(name = "wind_gust")
 	private Double windGust;
 
-	@Column(name = "wind_gust_kt", updatable = false)
+	@Column(name = "wind_gust_kt")
 	private Double windGustKt;
 
-	@Column(name = "wind_peak_kt", updatable = false)
+	@Column(name = "wind_peak_kt")
 	private Double windPeakKt;
 
 	@Column(name = "wind_var_from_deg")
@@ -89,7 +90,7 @@ public class MetarData {
 	@Column(name = "visibility")
 	private Double visibility;
 
-	@Column(name = "visibility_m", updatable = false)
+	@Column(name = "visibility_m")
 	private Double visibilityM;
 
 	@Column(name = "temp_c")
@@ -105,7 +106,7 @@ public class MetarData {
 	@Column(name = "altimeter")
 	private Double altimeter;
 
-	@Column(name = "altimeterHpa", updatable = false)
+	@Column(name = "altimeter_hpa")
 	private Double altimeterHpa;
 
 	@Column(name = "ceiling_ft")
@@ -123,10 +124,12 @@ public class MetarData {
 	@Column(name = "raw_text")
 	private String rawText;
 
+	@Builder.Default
 	@OneToMany(mappedBy = "metar", cascade = ALL, orphanRemoval = true, fetch = LAZY)
 	@BatchSize(size = 100)
 	private Set<CloudData> clouds = new LinkedHashSet<>();
 
+	@Builder.Default
 	@OneToMany(mappedBy = "metar", cascade = ALL, orphanRemoval = true, fetch = LAZY)
 	@BatchSize(size = 100)
 	private Set<WeatherData> weathers = new LinkedHashSet<>();

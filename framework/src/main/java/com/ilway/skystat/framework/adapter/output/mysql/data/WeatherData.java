@@ -47,11 +47,13 @@ public class WeatherData {
 	@Enumerated(STRING)
 	private WeatherIntensity intensity;
 
+	@Builder.Default
 	@OneToMany(mappedBy = "weather", cascade = ALL, orphanRemoval = true, fetch = LAZY)
 	@OrderColumn(name = "descriptor_order")
 	@BatchSize(size = 100)
 	private List<WeatherDescriptorData> descriptors = new ArrayList<>();
 
+	@Builder.Default
 	@OneToMany(mappedBy = "weather", cascade = ALL, orphanRemoval = true, fetch = LAZY)
 	@OrderColumn(name = "phenomenon_order")
 	@BatchSize(size = 100)

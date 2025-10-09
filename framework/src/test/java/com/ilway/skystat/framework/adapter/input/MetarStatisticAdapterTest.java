@@ -67,7 +67,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	void getPeakWindThresholdStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
 		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/threshold/{icao}", icao)
-			                                      .param("field", "peakwind")
+			                                      .param("field", "windpeak")
 			                                      .param("comparison", "GTE")
 			                                      .param("threshold", "25")
 			                                      .param("unit", "KT")
