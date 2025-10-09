@@ -257,7 +257,7 @@
     "Gradle.skystat 빌드.executor": "Run",
     "Gradle.skystat:application [:application:Main.main()].executor": "Run",
     "Gradle.skystat:bootstrap [:bootstrap:Main.main()].executor": "Run",
-    "Gradle.skystat:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.App.main()].executor": "Run",
+    "Gradle.skystat:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.App.main()].executor": "Debug",
     "Gradle.skystat:bootstrap [bootJar].executor": "Run",
     "Gradle.skystat:bootstrap [build].executor": "Run",
     "Gradle.skystat:bootstrap [jar].executor": "Run",
@@ -512,9 +512,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
         <item itemvalue="Gradle.MetarStatisticAdapterTest.getTemperatureStatisticTest" />
         <item itemvalue="애플리케이션.App" />
-        <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
         <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
         <item itemvalue="Gradle.MetarManagementAdapterTest.saveTestFailure" />
       </list>

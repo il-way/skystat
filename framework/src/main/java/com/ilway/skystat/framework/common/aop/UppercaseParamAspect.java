@@ -16,7 +16,7 @@ import java.util.Locale;
 @Component
 public class UppercaseParamAspect {
 
-	@Around("execution(* com.ilway.skystat.framework.adapter.output..*(..))")
+	@Around("execution(* com.ilway.skystat.framework.adapter..*(..))")
 	public Object uppercaseParam(ProceedingJoinPoint pjp) throws Throwable {
 		MethodSignature sig = (MethodSignature) pjp.getSignature();
 		Method method = sig.getMethod();

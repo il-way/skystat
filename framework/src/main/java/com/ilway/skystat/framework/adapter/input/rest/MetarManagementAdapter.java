@@ -25,11 +25,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 
 import static com.ilway.skystat.framework.adapter.output.resource.ResourceFileOperation.*;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.time.ZoneOffset.UTC;
 
 @RequestMapping("/metar")
 @RestController
@@ -38,6 +38,7 @@ import static java.time.ZoneOffset.UTC;
 public class MetarManagementAdapter {
 
 	private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	private static final BiPredicate<String, String> icaoPredicate = (String pathIcao, String parsedMetarIcao) -> pathIcao.equalsIgnoreCase(parsedMetarIcao);
 
 	private final MetarManagementUseCase metarManagementUseCase;
 
@@ -49,6 +50,13 @@ public class MetarManagementAdapter {
 		ZonedDateTime observationTime = form.getObservationTime();
 		MetarParser parser = new MetarParser(YearMonth.from(observationTime));
 		Metar metar = parser.parse(form.getRawText());
+
+		if (!icaoPredicate.test(icao, metar.getStationIcao())) {
+			return ResponseEntity.badRequest().body(MetarSaveResponse.failure(
+				1, 0, "ICAO mismatch: try to save " + icao + " but, parsed icao=" + metar.getStationIcao()
+			));
+		}
+
 		metarManagementUseCase.save(metar);
 
 		return ResponseEntity.ok().body(
@@ -77,15 +85,26 @@ public class MetarManagementAdapter {
 			Set<UniqueKey> existingKeys = findExistingKeys(icao, batch.fromInclusive(), batch.toExclusive());
 			Set<UniqueKey> seen = new HashSet<>();
 			List<Metar> toInsertMetars = batch.success().stream()
-				                           .filter(p -> {
-					                           UniqueKey uk = UniqueKey.from(p.metar());
-					                           if (!seen.add(uk) || existingKeys.contains(uk)) {
-						                           duplicatedItems.add(new DuplicatedItem(p.lineNo()));
-						                           return false;
-					                           }
-					                           return true;
-				                           }).map(ParseResult::metar)
-				                           .toList();
+				                             .filter(p -> {
+					                             if (!icaoPredicate.test(icao, p.metar().getStationIcao())) {
+						                             batch.errors().add(new ParsedErrorItem(
+							                             p.lineNo(),
+							                             p.metar().getRawText(),
+							                             "ICAO mismatch: try to save " + icao + " but, parsed icao=" + p.metar().getStationIcao())
+						                             );
+						                             return false;
+					                             }
+					                             return true;
+				                             })
+				                             .filter(p -> {
+					                             UniqueKey uk = UniqueKey.from(p.metar());
+					                             if (!seen.add(uk) || existingKeys.contains(uk)) {
+						                             duplicatedItems.add(new DuplicatedItem(p.lineNo()));
+						                             return false;
+					                             }
+					                             return true;
+				                             }).map(ParseResult::metar)
+				                             .toList();
 
 			metarManagementUseCase.saveAll(toInsertMetars);
 
@@ -147,5 +166,6 @@ public class MetarManagementAdapter {
 		ZonedDateTime toExclusive
 	) {
 	}
+
 
 }

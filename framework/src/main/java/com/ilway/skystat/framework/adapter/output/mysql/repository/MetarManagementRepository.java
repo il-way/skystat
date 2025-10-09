@@ -41,7 +41,7 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 		FROM MetarData m
 		WHERE m.stationIcao = :icao
 			AND m.reportTime >= :fromInclusive
-		  AND m.reportTime <  :toExclusive
+		  AND m.reportTime < :toExclusive
 		ORDER BY m.reportTime ASC, m.id ASC
 		""")
 	List<Long> findIdsByIcaoAndReportTimePeriod(@Param("icao") String icao,
@@ -53,7 +53,7 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 		FROM MetarData m
 		WHERE m.stationIcao = :icao
 			AND m.observationTime >= :fromInclusive
-		  AND m.observationTime <  :toExclusive
+		  AND m.observationTime < :toExclusive
 		ORDER BY m.observationTime ASC, m.id ASC
 		""")
 	List<Long> findIdsByIcaoAndObservationTimePeriod(@Param("icao") String icao,
