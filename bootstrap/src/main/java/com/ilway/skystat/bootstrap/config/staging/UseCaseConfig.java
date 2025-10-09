@@ -30,8 +30,8 @@ public class UseCaseConfig {
 	public TemperatureStatisticUseCase temperatureStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort,
 	                                                               TemperatureStatisticQueryOutputPort temperatureStatisticQueryOutputPort) {
 		return new TemperatureStatisticFallbackInputPort(
-			new TemperatureStatisticInputPort(metarManagementOutputPort),
-			new TemperatureStatisticQueryInputPort(temperatureStatisticQueryOutputPort)
+			new TemperatureStatisticQueryInputPort(temperatureStatisticQueryOutputPort),
+			new TemperatureStatisticInputPort(metarManagementOutputPort)
 		);
 	}
 
@@ -39,8 +39,8 @@ public class UseCaseConfig {
 	public StatisticUseCase<ThresholdStatisticQuery> thresholdStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort,
 	                                                                           ThresholdStatisticQueryOutputPort thresholdStatisticQueryOutputPort) {
 		return new ThresholdStatisticFallbackInputPort(
-			new ThresholdStatisticInputPort(metarManagementOutputPort),
-			new ThresholdStatisticQueryInputPort(thresholdStatisticQueryOutputPort)
+			new ThresholdStatisticQueryInputPort(thresholdStatisticQueryOutputPort),
+			new ThresholdStatisticInputPort(metarManagementOutputPort)
 		);
 	}
 
@@ -48,8 +48,8 @@ public class UseCaseConfig {
 	public StatisticUseCase<WeatherStatisticQuery> weatherStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort,
 	                                                                       WeatherStatisticQueryOutputPort weatherStatisticQueryOutputPort) {
 		return new WeatherStatisticFallbackInputPort(
-			new WeatherStatisticInputPort(metarManagementOutputPort),
-			new WeatherStatisticQueryInputPort(weatherStatisticQueryOutputPort)
+			new WeatherStatisticQueryInputPort(weatherStatisticQueryOutputPort),
+			new WeatherStatisticInputPort(metarManagementOutputPort)
 		);
 	}
 
@@ -57,8 +57,8 @@ public class UseCaseConfig {
 	public StatisticUseCase<CloudStatisticQuery> cloudStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort,
 	                                                                   CloudStatisticQueryOutputPort cloudStatisticQueryOutputPort) {
 		return new CloudStatisticFallbackInputPort(
-			new CloudStatisticInputPort(metarManagementOutputPort),
-			new CloudStatisticQueryInputPort(cloudStatisticQueryOutputPort)
+			new CloudStatisticQueryInputPort(cloudStatisticQueryOutputPort),
+			new CloudStatisticInputPort(metarManagementOutputPort)
 		);
 	}
 

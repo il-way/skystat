@@ -269,7 +269,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 		String icao = "RKSI";
 		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/temperature/{icao}", icao)
 			                                      .param("startYear", "2019")
-			                                      .param("endYear", "2023")
+			                                      .param("endYear", "2024")
 			                                      .accept(MediaType.APPLICATION_JSON))
 			                      .andExpect(status().isOk())
 			                      .andReturn();
@@ -278,6 +278,8 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 			mvcResult.getResponse().getContentAsString(UTF_8),
 			TemperatureStatisticResult.class
 		);
+
+		log.info("# result > {}", response);
 	}
 
 }

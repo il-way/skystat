@@ -30,8 +30,8 @@ public class UseCaseConfig {
 	public TemperatureStatisticUseCase temperatureStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort,
 	                                                               TemperatureStatisticQueryOutputPort temperatureStatisticQueryOutputPort) {
 		return new TemperatureStatisticFallbackInputPort(
-			new TemperatureStatisticInputPort(metarManagementOutputPort),
-			new TemperatureStatisticQueryInputPort(temperatureStatisticQueryOutputPort)
+			new TemperatureStatisticQueryInputPort(temperatureStatisticQueryOutputPort),
+			new TemperatureStatisticInputPort(metarManagementOutputPort)
 		);
 	}
 
