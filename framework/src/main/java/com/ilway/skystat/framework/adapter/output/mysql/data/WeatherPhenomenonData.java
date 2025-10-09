@@ -13,6 +13,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Entity
 @Builder
+@Table(name = "tbsst_metar_weather_phenomenon")
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
 public class WeatherPhenomenonData {

@@ -3,10 +3,14 @@ spring:
     activate:
       on-profile: staging
   datasource:
-    url: jdbc:mysql://localhost:3306/skystat_test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/skystat_stage?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: ${DB_USER}
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 30MB
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
@@ -50,6 +54,10 @@ spring:
     username: ${DB_USER}
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 30MB
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:

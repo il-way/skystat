@@ -12,6 +12,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Entity
 @Builder
+@Table(name = "tbsst_metar_weather_descriptor")
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor
 public class WeatherDescriptorData {
