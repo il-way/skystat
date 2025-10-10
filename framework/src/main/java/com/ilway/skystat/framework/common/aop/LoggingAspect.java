@@ -21,7 +21,7 @@ public class LoggingAspect {
 	@Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
 	void controller() {}
 
-	@Pointcut("this(com.ilway.skystat.application.usecase..*)")
+	@Pointcut("within(com.ilway.skystat.application..*)")
 	void usecase() {}
 
 	@Around("controller() || usecase()")
@@ -39,7 +39,7 @@ public class LoggingAspect {
 
 		} catch (Throwable e) {
 			long ms = (System.nanoTime() - t0) / 1_000_000;
-			log.debug("← {} fail elapsedMs={} msg={}", sig, ms, e.getMessage(), e);
+			log.error("← {} fail elapsedMs={} msg={}", sig, ms, e.getMessage(), e);
 			throw e;
 		}
 	}

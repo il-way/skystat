@@ -21,7 +21,13 @@
 
   <logger name="org.hibernate.SQL" level="WARN"/>
   <logger name="org.springframework" level="INFO"/>
-  <logger name="com.ilway.skystat" level="INFO"/>
+  <springProfile name="staging">
+    <logger name="com.ilway.skystat" level="DEBUG"/>
+  </springProfile>
+
+  <springProfile name="production">
+    <logger name="com.ilway.skystat" level="INFO"/>
+  </springProfile>
 
   <root level="INFO">
     <appender-ref ref="CONSOLE"/>
