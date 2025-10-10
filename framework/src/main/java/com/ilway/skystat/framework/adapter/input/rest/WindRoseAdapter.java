@@ -20,14 +20,14 @@ import java.util.List;
 import java.util.Map;
 
 @Validated
-@RequestMapping("/windrose")
+@RequestMapping("/metar")
 @RestController
 @RequiredArgsConstructor
 public class WindRoseAdapter {
 
 	private final WindRoseUseCase windRoseUseCase;
 
-	@GetMapping("/{icao}")
+	@GetMapping("/windrose/{icao}")
 	public ResponseEntity<WindRoseResponse> getWindRose(
 		@PathVariable("icao") String icao,
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,

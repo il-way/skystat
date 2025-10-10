@@ -10,6 +10,7 @@ import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse.ParsedErrorItem;
 import com.ilway.skystat.framework.parser.metar.MetarParser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +22,9 @@ import java.time.Instant;
 import java.time.YearMonth;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static com.ilway.skystat.framework.adapter.output.resource.ResourceFileOperation.*;
@@ -38,7 +37,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class MetarManagementAdapter {
 
 	private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-	private static final BiPredicate<String, String> icaoPredicate = (String pathIcao, String parsedMetarIcao) -> pathIcao.equalsIgnoreCase(parsedMetarIcao);
 
 	private final MetarManagementUseCase metarManagementUseCase;
 
@@ -51,7 +49,7 @@ public class MetarManagementAdapter {
 		MetarParser parser = new MetarParser(YearMonth.from(observationTime));
 		Metar metar = parser.parse(form.getRawText());
 
-		if (!icaoPredicate.test(icao, metar.getStationIcao())) {
+		if (!validateIcao(icao, metar.getStationIcao())) {
 			return ResponseEntity.badRequest().body(MetarSaveResponse.failure(
 				1, 0, "ICAO mismatch: try to save " + icao + " but, parsed icao=" + metar.getStationIcao()
 			));
@@ -81,39 +79,49 @@ public class MetarManagementAdapter {
 				));
 			}
 
+			List<ParsedErrorItem> errorItems = new ArrayList<>(batch.errors());
 			List<DuplicatedItem> duplicatedItems = new ArrayList<>();
 			Set<UniqueKey> existingKeys = findExistingKeys(icao, batch.fromInclusive(), batch.toExclusive());
 			Set<UniqueKey> seen = new HashSet<>();
 			List<Metar> toInsertMetars = batch.success().stream()
-				                             .filter(p -> {
-					                             if (!icaoPredicate.test(icao, p.metar().getStationIcao())) {
-						                             batch.errors().add(new ParsedErrorItem(
-							                             p.lineNo(),
-							                             p.metar().getRawText(),
-							                             "ICAO mismatch: try to save " + icao + " but, parsed icao=" + p.metar().getStationIcao())
-						                             );
-						                             return false;
-					                             }
-					                             return true;
-				                             })
-				                             .filter(p -> {
-					                             UniqueKey uk = UniqueKey.from(p.metar());
-					                             if (!seen.add(uk) || existingKeys.contains(uk)) {
-						                             duplicatedItems.add(new DuplicatedItem(p.lineNo()));
-						                             return false;
-					                             }
-					                             return true;
-				                             }).map(ParseResult::metar)
+				                             .filter(getIcaoPredicate(icao, errorItems))
+				                             .filter(getDuplicatePredicate(seen, existingKeys, duplicatedItems))
+				                             .map(ParseResult::metar)
 				                             .toList();
 
 			metarManagementUseCase.saveAll(toInsertMetars);
 
 			return ResponseEntity.ok().body(
-				MetarSaveResponse.success(toInsertMetars.size(), batch.errors(), duplicatedItems)
+				MetarSaveResponse.success(toInsertMetars.size(), errorItems, duplicatedItems)
 			);
 		} catch (IOException e) {
 			throw new RuntimeException("Failed to read upload file", e);
 		}
+	}
+
+	private Predicate<ParseResult> getDuplicatePredicate(Set<UniqueKey> seen, Set<UniqueKey> existingKeys, List<DuplicatedItem> duplicatedItems) {
+		return p -> {
+			UniqueKey uk = UniqueKey.from(p.metar());
+			if (!seen.add(uk) || existingKeys.contains(uk)) {
+				duplicatedItems.add(new DuplicatedItem(p.lineNo()));
+				return false;
+			}
+			return true;
+		};
+	}
+
+	private Predicate<ParseResult> getIcaoPredicate(String icao, List<ParsedErrorItem> errorItems) {
+		return p -> {
+			if (!validateIcao(icao, p.metar().getStationIcao())) {
+				errorItems.add(new ParsedErrorItem(
+					p.lineNo(),
+					p.metar().getRawText(),
+					"ICAO mismatch: try to save " + icao + " but, parsed icao=" + p.metar().getStationIcao())
+				);
+				return false;
+			}
+			return true;
+		};
 	}
 
 	private Set<UniqueKey> findExistingKeys(String icao, ZonedDateTime fromInclusive, ZonedDateTime toExclusive) {
@@ -167,5 +175,10 @@ public class MetarManagementAdapter {
 	) {
 	}
 
+	private boolean validateIcao(String pathIcao, String parsedIcao) {
+		String path = pathIcao == null ? "" : pathIcao.trim().toUpperCase(Locale.ROOT);
+		String parsed = parsedIcao == null ? "" : parsedIcao.trim().toUpperCase(Locale.ROOT);
+		return !path.isEmpty() && path.equals(parsed);
+	}
 
 }

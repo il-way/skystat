@@ -64,7 +64,7 @@ public class WindRoseAdapterTest extends ResourceFileConfigData {
 	@DisplayName("바람장미(windrose) 조회에 성공해야 한다")
 	void getWindRoseTest() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/windrose/{icao}", icao)
+		MvcResult mvcResult = mockMvc.perform(get("/metar/windrose/{icao}", icao)
 			                                      .param("startDateTime", "2019-01-01T00:00:00Z")
 			                                      .param("endDateTime", "2024-01-01T00:00:00Z"))
 			                      .andExpect(status().isOk())
