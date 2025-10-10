@@ -48,7 +48,7 @@ log:
 spring:
   config:
     activate:
-      on-profile: prod
+      on-profile: production
   datasource:
     url: jdbc:mysql://localhost:3306/skystat?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
     username: ${DB_USER}
