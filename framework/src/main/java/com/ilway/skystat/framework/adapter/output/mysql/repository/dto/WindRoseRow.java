@@ -1,12 +1,11 @@
 package com.ilway.skystat.framework.adapter.output.mysql.repository.dto;
 
 public interface WindRoseRow {
-	Integer getYear();
-	Integer getMonth();
+	Integer getY();
+	Integer getM();
 	Integer getDirOrder();
 	String  getDirLabel();
 	Integer getSpeedOrder();
 	String  getSpeedLabel();
 	Long    getFreq();
-	Long    getFixedSample();
 }

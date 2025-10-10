@@ -38,7 +38,7 @@ public class TemperatureUseCaseTest extends MySQLConfigData {
 
 	@BeforeEach
 	void init() {
-		List<Metar> metars = fileAdapter.findByIcaoAndPeriod(icao, RetrievalPeriod.of(2019, 5));
+		List<Metar> metars = fileAdapter.findByIcaoAndReportTimePeriod(icao, RetrievalPeriod.of(2019, 5));
 		metarManagementUseCase.saveAll(metars);
 	}
 

@@ -1,5 +1,6 @@
 package com.ilway.skystat.framework.adapter.output.mysql.repository;
 
+import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.WindRoseRow;
@@ -28,8 +29,8 @@ public interface MetarWindRoseQueryRepository extends JpaRepository<MetarData, L
 			),
 			binned AS (
 			  SELECT
-			    YEAR(report_time_utc) AS year,
-			    MONTH(report_time_utc) AS month,
+			    YEAR(report_time_utc) AS y,
+			    MONTH(report_time_utc) AS m,
 			    FLOOR(MOD(wind_dir_deg + 11.25, 360) / 22.5) AS dirOrder,
 			    CASE FLOOR(MOD(wind_dir_deg + 11.25, 360) / 22.5)
 			      WHEN  0 THEN 'N'   WHEN  1 THEN 'NNE' WHEN  2 THEN 'NE'  WHEN  3 THEN 'ENE'
@@ -58,18 +59,18 @@ public interface MetarWindRoseQueryRepository extends JpaRepository<MetarData, L
 			  FROM fixed_only
 			)
 			SELECT
-			  year, month,
+			  y,
+			  m,
 			  dirOrder, dirLabel,
 		    speedOrder, speedLabel,
-			  COUNT(*) AS freq,
-			  COUNT(*) OVER (PARTITION BY year, month) AS fixedSample
+			  COUNT(*) AS freq
 			FROM binned
-			GROUP BY year, month, dirOrder, dirLabel, speedOrder, speedLabel
-			ORDER BY year, month, dirOrder, speedOrder;
+			GROUP BY y, m, dirOrder, dirLabel, speedOrder, speedLabel
+			ORDER BY y, m, dirOrder, speedOrder;
 		""")
-	List<WindRoseRow> aggregateByMonth(@Param("icao") String icao,
-	                                    @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                    @Param("toExclusive") ZonedDateTime toExclusive);
+	List<WindRoseRow> aggregateDefaultByMonth(@Param("icao") String icao,
+	                                          @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                                          @Param("toExclusive") ZonedDateTime toExclusive);
 
 
 	@Query("""
@@ -79,12 +80,13 @@ public interface MetarWindRoseQueryRepository extends JpaRepository<MetarData, L
 		   FROM MetarData m
 		   WHERE m.stationIcao = :icao
 		     AND m.reportTime >= :fromInclusive AND m.reportTime < :toExclusive
-		     AND (m.windDirType = VARIABLE OR m.windDirDeg IS NULL)
+		     AND (m.windDirectionType = :variable OR m.windDirectionType IS NULL)
 		   GROUP BY YEAR(m.reportTime), MONTH(m.reportTime)
 		   ORDER BY YEAR(m.reportTime), MONTH(m.reportTime)
 		""")
 	List<MonthlyCountQueryDto> countVariableByMonth(@Param("icao") String icao,
 	                                                @Param("fromInclusive") ZonedDateTime fromInclusive,
-	                                                @Param("toExclusive") ZonedDateTime toExclusive);
+	                                                @Param("toExclusive") ZonedDateTime toExclusive,
+	                                                @Param("variable") WindDirectionType variable);
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface WindRoseQueryOutputPort {
 
-	List<MonthlyWindRoseRow> aggregateByMonth(String icao, RetrievalPeriod period);
+	List<MonthlyWindRoseRow> aggregateDefaultByMonth(String icao, RetrievalPeriod period);
 
 	List<MonthlyCountDto> countVariableByMonth(String icao, RetrievalPeriod period);
 

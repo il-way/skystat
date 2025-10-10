@@ -9,13 +9,8 @@ import java.util.List;
 
 public interface WindRoseUseCase {
 
-	WindRoseResult generateMonthlyWindRose(
-		String icao,
-		RetrievalPeriod period,
-		List<SpeedBin> speedBins,
-		List<DirectionBin> directionBins
-	);
+	WindRoseResult generate(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins);
 
-	WindRoseResult generateDefaultMonthlyWindRose(String icao, RetrievalPeriod period);
+	WindRoseResult generateDefault(String icao, RetrievalPeriod period);
 
 }

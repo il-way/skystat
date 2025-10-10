@@ -3,11 +3,13 @@ package com.ilway.skystat.application.port.input.metar.query;
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
 import com.ilway.skystat.application.dto.windrose.*;
+import com.ilway.skystat.application.exception.BusinessException;
 import com.ilway.skystat.application.port.output.WindRoseQueryOutputPort;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import lombok.RequiredArgsConstructor;
 
 import java.time.Month;
+import java.time.YearMonth;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,45 +22,39 @@ public class WindRoseQueryInputPort implements WindRoseUseCase {
 	private final WindRoseQueryOutputPort port;
 
 	@Override
-	public WindRoseResult generateDefaultMonthlyWindRose(String icao, RetrievalPeriod period) {
-		return generateMonthlyWindRose(icao, period, SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins());
-	}
-
-	@Override
-	public WindRoseResult generateMonthlyWindRose(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
-		List<MonthlyWindRoseRow> rows = port.aggregateByMonth(icao, period);
+	public WindRoseResult generateDefault(String icao, RetrievalPeriod period) {
+		List<MonthlyWindRoseRow> rows = port.aggregateDefaultByMonth(icao, period);
 		List<MonthlyCountDto> variables = port.countVariableByMonth(icao, period);
 
-		Map<Month, Long> fixedByMonth = rows.stream().collect(groupingBy(
-				r -> Month.of(r.month()), collectingAndThen(
-					toList(),
-					list -> list.isEmpty() ? 0L : list.getFirst().fixedSample())
-			)
-		);
+		int sampleSize = rows.stream().map(MonthlyWindRoseRow::freq)
+			                 .mapToInt(Integer::intValue)
+			                 .sum();
 
-		Map<Month, Long> varByMonth = variables.stream().collect(toMap(
-			v -> Month.of(v.month()),
-			v -> v.count(),
-			Long::sum
-		));
+		int missingCount = variables.stream()
+			                   .map(MonthlyCountDto::count)
+			                   .mapToInt(Long::intValue)
+			                   .sum();
+
 
 		Map<Month, WindRose> windRoseMap = rows.stream().collect(groupingBy(
 			r -> Month.of(r.month()),
 			collectingAndThen(
 				toList(),
-				list -> toWindRose(list, speedBins, directionBins)
+				list -> toWindRose(list, SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins())
 			)
 		));
 
-		int fixedTotal = fixedByMonth.values().stream().mapToInt(Long::intValue).sum();
-		int variableTotal = varByMonth.values().stream().mapToInt(Long::intValue).sum();
-
 		return new WindRoseResult(
-			fixedTotal + variableTotal,
-			fixedTotal,
-			variableTotal,
+			sampleSize + missingCount,
+			sampleSize,
+			missingCount,
 			windRoseMap
 		);
+	}
+
+	@Override
+	public WindRoseResult generate(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+		throw new BusinessException(501, "NOT_IMPLEMENTED", "Generate custom wind rose is not implemented yet.");
 	}
 
 	private WindRose toWindRose(List<MonthlyWindRoseRow> rows, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
@@ -69,8 +65,8 @@ public class WindRoseQueryInputPort implements WindRoseUseCase {
 			WindRose.BinPair key = new WindRose.BinPair(sb, db);
 			freqMap.put(key, freqMap.get(key) + r.freq());
 		}
-		long sampleSize = rows.isEmpty() ? 0 : rows.getFirst().fixedSample();
 
+		long sampleSize = rows.stream().mapToLong(MonthlyWindRoseRow::freq).sum();
 		return new WindRose(speedBins, directionBins, freqMap, sampleSize);
 	}
 

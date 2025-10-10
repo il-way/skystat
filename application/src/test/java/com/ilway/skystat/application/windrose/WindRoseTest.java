@@ -25,7 +25,7 @@ public class WindRoseTest extends WindRoseTestData {
 		List<SpeedBin> speedBins = SpeedBin.of5KtSpeedBins();
 		List<DirectionBin> directionBins = DirectionBin.of16DirectionBins();
 
-		WindRoseResult windRoseResult = useCase.generateMonthlyWindRose(
+		WindRoseResult windRoseResult = useCase.generate(
 			"RKSI",
 			new RetrievalPeriod(
 				ofUTC(2024, 1, 1, 0, 0),

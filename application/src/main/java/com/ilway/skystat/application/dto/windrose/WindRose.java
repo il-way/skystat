@@ -1,6 +1,7 @@
 package com.ilway.skystat.application.dto.windrose;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.Collections;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Getter
+@EqualsAndHashCode
 public class WindRose {
 
 	private final List<SpeedBin> speedBins;

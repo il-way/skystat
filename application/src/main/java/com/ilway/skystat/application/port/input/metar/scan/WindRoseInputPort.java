@@ -24,12 +24,12 @@ public class WindRoseInputPort implements WindRoseUseCase {
 	private final MetarManagementOutputPort metarManagementOutputPort;
 
 	@Override
-	public WindRoseResult generateDefaultMonthlyWindRose(String icao, RetrievalPeriod period) {
-		return generateMonthlyWindRose(icao, period, SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins());
+	public WindRoseResult generateDefault(String icao, RetrievalPeriod period) {
+		return generate(icao, period, SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins());
 	}
 
 	@Override
-	public WindRoseResult generateMonthlyWindRose(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+	public WindRoseResult generate(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
 		try {
 			List<Metar> metars = metarManagementOutputPort.findByIcaoAndReportTimePeriod(icao, period);
 
@@ -56,7 +56,7 @@ public class WindRoseInputPort implements WindRoseUseCase {
 		} catch (BusinessException e) {
 			throw e;
 		} catch (Exception e) {
-			throw new BusinessException(500, "UNEXPECTED", "Unexpected error while processing Windrose statistics", e);
+			throw new BusinessException(500, "UNEXPECTED", "Unexpected error while generating wind rose", e);
 		}
 	}
 
