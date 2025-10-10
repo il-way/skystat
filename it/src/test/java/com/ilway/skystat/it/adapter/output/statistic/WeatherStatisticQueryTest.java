@@ -70,7 +70,7 @@ public class WeatherStatisticQueryTest extends MySQLConfigData {
 
 	@BeforeEach
 	void init() {
-		List<Metar> metars = fileAdapter.findByIcaoAndPeriod(icao, period);
+		List<Metar> metars = fileAdapter.findByIcaoAndReportTimePeriod(icao, period);
 		metarManagementUseCase.saveAll(metars);
 	}
 

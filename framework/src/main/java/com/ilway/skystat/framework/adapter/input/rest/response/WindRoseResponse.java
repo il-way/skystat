@@ -23,6 +23,10 @@ public record WindRoseResponse(
 
 	record Cell(int month, int sbIndex, int dbIndex, long frequency, double rate) {}
 
+	public static WindRoseResponse fromDefaultWindRose(WindRoseResult result) {
+		return from(SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins(), result);
+	}
+
 	public static WindRoseResponse from(List<SpeedBin> speedBins, List<DirectionBin> directionBins, WindRoseResult result) {
 		List<String> sbLabels = labels(speedBins, SpeedBin::label);
 		List<String> dbLabels = labels(directionBins, DirectionBin::label);

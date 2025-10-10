@@ -16,4 +16,6 @@ public interface WindRoseUseCase {
 		List<DirectionBin> directionBins
 	);
 
+	WindRoseResult generateDefaultMonthlyWindRose(String icao, RetrievalPeriod period);
+
 }

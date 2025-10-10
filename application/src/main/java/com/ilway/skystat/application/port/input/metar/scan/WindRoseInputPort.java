@@ -24,6 +24,11 @@ public class WindRoseInputPort implements WindRoseUseCase {
 	private final MetarManagementOutputPort metarManagementOutputPort;
 
 	@Override
+	public WindRoseResult generateDefaultMonthlyWindRose(String icao, RetrievalPeriod period) {
+		return generateMonthlyWindRose(icao, period, SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins());
+	}
+
+	@Override
 	public WindRoseResult generateMonthlyWindRose(String icao, RetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
 		try {
 			List<Metar> metars = metarManagementOutputPort.findByIcaoAndReportTimePeriod(icao, period);
@@ -39,7 +44,7 @@ public class WindRoseInputPort implements WindRoseUseCase {
 				                                .collect(groupingBy(m -> Month.from(m.getReportTime()),
 					                                collectingAndThen(
 						                                toList(),
-						                                monthlyMetars -> buildWindRoseForMonth(monthlyMetars, speedBins, directionBins))
+						                                monthlyMetars -> toWindRose(monthlyMetars, speedBins, directionBins))
 				                                ));
 
 			return new WindRoseResult(
@@ -55,7 +60,9 @@ public class WindRoseInputPort implements WindRoseUseCase {
 		}
 	}
 
-	private WindRose buildWindRoseForMonth(List<Metar> metars, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+
+
+	private WindRose toWindRose(List<Metar> metars, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
 		Map<WindRose.BinPair, Long> freq = WindRose.initFrequencyMap(speedBins, directionBins);
 
 		for (Metar metar : metars) {

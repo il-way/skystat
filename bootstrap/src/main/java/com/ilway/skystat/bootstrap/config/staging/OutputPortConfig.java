@@ -8,6 +8,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.statistic.CloudStatistic
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.TemperatureStatisticQueryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.ThresholdStatisticQueryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.WeatherStatisticQueryMySqlAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.windrose.WindRoseQueryMySqlAdapter;
 import jakarta.persistence.EntityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,6 +42,11 @@ public class OutputPortConfig {
 	@Bean
 	public TemperatureStatisticQueryOutputPort temperatureStatisticQueryOutputPort(MetarTemperatureQueryRepository temperatureQueryRepository) {
 		return new TemperatureStatisticQueryMySqlAdapter(temperatureQueryRepository);
+	}
+
+	@Bean
+	public WindRoseQueryOutputPort windRoseQueryOutputPort(MetarWindRoseQueryRepository windRoseQueryRepository) {
+		return new WindRoseQueryMySqlAdapter(windRoseQueryRepository);
 	}
 
 
