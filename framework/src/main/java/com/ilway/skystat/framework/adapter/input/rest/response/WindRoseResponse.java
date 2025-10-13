@@ -1,11 +1,13 @@
 package com.ilway.skystat.framework.adapter.input.rest.response;
 
+import com.ilway.skystat.application.dto.inventory.PeriodInventory;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
 
 import java.time.Month;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.Map;
 import java.util.function.Function;
 
 public record WindRoseResponse(
+	ZonedDateTime coverageFrom,
+	ZonedDateTime coverageTo,
 	long totalCount,
 	long missingCount,
 	long sampleSize,
@@ -23,16 +27,18 @@ public record WindRoseResponse(
 
 	record Cell(int month, int sbIndex, int dbIndex, long frequency, double rate) {}
 
-	public static WindRoseResponse fromDefaultWindRose(WindRoseResult result) {
-		return from(SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins(), result);
+	public static WindRoseResponse fromDefaultWindRose(PeriodInventory inventory, WindRoseResult result) {
+		return from(inventory, SpeedBin.of5KtSpeedBins(), DirectionBin.of16DirectionBins(), result);
 	}
 
-	public static WindRoseResponse from(List<SpeedBin> speedBins, List<DirectionBin> directionBins, WindRoseResult result) {
+	public static WindRoseResponse from(PeriodInventory inventory, List<SpeedBin> speedBins, List<DirectionBin> directionBins, WindRoseResult result) {
 		List<String> sbLabels = labels(speedBins, SpeedBin::label);
 		List<String> dbLabels = labels(directionBins, DirectionBin::label);
 		List<Cell> cells = generateData(speedBins, directionBins, result);
 
 		return new WindRoseResponse(
+			inventory.firstAvailableTime(),
+			inventory.lastAvailableTime(),
 			result.totalCount(),
 			result.missingCount(),
 			result.sampleSize(),

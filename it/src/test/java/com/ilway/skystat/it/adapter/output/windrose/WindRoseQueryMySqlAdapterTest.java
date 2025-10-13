@@ -4,6 +4,7 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.MonthlyCountDto;
 import com.ilway.skystat.application.dto.windrose.*;
 import com.ilway.skystat.domain.vo.metar.Metar;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarWindRoseQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.windrose.WindRoseQueryMySqlAdapter;
@@ -46,8 +47,10 @@ public class WindRoseQueryMySqlAdapterTest extends MySQLConfigData {
 	@Autowired
 	public WindRoseQueryMySqlAdapterTest(MetarManagementRepository repository,
 	                                     EntityManager em,
+	                                     MetarInventoryRepository metarInventoryRepository,
 	                                     MetarWindRoseQueryRepository windRoseQueryRepository) {
-		super(repository, em);
+
+		super(repository, em, metarInventoryRepository);
 		this.windRoseQueryRepository = windRoseQueryRepository;
 		this.adapter = new WindRoseQueryMySqlAdapter(windRoseQueryRepository);
 		this.fileAdapter = new MetarManagementResourceFileAdapter();

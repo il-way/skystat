@@ -6,6 +6,7 @@ import com.ilway.skystat.application.port.input.internal.TemperatureStatisticAgg
 import com.ilway.skystat.application.port.input.metar.scan.TemperatureStatisticInputPort;
 import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.domain.vo.metar.Metar;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarTemperatureQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.TemperatureStatisticQueryMySqlAdapter;
@@ -42,8 +43,10 @@ public class TemperatureStatisticQueryTest extends MySQLConfigData {
 	@Autowired
 	public TemperatureStatisticQueryTest(MetarManagementRepository repository,
 	                                     EntityManager em,
+	                                     MetarInventoryRepository metarInventoryRepository,
 	                                     MetarTemperatureQueryRepository metarTemperatureQueryRepository) {
-		super(repository, em);
+
+		super(repository, em, metarInventoryRepository);
 		this.metarTemperatureQueryRepository = metarTemperatureQueryRepository;
 		this.adapter = new TemperatureStatisticQueryMySqlAdapter(metarTemperatureQueryRepository);
 		this.fileAdapter = new MetarManagementResourceFileAdapter();

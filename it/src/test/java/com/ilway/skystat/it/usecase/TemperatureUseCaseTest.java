@@ -5,6 +5,7 @@ import com.ilway.skystat.application.dto.statistic.temperature.*;
 import com.ilway.skystat.application.port.input.metar.scan.TemperatureStatisticInputPort;
 import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import com.ilway.skystat.it.config.MySQLConfigData;
@@ -30,8 +31,11 @@ public class TemperatureUseCaseTest extends MySQLConfigData {
 	private String icao = "RKSI";
 
 	@Autowired
-	public TemperatureUseCaseTest(MetarManagementRepository repository, EntityManager em) {
-		super(repository, em);
+	public TemperatureUseCaseTest(MetarManagementRepository repository,
+	                              EntityManager em,
+	                              MetarInventoryRepository metarInventoryRepository) {
+
+		super(repository, em, metarInventoryRepository);
 		temperatureStatisticInputPort = new TemperatureStatisticInputPort(metarManagementOutputPort);
 		fileAdapter = new MetarManagementResourceFileAdapter();
 	}

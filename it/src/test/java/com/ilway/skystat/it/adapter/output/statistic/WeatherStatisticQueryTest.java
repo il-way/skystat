@@ -15,6 +15,7 @@ import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.framework.adapter.output.mysql.data.WeatherPhenomenonData;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarWeatherQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.WeatherStatisticQueryMySqlAdapter;
@@ -61,8 +62,10 @@ public class WeatherStatisticQueryTest extends MySQLConfigData {
 	@Autowired
 	public WeatherStatisticQueryTest(MetarManagementRepository repository,
 	                                 EntityManager em,
+	                                 MetarInventoryRepository metarInventoryRepository,
 	                                 MetarWeatherQueryRepository metarWeatherQueryRepository) {
-		super(repository, em);
+
+		super(repository, em, metarInventoryRepository);
 		this.metarWeatherQueryRepository = metarWeatherQueryRepository;
 		this.adapter = new WeatherStatisticQueryMySqlAdapter(metarWeatherQueryRepository);
 		this.fileAdapter = new MetarManagementResourceFileAdapter();

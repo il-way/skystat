@@ -1,7 +1,9 @@
 package com.ilway.skystat.framework.adapter.input.rest;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.application.dto.inventory.PeriodInventory;
 import com.ilway.skystat.application.dto.windrose.WindRoseResult;
+import com.ilway.skystat.application.usecase.MetarInventoryUseCase;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
 import com.ilway.skystat.framework.adapter.input.rest.response.WindRoseResponse;
 import jakarta.validation.constraints.NotNull;
@@ -20,6 +22,7 @@ import java.time.ZonedDateTime;
 public class WindRoseAdapter {
 
 	private final WindRoseUseCase windRoseUseCase;
+	private final MetarInventoryUseCase inventoryUseCase;
 
 	@GetMapping("/windrose/{icao}")
 	public ResponseEntity<WindRoseResponse> getDefaultWindRose(
@@ -27,8 +30,11 @@ public class WindRoseAdapter {
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed
 	) {
-		WindRoseResult result = windRoseUseCase.generateDefault(icao, new RetrievalPeriod(st, ed));
-		WindRoseResponse windRoseResponse = WindRoseResponse.fromDefaultWindRose(result);
+		RetrievalPeriod period = new RetrievalPeriod(st, ed);
+
+		PeriodInventory periodInventory = inventoryUseCase.getPeriodInventory(icao, period);
+		WindRoseResult result = windRoseUseCase.generateDefault(icao, period);
+		WindRoseResponse windRoseResponse = WindRoseResponse.fromDefaultWindRose(periodInventory, result);
 
 		return ResponseEntity.ok()
 			       .body(windRoseResponse);

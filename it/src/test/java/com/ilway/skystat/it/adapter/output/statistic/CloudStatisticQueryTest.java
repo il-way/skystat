@@ -10,9 +10,11 @@ import com.ilway.skystat.application.model.weather.CloudCondition;
 import com.ilway.skystat.application.model.weather.CloudConditionPredicate;
 import com.ilway.skystat.application.model.weather.WeatherCondition;
 import com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator;
+import com.ilway.skystat.application.port.output.MetarInventoryOutputPort;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.weather.type.CloudType;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarCloudQueryRepository;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarWeatherQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.CloudStatisticQueryMySqlAdapter;
@@ -56,8 +58,10 @@ public class CloudStatisticQueryTest extends MySQLConfigData {
 	@Autowired
 	public CloudStatisticQueryTest(MetarManagementRepository repository,
 	                               EntityManager em,
+	                               MetarInventoryRepository metarInventoryRepository,
 	                               MetarCloudQueryRepository metarCloudQueryRepository) {
-		super(repository, em);
+
+		super(repository, em, metarInventoryRepository);
 		this.metarCloudQueryRepository = metarCloudQueryRepository;
 		this.adapter = new CloudStatisticQueryMySqlAdapter(metarCloudQueryRepository);
 		this.fileAdapter = new MetarManagementResourceFileAdapter();

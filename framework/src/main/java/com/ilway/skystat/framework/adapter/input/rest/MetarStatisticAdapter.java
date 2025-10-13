@@ -1,6 +1,7 @@
 package com.ilway.skystat.framework.adapter.input.rest;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.application.dto.inventory.PeriodInventory;
 import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
@@ -8,8 +9,11 @@ import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.temperature.TemperatureStatisticResult;
 import com.ilway.skystat.application.model.weather.*;
+import com.ilway.skystat.application.usecase.MetarInventoryUseCase;
 import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
 import com.ilway.skystat.domain.vo.unit.Unit;
+import com.ilway.skystat.framework.adapter.input.rest.response.ObservationStatisticResponse;
+import com.ilway.skystat.framework.adapter.input.rest.response.TemperatureStatisticResponse;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import com.ilway.skystat.application.model.generic.Comparison;
@@ -31,13 +35,14 @@ import java.util.List;
 @Validated
 public class MetarStatisticAdapter {
 
+	private final MetarInventoryUseCase inventoryUseCase;
 	private final StatisticUseCase<ThresholdStatisticQuery> thresholdUseCase;
 	private final StatisticUseCase<WeatherStatisticQuery> weatherUseCase;
 	private final StatisticUseCase<CloudStatisticQuery> cloudUseCase;
 	private final TemperatureStatisticUseCase temperatureUseCase;
 
 	@GetMapping("/threshold/{icao}")
-	public ResponseEntity<ObservationStatisticResult> getThresholdStatistic(
+	public ResponseEntity<ObservationStatisticResponse> getThresholdStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("field") MetricField field,
 		@RequestParam("comparison") Comparison comparison,
@@ -46,70 +51,88 @@ public class MetarStatisticAdapter {
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime ed
 	) {
+		RetrievalPeriod period = new RetrievalPeriod(st, ed);
+
 		ThresholdStatisticQuery query = new ThresholdStatisticQuery(
 			icao,
-			new RetrievalPeriod(st, ed),
+			period,
 			new ThresholdCondition(field, comparison, threshold, unit)
 		);
 
-		ObservationStatisticResult execute = thresholdUseCase.execute(query);
+		ObservationStatisticResult result = thresholdUseCase.execute(query);
+		PeriodInventory periodInventory = inventoryUseCase.getPeriodInventory(icao, period);
+
 		return ResponseEntity.ok()
-			       .body(execute);
+			       .body(ObservationStatisticResponse.from(
+							 periodInventory, result
+			       ));
 
 	}
 
 	@GetMapping("/weather/{icao}")
-	public ResponseEntity<ObservationStatisticResult> getWeatherStatistic(
+	public ResponseEntity<ObservationStatisticResponse> getWeatherStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("condition") WeatherConditionPredicate condition,
 		@RequestParam("list") List<WeatherDescription> list,
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime ed
 	) {
+		RetrievalPeriod period = new RetrievalPeriod(st, ed);
 		WeatherStatisticQuery query = new WeatherStatisticQuery(
 			icao,
-			new RetrievalPeriod(st, ed),
+			period,
 			new WeatherCondition(condition, list)
 		);
 
-		ObservationStatisticResult execute = weatherUseCase.execute(query);
+		ObservationStatisticResult result = weatherUseCase.execute(query);
+		PeriodInventory periodInventory = inventoryUseCase.getPeriodInventory(icao, period);
+
 		return ResponseEntity.ok()
-			       .body(execute);
+			       .body(ObservationStatisticResponse.from(
+							 periodInventory, result
+			       ));
 	}
 
 	@GetMapping("/cloud/{icao}")
-	public ResponseEntity<ObservationStatisticResult> getCloudStatistic(
+	public ResponseEntity<ObservationStatisticResponse> getCloudStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("condition") CloudConditionPredicate condition,
 		@RequestParam("target") WeatherDescription target,
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime ed
 	) {
+		RetrievalPeriod period = new RetrievalPeriod(st, ed);
 		CloudStatisticQuery query = new CloudStatisticQuery(
 			icao,
-			new RetrievalPeriod(st, ed),
+			period,
 			new CloudCondition(condition, target)
 		);
 
-		ObservationStatisticResult execute = cloudUseCase.execute(query);
+		ObservationStatisticResult result = cloudUseCase.execute(query);
+		PeriodInventory periodInventory = inventoryUseCase.getPeriodInventory(icao, period);
+
 		return ResponseEntity.ok()
-			       .body(execute);
+			       .body(ObservationStatisticResponse.from(
+				       periodInventory, result
+			       ));
 	}
 
 	@GetMapping("/temperature/{icao}")
-	public ResponseEntity<TemperatureStatisticResult> getTemperatureStatistic(
+	public ResponseEntity<TemperatureStatisticResponse> getTemperatureStatistic(
 		@PathVariable("icao") String icao,
 		@RequestParam("startYear") @NotNull Integer startYear,
 		@RequestParam("endYear") @NotNull Integer endYear
 	) {
-		TemperatureStatisticQuery query = new TemperatureStatisticQuery(
-			icao,
-			RetrievalPeriod.of(startYear, (endYear-startYear))
-		);
+		RetrievalPeriod period = RetrievalPeriod.of(startYear, (endYear - startYear));
+		TemperatureStatisticQuery query = new TemperatureStatisticQuery(icao, period);
 
-		TemperatureStatisticResult execute = temperatureUseCase.execute(query);
+		TemperatureStatisticResult result = temperatureUseCase.execute(query);
+		PeriodInventory periodInventory = inventoryUseCase.getPeriodInventory(icao, period);
+
 		return ResponseEntity.ok()
-			       .body(execute);
+			       .body(TemperatureStatisticResponse.from(
+							 periodInventory, result
+			       ));
 	}
 
 

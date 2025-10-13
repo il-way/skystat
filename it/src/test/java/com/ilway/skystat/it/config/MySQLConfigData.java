@@ -5,12 +5,15 @@ import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.port.input.metar.MetarManagementInputPort;
 import com.ilway.skystat.application.port.input.metar.scan.*;
+import com.ilway.skystat.application.port.output.MetarInventoryOutputPort;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.application.usecase.StatisticUseCase;
 import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
+import com.ilway.skystat.framework.adapter.output.mysql.inventory.MetarInventoryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import jakarta.persistence.EntityManager;
 import org.springframework.core.io.ClassPathResource;
@@ -21,6 +24,8 @@ public class MySQLConfigData {
 	protected MetarManagementUseCase metarManagementUseCase;
 
 	protected MetarManagementOutputPort metarManagementOutputPort;
+
+	protected MetarInventoryOutputPort metarInventoryOutputPort;
 
 	protected StatisticUseCase<ThresholdStatisticQuery> thresholdStatisticUseCase;
 
@@ -34,8 +39,11 @@ public class MySQLConfigData {
 
 	protected Resource resource;
 
-	public MySQLConfigData(MetarManagementRepository repository, EntityManager em) {
+	public MySQLConfigData(MetarManagementRepository repository,
+	                       EntityManager em,
+	                       MetarInventoryRepository metarInventoryRepository) {
 		this.metarManagementOutputPort = new MetarManagementMySQLAdapter(repository, em);
+		this.metarInventoryOutputPort = new MetarInventoryMySqlAdapter(metarInventoryRepository);
 		this.metarManagementUseCase = new MetarManagementInputPort(metarManagementOutputPort);
 		this.thresholdStatisticUseCase = new ThresholdStatisticInputPort(metarManagementOutputPort);
 		this.weatherStatisticUseCase = new WeatherStatisticInputPort(metarManagementOutputPort);

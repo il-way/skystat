@@ -5,6 +5,7 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.weather.*;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.config.MySQLConfigData;
 import jakarta.persistence.EntityManager;
@@ -40,8 +41,10 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 
 	private static final String TEST_ICAO = "RKSI";
 
-	public MetarManagementMySQLAdapterTestData(@Autowired MetarManagementRepository repository, @Autowired EntityManager em) {
-		super(repository, em);
+	public MetarManagementMySQLAdapterTestData(@Autowired MetarManagementRepository repository,
+	                                           @Autowired EntityManager em,
+	                                           @Autowired MetarInventoryRepository metarInventoryRepository) {
+		super(repository, em, metarInventoryRepository);
 	}
 
 	@Test

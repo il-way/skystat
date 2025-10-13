@@ -8,6 +8,7 @@ import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.model.weather.ThresholdCondition;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.unit.PressureUnit;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarMetricQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.ThresholdStatisticQueryMySqlAdapter;
@@ -52,8 +53,10 @@ public class ThresholdStatisticQueryTest extends MySQLConfigData {
 	@Autowired
 	public ThresholdStatisticQueryTest(MetarManagementRepository repository,
 	                                   EntityManager em,
+	                                   MetarInventoryRepository metarInventoryRepository,
 	                                   MetarMetricQueryRepository metarMetricQueryRepository) {
-		super(repository, em);
+
+		super(repository, em, metarInventoryRepository);
 		this.metarMetricQueryRepository = metarMetricQueryRepository;
 		this.adapter = new ThresholdStatisticQueryMySqlAdapter(metarMetricQueryRepository);
 		this.fileAdapter = new MetarManagementResourceFileAdapter();

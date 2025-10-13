@@ -5,6 +5,7 @@ import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.weather.Clouds;
 import com.ilway.skystat.domain.vo.weather.Weathers;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.config.MySQLConfigData;
 import jakarta.persistence.EntityManager;
@@ -42,8 +43,10 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 	@Autowired MockMvc mockMvc;
 	@Autowired ObjectMapper objectMapper;
 
-	public MetarManagementAdapterTest(@Autowired MetarManagementRepository repository, @Autowired EntityManager em) {
-		super(repository, em);
+	public MetarManagementAdapterTest(@Autowired MetarManagementRepository repository,
+	                                  @Autowired EntityManager em,
+	                                  @Autowired MetarInventoryRepository metarInventoryRepository) {
+		super(repository, em, metarInventoryRepository);
 	}
 
 	@Value("classpath:data/metar/RKSI.txt")

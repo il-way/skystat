@@ -3,6 +3,7 @@ package com.ilway.skystat.it.adapter;
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import com.ilway.skystat.it.config.MySQLConfigData;
@@ -26,13 +27,14 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 
 	@Autowired
 	public MetarManagementAdapterTest(MetarManagementRepository repository,
-	                                  EntityManager em) {
-		super(repository, em);
+	                                  EntityManager em,
+	                                  MetarInventoryRepository metarInventoryRepository) {
+		super(repository, em, metarInventoryRepository);
 		this.fileAdapter = new MetarManagementResourceFileAdapter();
 		this.sqlAdapter = new MetarManagementMySQLAdapter(repository, em);
 	}
 
-	private final static String ICAO = "rksi";
+	private final static String ICAO = "RKSI";
 
 	@Test
 	@DisplayName("리소스 파일에서 METAR raw text를 파싱해 MySQL로 저장하는데 성공해야한다.")

@@ -1,6 +1,7 @@
 package com.ilway.skystat.framework.config;
 
 import com.ilway.skystat.application.port.output.*;
+import com.ilway.skystat.framework.adapter.output.mysql.inventory.MetarInventoryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.*;
 import com.ilway.skystat.framework.adapter.output.mysql.statistic.CloudStatisticQueryMySqlAdapter;
@@ -45,6 +46,11 @@ public class OutputPortConfig {
 	@Bean
 	public WindRoseQueryOutputPort windRoseQueryOutputPort(MetarWindRoseQueryRepository windRoseQueryRepository) {
 		return new WindRoseQueryMySqlAdapter(windRoseQueryRepository);
+	}
+
+	@Bean
+	public MetarInventoryOutputPort metarInventoryOutputPort(MetarInventoryRepository metarInventoryRepository) {
+		return new MetarInventoryMySqlAdapter(metarInventoryRepository);
 	}
 
 }
