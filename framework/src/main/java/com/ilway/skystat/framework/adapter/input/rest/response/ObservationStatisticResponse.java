@@ -13,7 +13,7 @@ public record ObservationStatisticResponse(
 	ZonedDateTime coverageTo,
 	long totalCount,
 	List<MonthlyCountDto> monthlyData,
-	List<HourlyCountDto> hourlyDat
+	List<HourlyCountDto> hourlyData
 ) {
 
 	public static ObservationStatisticResponse from(PeriodInventory inventory, ObservationStatisticResult result) {

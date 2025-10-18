@@ -25,6 +25,10 @@ public class UnitConverter implements Converter<String, Unit> {
 			if (u.name().equals(s)) return u;
 		}
 
+		if (s.equals("METER")) return LengthUnit.METERS;
+		if (s.equals("FT")) return LengthUnit.FEET;
+		if (s.equals("SM")) return LengthUnit.MILE;
+
 		throw new IllegalArgumentException("Unsupported unit: " + source);
 	}
 }

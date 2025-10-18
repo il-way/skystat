@@ -8,10 +8,7 @@ import com.ilway.skystat.application.port.input.metar.fallback.*;
 import com.ilway.skystat.application.port.input.metar.query.*;
 import com.ilway.skystat.application.port.input.metar.scan.*;
 import com.ilway.skystat.application.port.output.*;
-import com.ilway.skystat.application.usecase.MetarManagementUseCase;
-import com.ilway.skystat.application.usecase.StatisticUseCase;
-import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
-import com.ilway.skystat.application.usecase.WindRoseUseCase;
+import com.ilway.skystat.application.usecase.*;
 import com.ilway.skystat.bootstrap.profile.Production;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -69,4 +66,10 @@ public class UseCaseConfig {
 	public MetarManagementUseCase metarManagementUseCase(MetarManagementOutputPort outputPort) {
 		return new MetarManagementInputPort(outputPort);
 	}
+
+	@Bean
+	public MetarInventoryUseCase metarInventoryUseCase(MetarInventoryOutputPort metarInventoryOutputPort) {
+		return new MetarInventoryInputPort(metarInventoryOutputPort);
+	}
+
 }
