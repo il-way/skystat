@@ -9,9 +9,7 @@ import com.ilway.skystat.application.port.output.WeatherStatisticQueryOutputPort
 import com.ilway.skystat.application.usecase.StatisticUseCase;
 import lombok.RequiredArgsConstructor;
 
-import java.time.YearMonth;
 import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 public class WeatherStatisticQueryInputPort implements StatisticUseCase<WeatherStatisticQuery> {
@@ -23,6 +21,6 @@ public class WeatherStatisticQueryInputPort implements StatisticUseCase<WeatherS
 		List<MonthlyCountDto> monthly = port.countDistinctDaysByMonth(query.icao(), query.period(), query.condition());
 		List<HourlyCountDto> hourly = port.countDistinctHoursByMonth(query.icao(), query.period(), query.condition());
 
-		return ObservationStatisticAggregator.aggregate(monthly, hourly);
+		return ObservationStatisticAggregator.aggregate(monthly, hourly, query.period());
 	}
 }

@@ -72,9 +72,12 @@ public final class ObservationStatisticAggregator {
 	}
 
 	public static ObservationStatisticResult aggregate(List<MonthlyCountDto> monthly,
-	                                                   List<HourlyCountDto> hourly) {
+	                                                   List<HourlyCountDto> hourly,
+	                                                   RetrievalPeriod period) {
 
-		return new ObservationStatisticResult(monthly, hourly);
+		List<MonthlyCountDto> normalizeMonthly = normalizeMonthly(monthly, period);
+		List<HourlyCountDto> normalizeHourly = normalizeHourly(hourly, period);
+		return new ObservationStatisticResult(normalizeMonthly, normalizeHourly);
 	}
 
 	public static ObservationStatisticResult peelOffZeroCount(ObservationStatisticResult response) {
@@ -102,5 +105,42 @@ public final class ObservationStatisticAggregator {
 
 		return result;
 	}
+
+	private static List<MonthlyCountDto> normalizeMonthly(List<MonthlyCountDto> monthly, RetrievalPeriod period) {
+		// 같은 (연/월) 항목 중복이 있을 수 있으니 합산 집계
+		Map<YearMonth, Long> byMonth = new HashMap<>();
+		for (MonthlyCountDto m : monthly) {
+			YearMonth ym = YearMonth.of(m.year(), m.month());
+			byMonth.merge(ym, m.count(), Long::sum);
+		}
+
+		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toExclusive());
+		return months.stream()
+			       .map(ym -> new MonthlyCountDto(ym.getYear(), ym.getMonthValue(), byMonth.getOrDefault(ym, 0L)))
+			       .toList();
+	}
+
+	private static List<HourlyCountDto> normalizeHourly(List<HourlyCountDto> hourly,
+	                                                    RetrievalPeriod period) {
+		record Key(YearMonth ym, int hour) {}
+		Map<Key, Long> byKey = new HashMap<>();
+		if (hourly != null) {
+			for (HourlyCountDto h : hourly) {
+				Key k = new Key(YearMonth.of(h.year(), h.month()), h.hour());
+				byKey.merge(k, h.count(), Long::sum);
+			}
+		}
+
+		List<YearMonth> months = monthsBetween(period.fromInclusive(), period.toExclusive());
+		List<HourlyCountDto> out = new ArrayList<>(months.size() * 24);
+		for (YearMonth ym : months) {
+			for (int h = 0; h < 24; h++) {
+				long c = byKey.getOrDefault(new Key(ym, h), 0L);
+				out.add(new HourlyCountDto(ym.getYear(), ym.getMonthValue(), h, c));
+			}
+		}
+		return out;
+	}
+
 
 }

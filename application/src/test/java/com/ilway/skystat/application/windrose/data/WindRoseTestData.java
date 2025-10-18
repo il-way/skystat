@@ -33,7 +33,8 @@ public class WindRoseTestData {
 		metarListMap.put("RKSI", listRksi);
 
 		metarManagementOutputPort = mock(MetarManagementOutputPort.class);
-		when(metarManagementOutputPort.findByIcaoAndPeriod("RKSI",
+		when(metarManagementOutputPort.findByIcaoAndReportTimePeriod(
+			"RKSI",
 			new RetrievalPeriod(
 				ofUTC(2024, 1, 1, 0, 0),
 				ofUTC(2025, 1, 1, 0, 0)
