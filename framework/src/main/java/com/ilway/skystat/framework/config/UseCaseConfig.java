@@ -9,6 +9,7 @@ import com.ilway.skystat.application.port.input.metar.query.*;
 import com.ilway.skystat.application.port.input.metar.scan.*;
 import com.ilway.skystat.application.port.output.*;
 import com.ilway.skystat.application.usecase.*;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarBasicQueryRepository;
 import com.ilway.skystat.framework.profile.Default;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,15 @@ import org.springframework.context.annotation.Configuration;
 @Default
 @Configuration
 public class UseCaseConfig {
+
+	@Bean
+	public BasicStatisticUseCase basicStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort,
+	                                                   MetarBasicStatisticQueryOutputPort metarBasicStatisticQueryOutputPort) {
+		return new MetarBasicStatisticFallbackInputPort(
+			new MetarBasicStatisticQueryInputPort(metarBasicStatisticQueryOutputPort),
+			new MetarBasicStatisticInputPort(metarManagementOutputPort)
+		);
+	}
 
 	@Bean
 	public WindRoseUseCase windRoseUseCase(MetarManagementOutputPort metarManagementOutputPort,

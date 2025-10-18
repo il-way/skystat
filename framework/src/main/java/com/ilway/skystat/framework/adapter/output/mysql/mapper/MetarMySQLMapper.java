@@ -4,15 +4,12 @@ import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.domain.service.CloudOperation;
 import com.ilway.skystat.domain.service.WindOperation;
 import com.ilway.skystat.domain.vo.metar.Metar;
-import com.ilway.skystat.domain.vo.unit.PressureUnit;
-import com.ilway.skystat.domain.vo.unit.SpeedUnit;
 import com.ilway.skystat.domain.vo.weather.*;
 import com.ilway.skystat.domain.vo.weather.type.WeatherDescriptor;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 import com.ilway.skystat.domain.vo.weather.type.WindDirectionType;
 import com.ilway.skystat.framework.adapter.output.mysql.data.*;
 
-import java.math.RoundingMode;
 import java.util.stream.Collectors;
 
 import static com.ilway.skystat.domain.vo.metar.ReportType.AUTO;
@@ -156,7 +153,11 @@ public class MetarMySQLMapper {
 			               .altimeterHpa(metar.getAltimeter().getUnit().convertTo(
 											 metar.getAltimeter().getValue(), HPA, RoundingPolicy.of(2, HALF_UP)
 			               ))
-			               .ceiling(CloudOperation.getLowestCeiling(metar.getClouds()))
+			               .ceiling(
+											 CloudOperation.getCeiling(metar.getClouds()) == Integer.MAX_VALUE
+												 ? null
+												 : CloudOperation.getCeiling(metar.getClouds())
+			               )
 			               .cloudLayerCount(metar.getClouds().size())
 			               .weatherPresent(metar.getWeathers().size() > 0)
 			               .remarks(metar.getRemarks())

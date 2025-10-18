@@ -5,10 +5,7 @@ import com.ilway.skystat.bootstrap.profile.Production;
 import com.ilway.skystat.framework.adapter.output.mysql.inventory.MetarInventoryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.*;
-import com.ilway.skystat.framework.adapter.output.mysql.statistic.CloudStatisticQueryMySqlAdapter;
-import com.ilway.skystat.framework.adapter.output.mysql.statistic.TemperatureStatisticQueryMySqlAdapter;
-import com.ilway.skystat.framework.adapter.output.mysql.statistic.ThresholdStatisticQueryMySqlAdapter;
-import com.ilway.skystat.framework.adapter.output.mysql.statistic.WeatherStatisticQueryMySqlAdapter;
+import com.ilway.skystat.framework.adapter.output.mysql.statistic.*;
 import com.ilway.skystat.framework.adapter.output.mysql.windrose.WindRoseQueryMySqlAdapter;
 import jakarta.persistence.EntityManager;
 import org.springframework.context.annotation.Bean;
@@ -53,6 +50,11 @@ public class OutputPortConfig {
 	@Bean
 	public MetarInventoryOutputPort metarInventoryOutputPort(MetarInventoryRepository metarInventoryRepository) {
 		return new MetarInventoryMySqlAdapter(metarInventoryRepository);
+	}
+
+	@Bean
+	public MetarBasicStatisticQueryOutputPort metarBasicStatisticQueryOutputPort(MetarBasicQueryRepository metarBasicQueryRepository) {
+		return new MetarBasicStatisticQueryMySqlAdapter(metarBasicQueryRepository);
 	}
 
 }

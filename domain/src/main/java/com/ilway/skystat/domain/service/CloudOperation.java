@@ -11,12 +11,12 @@ import java.util.OptionalInt;
 
 public class CloudOperation {
 
-	public static int getLowestCeiling(Clouds cg) {
-		return getLowestCeiling(cg, List.of(CloudCoverage.BKN, CloudCoverage.OVC, CloudCoverage.VV))
-			       .orElse(Integer.MAX_VALUE);
+	public static int getCeiling(Clouds cg) {
+		return getCeiling(cg, List.of(CloudCoverage.BKN, CloudCoverage.OVC, CloudCoverage.VV))
+			        .orElse(Integer.MAX_VALUE);
 	}
 
-	public static OptionalInt getLowestCeiling(Clouds cg, List<CloudCoverage> coverages) {
+	public static OptionalInt getCeiling(Clouds cg, List<CloudCoverage> coverages) {
 		return cg.getClouds().stream()
 			       .filter(cloud -> coverages.contains(cloud.getCoverage()))
 			       .map(Cloud::getAltitudeOptional)

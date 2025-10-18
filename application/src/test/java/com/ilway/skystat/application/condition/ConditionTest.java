@@ -97,7 +97,7 @@ public class ConditionTest extends ConditionTestData {
 		ThresholdConditionQuery query = new ThresholdConditionQuery(
 			"KJFK",
 			ofUTC(7, 9, 21, 0),
-			new ThresholdCondition(MetricField.LOWEST_CEILING, Comparison.LTE, 6000, FEET)
+			new ThresholdCondition(MetricField.CEILING, Comparison.LTE, 6000, FEET)
 		);
 
 		boolean actual = thresholdConditionUseCase.execute(query);

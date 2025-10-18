@@ -15,7 +15,6 @@ import com.ilway.skystat.framework.common.annotation.TranslateDbExceptions;
 import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
-import java.math.RoundingMode;
 import java.util.List;
 
 import static com.ilway.skystat.application.model.generic.Comparison.GTE;
@@ -56,7 +55,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				period.toExclusive(),
 				condition.unit().convertTo(condition.threshold(), KT, RoundingPolicy.of(0, HALF_UP))
 			));
-			case LOWEST_CEILING -> when(comparison.equals(LTE), () -> metricQueryRepository.countCeilingLteByMonth(
+			case CEILING -> when(comparison.equals(LTE), () -> metricQueryRepository.countCeilingLteByMonth(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -96,7 +95,7 @@ public class ThresholdStatisticQueryMySqlAdapter implements ThresholdStatisticQu
 				period.toExclusive(),
 				condition.unit().convertTo(condition.threshold(), KT, RoundingPolicy.of(0, HALF_UP))
 			));
-			case LOWEST_CEILING -> when(comparison.equals(LTE), () -> metricQueryRepository.countCeilingLteByMonthHour(
+			case CEILING -> when(comparison.equals(LTE), () -> metricQueryRepository.countCeilingLteByMonthHour(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),

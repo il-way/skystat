@@ -2,9 +2,6 @@ package com.ilway.skystat.domain.service;
 
 import com.ilway.skystat.domain.vo.weather.Cloud;
 import com.ilway.skystat.domain.vo.weather.Clouds;
-import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
-import com.ilway.skystat.domain.vo.weather.type.CloudType;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +22,7 @@ public class CloudOperationTest {
 			               .cloud(Cloud.of(OVC, 10000, NONE))
 			               .build();
 
-		int ceiling = CloudOperation.getLowestCeiling(clouds);
+		int ceiling = CloudOperation.getCeiling(clouds);
 		assertEquals(200, ceiling);
 	}
 }

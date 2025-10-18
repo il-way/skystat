@@ -24,10 +24,17 @@ public class ThresholdStatisticInputPort implements StatisticUseCase<ThresholdSt
 		ThresholdCondition condition = query.condition();
 		Predicate<Metar> predicate = m -> {
 			double value = condition.field().extract(m, condition.unit());
+			if (!validate(value)) return false;
+
 			return condition.comparison().test(value, condition.threshold());
 		};
 
 		return ObservationStatisticAggregator.aggregate(metars, predicate, query.period());
+	}
+
+	private boolean validate(double extractedValue) {
+		if (extractedValue == Integer.MAX_VALUE) return false;
+		else return true;
 	}
 
 }

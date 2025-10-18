@@ -7,7 +7,6 @@ import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.model.weather.ThresholdCondition;
 import com.ilway.skystat.domain.vo.metar.Metar;
-import com.ilway.skystat.domain.vo.unit.PressureUnit;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarMetricQueryRepository;
@@ -143,7 +142,7 @@ public class ThresholdStatisticQueryTest extends MySQLConfigData {
 	@Test
 	@DisplayName("운저 OO0FT 이하 조회에 성공해야 한다.")
 	void ceilingLteTest() {
-		ThresholdCondition condition = new ThresholdCondition(LOWEST_CEILING, LTE, 500, FEET);
+		ThresholdCondition condition = new ThresholdCondition(CEILING, LTE, 500, FEET);
 		ThresholdStatisticQuery query = new ThresholdStatisticQuery(icao, period, condition);
 
 		ObservationStatisticResult execute = thresholdStatisticUseCase.execute(query);

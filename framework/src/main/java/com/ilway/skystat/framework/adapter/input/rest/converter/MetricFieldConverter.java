@@ -10,7 +10,7 @@ public class MetricFieldConverter implements Converter<String, MetricField> {
 	public MetricField convert(String source) {
 		String s = source.trim().toLowerCase();
 		return switch (s) {
-			case "ceiling" -> MetricField.LOWEST_CEILING;
+			case "ceiling" -> MetricField.CEILING;
 			case "visibility" -> MetricField.VISIBILITY;
 			case "windpeak" -> MetricField.WIND_PEAK;
 			case "windspeed" -> MetricField.WIND_SPEED;

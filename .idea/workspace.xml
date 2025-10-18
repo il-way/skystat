@@ -69,10 +69,10 @@
       <list>
         <option value="Exception" />
         <option value="AnnotationType" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
         <option value="Record" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -168,6 +168,7 @@
     &quot;Gradle.MetarParserTest.test.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarParserTest.메타_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarStatisticAdapterTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarStatisticAdapterTest.getCloudCoverageStatisticTestSuccess.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarStatisticAdapterTest.getCloudStatisticTestSuccess.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.MetarStatisticAdapterTest.getPeakWindThresholdStatisticTestSuccess.executor&quot;: &quot;Run&quot;,
@@ -339,11 +340,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.application.port.input.metar.scan" />
       <recent name="com.ilway.skystat.bootstrap" />
       <recent name="com.ilway.skystat.application.dto.statistic" />
       <recent name="com.ilway.skystat.application.port.input.metar.delegator" />
       <recent name="com.ilway.skystat.framework.adapter.output.mysql.repository" />
-      <recent name="com.ilway.skystat.framework.config" />
     </key>
   </component>
   <component name="RunManager" selected="애플리케이션.AppStagingLauncher">
@@ -401,30 +402,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarManagementAdapterTest.saveAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":it:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.adapter.MetarManagementAdapterTest.saveAllTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="MetarStatisticAdapterTest" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -439,6 +416,30 @@
             <option value=":framework:test" />
             <option value="--tests" />
             <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":framework:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -526,20 +527,20 @@
     <list>
       <item itemvalue="Gradle.MetarStatisticAdapterTest" />
       <item itemvalue="Gradle.bootstrap" />
+      <item itemvalue="Gradle.MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess" />
       <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
       <item itemvalue="Gradle.MetarManagementAdapterTest" />
-      <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
       <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
       <item itemvalue="애플리케이션.AppConfig" />
       <item itemvalue="애플리케이션.AppStagingLauncher" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess" />
+        <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
         <item itemvalue="애플리케이션.AppStagingLauncher" />
         <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
         <item itemvalue="Gradle.MetarManagementAdapterTest" />
-        <item itemvalue="Gradle.MetarManagementAdapterTest.saveAllTest" />
-        <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
       </list>
     </recent_temporary>
   </component>

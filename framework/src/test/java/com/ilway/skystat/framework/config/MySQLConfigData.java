@@ -8,6 +8,7 @@ import com.ilway.skystat.application.port.input.metar.scan.CloudStatisticInputPo
 import com.ilway.skystat.application.port.input.metar.scan.ThresholdStatisticInputPort;
 import com.ilway.skystat.application.port.input.metar.scan.WeatherStatisticInputPort;
 import com.ilway.skystat.application.port.input.metar.scan.WindRoseInputPort;
+import com.ilway.skystat.application.port.output.MetarBasicStatisticQueryOutputPort;
 import com.ilway.skystat.application.port.output.MetarInventoryOutputPort;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
