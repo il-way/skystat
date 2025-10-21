@@ -19,6 +19,10 @@ public record TemperatureStatisticResponse(
 ) {
 
 	public static TemperatureStatisticResponse from(PeriodInventory inventory, TemperatureStatisticResult result) {
+		if (!inventory.hasData()) return new TemperatureStatisticResponse(
+			null, null, 0, List.of(), List.of(), List.of()
+		);
+
 		return new TemperatureStatisticResponse(
 			inventory.firstAvailableTime(),
 			inventory.lastAvailableTime(),

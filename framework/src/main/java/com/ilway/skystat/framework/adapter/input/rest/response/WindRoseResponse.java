@@ -34,6 +34,11 @@ public record WindRoseResponse(
 	public static WindRoseResponse from(PeriodInventory inventory, List<SpeedBin> speedBins, List<DirectionBin> directionBins, WindRoseResult result) {
 		List<String> sbLabels = labels(speedBins, SpeedBin::label);
 		List<String> dbLabels = labels(directionBins, DirectionBin::label);
+
+		if (!inventory.hasData()) return new WindRoseResponse(
+			null, null, 0, 0, 0, sbLabels, dbLabels, List.of()
+		);
+
 		List<Cell> cells = generateData(speedBins, directionBins, result);
 
 		return new WindRoseResponse(

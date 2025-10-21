@@ -17,6 +17,10 @@ public record ObservationStatisticResponse(
 ) {
 
 	public static ObservationStatisticResponse from(PeriodInventory inventory, ObservationStatisticResult result) {
+		if (!inventory.hasData()) return new ObservationStatisticResponse(
+			null, null, 0, List.of(), List.of()
+		);
+
 		return new ObservationStatisticResponse(
 			inventory.firstAvailableTime(),
 			inventory.lastAvailableTime(),
