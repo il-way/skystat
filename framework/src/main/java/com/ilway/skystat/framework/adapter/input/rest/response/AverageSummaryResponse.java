@@ -17,6 +17,7 @@ public record AverageSummaryResponse(
 ) {
 
 	public static AverageSummaryResponse from(PeriodInventory inventory, AverageSummary summary) {
+		if (!inventory.hasData()) return empty();
 		return new AverageSummaryResponse(
 			inventory.firstAvailableTime(),
 			inventory.lastAvailableTime(),
@@ -26,6 +27,19 @@ public record AverageSummaryResponse(
 			summary.avgWindPeakKt(),
 			summary.avgAltimeterHpa(),
 			summary.avgCeilingFt()
+		);
+	}
+
+	public static AverageSummaryResponse empty() {
+		return new AverageSummaryResponse(
+			null,
+			null,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
 		);
 	}
 

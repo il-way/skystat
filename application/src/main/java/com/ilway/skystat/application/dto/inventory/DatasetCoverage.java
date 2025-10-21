@@ -7,6 +7,11 @@ public record DatasetCoverage(
 	ZonedDateTime lastReportTime,
 	long totalCount
 ) {
+
+	public boolean hasData() {
+		return totalCount > 0;
+	}
+
 	public static DatasetCoverage empty(String icao) {
 		return new DatasetCoverage(null, null, 0);
 	}

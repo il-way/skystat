@@ -11,6 +11,10 @@ public record PeriodCoverage(
 	long totalCount
 ) {
 
+	public boolean hasData() {
+		return totalCount > 0;
+	}
+
 	public static PeriodCoverage empty(String icao, RetrievalPeriod period) {
 		return new PeriodCoverage(null, null, 0);
 	}

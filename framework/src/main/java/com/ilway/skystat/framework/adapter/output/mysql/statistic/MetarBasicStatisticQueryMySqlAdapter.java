@@ -32,12 +32,16 @@ public class MetarBasicStatisticQueryMySqlAdapter implements MetarBasicStatistic
 			return new AverageSummary(0, 0, 0, 0, 0);
 		}
 		return new AverageSummary(
-			dto.avgVisibilityM(),
-			dto.avgWindSpeedKt(),
-			dto.avgWindPeakKt(),
-			dto.avgAltimeterHpa(),
-			dto.avgCeilingFt()
+			nvl(dto.avgVisibilityM()),
+			nvl(dto.avgWindSpeedKt()),
+			nvl(dto.avgWindPeakKt()),
+			nvl(dto.avgAltimeterHpa()),
+			nvl(dto.avgCeilingFt())
 		);
+	}
+
+	private static double nvl(Double v) {
+		return v != null ? v : 0d;
 	}
 
 

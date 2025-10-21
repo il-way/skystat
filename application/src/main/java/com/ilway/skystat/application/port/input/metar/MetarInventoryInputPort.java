@@ -30,11 +30,11 @@ public class MetarInventoryInputPort implements MetarInventoryUseCase {
 		DatasetCoverage datasetCoverage = findDatasetCoverage(icao);
 		PeriodCoverage periodCoverage = findPeriodCoverage(icao, period);
 
-		if (datasetCoverage == null) {
+		if (datasetCoverage == null || !datasetCoverage.hasData()) {
 			return PeriodInventory.empty(icao, period, null, null);
 		}
 
-		if (periodCoverage == null) {
+		if (periodCoverage == null || !periodCoverage.hasData()) {
 			return PeriodInventory.empty(icao, period, datasetCoverage.firstReportTime(), datasetCoverage.lastReportTime());
 		}
 
