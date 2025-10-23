@@ -41,9 +41,9 @@ public class MetarStatisticAdapter {
 	private final StatisticUseCase<CloudStatisticQuery> cloudUseCase;
 	private final TemperatureStatisticUseCase temperatureUseCase;
 
-	@GetMapping("/threshold/{icao}")
+	@GetMapping("/threshold")
 	public ResponseEntity<ObservationStatisticResponse> getThresholdStatistic(
-		@PathVariable("icao") String icao,
+		@RequestParam("icao") String icao,
 		@RequestParam("field") MetricField field,
 		@RequestParam("comparison") Comparison comparison,
 		@RequestParam("threshold") @NotNull double threshold,
@@ -69,9 +69,9 @@ public class MetarStatisticAdapter {
 
 	}
 
-	@GetMapping("/weather/{icao}")
+	@GetMapping("/weather")
 	public ResponseEntity<ObservationStatisticResponse> getWeatherStatistic(
-		@PathVariable("icao") String icao,
+		@RequestParam("icao") String icao,
 		@RequestParam("condition") WeatherConditionPredicate condition,
 		@RequestParam("list") List<WeatherDescription> list,
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
@@ -93,9 +93,9 @@ public class MetarStatisticAdapter {
 			       ));
 	}
 
-	@GetMapping("/cloud/{icao}")
+	@GetMapping("/cloud")
 	public ResponseEntity<ObservationStatisticResponse> getCloudStatistic(
-		@PathVariable("icao") String icao,
+		@RequestParam("icao") String icao,
 		@RequestParam("condition") CloudConditionPredicate condition,
 		@RequestParam("target") WeatherDescription target,
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = ISO.DATE_TIME) ZonedDateTime st,
@@ -117,9 +117,9 @@ public class MetarStatisticAdapter {
 			       ));
 	}
 
-	@GetMapping("/temperature/{icao}")
+	@GetMapping("/temperature")
 	public ResponseEntity<TemperatureStatisticResponse> getTemperatureStatistic(
-		@PathVariable("icao") String icao,
+		@RequestParam("icao") String icao,
 		@RequestParam("startYear") @NotNull Integer startYear,
 		@RequestParam("endYear") @NotNull Integer endYear
 	) {

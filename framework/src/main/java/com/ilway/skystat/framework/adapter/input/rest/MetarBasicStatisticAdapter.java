@@ -25,9 +25,9 @@ public class MetarBasicStatisticAdapter {
 	private final BasicStatisticUseCase basicStatisticUseCase;
 	private final MetarInventoryUseCase inventoryUseCase;
 
-	@GetMapping("/average/summary/{icao}")
+	@GetMapping("/average/summary")
 	public ResponseEntity<AverageSummaryResponse> getAverageSummary(
-		@PathVariable("icao") String icao,
+		@RequestParam("icao") String icao,
 	  @RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
 	  @RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed) {
 

@@ -24,9 +24,9 @@ public class WindRoseAdapter {
 	private final WindRoseUseCase windRoseUseCase;
 	private final MetarInventoryUseCase inventoryUseCase;
 
-	@GetMapping("/windrose/{icao}")
+	@GetMapping("/windrose")
 	public ResponseEntity<WindRoseResponse> getDefaultWindRose(
-		@PathVariable("icao") String icao,
+		@RequestParam("icao") String icao,
 		@RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
 		@RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed
 	) {
