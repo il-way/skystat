@@ -2,12 +2,15 @@ package com.ilway.skystat.application.port.input.metar.fallback;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.AverageSummary;
+import com.ilway.skystat.application.dto.statistic.MonthlyAverageDto;
 import com.ilway.skystat.application.exception.AggregationUnavailableException;
 import com.ilway.skystat.application.exception.BusinessException;
 import com.ilway.skystat.application.model.weather.MetricField;
 import com.ilway.skystat.application.usecase.BasicStatisticUseCase;
 import com.ilway.skystat.domain.vo.unit.Unit;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 public class MetarBasicStatisticFallbackInputPort implements BasicStatisticUseCase {
@@ -34,6 +37,19 @@ public class MetarBasicStatisticFallbackInputPort implements BasicStatisticUseCa
 			return dbUseCase.averageSummary(icao, period);
 		} catch (AggregationUnavailableException e) {
 			return scanUseCase.averageSummary(icao, period);
+		} catch (BusinessException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new BusinessException(500, "UNEXPECTED", "Unexpected error while processing statistics", e);
+		}
+	}
+
+	@Override
+	public List<MonthlyAverageDto> averageMonthly(String icao, RetrievalPeriod period, MetricField field, Unit unit) {
+		try {
+			return dbUseCase.averageMonthly(icao, period, field, unit);
+		} catch (AggregationUnavailableException e) {
+			return scanUseCase.averageMonthly(icao, period, field, unit);
 		} catch (BusinessException e) {
 			throw e;
 		} catch (Exception e) {

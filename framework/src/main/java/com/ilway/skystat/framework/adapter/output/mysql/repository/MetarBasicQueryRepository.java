@@ -2,11 +2,13 @@ package com.ilway.skystat.framework.adapter.output.mysql.repository;
 
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.AverageSummaryQueryDto;
+import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyAverageQueryDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 public interface MetarBasicQueryRepository extends JpaRepository<MetarData, Long> {
 
@@ -93,6 +95,21 @@ public interface MetarBasicQueryRepository extends JpaRepository<MetarData, Long
 		@Param("icao") String icao,
 		@Param("fromInclusive") ZonedDateTime fromInclusive,
 		@Param("toExclusive") ZonedDateTime toExclusive);
+
+	@Query("""
+		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyAverageQueryDto(
+			MONTH(m.reportTime), AVG(m.windSpeedKt)
+		)
+		FROM MetarData m
+		WHERE m.stationIcao = :icao
+			AND m.reportTime >= :fromInclusive
+			AND m.reportTime < :toExclusive
+		GROUP BY MONTH(m.reportTime)
+		ORDER BY MONTH(m.reportTime)
+	""")
+	List<MonthlyAverageQueryDto> averageWindSpeedKtMonthly(@Param("icao") String icao,
+						                                            @Param("fromInclusive") ZonedDateTime fromInclusive,
+						                                            @Param("toExclusive") ZonedDateTime toExclusive);
 
 
 }

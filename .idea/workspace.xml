@@ -272,6 +272,7 @@
     &quot;Gradle.skystat:bootstrap [jar].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.skystat:domain [:domain:Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.skystat:framework [:framework:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.skystat_backend:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.AppProductionLauncher.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.skystat_backend:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.AppStagingLauncher.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.소스 다운로드.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CloudGroupTest.executor&quot;: &quot;Run&quot;,
@@ -340,16 +341,33 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.framework.adapter.input.rest.response" />
       <recent name="com.ilway.skystat.application.port.input.metar.scan" />
       <recent name="com.ilway.skystat.bootstrap" />
       <recent name="com.ilway.skystat.application.dto.statistic" />
       <recent name="com.ilway.skystat.application.port.input.metar.delegator" />
-      <recent name="com.ilway.skystat.framework.adapter.output.mysql.repository" />
     </key>
   </component>
   <component name="RunManager" selected="애플리케이션.AppStagingLauncher">
     <configuration name="AppConfig" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.AppConfig" />
+      <module name="skystat.bootstrap.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppProductionLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="SPRING_DATASOURCE_PASSWORD" value="dnfl653538@" />
+        <env name="DB_USER" value="root" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.AppProductionLauncher" />
       <module name="skystat.bootstrap.main" />
       <extension name="coverage">
         <pattern>
@@ -392,30 +410,6 @@
             <option value=":framework:test" />
             <option value="--tests" />
             <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -528,19 +522,19 @@
       <item itemvalue="Gradle.MetarStatisticAdapterTest" />
       <item itemvalue="Gradle.bootstrap" />
       <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
-      <item itemvalue="Gradle.MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess" />
       <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
       <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
       <item itemvalue="애플리케이션.AppConfig" />
       <item itemvalue="애플리케이션.AppStagingLauncher" />
+      <item itemvalue="애플리케이션.AppProductionLauncher" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.AppStagingLauncher" />
+        <item itemvalue="애플리케이션.AppProductionLauncher" />
+        <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
         <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
         <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
-        <item itemvalue="Gradle.MetarStatisticAdapterTest.getCeilingThresholdStatisticTestSuccess" />
-        <item itemvalue="애플리케이션.AppStagingLauncher" />
-        <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
       </list>
     </recent_temporary>
   </component>
