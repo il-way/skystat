@@ -420,55 +420,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="'com.ilway.skystat.application'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.application.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="'com.ilway.skystat.framework'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="'com.ilway.skystat.it'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="WeatherStatisticQueryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -481,7 +433,55 @@
           <list>
             <option value=":it:test" />
             <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.it.*&quot;" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.WeatherStatisticQueryTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherStatisticQueryTest.hasDescriptorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":it:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.WeatherStatisticQueryTest.hasDescriptorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WeatherStatisticQueryTest.hasPhenomenonTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":it:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.it.adapter.output.statistic.WeatherStatisticQueryTest.hasPhenomenonTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -521,20 +521,20 @@
     <list>
       <item itemvalue="Gradle.MetarStatisticAdapterTest" />
       <item itemvalue="Gradle.bootstrap" />
-      <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
-      <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
-      <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
+      <item itemvalue="Gradle.WeatherStatisticQueryTest" />
+      <item itemvalue="Gradle.WeatherStatisticQueryTest.hasDescriptorTest" />
+      <item itemvalue="Gradle.WeatherStatisticQueryTest.hasPhenomenonTest" />
       <item itemvalue="애플리케이션.AppConfig" />
       <item itemvalue="애플리케이션.AppStagingLauncher" />
       <item itemvalue="애플리케이션.AppProductionLauncher" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.WeatherStatisticQueryTest" />
+        <item itemvalue="Gradle.WeatherStatisticQueryTest.hasDescriptorTest" />
+        <item itemvalue="Gradle.WeatherStatisticQueryTest.hasPhenomenonTest" />
         <item itemvalue="애플리케이션.AppStagingLauncher" />
         <item itemvalue="애플리케이션.AppProductionLauncher" />
-        <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
-        <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
-        <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
       </list>
     </recent_temporary>
   </component>

@@ -30,7 +30,7 @@ public class WindRoseQueryInputPort implements WindRoseUseCase {
 			                 .mapToInt(Integer::intValue)
 			                 .sum();
 
-		int missingCount = variables.stream()
+		int variableSize = variables.stream()
 			                   .map(MonthlyCountDto::count)
 			                   .mapToInt(Long::intValue)
 			                   .sum();
@@ -45,9 +45,9 @@ public class WindRoseQueryInputPort implements WindRoseUseCase {
 		));
 
 		return new WindRoseResult(
-			sampleSize + missingCount,
+			sampleSize + variableSize,
 			sampleSize,
-			missingCount,
+			variableSize,
 			windRoseMap
 		);
 	}

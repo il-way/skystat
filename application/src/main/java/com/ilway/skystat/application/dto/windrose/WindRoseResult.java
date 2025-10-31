@@ -6,7 +6,7 @@ import java.util.Map;
 public record WindRoseResult(
 	int totalCount,
 	int sampleSize,
-	int missingCount,
+	int variableSize,
 	Map<Month, WindRose> windRoseMap
 ) {
 }

@@ -2,7 +2,6 @@ package com.ilway.skystat.framework.adapter.input;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilway.skystat.framework.adapter.input.rest.response.WindRoseResponse;
-import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 import com.ilway.skystat.framework.config.ResourceFileConfigData;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,8 +17,6 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.io.IOException;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -78,7 +75,7 @@ public class WindRoseAdapterTest extends ResourceFileConfigData {
 
 		log.info("# windrose total count : {}", windRoseResponse.totalCount());
 		log.info("# windrose sample size : {}", windRoseResponse.sampleSize());
-		log.info("# windrose missing count : {}", windRoseResponse.missingCount());
+		log.info("# windrose missing count : {}", windRoseResponse.variableSize());
 		log.info("# windrose data : {}", windRoseResponse.data());
 
 	}

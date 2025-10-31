@@ -14,12 +14,12 @@ public class WeatherOperation {
 
 	public static boolean containsPhenomena(Weathers wg, List<WeatherPhenomenon> target) {
 		return wg.getWeathers().stream()
-			       .anyMatch(w -> containsPhenomena(w, target));
+			       .anyMatch(w -> containsPhenomena(w, target, false));
 	}
 
 	public static boolean containsDescriptors(Weathers wg, List<WeatherDescriptor> target) {
 		return wg.getWeathers().stream()
-			.anyMatch(w -> containsDescriptors(w, target));
+			.anyMatch(w -> containsDescriptors(w, target, false));
 	}
 
 	public static boolean containsDescriptorsAndPhenomena(Weathers wg, List<WeatherDescription> target) {
@@ -57,14 +57,14 @@ public class WeatherOperation {
 				                      && w.getPhenomena().equals(targetPhenomena));
 	}
 
-	public static boolean containsDescriptors(Weather w, List<WeatherDescriptor> target) {
-		return w.getDescriptors().equals(target);
-		//		return containsOrdered(w.getDescriptors(), target);
+	public static boolean containsDescriptors(Weather w, List<WeatherDescriptor> target, boolean exactMatch) {
+		if (exactMatch) return w.getDescriptors().equals(target);
+		else return containsOrdered(w.getDescriptors(), target);
 	}
 
-	public static boolean containsPhenomena(Weather w, List<WeatherPhenomenon> target) {
-		return w.getPhenomena().equals(target);
-//		return containsOrdered(w.getPhenomena(), target);
+	public static boolean containsPhenomena(Weather w, List<WeatherPhenomenon> target, boolean exactMatch) {
+		if (exactMatch) return w.getPhenomena().equals(target);
+		else return containsOrdered(w.getPhenomena(), target);
 	}
 
 	private static <T> boolean containsOrdered(List<T> source, List<T> target) {

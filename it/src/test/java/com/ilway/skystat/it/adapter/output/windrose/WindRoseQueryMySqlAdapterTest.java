@@ -20,7 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Month;
-import java.time.YearMonth;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +80,7 @@ public class WindRoseQueryMySqlAdapterTest extends MySQLConfigData {
 
 		assertAll(
 			() -> assertEquals(expected.totalCount(), actual.totalCount()),
-			() -> assertEquals(expected.missingCount(), actual.missingCount()),
+			() -> assertEquals(expected.variableSize(), actual.variableSize()),
 			() -> assertEquals(expected.sampleSize(), actual.sampleSize()),
 			() -> assertEquals(expected.windRoseMap(), actual.windRoseMap())
 		);

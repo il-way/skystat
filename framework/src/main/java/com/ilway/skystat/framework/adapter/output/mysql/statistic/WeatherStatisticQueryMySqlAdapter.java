@@ -31,7 +31,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 	public List<MonthlyCountDto> countDistinctDaysByMonth(@UppercaseParam String icao, RetrievalPeriod period, WeatherCondition condition) {
 		WeatherConditionPredicate predicate = condition.predicate();
 		List<MonthlyCountQueryDto> counts = switch (predicate) {
-			case HAS_PHENOMENA -> weatherQueryRepository.countPhenomenaDaysByMonth(
+			case HAS_PHENOMENA -> weatherQueryRepository.countPhenomenaExistAnyDaysByMonth(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -41,7 +41,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 					.map(Enum::name)
 					.collect(joining())
 			);
-			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorDaysByMonth(
+			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorExistAnyDaysByMonth(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -57,7 +57,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 				String wdCode = wd.stream().map(Enum::name).collect(joining());
 				String wpCode = wp.stream().map(Enum::name).collect(joining());
 
-				yield weatherQueryRepository.countDescriptorAndPhenomenaDaysByMonth(
+				yield weatherQueryRepository.countDescriptorAndPhenomenaExsitAnyDaysByMonth(
 					icao, period.fromInclusive(), period.toExclusive(),
 					wd,
 					wp,
@@ -75,7 +75,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 	public List<HourlyCountDto> countDistinctHoursByMonth(@UppercaseParam String icao, RetrievalPeriod period, WeatherCondition condition) {
 		WeatherConditionPredicate predicate = condition.predicate();
 		List<HourlyCountQueryDto> counts = switch (predicate) {
-			case HAS_PHENOMENA -> weatherQueryRepository.countPhenomenaDaysByMonthHour(
+			case HAS_PHENOMENA -> weatherQueryRepository.countPhenomenaExistAnyDaysByMonthHour(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -85,7 +85,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 					.map(Enum::name)
 					.collect(joining())
 			);
-			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorDaysByMonthHour(
+			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorExistAnyDaysByMonthHour(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -101,7 +101,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 				String wdCode = wd.stream().map(Enum::name).collect(joining());
 				String wpCode = wp.stream().map(Enum::name).collect(joining());
 
-				yield weatherQueryRepository.countDescriptorAndPhenomenaDaysByMonthHour(
+				yield weatherQueryRepository.countDescriptorAndPhenomenaExistAnyDaysByMonthHour(
 					icao, period.fromInclusive(), period.toExclusive(),
 					wd,
 					wp,
