@@ -1,14 +1,14 @@
 package com.ilway.skystat.application.usecase;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.application.dto.management.MetarSaveOneCommand;
 import com.ilway.skystat.domain.vo.metar.Metar;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 public interface MetarManagementUseCase {
 
-	void save(Metar metar);
+	void save(MetarSaveOneCommand cmd);
 
 	void saveAll(List<Metar> metars);
 

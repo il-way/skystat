@@ -32,11 +32,11 @@ public enum WindRegexes {
   }
 
   private static String getSpeedRegex() {
-    return "(?<speed>\\d{2})";
+    return "(?<speed>P?\\d{2})";
   }
 
   private static String getGustsRegex() {
-    return "G(?<gusts>\\d{2})";
+    return "G(?<gusts>P?\\d{2})";
   }
 
   private static String getUnitRegex() {

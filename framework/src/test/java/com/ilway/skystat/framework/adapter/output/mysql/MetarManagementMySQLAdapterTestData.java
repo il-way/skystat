@@ -1,6 +1,7 @@
 package com.ilway.skystat.framework.adapter.output.mysql;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.application.dto.management.MetarSaveOneCommand;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.weather.*;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
@@ -51,7 +52,8 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 	@DisplayName("METAR 도메인 객체 1개 저장에 성공해야한다.")
 	void saveTest() {
 		Metar expected = new TestMetarData1().testData;
-		metarManagementUseCase.save(expected);
+		MetarSaveOneCommand cmd = new MetarSaveOneCommand(expected.getStationIcao(), expected.getRawText(), expected.getObservationTime());
+		metarManagementUseCase.save(cmd);
 
 		MetarData metarData = repository.findAll().getFirst();
 		Metar actual = MetarMySQLMapper.metarDataToDomain(metarData);

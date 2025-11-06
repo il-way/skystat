@@ -1,6 +1,7 @@
 package com.ilway.skystat.framework.adapter.input.rest;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.application.dto.management.MetarSaveOneCommand;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.input.rest.request.MetarFileUploadForm;
@@ -45,17 +46,8 @@ public class MetarManagementAdapter {
 		@PathVariable("icao") String icao,
 		@RequestBody @Validated MetarSaveForm form
 	) {
-		ZonedDateTime observationTime = form.getObservationTime();
-		MetarParser parser = new MetarParser(YearMonth.from(observationTime));
-		Metar metar = parser.parse(form.getRawText());
-
-		if (!validateIcao(icao, metar.getStationIcao())) {
-			return ResponseEntity.badRequest().body(MetarSaveResponse.failure(
-				1, 0, "ICAO mismatch: try to save " + icao + " but, parsed icao=" + metar.getStationIcao()
-			));
-		}
-
-		metarManagementUseCase.save(metar);
+		MetarSaveOneCommand cmd = new MetarSaveOneCommand(icao, form.getRawText(), form.getObservationTime());
+		metarManagementUseCase.save(cmd);
 
 		return ResponseEntity.ok().body(
 			MetarSaveResponse.success(1, null, null)

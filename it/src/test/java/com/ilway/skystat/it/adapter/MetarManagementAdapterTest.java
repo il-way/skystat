@@ -38,7 +38,7 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 		this.sqlAdapter = new MetarManagementMySQLAdapter(repository, em);
 	}
 
-	private final static String ICAO = "ZBTJ";
+	private final static String ICAO = "RKSI";
 
 	@Test
 	@DisplayName("리소스 파일에서 METAR raw text를 파싱해 MySQL로 저장하는데 성공해야한다.")

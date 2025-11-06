@@ -11,6 +11,7 @@ import com.ilway.skystat.application.port.input.metar.scan.WindRoseInputPort;
 import com.ilway.skystat.application.port.output.MetarBasicStatisticQueryOutputPort;
 import com.ilway.skystat.application.port.output.MetarInventoryOutputPort;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
+import com.ilway.skystat.application.port.output.MetarParsingOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.application.usecase.StatisticUseCase;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
@@ -30,6 +31,8 @@ public class MySQLConfigData {
 
 	protected MetarInventoryOutputPort metarInventoryOutputPort;
 
+	protected MetarParsingOutputPort metarParsingOutputPort;
+
 	protected StatisticUseCase<ThresholdStatisticQuery> thresholdStatisticUseCase;
 
 	protected StatisticUseCase<WeatherStatisticQuery> weatherStatisticUseCase;
@@ -45,7 +48,7 @@ public class MySQLConfigData {
 	                       MetarInventoryRepository metarInventoryRepository) {
 		this.metarManagementOutputPort = new MetarManagementMySQLAdapter(repository, em);
 		this.metarInventoryOutputPort = new MetarInventoryMySqlAdapter(metarInventoryRepository);
-		this.metarManagementUseCase = new MetarManagementInputPort(metarManagementOutputPort);
+		this.metarManagementUseCase = new MetarManagementInputPort(metarManagementOutputPort, metarParsingOutputPort);
 		this.thresholdStatisticUseCase = new ThresholdStatisticInputPort(metarManagementOutputPort);
 		this.weatherStatisticUseCase = new WeatherStatisticInputPort(metarManagementOutputPort);
 		this.cloudStatisticUseCase = new CloudStatisticInputPort(metarManagementOutputPort);

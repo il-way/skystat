@@ -1,20 +1,29 @@
 package com.ilway.skystat.application.port.input.metar;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
+import com.ilway.skystat.application.dto.management.MetarSaveOneCommand;
+import com.ilway.skystat.application.exception.BusinessException;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
+import com.ilway.skystat.application.port.output.MetarParsingOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import lombok.RequiredArgsConstructor;
 
+import java.time.YearMonth;
 import java.util.List;
 
 @RequiredArgsConstructor
 public class MetarManagementInputPort implements MetarManagementUseCase {
 
 	private final MetarManagementOutputPort metarManagementOutputPort;
+	private final MetarParsingOutputPort metarParsingOutputPort;
 
 	@Override
-	public void save(Metar metar) {
+	public void save(MetarSaveOneCommand cmd) {
+		Metar metar = metarParsingOutputPort.parse(cmd.rawText(), YearMonth.from(cmd.observationTime()));
+		if (!cmd.icao().equalsIgnoreCase(metar.getStationIcao())) {
+			throw new BusinessException(400, "BAD_REQUEST", "ICAO mismatch: try to save " + cmd.icao() + " but, parsed icao=" + metar.getStationIcao());
+		}
 		metarManagementOutputPort.save(metar);
 	}
 
