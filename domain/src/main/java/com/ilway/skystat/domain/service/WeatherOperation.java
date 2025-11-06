@@ -13,16 +13,28 @@ import java.util.List;
 public class WeatherOperation {
 
 	public static boolean containsPhenomena(Weathers wg, List<WeatherPhenomenon> target) {
-		return wg.getWeathers().stream()
-			       .anyMatch(w -> containsPhenomena(w, target, false));
+		return containsPhenomena(wg, target, false);
 	}
 
 	public static boolean containsDescriptors(Weathers wg, List<WeatherDescriptor> target) {
-		return wg.getWeathers().stream()
-			.anyMatch(w -> containsDescriptors(w, target, false));
+		return containsDescriptors(wg, target, false);
 	}
 
 	public static boolean containsDescriptorsAndPhenomena(Weathers wg, List<WeatherDescription> target) {
+		return containsDescriptorsAndPhenomena(wg, target, false);
+	}
+
+	public static boolean containsPhenomena(Weathers wg, List<WeatherPhenomenon> target, boolean exactMatch) {
+		return wg.getWeathers().stream()
+			       .anyMatch(w -> containsPhenomena(w, target, exactMatch));
+	}
+
+	public static boolean containsDescriptors(Weathers wg, List<WeatherDescriptor> target, boolean exactMatch) {
+		return wg.getWeathers().stream()
+			.anyMatch(w -> containsDescriptors(w, target, exactMatch));
+	}
+
+	public static boolean containsDescriptorsAndPhenomena(Weathers wg, List<WeatherDescription> target, boolean exactMatch) {
 		if (target == null) {
 			throw new IllegalArgumentException("target must not be null");
 		}
@@ -53,8 +65,8 @@ public class WeatherOperation {
 
 		// 2) 어떤 Weather 하나라도 "정확히 같은 리스트(순서+길이)"면 존재
 		return wg.getWeathers().stream()
-			       .anyMatch(w -> w.getDescriptors().equals(targetDescriptors)
-				                      && w.getPhenomena().equals(targetPhenomena));
+			       .anyMatch(w -> containsDescriptors(w, targetDescriptors, exactMatch)
+				                      && containsPhenomena(w, targetPhenomena, exactMatch));
 	}
 
 	public static boolean containsDescriptors(Weather w, List<WeatherDescriptor> target, boolean exactMatch) {

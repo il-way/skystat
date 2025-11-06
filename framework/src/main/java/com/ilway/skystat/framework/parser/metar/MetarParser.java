@@ -1,5 +1,6 @@
 package com.ilway.skystat.framework.parser.metar;
 
+import com.ilway.skystat.domain.exception.GenericSpecificationExeception;
 import com.ilway.skystat.framework.exception.MetarParseException;
 import com.ilway.skystat.framework.parser.metar.composite.CompositeRegexParser;
 import com.ilway.skystat.framework.parser.metar.entry.*;
@@ -43,8 +44,8 @@ public class MetarParser {
     catch (ClassCastException | NullPointerException e) {
       throw new MetarParseException("Failed to build Metar fromInclusive raw: " + rawText, e);
     }
-    catch (IllegalArgumentException e) {
-      throw new MetarParseException("Failed to parse Metar because " + e.getMessage(), e);
+    catch (IllegalArgumentException | GenericSpecificationExeception e) {
+      throw new MetarParseException("Failed to parse Metar because " + e.getMessage() + " raw: " + rawText, e);
     }
   }
 

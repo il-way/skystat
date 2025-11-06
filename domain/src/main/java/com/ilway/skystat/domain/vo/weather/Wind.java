@@ -1,17 +1,30 @@
 package com.ilway.skystat.domain.vo.weather;
 
+import com.ilway.skystat.domain.spec.WindSpeedSpec;
 import lombok.Builder;
 import lombok.Value;
 import com.ilway.skystat.domain.vo.unit.SpeedUnit;
 
 @Value
-@Builder
 public class Wind {
 
   private final WindDirection direction;
   private final double speed;
   private final double gusts;
   private final SpeedUnit unit;
+
+  private static final WindSpeedSpec windSpeedSpec = new WindSpeedSpec();
+
+  @Builder
+  public Wind(WindDirection direction, double speed, double gusts, SpeedUnit unit) {
+    this.direction = direction;
+    this.speed = speed;
+    this.gusts = gusts;
+    this.unit = unit;
+
+    windSpeedSpec.check(this);
+  }
+
 
   public static Wind of(WindDirection direction, double speed, double gusts, SpeedUnit unit) {
     return Wind.builder()

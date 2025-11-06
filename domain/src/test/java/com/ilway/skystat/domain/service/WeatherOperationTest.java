@@ -24,7 +24,7 @@ public class WeatherOperationTest {
 
 	@Test
 	@DisplayName("""
-			검증대상 : 단일 Phenomenon 탐색
+			검증대상 : 단일 Phenomenon 엄격 탐색
 			요구사항 : 단일 Phenomena 검증 시 정확히 일치하지 않으면 실패해야 한다.
 			예상결과 : 실패
 		""")
@@ -36,29 +36,30 @@ public class WeatherOperationTest {
 			                    .weather(Weather.of(LIGHT, List.of(TS), List.of(SN)))
 			                    .build();
 
-		assertFalse(WeatherOperation.containsPhenomena(weathers, target));
+		assertFalse(WeatherOperation.containsPhenomena(weathers, target, true));
 	}
 
 	@Test
 	@DisplayName("""
-			검증대상 : 단일 Phenomenon 탐색
-			요구사항 : 단일 Phenomena 검증 시 정확히 일치하지 않으면 실패해야 한다.
-			예상결과 : 실패
+			검증대상 : 단일 Phenomenon 느슨 탐색
+			요구사항 : 단일 Phenomena 검증 시 일치하는 코드가 검색되면 성공해야 한다.
+			예상결과 : 성공
 		""")
 	void containsPhenomenonTest2() {
 		List<WeatherPhenomenon> target = List.of(RA);
 
 		Weathers weathers = Weathers.builder()
-			                    .weather(Weather.of(MODERATE, List.of(VC, TS), List.of(RA)))
+			                    .weather(Weather.of(MODERATE, List.of(VC, TS), List.of(RA, SN)))
+			                    .weather(Weather.of(LIGHT, List.of(TS), List.of(SN)))
 			                    .build();
 
-		assertTrue(WeatherOperation.containsPhenomena(weathers, target));
+		assertTrue(WeatherOperation.containsPhenomena(weathers, target, false));
 	}
 
 	@Test
 	@DisplayName("""
-			검증대상 : 복합 Phenomenon 탐색
-			요구사항 : 복합 Phenomena 검증 시 정확히 일치하면 성공해야 한다.
+			검증대상 : 복합 Phenomenon 느슨 탐색
+			요구사항 : 복합 Phenomena 검증 시 일치하는 코드가 검색되면 성공해야 한다.
 			예상결과 : 성공
 		""")
 	void containsPhenomenaTest() {
@@ -69,12 +70,12 @@ public class WeatherOperationTest {
 			                    .weather(Weather.of(LIGHT, List.of(TS), List.of(SN, RA)))
 			                    .build();
 
-		assertFalse(WeatherOperation.containsPhenomena(weathers, target));
+		assertTrue(WeatherOperation.containsPhenomena(weathers, target));
 	}
 
 	@Test
 	@DisplayName("""
-			검증대상 : 복합 Phenomenon 탐색
+			검증대상 : 복합 Phenomenon 엄격 탐색
 			요구사항 : 복합 Phenomena 검증 시 정확히 일치하면 성공해야 한다.
 			예상결과 : 성공
 		""")
@@ -85,13 +86,13 @@ public class WeatherOperationTest {
 			                    .weather(Weather.of(MODERATE, List.of(VC, TS), List.of(RA, SN)))
 			                    .build();
 
-		assertTrue(WeatherOperation.containsPhenomena(weathers, target));
+		assertTrue(WeatherOperation.containsPhenomena(weathers, target, false));
 	}
 
 
 	@Test
 	@DisplayName("""
-			검증대상 : 복합 Weather 탐색
+			검증대상 : 복합 Weather 엄격 탐색
 			요구사항 : Descriptor와 Phenomena를 동시 검증 시 정확히 일치하지 않으면 실패해야 한다.
 			예상결과 : 실패
 		""")
@@ -103,7 +104,7 @@ public class WeatherOperationTest {
 			                 .weather(Weather.of(LIGHT, List.of(TS), List.of(RA)))
 			                 .build();
 
-		assertFalse(WeatherOperation.containsDescriptorsAndPhenomena(weathers, target));
+		assertFalse(WeatherOperation.containsDescriptorsAndPhenomena(weathers, target, true));
 	}
 
 	@Test
@@ -119,7 +120,7 @@ public class WeatherOperationTest {
 			                    .weather(Weather.of(MODERATE, List.of(VC, TS), List.of(RA)))
 			                    .build();
 
-		assertTrue(WeatherOperation.containsDescriptorsAndPhenomena(weathers, target));
+		assertTrue(WeatherOperation.containsDescriptorsAndPhenomena(weathers, target, true));
 	}
 
 }

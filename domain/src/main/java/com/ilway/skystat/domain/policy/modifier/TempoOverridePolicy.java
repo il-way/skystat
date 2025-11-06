@@ -35,7 +35,7 @@ public class TempoOverridePolicy implements OverridePolicy {
 
 	private Weathers overrideWeatherGroup(Weathers base, Weathers patch) {
 		if (base.size() == 0) return patch;
-		if (WeatherOperation.containsPhenomena(patch, List.of(WeatherPhenomenon.NSW))) return patch;
+		if (WeatherOperation.containsPhenomena(patch, List.of(WeatherPhenomenon.NSW), false)) return patch;
 
 		List<Weather> merged         = new ArrayList<>();
 		List<Weather> remainingPatch = new ArrayList<>(patch.getWeathers());

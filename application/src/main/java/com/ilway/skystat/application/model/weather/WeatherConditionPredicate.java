@@ -18,12 +18,12 @@ import static com.ilway.skystat.domain.service.WeatherOperation.containsDescript
 public enum WeatherConditionPredicate {
 
   HAS_PHENOMENA((wg, target) ->
-                  containsPhenomena(wg, cast(target, WeatherPhenomenon.class))),
+                  containsPhenomena(wg, cast(target, WeatherPhenomenon.class), false)),
 
   HAS_DESCRIPTORS((wg, target) ->
-                   containsDescriptors(wg, cast(target, WeatherDescriptor.class))),
+                   containsDescriptors(wg, cast(target, WeatherDescriptor.class), false)),
 
-  HAS_DESCRIPTORS_AND_PHENOMENA(WeatherOperation::containsDescriptorsAndPhenomena);
+  HAS_DESCRIPTORS_AND_PHENOMENA((wg, target) -> WeatherOperation.containsDescriptorsAndPhenomena(wg, target, false));
 
   private final BiPredicate<Weathers, List<WeatherDescription>> tester;
 

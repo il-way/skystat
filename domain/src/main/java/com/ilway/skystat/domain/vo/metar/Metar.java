@@ -2,6 +2,7 @@ package com.ilway.skystat.domain.vo.metar;
 
 import java.time.ZonedDateTime;
 
+import com.ilway.skystat.domain.spec.WindSpeedSpec;
 import com.ilway.skystat.domain.vo.weather.*;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

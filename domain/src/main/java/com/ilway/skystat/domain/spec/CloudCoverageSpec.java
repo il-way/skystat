@@ -3,11 +3,15 @@ package com.ilway.skystat.domain.spec;
 import com.ilway.skystat.domain.exception.GenericSpecificationExeception;
 import com.ilway.skystat.domain.spec.shared.AbstractSpecification;
 import com.ilway.skystat.domain.vo.weather.Cloud;
+import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
+
+import static com.ilway.skystat.domain.vo.weather.type.CloudCoverage.VV;
 
 public class CloudCoverageSpec extends AbstractSpecification<Cloud> {
 
   @Override
   public boolean isSatisfiedBy(Cloud cloud) {
+    if (cloud.getCoverage().equals(VV)) return true;
     boolean requires = cloud.getCoverage().requiresAltitude();
     boolean hasAltitude = cloud.getAltitudeOptional().isPresent();
 

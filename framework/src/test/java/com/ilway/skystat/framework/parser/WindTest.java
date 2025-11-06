@@ -1,5 +1,6 @@
 package com.ilway.skystat.framework.parser;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import com.ilway.skystat.framework.parser.metar.entry.WindRegexParser;
 import com.ilway.skystat.framework.parser.shared.ReportParser;
@@ -9,6 +10,7 @@ import com.ilway.skystat.domain.vo.unit.SpeedUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Slf4j
 public class WindTest {
 
   ReportParser<Wind> parser = new WindRegexParser();
@@ -62,5 +64,19 @@ public class WindTest {
         )
     );
   }
+
+  @Test
+  public void P99KT_예외케이스() {
+    String rksi = "RKSI 010300Z 170P99KT 4000 -RA SCT006 BKN025 OVC070 13/13 Q1007 NOSIG";
+    String rkjy = "METAR RKJY 010600Z 17050GP99KT 150V220 3200 +TSRA BR FEW010CB BKN025 OVC060 16/16 Q1007 NOSIG RMK TS NW MOV NE OCNL LTGIC=";
+
+//    Wind parsed = parser.parse(rksi);
+//    log.info("parsed wind: {}", parsed);
+
+    Wind parsed2 = parser.parse(rkjy);
+    log.info("parsed wind: {}", parsed2);
+
+  }
+
 
 }

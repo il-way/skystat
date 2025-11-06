@@ -24,7 +24,7 @@ public enum CloudCoverage implements WeatherDescription {
 
   public boolean requiresAltitude() {
     return switch (this) {
-      case FEW, SCT, BKN, OVC, VV -> true;
+      case FEW, SCT, BKN, OVC -> true;
       default -> false;
     };
   }
