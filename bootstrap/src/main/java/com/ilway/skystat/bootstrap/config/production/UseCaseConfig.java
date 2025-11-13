@@ -72,8 +72,12 @@ public class UseCaseConfig {
 	}
 
 	@Bean
-	public MetarManagementUseCase metarManagementUseCase(MetarManagementOutputPort outputPort) {
-		return new MetarManagementInputPort(outputPort);
+	public MetarManagementUseCase metarManagementUseCase(MetarManagementOutputPort metarManagementOutputPort, MetarParsingOutputPort metarParsingOutputPort) {
+		return new MetarManagementInputPort(metarManagementOutputPort, metarParsingOutputPort);
+	}
+
+	@Bean MetarSaveFileUseCase metarSaveFileUseCase(MetarManagementOutputPort metarManagementOutputPort, MetarParsingOutputPort metarParsingOutputPort) {
+		return new MetarSaveFileInputPort(metarManagementOutputPort, metarParsingOutputPort);
 	}
 
 	@Bean

@@ -2,6 +2,7 @@ package com.ilway.skystat.bootstrap.config.production;
 
 import com.ilway.skystat.application.port.output.*;
 import com.ilway.skystat.bootstrap.profile.Production;
+import com.ilway.skystat.framework.adapter.output.MetarParsingAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.inventory.MetarInventoryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.*;
@@ -20,6 +21,11 @@ public class OutputPortConfig {
 		MetarManagementRepository repo,
 		EntityManager em) {
 		return new MetarManagementMySQLAdapter(repo, em);
+	}
+
+	@Bean
+	public MetarParsingOutputPort metarParsingOutputPort() {
+		return new MetarParsingAdapter();
 	}
 
 	@Bean
