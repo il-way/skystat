@@ -94,7 +94,7 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 		);
 
 		log.info("# expectedTotalCount: {}", expectedTotalCount);
-		log.info("# errorList: {}", response.parsedErrors());
+		log.info("# errorList: {}", response.parsingErrors());
 	}
 
 	@Test

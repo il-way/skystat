@@ -22,7 +22,7 @@ public class MetarManagementInputPort implements MetarManagementUseCase {
 	public void save(MetarSaveOneCommand cmd) {
 		Metar metar = metarParsingOutputPort.parse(cmd.rawText(), YearMonth.from(cmd.observationTime()));
 		if (!cmd.icao().equalsIgnoreCase(metar.getStationIcao())) {
-			throw new BusinessException(400, "BAD_REQUEST", "ICAO mismatch: try to save " + cmd.icao() + " but, parsed icao=" + metar.getStationIcao());
+			throw new BusinessException(400, "ICAO_MISMATCH", "ICAO mismatch: try to save " + cmd.icao() + " but, parsed icao=" + metar.getStationIcao());
 		}
 		metarManagementOutputPort.save(metar);
 	}

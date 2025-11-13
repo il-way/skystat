@@ -308,7 +308,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/HangyulKim/Desktop/il-way/project/skystat_backend",
+    "last_opened_file_path": "C:/Users/HangyulKim/Desktop/il-way/project/skystat_backend/it/src/test/java/com/ilway/skystat/it/config",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -331,11 +331,11 @@
       <recent name="spec.shared" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat_backend\it\src\test\java\com\ilway\skystat\it\config" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\test\resources" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\it\src\test\java\com\ilway\skystat\it\config" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\bootstrap\src\main\java\com\ilway\skystat\bootstrap\config\staging" />
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\it\src\test\resources" />
-      <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat\framework\src\test\java\com\ilway\skystat\framework\adapter\output\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\HangyulKim\Desktop\il-way\project\skystat_backend\it\src\test\resources\data\metar" />
@@ -355,7 +355,7 @@
       <recent name="com.ilway.skystat.application.port.input.metar.delegator" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.'com.ilway.skystat.framework'에 있는 테스트">
+  <component name="RunManager" selected="Gradle.'com.ilway.skystat.it'에 있는 테스트">
     <configuration name="AppConfig" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.AppConfig" />
       <module name="skystat.bootstrap.main" />
@@ -368,30 +368,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="MetarManagementMySQLAdapterTestData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.output.mysql.MetarManagementMySQLAdapterTestData&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
     </configuration>
     <configuration name="MetarManagementMySQLAdapterTestData.saveTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -441,30 +417,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RemarkTest.bulkTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.parser.RemarkTest.bulkTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="RemarkTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -489,6 +441,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="'com.ilway.skystat.application'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":application:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.application.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="'com.ilway.skystat.framework'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -503,6 +479,30 @@
             <option value=":framework:test" />
             <option value="--tests" />
             <option value="&quot;com.ilway.skystat.framework.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="'com.ilway.skystat.it'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":it:test" />
+            <option value="--tests" />
+            <option value="&quot;com.ilway.skystat.it.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -542,20 +542,20 @@
     <list>
       <item itemvalue="Gradle.MetarStatisticAdapterTest" />
       <item itemvalue="Gradle.bootstrap" />
+      <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
       <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
-      <item itemvalue="Gradle.MetarManagementMySQLAdapterTestData" />
       <item itemvalue="Gradle.MetarManagementMySQLAdapterTestData.saveTest" />
-      <item itemvalue="Gradle.RemarkTest.bulkTest" />
       <item itemvalue="Gradle.RemarkTest.test" />
+      <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
       <item itemvalue="애플리케이션.AppConfig" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
         <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
+        <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
         <item itemvalue="Gradle.MetarManagementMySQLAdapterTestData.saveTest" />
         <item itemvalue="Gradle.RemarkTest.test" />
-        <item itemvalue="Gradle.RemarkTest.bulkTest" />
-        <item itemvalue="Gradle.MetarManagementMySQLAdapterTestData" />
       </list>
     </recent_temporary>
   </component>

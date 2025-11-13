@@ -4,13 +4,13 @@ import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.port.input.metar.MetarManagementInputPort;
+import com.ilway.skystat.application.port.input.metar.MetarSaveFileInputPort;
 import com.ilway.skystat.application.port.input.metar.scan.*;
 import com.ilway.skystat.application.port.output.MetarInventoryOutputPort;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
-import com.ilway.skystat.application.usecase.MetarManagementUseCase;
-import com.ilway.skystat.application.usecase.StatisticUseCase;
-import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
-import com.ilway.skystat.application.usecase.WindRoseUseCase;
+import com.ilway.skystat.application.port.output.MetarParsingOutputPort;
+import com.ilway.skystat.application.usecase.*;
+import com.ilway.skystat.framework.adapter.output.MetarParsingAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.inventory.MetarInventoryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
@@ -23,9 +23,13 @@ public class MySQLConfigData {
 
 	protected MetarManagementUseCase metarManagementUseCase;
 
+	protected MetarSaveFileUseCase metarSaveFileUseCase;
+
 	protected MetarManagementOutputPort metarManagementOutputPort;
 
 	protected MetarInventoryOutputPort metarInventoryOutputPort;
+
+	protected MetarParsingOutputPort metarParsingOutputPort;
 
 	protected StatisticUseCase<ThresholdStatisticQuery> thresholdStatisticUseCase;
 
@@ -44,7 +48,9 @@ public class MySQLConfigData {
 	                       MetarInventoryRepository metarInventoryRepository) {
 		this.metarManagementOutputPort = new MetarManagementMySQLAdapter(repository, em);
 		this.metarInventoryOutputPort = new MetarInventoryMySqlAdapter(metarInventoryRepository);
-		this.metarManagementUseCase = new MetarManagementInputPort(metarManagementOutputPort);
+		this.metarParsingOutputPort = new MetarParsingAdapter();
+		this.metarManagementUseCase = new MetarManagementInputPort(metarManagementOutputPort, metarParsingOutputPort);
+		this.metarSaveFileUseCase = new MetarSaveFileInputPort(metarManagementOutputPort, metarParsingOutputPort);
 		this.thresholdStatisticUseCase = new ThresholdStatisticInputPort(metarManagementOutputPort);
 		this.weatherStatisticUseCase = new WeatherStatisticInputPort(metarManagementOutputPort);
 		this.cloudStatisticUseCase = new CloudStatisticInputPort(metarManagementOutputPort);

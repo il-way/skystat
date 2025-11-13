@@ -38,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Slf4j
 @SpringBootTest
 @Transactional
-public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
+public class MetarManagementMySQLAdapterTest extends MySQLConfigData {
 
 	@Autowired
 	MetarManagementRepository repository;
@@ -48,7 +48,7 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 
 	private static final String TEST_ICAO = "RKSI";
 
-	public MetarManagementMySQLAdapterTestData(@Autowired MetarManagementRepository repository,
+	public MetarManagementMySQLAdapterTest(@Autowired MetarManagementRepository repository,
 	                                           @Autowired EntityManager em,
 	                                           @Autowired MetarInventoryRepository metarInventoryRepository) {
 		super(repository, em, metarInventoryRepository);
