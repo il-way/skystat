@@ -13,8 +13,10 @@ import com.ilway.skystat.application.port.output.MetarInventoryOutputPort;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.port.output.MetarParsingOutputPort;
 import com.ilway.skystat.application.usecase.MetarManagementUseCase;
+import com.ilway.skystat.application.usecase.MetarSaveFileUseCase;
 import com.ilway.skystat.application.usecase.StatisticUseCase;
 import com.ilway.skystat.application.usecase.WindRoseUseCase;
+import com.ilway.skystat.framework.adapter.output.MetarParsingAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.inventory.MetarInventoryMySqlAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.management.MetarManagementMySQLAdapter;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
@@ -26,6 +28,8 @@ import org.springframework.core.io.Resource;
 public class MySQLConfigData {
 
 	protected MetarManagementUseCase metarManagementUseCase;
+
+	protected MetarSaveFileUseCase metarSaveFileUseCase;
 
 	protected MetarManagementOutputPort metarManagementOutputPort;
 
@@ -48,7 +52,9 @@ public class MySQLConfigData {
 	                       MetarInventoryRepository metarInventoryRepository) {
 		this.metarManagementOutputPort = new MetarManagementMySQLAdapter(repository, em);
 		this.metarInventoryOutputPort = new MetarInventoryMySqlAdapter(metarInventoryRepository);
+		this.metarParsingOutputPort = new MetarParsingAdapter();
 		this.metarManagementUseCase = new MetarManagementInputPort(metarManagementOutputPort, metarParsingOutputPort);
+		this.metarSaveFileUseCase = new MetarSaveFileInputPort(metarManagementOutputPort, metarParsingOutputPort);
 		this.thresholdStatisticUseCase = new ThresholdStatisticInputPort(metarManagementOutputPort);
 		this.weatherStatisticUseCase = new WeatherStatisticInputPort(metarManagementOutputPort);
 		this.cloudStatisticUseCase = new CloudStatisticInputPort(metarManagementOutputPort);

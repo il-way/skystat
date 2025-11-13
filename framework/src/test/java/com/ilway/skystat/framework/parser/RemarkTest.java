@@ -34,6 +34,13 @@ public class RemarkTest {
 	}
 
 	@Test
+	public void test() {
+		String rawText = "RKSI 010000Z 07002KT 3500 BR NSC 01/00 Q1029 NOSIG";
+		String actual = parser.parse(rawText);
+		System.out.println("# actual: " + actual.toString());
+	}
+
+	@Test
 	void bulkTest() {
 		List<String> list = List.of(
 			"KJFK 221251Z 16005KT 10SM BKN100 BKN230 27/23 A2988 RMK AO2 SLP116 ACC NE-E T02670233",

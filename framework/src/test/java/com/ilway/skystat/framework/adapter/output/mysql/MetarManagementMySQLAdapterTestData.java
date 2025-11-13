@@ -4,12 +4,15 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.management.MetarSaveOneCommand;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.domain.vo.weather.*;
+import com.ilway.skystat.domain.vo.weather.type.CloudCoverage;
+import com.ilway.skystat.domain.vo.weather.type.CloudType;
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import com.ilway.skystat.framework.adapter.output.mysql.mapper.MetarMySQLMapper;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
 import com.ilway.skystat.framework.config.MySQLConfigData;
 import jakarta.persistence.EntityManager;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +29,13 @@ import static com.ilway.skystat.domain.vo.unit.LengthUnit.METERS;
 import static com.ilway.skystat.domain.vo.unit.PressureUnit.HPA;
 import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import static com.ilway.skystat.domain.vo.unit.TemperatureUnit.CELSIUS;
+import static com.ilway.skystat.domain.vo.weather.type.CloudCoverage.NSC;
+import static com.ilway.skystat.domain.vo.weather.type.CloudType.NONE;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherIntensity.MODERATE;
 import static com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon.BR;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Slf4j
 @SpringBootTest
 @Transactional
 public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
@@ -132,8 +138,11 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 				.weathers(Weathers.of(List.of(
 					Weather.of(MODERATE, null, List.of(BR))
 				)))
-				.clouds(Clouds.of(List.of()))   // NSC
-				.remarks("NOSIG")
+				.clouds(Clouds.builder()
+					        .cloud(Cloud.of(NSC, null, NONE))
+					        .build()
+				)   // NSC
+				.remarks("")
 				.build();
 
 	}
@@ -159,8 +168,10 @@ public class MetarManagementMySQLAdapterTestData extends MySQLConfigData {
 				.weathers(Weathers.of(List.of(
 					Weather.of(MODERATE, null, List.of(BR))           // BR
 				)))
-				.clouds(Clouds.of(List.of()))                 // NSC
-				.remarks("NOSIG")
+				.clouds(Clouds.builder()
+					        .cloud(Cloud.of(NSC, null, NONE))
+					        .build())                 // NSC
+				.remarks("")
 				.build();
 
 	}
