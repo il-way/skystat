@@ -5,7 +5,7 @@ plugins {
 }
 
 bootJar {
-  enabled = false // 기본 bootJar는 끄고, 아래 둘만 씁니다(원하면 켜둬도 무관)
+  enabled = true // 기본 bootJar는 끄고, 아래 둘만 씁니다(원하면 켜둬도 무관)
 }
 
 dependencies {
@@ -24,16 +24,20 @@ dependencies {
 
 // 운영용 JAR (명령어) ./gradlew :bootstrap:bootJarProd
 // 스테이징용 JAR (명령어) ./gradlew :bootstrap:bootJarStaging
-tasks.register('bootJarProd', BootJar) {
-  group = 'build'
-  archiveClassifier = 'prod' // 파일명에 -prod 붙음
-  mainClass = 'com.ilway.skystat.bootstrap.AppProductionLauncher'
-}
-
-tasks.register('bootJarStaging', BootJar) {
-  group = 'build'
-  archiveClassifier = 'staging'
-  mainClass = 'com.ilway.skystat.bootstrap.AppStagingLauncher'
-  launchScript()
-}
+//tasks.withType(BootJar).configureEach {
+//  targetJavaVersion = java.toolchain.languageVersion.map { lv -> JavaVersion.toVersion(lv.asInt()) }
+//}
+//
+//tasks.register('bootJarProd', BootJar) {
+//  group = 'build'
+//  archiveClassifier = 'prod' // 파일명에 -prod 붙음
+//  mainClass = 'com.ilway.skystat.bootstrap.AppProductionLauncher'
+//}
+//
+//tasks.register('bootJarStaging', BootJar) {
+//  group = 'build'
+//  archiveClassifier = 'staging'
+//  mainClass = 'com.ilway.skystat.bootstrap.AppStagingLauncher'
+//  launchScript()
+//}
 

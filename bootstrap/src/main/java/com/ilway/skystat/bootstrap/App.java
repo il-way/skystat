@@ -10,6 +10,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = "com.ilway.skystat.framework")
 @EnableJpaRepositories(basePackages = "com.ilway.skystat.framework")
 @ConfigurationPropertiesScan("com.ilway.skystat")
-public class AppConfig {
+public class App {
+
+	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
 
 }
