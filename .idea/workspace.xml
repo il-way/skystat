@@ -288,6 +288,7 @@
     "Gradle.skystat_backend:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.AppProductionLauncher.main()].executor": "Run",
     "Gradle.skystat_backend:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.AppStagingLauncher.main()].executor": "Run",
     "Gradle.skystat_backend:bootstrap [bootJar].executor": "Run",
+    "Gradle.skystat_backend:bootstrap [build].executor": "Run",
     "Gradle.skystat_backend:bootstrap [clean].executor": "Run",
     "Gradle.소스 다운로드.executor": "Run",
     "JUnit.CloudGroupTest.executor": "Run",
@@ -363,9 +364,10 @@
       <recent name="com.ilway.skystat.application.port.input.metar.delegator" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.App">
+  <component name="RunManager" selected="Gradle.skystat_backend:bootstrap [bootJar]">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/skystat_prod?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
         <env name="SPRING_DATASOURCE_PASSWORD" value="dnfl653538@" />
         <env name="DB_USER" value="root" />
       </envs>
@@ -423,30 +425,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MetarStatisticAdapterTest.getWeatherBothCoverageStatisticTestSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.input.MetarStatisticAdapterTest.getWeatherBothCoverageStatisticTestSuccess&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="'com.ilway.skystat.framework'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -461,30 +439,6 @@
             <option value=":framework:test" />
             <option value="--tests" />
             <option value="&quot;com.ilway.skystat.framework.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="'com.ilway.skystat.framework.adapter.input'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":framework:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.framework.adapter.input.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -550,7 +504,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/bootstrap" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -567,24 +521,68 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="skystat_backend:bootstrap [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/bootstrap" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="skystat_backend:bootstrap [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/bootstrap" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Gradle.MetarStatisticAdapterTest" />
       <item itemvalue="Gradle.bootstrap" />
       <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
-      <item itemvalue="Gradle.'com.ilway.skystat.framework.adapter.input'에 있는 테스트" />
       <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
-      <item itemvalue="Gradle.MetarStatisticAdapterTest.getWeatherBothCoverageStatisticTestSuccess" />
+      <item itemvalue="Gradle.skystat_backend:bootstrap [build]" />
       <item itemvalue="Gradle.skystat_backend:bootstrap [bootJar]" />
+      <item itemvalue="Gradle.skystat_backend:bootstrap [clean]" />
       <item itemvalue="애플리케이션.App" />
       <item itemvalue="애플리케이션.AppProductionLauncher" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.skystat_backend:bootstrap [bootJar]" />
+        <item itemvalue="Gradle.skystat_backend:bootstrap [clean]" />
+        <item itemvalue="Gradle.skystat_backend:bootstrap [build]" />
         <item itemvalue="Gradle.'com.ilway.skystat.it'에 있는 테스트" />
         <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
-        <item itemvalue="Gradle.'com.ilway.skystat.framework.adapter.input'에 있는 테스트" />
-        <item itemvalue="Gradle.MetarStatisticAdapterTest.getWeatherBothCoverageStatisticTestSuccess" />
-        <item itemvalue="Gradle.skystat_backend:bootstrap [bootJar]" />
       </list>
     </recent_temporary>
   </component>
