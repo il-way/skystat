@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@RequestMapping("/metar")
+@RequestMapping("/api/metar")
 @RestController
 @RequiredArgsConstructor
 @Validated

@@ -54,7 +54,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 			rksiMetarFile.getInputStream()
 		);
 
-		MvcResult mvcResult = mockMvc.perform(multipart("/metar/save/upload/{icao}", TEST_ICAO)
+		MvcResult mvcResult = mockMvc.perform(multipart("/api/metar/save/upload/{icao}", TEST_ICAO)
 			                                      .file(mockFile)
 			                                      .param("description", "Test with a real resource file")
 			                                      .contentType(MediaType.MULTIPART_FORM_DATA))
@@ -66,7 +66,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("peakwind 조건 조회에 성공해야 한다.")
 	void getPeakWindThresholdStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/threshold")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/threshold")
 			                                      .param("icao", icao)
 			                                      .param("field", "windpeak")
 			                                      .param("comparison", "GTE")
@@ -89,7 +89,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("lowest ceiling 조건 조회에 성공해야 한다.")
 	void getCeilingThresholdStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/threshold")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/threshold")
 			                                      .param("icao", icao)
 			                                      .param("field", "ceiling")
 			                                      .param("comparison", "lte")
@@ -111,7 +111,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("wind speed 조건 조회에 성공해야 한다.")
 	void getWindSpeedThresholdStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/threshold")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/threshold")
 			                                      .param("icao", icao)
 			                                      .param("field", "windspeed")
 			                                      .param("comparison", "gte")
@@ -133,7 +133,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("visibility 조건 조회에 성공해야 한다.")
 	void getVisisbilityThresholdStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/threshold")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/threshold")
 			                                      .param("icao", icao)
 			                                      .param("field", "visibility")
 			                                      .param("comparison", "lte")
@@ -155,7 +155,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("altimeter 조건 조회에 성공해야 한다.")
 	void getAltimeterThresholdStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/threshold")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/threshold")
 			                                      .param("icao", icao)
 			                                      .param("field", "altimeter")
 			                                      .param("comparison", "lte")
@@ -177,7 +177,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("cloud type 조회에 성공해야 한다.")
 	void getCloudTypeStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/cloud")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/cloud")
 			                                      .param("icao", icao)
 			                                      .param("condition", "type")
 			                                      .param("target", "CB")
@@ -197,7 +197,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("cloud coverage 조회에 성공해야 한다.")
 	void getCloudCoverageStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/cloud")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/cloud")
 			                                      .param("icao", icao)
 			                                      .param("condition", "coverage")
 			                                      .param("target", "bkn")
@@ -217,7 +217,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("weather 조회에 성공해야 한다.")
 	void getWeatherBothCoverageStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/weather")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/weather")
 			                                      .param("icao", icao)
 			                                      .param("condition", "both")
 			                                      .param("list", "TS,RA")
@@ -237,7 +237,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("weather descriptor 조회에 성공해야 한다.")
 	void getWeatherDescriptorCoverageStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/weather")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/weather")
 			                                      .param("icao", icao)
 			                                      .param("condition", "descriptor")
 			                                      .param("list", "TS")
@@ -257,7 +257,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("weather phenomena 조회에 성공해야 한다.")
 	void getWeatherPhenomenaCoverageStatisticTestSuccess() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/weather")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/weather")
 			                                      .param("icao", icao)
 			                                      .param("condition", "phenomena")
 			                                      .param("list", "SN,RA")
@@ -277,7 +277,7 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 	@DisplayName("temperature 조회에 성공해야 한다.")
 	void getTemperatureStatisticTest() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/statistic/temperature")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/statistic/temperature")
 			                                      .param("icao", icao)
 			                                      .param("startYear", "2019")
 			                                      .param("endYear", "2024")

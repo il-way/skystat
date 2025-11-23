@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.ZonedDateTime;
 
 @Validated
-@RequestMapping("/metar")
+@RequestMapping("/api/metar")
 @RestController
 @RequiredArgsConstructor
 public class WindRoseAdapter {

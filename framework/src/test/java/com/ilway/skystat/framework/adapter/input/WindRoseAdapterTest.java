@@ -49,7 +49,7 @@ public class WindRoseAdapterTest extends ResourceFileConfigData {
 			rksiMetarFile.getInputStream()
 		);
 
-		MvcResult mvcResult = mockMvc.perform(multipart("/metar/save/upload/{icao}", TEST_ICAO)
+		MvcResult mvcResult = mockMvc.perform(multipart("/api/metar/save/upload/{icao}", TEST_ICAO)
 			                                      .file(mockFile)
 			                                      .param("description", "Test with a real resource file")
 			                                      .contentType(MediaType.MULTIPART_FORM_DATA))
@@ -61,7 +61,7 @@ public class WindRoseAdapterTest extends ResourceFileConfigData {
 	@DisplayName("바람장미(windrose) 조회에 성공해야 한다")
 	void getDefaultWindRoseTest() throws Exception {
 		String icao = "RKSI";
-		MvcResult mvcResult = mockMvc.perform(get("/metar/windrose")
+		MvcResult mvcResult = mockMvc.perform(get("/api/metar/windrose")
 			                                      .param("icao", icao)
 			                                      .param("startDateTime", "2019-01-01T00:00:00Z")
 			                                      .param("endDateTime", "2024-01-01T00:00:00Z"))

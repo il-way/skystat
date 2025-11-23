@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-@RequestMapping("/metar")
+@RequestMapping("/api/metar")
 @RestController
 @RequiredArgsConstructor
 @Validated

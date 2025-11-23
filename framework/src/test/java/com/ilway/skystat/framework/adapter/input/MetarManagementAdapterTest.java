@@ -65,7 +65,7 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			rksiMetarFile.getInputStream()
 		);
 
-		MvcResult mvcResult = mockMvc.perform(multipart("/metar/save/upload/{icao}", TEST_ICAO)
+		MvcResult mvcResult = mockMvc.perform(multipart("/api/metar/save/upload/{icao}", TEST_ICAO)
 			                                        .file(mockFile)
 			                                        .param("description", "Test with a real resource file")
 			                                        .contentType(MediaType.MULTIPART_FORM_DATA))
@@ -106,7 +106,7 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			"rawText", rawText
 		);
 
-		mockMvc.perform(post("/metar/save/{icao}", icao)
+		mockMvc.perform(post("/api/metar/save/{icao}", icao)
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(objectMapper.writeValueAsString(body))
 		)
@@ -136,7 +136,7 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			"rawText", rawText
 		);
 
-		mockMvc.perform(post("/metar/save/{icao}", icao)
+		mockMvc.perform(post("/api/metar/save/{icao}", icao)
 			                .contentType(MediaType.APPLICATION_JSON)
 			                .content(objectMapper.writeValueAsString(body))
 			)
