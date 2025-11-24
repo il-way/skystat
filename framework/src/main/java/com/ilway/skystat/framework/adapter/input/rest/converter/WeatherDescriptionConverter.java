@@ -16,8 +16,8 @@ public class WeatherDescriptionConverter implements Converter<String, WeatherDes
 			if (wd.name().equals(s)) return wd;
 		}
 
-		for (WeatherPhenomenon wd : WeatherPhenomenon.values()) {
-			if (wd.name().equals(s)) return wd;
+		for (WeatherPhenomenon wp : WeatherPhenomenon.values()) {
+			if (wp.name().equals(s)) return wp;
 		}
 
 		for (CloudType wd : CloudType.values()) {

@@ -12,8 +12,6 @@ public interface MetarBasicStatisticQueryOutputPort {
 
 	double average(String icao, RetrievalPeriod period, MetricField field, Unit unit);
 
-	AverageSummary averageSummary(String icao, RetrievalPeriod period);
-
 	List<MonthlyAverageDto> averageMonthly(String icao, RetrievalPeriod period, MetricField field, Unit unit);
 
 }

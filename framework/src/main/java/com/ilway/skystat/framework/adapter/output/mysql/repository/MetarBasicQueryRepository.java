@@ -76,26 +76,7 @@ public interface MetarBasicQueryRepository extends JpaRepository<MetarData, Long
 		@Param("icao") String icao,
 		@Param("fromInclusive") ZonedDateTime fromInclusive,
 		@Param("toExclusive") ZonedDateTime toExclusive);
-
-	@Query("""
-			SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.AverageSummaryQueryDto(
-				AVG(m.visibilityM),
-				AVG(m.windSpeedKt),
-				AVG(m.windPeakKt),
-				AVG(m.altimeterHpa),
-				AVG(m.ceiling)
-			)
-			FROM MetarData m
-			WHERE m.stationIcao = :icao
-				AND m.reportTime >= :fromInclusive
-				AND m.reportTime < :toExclusive
-			ORDER BY m.reportTime
-		""")
-	AverageSummaryQueryDto averageSummary(
-		@Param("icao") String icao,
-		@Param("fromInclusive") ZonedDateTime fromInclusive,
-		@Param("toExclusive") ZonedDateTime toExclusive);
-
+	
 	@Query("""
 		SELECT new com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyAverageQueryDto(
 			MONTH(m.reportTime), AVG(m.windSpeedKt)

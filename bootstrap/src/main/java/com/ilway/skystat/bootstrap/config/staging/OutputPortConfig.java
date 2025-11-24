@@ -63,4 +63,9 @@ public class OutputPortConfig {
 		return new MetarBasicStatisticQueryMySqlAdapter(metarBasicQueryRepository);
 	}
 
+	@Bean
+	public MetarStatisticSummaryQueryOutputPort metarStatisticSummaryQueryOutputPort(MetarSummaryQueryRepository metarSummaryQueryRepository) {
+		return new MetarStatisticSummaryQueryMySqlAdapter(metarSummaryQueryRepository);
+	}
+
 }

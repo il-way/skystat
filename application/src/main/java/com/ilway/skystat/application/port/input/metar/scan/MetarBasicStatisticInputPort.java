@@ -19,13 +19,8 @@ public class MetarBasicStatisticInputPort implements BasicStatisticUseCase {
 
 	@Override
 	public double average(String icao, RetrievalPeriod period, MetricField field, Unit unit) {
-		List<Metar> metars = outputPort.findByIcaoAndReportTimePeriod(icao, period);
+//		List<Metar> metars = outputPort.findByIcaoAndReportTimePeriod(icao, period);
 		return 0;
-	}
-
-	@Override
-	public AverageSummary averageSummary(String icao, RetrievalPeriod period) {
-		return null;
 	}
 
 	@Override

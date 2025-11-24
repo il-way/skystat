@@ -73,8 +73,8 @@
         <option value="Exception" />
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Record" />
         <option value="Interface" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -357,14 +357,14 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ilway.skystat.framework.adapter.input.rest.converter" />
+      <recent name="com.ilway.skystat.application.port.input.metar.fallback" />
       <recent name="com.ilway.skystat.framework.adapter.input.rest.response" />
       <recent name="com.ilway.skystat.application.port.input.metar.scan" />
       <recent name="com.ilway.skystat.bootstrap" />
-      <recent name="com.ilway.skystat.application.dto.statistic" />
-      <recent name="com.ilway.skystat.application.port.input.metar.delegator" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.skystat_backend:bootstrap [bootJar]">
+  <component name="RunManager" selected="애플리케이션.App">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/skystat_prod?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
@@ -608,6 +608,15 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/framework/src/main/java/com/ilway/skystat/framework/adapter/output/mysql/statistic/MetarStatisticSummaryQueryMySqlAdapter.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.ilway.skystat.framework.adapter.input.rest.MetarManagementAdapter$ParseBatch" memberName="success" />

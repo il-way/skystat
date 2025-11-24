@@ -22,11 +22,6 @@ public class MetarBasicStatisticQueryInputPort implements BasicStatisticUseCase 
 	}
 
 	@Override
-	public AverageSummary averageSummary(String icao, RetrievalPeriod period) {
-		return outputPort.averageSummary(icao, period);
-	}
-
-	@Override
 	public List<MonthlyAverageDto> averageMonthly(String icao, RetrievalPeriod period, MetricField field, Unit unit) {
 		return outputPort.averageMonthly(icao, period, field, unit);
 	}

@@ -18,6 +18,15 @@ import org.springframework.context.annotation.Configuration;
 public class UseCaseConfig {
 
 	@Bean
+	public StatisticSummaryUseCase statisticSummaryUseCase(MetarManagementOutputPort metarManagementOutputPort,
+	                                                       MetarStatisticSummaryQueryOutputPort metarStatisticSummaryQueryOutputPort) {
+		return new MetarStatisticSummaryFallbackInputPort(
+			new MetarStatisticSummaryQueryInputPort(metarStatisticSummaryQueryOutputPort),
+			new MetarStatisticSummaryInputPort(metarManagementOutputPort)
+		);
+	}
+
+	@Bean
 	public BasicStatisticUseCase basicStatisticUseCase(MetarManagementOutputPort metarManagementOutputPort,
 	                                                   MetarBasicStatisticQueryOutputPort metarBasicStatisticQueryOutputPort) {
 		return new MetarBasicStatisticFallbackInputPort(

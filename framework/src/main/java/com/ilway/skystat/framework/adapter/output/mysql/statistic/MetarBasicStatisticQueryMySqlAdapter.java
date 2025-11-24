@@ -12,10 +12,7 @@ import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.AverageSu
 import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static com.ilway.skystat.application.model.weather.MetricField.*;
 
 @RequiredArgsConstructor
 public class MetarBasicStatisticQueryMySqlAdapter implements MetarBasicStatisticQueryOutputPort {
@@ -25,12 +22,6 @@ public class MetarBasicStatisticQueryMySqlAdapter implements MetarBasicStatistic
 	@Override
 	public double average(@UppercaseParam String icao, RetrievalPeriod period, MetricField field, Unit unit) {
 		throw new BusinessException(501, "NOT_IMPLEMENTED", "Average each field is not implemented yet.");
-	}
-
-	@Override
-	public AverageSummary averageSummary(@UppercaseParam String icao, RetrievalPeriod period) {
-		AverageSummaryQueryDto result = repository.averageSummary(icao, period.fromInclusive(), period.toExclusive());
-		return map(result);
 	}
 
 	@Override
@@ -44,23 +35,5 @@ public class MetarBasicStatisticQueryMySqlAdapter implements MetarBasicStatistic
 			default -> List.of();
 		};
 	}
-
-	private AverageSummary map(AverageSummaryQueryDto dto) {
-		if (dto == null) {
-			return new AverageSummary(0, 0, 0, 0, 0);
-		}
-		return new AverageSummary(
-			nvl(dto.avgVisibilityM()),
-			nvl(dto.avgWindSpeedKt()),
-			nvl(dto.avgWindPeakKt()),
-			nvl(dto.avgAltimeterHpa()),
-			nvl(dto.avgCeilingFt())
-		);
-	}
-
-	private static double nvl(Double v) {
-		return v != null ? v : 0d;
-	}
-
 
 }

@@ -30,20 +30,6 @@ public class MetarBasicStatisticAdapter {
 	private final BasicStatisticUseCase basicStatisticUseCase;
 	private final MetarInventoryUseCase inventoryUseCase;
 
-	@GetMapping("/average/summary")
-	public ResponseEntity<AverageSummaryResponse> getAverageSummary(
-		@RequestParam("icao") String icao,
-	  @RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
-	  @RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed) {
-
-		RetrievalPeriod period = new RetrievalPeriod(st, ed);
-		AverageSummary averageSummary = basicStatisticUseCase.averageSummary(icao, period);
-		PeriodInventory periodInventory = inventoryUseCase.getPeriodInventory(icao, period);
-
-		return ResponseEntity.ok()
-			       .body(AverageSummaryResponse.from(periodInventory, averageSummary));
-	}
-
 	@GetMapping("/average")
 	public ResponseEntity<AverageMonthlyResponse> getAverageMonthly(
 		@RequestParam("icao") String icao,
@@ -53,9 +39,7 @@ public class MetarBasicStatisticAdapter {
 		@RequestParam("unit") @NotNull Unit unit) {
 
 		RetrievalPeriod period = new RetrievalPeriod(st, ed);
-		AverageSummary averageSummary = basicStatisticUseCase.averageSummary(icao, period);
 		PeriodInventory periodInventory = inventoryUseCase.getPeriodInventory(icao, period);
-
 		List<MonthlyAverageDto> monthly = basicStatisticUseCase.averageMonthly(icao, period, field, unit);
 
 		return ResponseEntity.ok()
