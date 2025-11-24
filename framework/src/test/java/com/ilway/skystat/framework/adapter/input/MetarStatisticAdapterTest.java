@@ -289,8 +289,6 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 			mvcResult.getResponse().getContentAsString(UTF_8),
 			TemperatureStatisticResult.class
 		);
-
-		log.info("# result > {}", response);
 	}
 
 }

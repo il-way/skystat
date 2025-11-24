@@ -73,11 +73,6 @@ public class WindRoseAdapterTest extends ResourceFileConfigData {
 			WindRoseResponse.class
 		);
 
-		log.info("# windrose total count : {}", windRoseResponse.totalCount());
-		log.info("# windrose sample size : {}", windRoseResponse.sampleSize());
-		log.info("# windrose missing count : {}", windRoseResponse.variableSize());
-		log.info("# windrose data : {}", windRoseResponse.data());
-
 	}
 
 

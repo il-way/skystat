@@ -73,11 +73,9 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			try {
 				MetarData metarData = MetarMySQLMapper.metarDomainToData(metar);
 				if (metarData.getWindPeakKt() > 99) {
-					log.info("metaData: {}", metarData.getWindPeakKt());
 					throw new Exception("error");
 				}
 			} catch (Exception e) {
-				log.error("error > metar > {}", metar);
 			}
 
 		}

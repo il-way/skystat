@@ -132,8 +132,6 @@ public class WeatherTest {
 
     // missing Weather(descriptors=[TS], phenomena=[], intensity=MODERATE)
     Weathers parse = wxGroupParser.parse(rawText); // Weathers(weathers=[Weather(descriptors=[], phenomena=[RA, SN], intensity=LIGHT), Weather(descriptors=[FZ], phenomena=[FG], intensity=MODERATE)])
-
-    System.out.println(parse);
   }
 
 }

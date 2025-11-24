@@ -152,7 +152,6 @@ public class WeatherStatisticQueryTest extends MySQLConfigData {
 		List<HourlyCountDto> hourlyActual = adapter.countDistinctHoursByMonth(icao, period, condition);
 
 		List<HourlyCountDto> diff = getDiff(hourlyExpected, hourlyActual);
-		log.info("# missing > {}", diff);
 
 		assertAll(
 			() -> assertEquals(monthlyExpected.size(), monthlyActual.size()),

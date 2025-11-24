@@ -54,10 +54,6 @@ public class TemperatureUseCaseTest extends MySQLConfigData {
 		List<MonthlyTemperatureStatDto> monthly = execute.monthly();
 		List<HourlyTemperatureStatDto> hourly = execute.hourly();
 		List<YearlyTemperatureStatDto> yearly = execute.yearly();
-
-		log.info("# 2019 > {}", yearly);
-		log.info("# 2019 monthly > {}", monthly);
-		log.info("# 2019 hourly > {}", hourly);
 	}
 
 }

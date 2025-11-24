@@ -74,10 +74,6 @@ public class WindRoseQueryMySqlAdapterTest extends MySQLConfigData {
 		List<MonthlyCountDto> variables = adapter.countVariableByMonth(icao, period);
 		WindRoseResult actual = toWindRoseResult(rows, variables);
 
-		log.info("# expected > {}", expected);
-		log.info("# actual > {}", actual);
-
-
 		assertAll(
 			() -> assertEquals(expected.totalCount(), actual.totalCount()),
 			() -> assertEquals(expected.variableSize(), actual.variableSize()),

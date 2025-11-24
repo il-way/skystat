@@ -53,9 +53,6 @@ public class TafTest extends TestData {
 		Weathers wg101200 = header101200.getWeathers();
 		Weathers wg101300 = tempo101300.getWeathers();
 
-		System.out.println(wg101200.toString());
-		System.out.println(wg101300.toString());
-
 		assertAll(
 			() -> assertTrue(WeatherOperation.containsPhenomena(wg101200, List.of(WeatherPhenomenon.RA))),
 			() -> assertTrue(WeatherOperation.containsPhenomena(wg101300, List.of(WeatherPhenomenon.RA))),

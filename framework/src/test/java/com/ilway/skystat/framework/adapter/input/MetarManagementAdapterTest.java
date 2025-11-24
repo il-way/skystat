@@ -77,8 +77,6 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			MetarSaveResponse.class
 		);
 
-		log.info("# response > {}", response);
-
 		Path path = Path.of(rksiMetarFile.getURI());
 		int expectedTotalCount = Files.readAllLines(path).size();
 		int expectedSuccessCount = response.successCount();
@@ -93,8 +91,6 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 			() -> assertEquals(expectedTotalCount - expectedFailureCount, actualSuccessCount)
 		);
 
-		log.info("# expectedTotalCount: {}", expectedTotalCount);
-		log.info("# errorList: {}", response.parsingErrors());
 	}
 
 	@Test
@@ -119,10 +115,6 @@ public class MetarManagementAdapterTest extends MySQLConfigData {
 		List<Metar> list = metarManagementUseCase.findAllByIcao(icao);
 		Weathers weathers = list.getFirst().getWeathers();
 		Clouds clouds = list.getFirst().getClouds();
-
-		log.info("# weathers : {}", weathers);
-		log.info("# clouds : {}", clouds);
-
 
 		assertEquals(rawText, list.getFirst().getRawText());
 	}

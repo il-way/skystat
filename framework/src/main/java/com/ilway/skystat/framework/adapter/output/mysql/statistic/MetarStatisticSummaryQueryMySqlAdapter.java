@@ -37,8 +37,6 @@ public class MetarStatisticSummaryQueryMySqlAdapter implements MetarStatisticSum
 			target.descriptor()
 		);
 
-		log.info("result: {}", result);
-
 		return result.stream()
 			       .map(MonthlyCountSummaryQueryDto::map)
 			       .toList();

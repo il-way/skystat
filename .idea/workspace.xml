@@ -367,13 +367,13 @@
   <component name="RunManager" selected="애플리케이션.App">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
-        <env name="DB_URL" value="jdbc:mysql://localhost:3306/skystat_prod?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/skystat_stage?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
         <env name="SPRING_DATASOURCE_PASSWORD" value="dnfl653538@" />
         <env name="DB_USER" value="root" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
       <module name="skystat.bootstrap.main" />
-      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=production" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=staging" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
@@ -608,15 +608,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/framework/src/main/java/com/ilway/skystat/framework/adapter/output/mysql/statistic/MetarStatisticSummaryQueryMySqlAdapter.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.ilway.skystat.framework.adapter.input.rest.MetarManagementAdapter$ParseBatch" memberName="success" />

@@ -37,7 +37,6 @@ public class RemarkTest {
 	public void test() {
 		String rawText = "RKSI 010000Z 07002KT 3500 BR NSC 01/00 Q1029 NOSIG";
 		String actual = parser.parse(rawText);
-		System.out.println("# actual: " + actual.toString());
 	}
 
 	@Test
