@@ -2,8 +2,7 @@ package com.ilway.skystat.it.usecase;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.temperature.*;
-import com.ilway.skystat.application.port.input.metar.scan.TemperatureStatisticInputPort;
-import com.ilway.skystat.application.usecase.TemperatureStatisticUseCase;
+import com.ilway.skystat.application.service.metar.scan.TemperatureStatisticService;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarManagementRepository;
@@ -19,14 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.ilway.skystat.domain.service.TimeOperation.ofLenientUtc;
-
 @Slf4j
 @SpringBootTest
 @Transactional
 public class TemperatureUseCaseTest extends MySQLConfigData {
 
-	private TemperatureStatisticInputPort temperatureStatisticInputPort;
+	private TemperatureStatisticService temperatureStatisticService;
 	private MetarManagementResourceFileAdapter fileAdapter;
 	private String icao = "RKSI";
 
@@ -36,7 +33,7 @@ public class TemperatureUseCaseTest extends MySQLConfigData {
 	                              MetarInventoryRepository metarInventoryRepository) {
 
 		super(repository, em, metarInventoryRepository);
-		temperatureStatisticInputPort = new TemperatureStatisticInputPort(metarManagementOutputPort);
+		temperatureStatisticService = new TemperatureStatisticService(metarManagementOutputPort);
 		fileAdapter = new MetarManagementResourceFileAdapter();
 	}
 
@@ -49,7 +46,7 @@ public class TemperatureUseCaseTest extends MySQLConfigData {
 	@Test
 	void test() {
 		TemperatureStatisticQuery query = new TemperatureStatisticQuery(icao, RetrievalPeriod.of(2019, 1));
-		TemperatureStatisticResult execute = temperatureStatisticInputPort.execute(query);
+		TemperatureStatisticResult execute = temperatureStatisticService.execute(query);
 
 		List<MonthlyTemperatureStatDto> monthly = execute.monthly();
 		List<HourlyTemperatureStatDto> hourly = execute.hourly();

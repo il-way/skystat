@@ -7,12 +7,12 @@ import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.model.generic.Comparison;
 import com.ilway.skystat.application.model.weather.ThresholdCondition;
 import com.ilway.skystat.application.model.weather.WeatherCondition;
-import com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator;
+import com.ilway.skystat.application.service.metar.internal.ObservationStatisticAggregator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.ilway.skystat.application.port.input.metar.scan.CloudStatisticInputPort;
-import com.ilway.skystat.application.port.input.metar.scan.ThresholdStatisticInputPort;
-import com.ilway.skystat.application.port.input.metar.scan.WeatherStatisticInputPort;
+import com.ilway.skystat.application.service.metar.scan.CloudStatisticService;
+import com.ilway.skystat.application.service.metar.scan.ThresholdStatisticService;
+import com.ilway.skystat.application.service.metar.scan.WeatherStatisticService;
 import com.ilway.skystat.application.statistic.data.StatisticTestData;
 
 import java.util.List;
@@ -30,9 +30,9 @@ public class StatisticTest extends StatisticTestData {
 
 	@BeforeEach
 	void init() {
-		thresholdStatisticUseCase = new ThresholdStatisticInputPort(metarManagementOutputPort);
-		weatherStatisticUseCase = new WeatherStatisticInputPort(metarManagementOutputPort);
-		cloudStatisticUseCase = new CloudStatisticInputPort(metarManagementOutputPort);
+		thresholdStatisticUseCase = new ThresholdStatisticService(metarManagementOutputPort);
+		weatherStatisticUseCase = new WeatherStatisticService(metarManagementOutputPort);
+		cloudStatisticUseCase = new CloudStatisticService(metarManagementOutputPort);
 	}
 
 	@Test

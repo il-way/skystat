@@ -15,9 +15,9 @@ import static com.ilway.skystat.domain.vo.unit.SpeedUnit.KT;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.ilway.skystat.application.port.input.taf.CloudConditionInputPort;
-import com.ilway.skystat.application.port.input.taf.ThresholdConditionInputPort;
-import com.ilway.skystat.application.port.input.taf.WeatherConditionInputPort;
+import com.ilway.skystat.application.service.taf.CloudConditionService;
+import com.ilway.skystat.application.service.taf.ThresholdConditionService;
+import com.ilway.skystat.application.service.taf.WeatherConditionService;
 import com.ilway.skystat.domain.vo.weather.type.CloudType;
 import com.ilway.skystat.domain.vo.weather.type.WeatherPhenomenon;
 
@@ -27,9 +27,9 @@ public class ConditionTest extends ConditionTestData {
 
 	@BeforeEach
 	void init() {
-		cloudConditionUseCase = new CloudConditionInputPort(tafManagementOutputPort);
-		weatherConditionUseCase = new WeatherConditionInputPort(tafManagementOutputPort);
-		thresholdConditionUseCase = new ThresholdConditionInputPort(tafManagementOutputPort);
+		cloudConditionUseCase = new CloudConditionService(tafManagementOutputPort);
+		weatherConditionUseCase = new WeatherConditionService(tafManagementOutputPort);
+		thresholdConditionUseCase = new ThresholdConditionService(tafManagementOutputPort);
 	}
 
 	@Test

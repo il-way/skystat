@@ -2,15 +2,12 @@ package com.ilway.skystat.framework.adapter.input.rest;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.inventory.PeriodInventory;
-import com.ilway.skystat.application.dto.statistic.AverageSummary;
 import com.ilway.skystat.application.dto.statistic.MonthlyAverageDto;
-import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
 import com.ilway.skystat.application.model.weather.MetricField;
-import com.ilway.skystat.application.usecase.BasicStatisticUseCase;
-import com.ilway.skystat.application.usecase.MetarInventoryUseCase;
+import com.ilway.skystat.application.port.input.BasicStatisticUseCase;
+import com.ilway.skystat.application.port.input.MetarInventoryUseCase;
 import com.ilway.skystat.domain.vo.unit.Unit;
 import com.ilway.skystat.framework.adapter.input.rest.response.AverageMonthlyResponse;
-import com.ilway.skystat.framework.adapter.input.rest.response.AverageSummaryResponse;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

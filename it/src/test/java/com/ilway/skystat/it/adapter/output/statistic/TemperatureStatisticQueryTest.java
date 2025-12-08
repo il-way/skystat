@@ -2,8 +2,7 @@ package com.ilway.skystat.it.adapter.output.statistic;
 
 import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.statistic.temperature.*;
-import com.ilway.skystat.application.port.input.internal.TemperatureStatisticAggregator;
-import com.ilway.skystat.application.port.input.metar.scan.TemperatureStatisticInputPort;
+import com.ilway.skystat.application.service.metar.internal.TemperatureStatisticAggregator;
 import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarInventoryRepository;
@@ -21,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.RoundingMode;
 import java.util.List;
 
 import static java.math.RoundingMode.HALF_UP;

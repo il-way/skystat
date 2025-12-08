@@ -27,7 +27,7 @@ import java.util.List;
 import static com.ilway.skystat.application.model.generic.Comparison.GTE;
 import static com.ilway.skystat.application.model.generic.Comparison.LTE;
 import static com.ilway.skystat.application.model.weather.MetricField.*;
-import static com.ilway.skystat.application.port.input.internal.ObservationStatisticAggregator.peelOffZeroCount;
+import static com.ilway.skystat.application.service.metar.internal.ObservationStatisticAggregator.peelOffZeroCount;
 import static com.ilway.skystat.domain.service.TimeOperation.ofLenientUtc;
 import static com.ilway.skystat.domain.vo.unit.LengthUnit.FEET;
 import static com.ilway.skystat.domain.vo.unit.LengthUnit.METERS;

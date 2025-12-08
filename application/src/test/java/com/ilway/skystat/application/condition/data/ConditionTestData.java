@@ -4,7 +4,7 @@ import com.ilway.skystat.application.dto.taf.CloudConditionQuery;
 import com.ilway.skystat.application.dto.taf.ThresholdConditionQuery;
 import com.ilway.skystat.application.dto.taf.WeatherConditionQuery;
 import com.ilway.skystat.application.port.output.TafManagementOutputPort;
-import com.ilway.skystat.application.usecase.ConditionUseCase;
+import com.ilway.skystat.application.port.input.ConditionUseCase;
 import com.ilway.skystat.domain.vo.taf.Taf;
 
 import java.time.ZoneOffset;

@@ -10,15 +10,15 @@ import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.windrose.DirectionBin;
 import com.ilway.skystat.application.dto.windrose.SpeedBin;
 import com.ilway.skystat.application.dto.windrose.WindRose;
-import com.ilway.skystat.application.port.input.metar.scan.WindRoseInputPort;
-import com.ilway.skystat.application.usecase.WindRoseUseCase;
+import com.ilway.skystat.application.service.metar.scan.WindRoseService;
+import com.ilway.skystat.application.port.input.WindRoseUseCase;
 import com.ilway.skystat.application.windrose.data.WindRoseTestData;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class WindRoseTest extends WindRoseTestData {
 
-	private WindRoseUseCase useCase = new WindRoseInputPort(metarManagementOutputPort);
+	private WindRoseUseCase useCase = new WindRoseService(metarManagementOutputPort);
 
 	@Test
 	void 바람장미_생산에_성공해야한다() {

@@ -4,14 +4,14 @@
 //import com.ilway.skystat.application.dto.windrose.DirectionBin;
 //import com.ilway.skystat.application.dto.windrose.SpeedBin;
 //import com.ilway.skystat.application.dto.windrose.WindRoseResult;
-//import com.ilway.skystat.application.port.input.metar.scan.WindRoseInputPort;
+//import com.ilway.skystat.application.port.input.metar.scan.WindRoseService;
 //import com.ilway.skystat.framework.adapter.output.resource.MetarManagementResourceFileAdapter;
 //import lombok.RequiredArgsConstructor;
 //import org.junit.jupiter.api.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.context.SpringBootTest;
 //import org.springframework.context.ApplicationContext;
-//import com.ilway.skystat.application.usecase.WindRoseUseCase;
+//import com.ilway.skystat.application.port.input.WindRoseUseCase;
 //
 //import java.util.List;
 //
@@ -31,7 +31,7 @@
 //	@Test
 //	void WindRoseUseCase_의존성_주입에_성공해야한다() {
 //		String actual = windRoseUseCase.getClass().getSimpleName();
-//		String expected = WindRoseInputPort.class.getSimpleName();
+//		String expected = WindRoseService.class.getSimpleName();
 //		assertEquals(expected, actual);
 //	}
 //

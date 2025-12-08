@@ -1,0 +1,40 @@
+package com.ilway.skystat.application.service.metar.scan;
+
+import com.ilway.skystat.application.dto.statistic.ObservationStatisticResult;
+import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
+import lombok.RequiredArgsConstructor;
+import com.ilway.skystat.application.model.weather.ThresholdCondition;
+import com.ilway.skystat.application.service.metar.internal.ObservationStatisticAggregator;
+import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
+import com.ilway.skystat.application.port.input.StatisticUseCase;
+import com.ilway.skystat.domain.vo.metar.Metar;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+@RequiredArgsConstructor
+public class ThresholdStatisticService implements StatisticUseCase<ThresholdStatisticQuery> {
+
+	private final MetarManagementOutputPort metarManagementOutputPort;
+
+	@Override
+	public ObservationStatisticResult execute(ThresholdStatisticQuery query) {
+		List<Metar> metars = metarManagementOutputPort.findByIcaoAndReportTimePeriod(query.icao(), query.period());
+
+		ThresholdCondition condition = query.condition();
+		Predicate<Metar> predicate = m -> {
+			double value = condition.field().extract(m, condition.unit());
+			if (!validate(value)) return false;
+
+			return condition.comparison().test(value, condition.threshold());
+		};
+
+		return ObservationStatisticAggregator.aggregate(metars, predicate, query.period());
+	}
+
+	private boolean validate(double extractedValue) {
+		if (extractedValue == Integer.MAX_VALUE) return false;
+		else return true;
+	}
+
+}

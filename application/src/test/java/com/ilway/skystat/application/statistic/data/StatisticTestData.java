@@ -5,7 +5,7 @@ import com.ilway.skystat.application.dto.statistic.CloudStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.ThresholdStatisticQuery;
 import com.ilway.skystat.application.dto.statistic.WeatherStatisticQuery;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
-import com.ilway.skystat.application.usecase.StatisticUseCase;
+import com.ilway.skystat.application.port.input.StatisticUseCase;
 import com.ilway.skystat.domain.vo.metar.Metar;
 
 import java.time.ZoneOffset;
