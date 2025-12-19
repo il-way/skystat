@@ -82,7 +82,6 @@ public class MetarStatisticAdapterTest extends ResourceFileConfigData {
 			mvcResult.getResponse().getContentAsString(UTF_8),
 			ObservationStatisticResult.class
 		);
-
 	}
 
 	@Test
