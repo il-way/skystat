@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +73,8 @@
         <option value="Exception" />
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Record" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -265,6 +266,8 @@
     "Gradle.WindTest.P99KT_예외케이스.executor": "Run",
     "Gradle.WindTest.P99KT_파싱에_성공해야한다.executor": "Run",
     "Gradle.WindTest.executor": "Run",
+    "Gradle.backend [:bootstrap:bootJar].executor": "Run",
+    "Gradle.backend 빌드.executor": "Run",
     "Gradle.backend:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.App.main()].executor": "Run",
     "Gradle.bootstrap.executor": "Run",
     "Gradle.parser.AltimeterTest 및 그 외 11개 (1).executor": "Run",
@@ -314,10 +317,13 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.App.executor": "Run",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/HangyulKim/Desktop/il-way/project/skystat/backend",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
@@ -365,7 +371,7 @@
       <recent name="com.ilway.skystat.bootstrap" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.App">
+  <component name="RunManager" selected="Gradle.backend [:bootstrap:bootJar]">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/skystat_prod?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
@@ -373,13 +379,22 @@
         <env name="DB_USER" value="root" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.ilway.skystat.bootstrap.App" />
-      <module name="skystat.bootstrap.main" />
       <option name="VM_PARAMETERS" value="-Dspring.profiles.active=production" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
@@ -422,8 +437,11 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>true</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
     <configuration name="MetarStatisticAdapterTest" type="GradleRunConfiguration" factoryName="Gradle">
@@ -446,32 +464,11 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="'com.ilway.skystat.application'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":application:test" />
-            <option value="--tests" />
-            <option value="&quot;com.ilway.skystat.application.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
     <configuration name="'com.ilway.skystat.framework'에 있는 테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -494,8 +491,36 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>true</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="backend [:bootstrap:bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":bootstrap:bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
     <configuration name="bootstrap" type="GradleRunConfiguration" factoryName="Gradle">
@@ -520,8 +545,11 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
     <configuration name="skystat_backend:bootstrap [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -542,52 +570,70 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
-    <configuration name="skystat_backend:bootstrap [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/bootstrap" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
+    <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/skystat_prod?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
+        <env name="SPRING_DATASOURCE_PASSWORD" value="dnfl653538@" />
+        <env name="DB_USER" value="root" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="backend.skystat.bootstrap.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ilway.skystat.bootstrap.App" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=production" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Gradle.MetarStatisticAdapterTest" />
       <item itemvalue="Gradle.bootstrap" />
+      <item itemvalue="Gradle.backend [:bootstrap:bootJar]" />
       <item itemvalue="Gradle.MetarInventoryAdapterTest.getDatasetCoverageTest" />
-      <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
       <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
       <item itemvalue="Gradle.skystat_backend:bootstrap [bootJar]" />
-      <item itemvalue="Gradle.skystat_backend:bootstrap [clean]" />
+      <item itemvalue="Spring Boot.App" />
       <item itemvalue="애플리케이션.AppProductionLauncher" />
       <item itemvalue="애플리케이션.App" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.backend [:bootstrap:bootJar]" />
+        <item itemvalue="Spring Boot.App" />
+        <item itemvalue="Gradle.skystat_backend:bootstrap [bootJar]" />
         <item itemvalue="Gradle.MetarInventoryAdapterTest.getDatasetCoverageTest" />
         <item itemvalue="Gradle.'com.ilway.skystat.framework'에 있는 테스트" />
-        <item itemvalue="Gradle.'com.ilway.skystat.application'에 있는 테스트" />
-        <item itemvalue="Gradle.skystat_backend:bootstrap [bootJar]" />
-        <item itemvalue="Gradle.skystat_backend:bootstrap [clean]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.138" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">

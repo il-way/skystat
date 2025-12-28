@@ -41,7 +41,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 					.map(Enum::name)
 					.collect(joining())
 			);
-			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorExistAnyDaysByMonth(
+			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorExistAnyDaysByMonthNative(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -50,21 +50,21 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 				extract(condition.target(), WeatherDescriptor.class).stream()
 					.map(Enum::name)
 					.collect(joining())
-			);
+			).stream().map(MonthlyCountQueryDto::from).toList();
 			case HAS_DESCRIPTORS_AND_PHENOMENA -> {
 				List<WeatherDescriptor> wd = extract(condition.target(), WeatherDescriptor.class);
 				List<WeatherPhenomenon> wp = extract(condition.target(), WeatherPhenomenon.class);
 				String wdCode = wd.stream().map(Enum::name).collect(joining());
 				String wpCode = wp.stream().map(Enum::name).collect(joining());
 
-				yield weatherQueryRepository.countDescriptorAndPhenomenaExsitAnyDaysByMonth(
+				yield weatherQueryRepository.countDescriptorAndPhenomenaExsitAnyDaysByMonthNative(
 					icao, period.fromInclusive(), period.toExclusive(),
 					wd,
 					wp,
 					wd.size(),
 					wp.size(),
 					(wdCode + wpCode)
-				);
+				).stream().map(MonthlyCountQueryDto::from).toList();
 			}
 		};
 
@@ -85,7 +85,7 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 					.map(Enum::name)
 					.collect(joining())
 			);
-			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorExistAnyDaysByMonthHour(
+			case HAS_DESCRIPTORS -> weatherQueryRepository.countDescriptorExistAnyDaysByMonthHourNative(
 				icao,
 				period.fromInclusive(),
 				period.toExclusive(),
@@ -94,21 +94,21 @@ public class WeatherStatisticQueryMySqlAdapter implements WeatherStatisticQueryO
 				extract(condition.target(), WeatherDescriptor.class).stream()
 					.map(Enum::name)
 					.collect(joining())
-			);
+			).stream().map(HourlyCountQueryDto::from).toList();
 			case HAS_DESCRIPTORS_AND_PHENOMENA -> {
 				List<WeatherDescriptor> wd = extract(condition.target(), WeatherDescriptor.class);
 				List<WeatherPhenomenon> wp = extract(condition.target(), WeatherPhenomenon.class);
 				String wdCode = wd.stream().map(Enum::name).collect(joining());
 				String wpCode = wp.stream().map(Enum::name).collect(joining());
 
-				yield weatherQueryRepository.countDescriptorAndPhenomenaExistAnyDaysByMonthHour(
+				yield weatherQueryRepository.countDescriptorAndPhenomenaExistAnyDaysByMonthHourNative(
 					icao, period.fromInclusive(), period.toExclusive(),
 					wd,
 					wp,
 					wd.size(),
 					wp.size(),
 					(wdCode + wpCode)
-				);
+				).stream().map(HourlyCountQueryDto::from).toList();
 			}
 		};
 
