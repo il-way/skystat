@@ -1,93 +1,85 @@
+# ===============================================================
+# 1. COMMON & DEFAULT (기본 설정 + 로컬 개발용)
+# ===============================================================
+spring:
+  # 기본 어플리케이션 이름 (없으면 skystat-api)
+  application:
+    name: ${APP_NAME:skystat-api}
+
+  datasource:
+    # Docker Compose에서 HOST, PORT만 바꿔 끼우면 되도록 변경
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/{MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:dnfl653538@}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      maxFileSize: 30MB
+      maxRequestSize: 30MB
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update # 기본적으로 자동 변경 끔 (안전)
+    properties:
+      hibernate:
+        jdbc.batch_size: 100
+        order_inserts: true
+        format_sql: true
+    show-sql: false # 기본적으로 SQL 숨김
+
+  aop:
+    proxy-target-class: true
+
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: ./logs/access
+      prefix: access
+      suffix: .log
+      pattern: '%{X-Correlation-Id}i %h %l %u %t "%r" %s %b %D'
+
+log:
+  aop:
+    slow-threshold-ms: 1000
+
+logging:
+  file:
+    path: ./logs
+  level:
+    root: INFO
+    # 기본 로그 레벨 (개발용)
+    com.ilway.skystat: DEBUG
+    org.hibernate.SQL: INFO
+
+---
+# ===============================================================
+# 2. STAGING Profile (스테이징 환경 차이점)
+# ===============================================================
 spring:
   config:
     activate:
       on-profile: staging
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${SPRING_DATASOURCE_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  servlet:
-    multipart:
-      maxFileSize: 30MB
-      maxRequestSize: 30MB
-  jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        jdbc.batch_size: 100
-        order_inserts: true
-        format_sql: true
-    show-sql: false
-  aop:
-    proxy-target-class: true
-
-server:
-  tomcat:
-    accesslog:
-      enabled: true
-      directory: ./logs/access
-      prefix: access
-      suffix: .log
-      pattern: '%{X-Correlation-Id}i %h %l %u %t "%r" %s %b %D'
 
 logging:
-  file:
-    path: ./logs
   level:
-    root: INFO
     com.ilway.skystat: DEBUG
     org.hibernate.SQL: INFO
 
-log:
-  aop:
-    slow-threshold-ms: 1000
 ---
+# ===============================================================
+# 3. PRODUCTION Profile (운영 환경 차이점)
+# ===============================================================
 spring:
   config:
     activate:
-      on-profile: production
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${SPRING_DATASOURCE_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  servlet:
-    multipart:
-      maxFileSize: 30MB
-      maxRequestSize: 30MB
+      on-profile: prod  # 혹은 prod
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        jdbc.batch_size: 100
-        order_inserts: true
-        format_sql: true
-      show-sql: true
-  aop:
-    proxy-target-class: true
-
-server:
-  tomcat:
-    accesslog:
-      enabled: true
-      directory: ./logs/access
-      prefix: access
-      suffix: .log
-      pattern: '%{X-Correlation-Id}i %h %l %u %t "%r" %s %b %D'
+    show-sql: false
 
 logging:
-  file:
-    path: ./logs
   level:
-    root: INFO
-    com.ilway.skystat: INFO
-    org.hibernate: WARN
-
-log:
-  aop:
-    slow-threshold-ms: 1000
+    com.ilway.skystat: INFO  # 불필요한 디버그 로그 제거
+    org.hibernate: WARN      # 하이버네이트 로그 최소화

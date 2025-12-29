@@ -7,6 +7,6 @@ import java.lang.annotation.*;
 @Documented
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Profile("production")
+@Profile("prod")
 public @interface Production {
 }
