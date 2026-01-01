@@ -50,12 +50,18 @@ public class MetarManagementAdapter {
 
 			return ResponseEntity.ok().body(
 				MetarSaveResponse.success(
-					result.successCount(), result.parsingErrors(), result.duplicates()
+					result.successCount(), result.parsingErrors(), result.duplicates(), result.message()
 				)
 			);
 		} catch (IOException e) {
 			throw new RuntimeException("Failed to read upload file", e);
 		}
+	}
+
+	@DeleteMapping("/{icao}")
+	public ResponseEntity<Void> delete(@PathVariable("icao") String icao) {
+		metarManagementUseCase.deleteAllByIcao(icao);
+		return ResponseEntity.ok().build();
 	}
 
 }

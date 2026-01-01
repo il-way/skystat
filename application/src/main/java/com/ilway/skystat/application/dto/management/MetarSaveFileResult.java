@@ -7,6 +7,16 @@ public record MetarSaveFileResult(
 	int parseFailureCount,
 	int duplicatedCount,
 	List<ParsingErrorItem> parsingErrors,
-	List<DuplicatedItem> duplicates
+	List<DuplicatedItem> duplicates,
+	String message
 ) {
+
+	public MetarSaveFileResult(int successCount,
+	                           int parseFailureCount,
+	                           int duplicatedCount,
+	                           List<ParsingErrorItem> parsingErrors,
+	                           List<DuplicatedItem> duplicates) {
+		this(successCount, parseFailureCount, duplicatedCount, parsingErrors, duplicates, "");
+	}
+
 }

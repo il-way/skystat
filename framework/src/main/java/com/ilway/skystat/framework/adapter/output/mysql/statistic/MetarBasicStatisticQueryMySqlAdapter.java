@@ -25,7 +25,7 @@ public class MetarBasicStatisticQueryMySqlAdapter implements MetarBasicStatistic
 	}
 
 	@Override
-	public List<MonthlyAverageDto> averageMonthly(String icao, RetrievalPeriod period, MetricField field, Unit unit) {
+	public List<MonthlyAverageDto> averageMonthly(@UppercaseParam String icao, RetrievalPeriod period, MetricField field, Unit unit) {
 		return switch (field) {
 			case WIND_SPEED ->
 				repository.averageWindSpeedKtMonthly(icao, period.fromInclusive(), period.toExclusive())

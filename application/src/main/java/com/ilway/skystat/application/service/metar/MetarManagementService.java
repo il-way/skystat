@@ -33,6 +33,11 @@ public class MetarManagementService implements MetarManagementUseCase {
 	}
 
 	@Override
+	public void deleteAllByIcao(String icao) {
+		metarManagementOutputPort.deleteAllByIcao(icao);
+	}
+
+	@Override
 	public List<Metar> findAllByIcao(String icao) {
 		return metarManagementOutputPort.findAllByIcao(icao);
 	}

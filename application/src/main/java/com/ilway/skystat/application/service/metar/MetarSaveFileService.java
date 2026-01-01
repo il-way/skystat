@@ -41,11 +41,13 @@ public class MetarSaveFileService implements MetarSaveFileUseCase {
 		ZonedDateTime toExclusive = null;
 		Set<UniqueKey> seen = new HashSet<>();
 
+		int totalLines = 0;
 		try (var reader = new BufferedReader(new InputStreamReader(cmd.content(), cmd.charset()))){
 			String line;
 			int lineNo = 0;
 			while((line = reader.readLine()) != null) {
 				lineNo++;
+				totalLines++;
 				if (line.trim().isEmpty() || line.trim().startsWith("#")) continue;
 
 				try {
@@ -72,12 +74,23 @@ public class MetarSaveFileService implements MetarSaveFileUseCase {
 			}
 		} catch (IOException e) {
 			parsingErrors.add(new ParsingErrorItem(-1, cmd.fileName(), "IO_ERROR: " + e.getMessage()));
-			return new MetarSaveFileResult(0, 1, 0, parsingErrors, duplicates);
+			return new MetarSaveFileResult(0, 1, 0, parsingErrors, duplicates, "I/O error.");
 		}
 
 		if (toInsertMetars.isEmpty()) {
-			return new MetarSaveFileResult(0, parsingErrors.size(), 0, parsingErrors, duplicates);
+			return new MetarSaveFileResult(0, parsingErrors.size(), 0, parsingErrors, duplicates, "METAR is empty or already exists.");
 		}
+
+		if (totalLines>0 && !parsingErrors.isEmpty()) {
+			double parsingErrorRate = (double) parsingErrors.size() / totalLines;
+			if (parsingErrorRate>=0.01) {
+				String errorMessage = String.format("Parsing error rate %.2f%% exceeds threshold 1%% (%d errors / %d lines)", parsingErrorRate * 100, parsingErrors.size(), totalLines);
+				parsingErrors.add(new ParsingErrorItem(-1, cmd.fileName(), errorMessage));
+				return new MetarSaveFileResult(0, parsingErrors.size(), 0, parsingErrors, duplicates, errorMessage);
+			}
+		}
+
+
 
 		RetrievalPeriod period = new RetrievalPeriod(fromInclusive, toExclusive);
 		Set<UniqueKey> existing = managementOutputPort.findByIcaoAndObservationTimePeriod(cmd.icao(), period)

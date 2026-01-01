@@ -8,7 +8,7 @@ spring:
 
   datasource:
     # Docker Compose에서 HOST, PORT만 바꿔 끼우면 되도록 변경
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/{MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: ${DB_USER:root}
     password: ${DB_PASSWORD:dnfl653538@}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,9 +21,10 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update # 기본적으로 자동 변경 끔 (안전)
+      ddl-auto: none # 기본적으로 자동 변경 끔 (안전)
     properties:
       hibernate:
+        default_batch_fetch_size: 1000
         jdbc.batch_size: 100
         order_inserts: true
         format_sql: true

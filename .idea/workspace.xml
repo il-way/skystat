@@ -7,8 +7,6 @@
     <list default="true" id="8b7ec29b-c75c-4954-a74b-e861ec2e27b6" name="변경" comment="">
       <changelist_data name="il-way" email="" automatic="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/java/com/ilway/skystat/bootstrap/profile/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/java/com/ilway/skystat/bootstrap/profile/Production.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,6 +265,7 @@
     &quot;Gradle.WindTest.P99KT_파싱에_성공해야한다.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.WindTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.backend [:bootstrap:bootJar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.backend [:bootstrap:clean].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.backend 빌드.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.backend:bootstrap [:bootstrap:com.ilway.skystat.bootstrap.App.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.bootstrap.executor&quot;: &quot;Run&quot;,
@@ -371,7 +370,7 @@
       <recent name="com.ilway.skystat.application.port.input.metar.scan" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.backend [:bootstrap:bootJar]">
+  <component name="RunManager" selected="Spring Boot.App">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/skystat_prod?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
@@ -576,13 +575,13 @@
       <method v="2" />
     </configuration>
     <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="MYSQL_DATABASE" value="skystat_stage" />
+      </envs>
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="backend.skystat.bootstrap.main" />
-      <selectedOptions>
-        <option name="environmentVariables" />
-      </selectedOptions>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ilway.skystat.bootstrap.App" />
-      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=prod" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=staging" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ilway.skystat.bootstrap.*" />
@@ -616,9 +615,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.App" />
         <item itemvalue="Gradle.backend [:bootstrap:bootJar]" />
         <item itemvalue="Gradle.backend [:bootstrap:clean]" />
-        <item itemvalue="Spring Boot.App" />
         <item itemvalue="Gradle.skystat_backend:bootstrap [bootJar]" />
         <item itemvalue="Gradle.MetarInventoryAdapterTest.getDatasetCoverageTest" />
       </list>

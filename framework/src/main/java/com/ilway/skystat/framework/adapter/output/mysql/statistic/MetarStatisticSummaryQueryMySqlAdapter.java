@@ -8,6 +8,7 @@ import com.ilway.skystat.application.port.output.MetarStatisticSummaryQueryOutpu
 import com.ilway.skystat.framework.adapter.output.mysql.repository.MetarSummaryQueryRepository;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.AverageSummaryQueryDto;
 import com.ilway.skystat.framework.adapter.output.mysql.repository.dto.MonthlyCountSummaryQueryDto;
+import com.ilway.skystat.framework.common.annotation.UppercaseParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,12 +21,12 @@ public class MetarStatisticSummaryQueryMySqlAdapter implements MetarStatisticSum
 	private final MetarSummaryQueryRepository repository;
 
 	@Override
-	public AverageSummary averageSummary(String icao, RetrievalPeriod period) {
+	public AverageSummary averageSummary(@UppercaseParam String icao, RetrievalPeriod period) {
 		return AverageSummaryQueryDto.map(repository.averageSummary(icao, period.fromInclusive(), period.toExclusive()));
 	}
 
 	@Override
-	public List<MonthlyCountSummaryDto> countSummaryByMonth(String icao, RetrievalPeriod period, MonthlyCountSummaryTarget target) {
+	public List<MonthlyCountSummaryDto> countSummaryByMonth(@UppercaseParam String icao, RetrievalPeriod period, MonthlyCountSummaryTarget target) {
 		List<MonthlyCountSummaryQueryDto> result = repository.countSummaryByMonth(
 			icao,
 			period.fromInclusive(),

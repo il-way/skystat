@@ -2,6 +2,7 @@ package com.ilway.skystat.framework.adapter.output.mysql.repository;
 
 import com.ilway.skystat.framework.adapter.output.mysql.data.MetarData;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -9,6 +10,10 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 public interface MetarManagementRepository extends JpaRepository<MetarData, Long> {
+
+	@Modifying(clearAutomatically = true)
+	@Query("DELETE FROM MetarData m WHERE m.stationIcao=:icao")
+	void deleteAllByIcao(@Param("icao") String icao);
 
 	@Query("""
 			SELECT (COUNT(m) > 0)

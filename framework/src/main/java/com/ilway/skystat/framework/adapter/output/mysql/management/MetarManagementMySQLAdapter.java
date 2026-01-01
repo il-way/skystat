@@ -55,6 +55,12 @@ public class MetarManagementMySQLAdapter implements MetarManagementOutputPort {
 	}
 
 	@Override
+	@Transactional
+	public void deleteAllByIcao(@UppercaseParam String icao) {
+		repository.deleteAllByIcao(icao);
+	}
+
+	@Override
 	@Transactional(readOnly = true)
 	public List<Metar> findAllByIcao(@UppercaseParam String icao) {
 		List<Long> ids = repository.findIdsByIcaoSorted(icao);

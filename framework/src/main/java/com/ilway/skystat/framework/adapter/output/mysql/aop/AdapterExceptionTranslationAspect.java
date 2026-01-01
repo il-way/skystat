@@ -1,4 +1,4 @@
-package com.ilway.skystat.framework.adapter.output.mysql.support;
+package com.ilway.skystat.framework.adapter.output.mysql.aop;
 
 import com.ilway.skystat.application.exception.AggregationUnavailableException;
 import com.ilway.skystat.application.exception.BusinessException;

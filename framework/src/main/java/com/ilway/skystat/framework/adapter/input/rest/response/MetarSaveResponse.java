@@ -2,6 +2,7 @@ package com.ilway.skystat.framework.adapter.input.rest.response;
 
 import com.ilway.skystat.application.dto.management.DuplicatedItem;
 import com.ilway.skystat.application.dto.management.ParsingErrorItem;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -10,13 +11,17 @@ public record MetarSaveResponse(int successCount, int parseFailureCount, int dup
                                 String message) {
 
 	public static MetarSaveResponse success(Integer successCount, List<ParsingErrorItem> parsingErrors, List<DuplicatedItem> duplicates) {
+		return success(successCount, parsingErrors, duplicates, null);
+	}
+
+	public static MetarSaveResponse success(Integer successCount, List<ParsingErrorItem> parsingErrors, List<DuplicatedItem> duplicates, String message) {
 		return new MetarSaveResponse(
 			successCount,
 			parsingErrors != null ? parsingErrors.size() : 0,
 			duplicates != null ? duplicates.size() : 0,
 			parsingErrors != null ? parsingErrors : List.of(),
 			duplicates != null ? duplicates : List.of(),
-			"Metar save success."
+			StringUtils.hasText(message) ? message : "Metar save success."
 		);
 	}
 
