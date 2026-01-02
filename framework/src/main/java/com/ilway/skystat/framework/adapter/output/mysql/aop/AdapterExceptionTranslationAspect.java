@@ -4,6 +4,7 @@ import com.ilway.skystat.application.exception.AggregationUnavailableException;
 import com.ilway.skystat.application.exception.BusinessException;
 import com.ilway.skystat.application.exception.ValidationException;
 import com.ilway.skystat.framework.common.annotation.TranslateDbExceptions;
+import com.ilway.skystat.framework.exception.DuplicateMetarException;
 import jakarta.persistence.PersistenceException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -13,6 +14,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
 import static org.springframework.http.HttpStatus.*;
@@ -55,6 +57,11 @@ public class AdapterExceptionTranslationAspect {
 		try {
 			return pjp.proceed();
 
+		} catch (DataIntegrityViolationException e) {
+			if (e.getMessage()!=null && e.getMessage().contains("Duplicate")) {
+				throw new DuplicateMetarException("Already exist METAR " + e.getMessage(), e);
+			}
+			throw e;
 		} catch (DataAccessException | PersistenceException  | BusinessException e) {
 			throw e;
 

@@ -6,6 +6,7 @@ import com.ilway.skystat.application.exception.BusinessException;
 import com.ilway.skystat.application.port.output.MetarManagementOutputPort;
 import com.ilway.skystat.application.port.output.MetarParsingOutputPort;
 import com.ilway.skystat.application.port.input.MetarSaveFileUseCase;
+import com.ilway.skystat.domain.policy.rounding.RoundingPolicy;
 import com.ilway.skystat.domain.vo.metar.Metar;
 import lombok.RequiredArgsConstructor;
 
@@ -41,14 +42,15 @@ public class MetarSaveFileService implements MetarSaveFileUseCase {
 		ZonedDateTime toExclusive = null;
 		Set<UniqueKey> seen = new HashSet<>();
 
-		int totalLines = 0;
+		int effectiveLines = 0;
 		try (var reader = new BufferedReader(new InputStreamReader(cmd.content(), cmd.charset()))){
 			String line;
 			int lineNo = 0;
 			while((line = reader.readLine()) != null) {
 				lineNo++;
-				totalLines++;
+
 				if (line.trim().isEmpty() || line.trim().startsWith("#")) continue;
+				effectiveLines++;
 
 				try {
 					YearMonth ym = extractYearMonth(line);
@@ -74,25 +76,15 @@ public class MetarSaveFileService implements MetarSaveFileUseCase {
 			}
 		} catch (IOException e) {
 			parsingErrors.add(new ParsingErrorItem(-1, cmd.fileName(), "IO_ERROR: " + e.getMessage()));
-			return new MetarSaveFileResult(0, 1, 0, parsingErrors, duplicates, "I/O error.");
+			return new MetarSaveFileResult(0, 1, 0, 0, parsingErrors, duplicates, "I/O error.");
 		}
 
+		double parsingErrorRate = effectiveLines > 0 ? RoundingPolicy.ofDefault().apply(parsingErrors.size() / (double) effectiveLines) : 1d;
 		if (toInsertMetars.isEmpty()) {
-			return new MetarSaveFileResult(0, parsingErrors.size(), 0, parsingErrors, duplicates, "METAR is empty or already exists.");
+			return new MetarSaveFileResult(0, parsingErrors.size(), 0, parsingErrorRate, parsingErrors, duplicates, "METAR is empty or already exists.");
 		}
 
-		if (totalLines>0 && !parsingErrors.isEmpty()) {
-			double parsingErrorRate = (double) parsingErrors.size() / totalLines;
-			if (parsingErrorRate>=0.01) {
-				String errorMessage = String.format("Parsing error rate %.2f%% exceeds threshold 1%% (%d errors / %d lines)", parsingErrorRate * 100, parsingErrors.size(), totalLines);
-				parsingErrors.add(new ParsingErrorItem(-1, cmd.fileName(), errorMessage));
-				return new MetarSaveFileResult(0, parsingErrors.size(), 0, parsingErrors, duplicates, errorMessage);
-			}
-		}
-
-
-
-		RetrievalPeriod period = new RetrievalPeriod(fromInclusive, toExclusive);
+		RetrievalPeriod period = new RetrievalPeriod(fromInclusive, toExclusive.plusMinutes(1));
 		Set<UniqueKey> existing = managementOutputPort.findByIcaoAndObservationTimePeriod(cmd.icao(), period)
 			                          .stream()
 			                          .map(UniqueKey::from)
@@ -115,8 +107,10 @@ public class MetarSaveFileService implements MetarSaveFileUseCase {
 			toSaveMetars.size(),
 			parsingErrors.size(),
 			duplicates.size(),
+			parsingErrorRate,
 			parsingErrors,
-			duplicates
+			duplicates,
+			buildMessage(parsingErrorRate)
 		);
 	}
 
@@ -134,6 +128,13 @@ public class MetarSaveFileService implements MetarSaveFileUseCase {
 			return match.group();
 		}
 		throw new BusinessException(400, "MISSING_METAR", "Missing metar raw text at line: " + line);
+	}
+
+	private static String buildMessage(double parsingErrorRate) {
+		if (parsingErrorRate >= 0.50) return "Warning: parsing error rate >= 50%. Dataset quality is very low.";
+		if (parsingErrorRate >= 0.33) return "Caution: parsing error rate >= 33%. Dataset quality is low.";
+		if (parsingErrorRate >= 0.01) return "Notice: parsing error rate >= 1%.";
+		return "OK";
 	}
 
 	private record InsertMetar(int lineNo, Metar metar){};

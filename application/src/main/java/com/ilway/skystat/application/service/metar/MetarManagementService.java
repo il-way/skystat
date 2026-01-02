@@ -38,6 +38,11 @@ public class MetarManagementService implements MetarManagementUseCase {
 	}
 
 	@Override
+	public void deleteByIcaoAndPeriod(String icao, RetrievalPeriod period) {
+		metarManagementOutputPort.deleteByIcaoAndPeriod(icao, period);
+	}
+
+	@Override
 	public List<Metar> findAllByIcao(String icao) {
 		return metarManagementOutputPort.findAllByIcao(icao);
 	}

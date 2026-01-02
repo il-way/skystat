@@ -15,6 +15,18 @@ public interface MetarManagementRepository extends JpaRepository<MetarData, Long
 	@Query("DELETE FROM MetarData m WHERE m.stationIcao=:icao")
 	void deleteAllByIcao(@Param("icao") String icao);
 
+	@Modifying(clearAutomatically = true)
+	@Query("""
+		DELETE FROM MetarData m
+			WHERE m.stationIcao = :icao
+				AND m.reportTime >= :fromInclusive
+				AND m.reportTime < :toExclusive
+	""")
+	void deleteByIcaoAndPeriod(@Param("icao") String icao,
+	                           @Param("fromInclusive") ZonedDateTime fromInclusive,
+	                           @Param("toExclusive") ZonedDateTime toExclusive);
+
+
 	@Query("""
 			SELECT (COUNT(m) > 0)
 			FROM MetarData m

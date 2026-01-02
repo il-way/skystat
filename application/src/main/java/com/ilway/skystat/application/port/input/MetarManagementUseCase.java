@@ -14,6 +14,8 @@ public interface MetarManagementUseCase {
 
 	void deleteAllByIcao(String icao);
 
+	void deleteByIcaoAndPeriod(String icao, RetrievalPeriod period);
+
 	List<Metar> findAllByIcao(String icao);
 
 	List<Metar> findByIcaoAndObservationTimePeriod(String icao, RetrievalPeriod period);

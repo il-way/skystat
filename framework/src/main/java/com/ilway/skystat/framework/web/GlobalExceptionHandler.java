@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
 		String code = e.getCode();
 
 		log.warn("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage());
-		return ResponseEntity.status(status).body(MetarSaveResponse.failure(0, 1, e.getMessage()));
+		return ResponseEntity.status(status).body(MetarSaveResponse.failure(0, 1, 0d, e.getMessage()));
 	}
 
 	@ExceptionHandler(MetarParseException.class)
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
 		String code = e.getCode();
 
 		log.warn("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage());
-		return ResponseEntity.status(status).body(MetarSaveResponse.failure(1, 0, e.getMessage()));
+		return ResponseEntity.status(status).body(MetarSaveResponse.failure(1, 0, 1d, e.getMessage()));
 	}
 
 	@ExceptionHandler(BusinessException.class) // 필요 시 도메인/앱 예외로 교체

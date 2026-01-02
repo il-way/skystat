@@ -45,6 +45,11 @@ public class MetarManagementResourceFileAdapter implements MetarManagementOutput
 	}
 
 	@Override
+	public void deleteByIcaoAndPeriod(String icao, RetrievalPeriod period) {
+
+	}
+
+	@Override
 	public List<Metar> findAllByIcao(@UppercaseParam String icao) {
 		MetarParser parser = new MetarParser(YearMonth.now());
 

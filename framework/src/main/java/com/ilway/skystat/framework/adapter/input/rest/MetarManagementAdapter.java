@@ -1,5 +1,6 @@
 package com.ilway.skystat.framework.adapter.input.rest;
 
+import com.ilway.skystat.application.dto.RetrievalPeriod;
 import com.ilway.skystat.application.dto.management.MetarSaveFileCommand;
 import com.ilway.skystat.application.dto.management.MetarSaveFileResult;
 import com.ilway.skystat.application.dto.management.MetarSaveOneCommand;
@@ -8,12 +9,16 @@ import com.ilway.skystat.application.port.input.MetarSaveFileUseCase;
 import com.ilway.skystat.framework.adapter.input.rest.request.MetarFileUploadForm;
 import com.ilway.skystat.framework.adapter.input.rest.request.MetarSaveForm;
 import com.ilway.skystat.framework.adapter.input.rest.response.MetarSaveResponse;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
+
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 @RequestMapping("/api/metar")
@@ -34,7 +39,7 @@ public class MetarManagementAdapter {
 		metarManagementUseCase.save(cmd);
 
 		return ResponseEntity.ok().body(
-			MetarSaveResponse.success(1, null, null)
+			MetarSaveResponse.success(1, 0d, null, null)
 		);
 	}
 
@@ -50,7 +55,7 @@ public class MetarManagementAdapter {
 
 			return ResponseEntity.ok().body(
 				MetarSaveResponse.success(
-					result.successCount(), result.parsingErrors(), result.duplicates(), result.message()
+					result.successCount(), result.parsingErrorRate(), result.parsingErrors(), result.duplicates(), result.message()
 				)
 			);
 		} catch (IOException e) {
@@ -58,9 +63,18 @@ public class MetarManagementAdapter {
 		}
 	}
 
-	@DeleteMapping("/{icao}")
-	public ResponseEntity<Void> delete(@PathVariable("icao") String icao) {
+	@DeleteMapping("/all/{icao}")
+	public ResponseEntity<Void> deleteByIcao(@PathVariable("icao") String icao) {
 		metarManagementUseCase.deleteAllByIcao(icao);
+		return ResponseEntity.ok().build();
+	}
+
+	@DeleteMapping("/{icao}")
+	public ResponseEntity<Void> deleteByIcaoAndPeriod(@PathVariable("icao") String icao,
+	                                                  @RequestParam("startDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime st,
+	                                                  @RequestParam("endDateTime") @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime ed) {
+
+		metarManagementUseCase.deleteByIcaoAndPeriod(icao, new RetrievalPeriod(st, ed));
 		return ResponseEntity.ok().build();
 	}
 
