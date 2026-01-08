@@ -8,9 +8,9 @@ spring:
 
   datasource:
     # Docker Compose에서 HOST, PORT만 바꿔 끼우면 되도록 변경
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:skystat_stage}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: ${DB_USER:root}
-    password: ${DB_PASSWORD:dnfl653538@}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   servlet:
@@ -34,27 +34,56 @@ spring:
     proxy-target-class: true
 
 server:
+  forward-headers-strategy: native
   tomcat:
+    basedir: ./logs/tomcat
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+      internal-proxies: '127\.0\.0\.1|10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2\d|3[0-1])\.\d{1,3}\.\d{1,3}'
     accesslog:
       enabled: true
-      directory: ./logs/access
+      directory: ../access
       prefix: access
       suffix: .log
-      pattern: '%{X-Correlation-Id}i %h %l %u %t "%r" %s %b %D'
+      file-date-format: .yyyy-MM-dd
+      pattern: 'corr=%{X-Correlation-Id}o ip=%a xff="%{X-Forwarded-For}i" t=%t method=%m uri="%U%q" status=%s bytes=%b dur_us=%D referer="%{Referer}i" ua="%{User-Agent}i"'
+
 
 log:
-  aop:
-    slow-threshold-ms: 1000
+  app:
+    logger: com.ilway.skystat
+
+  correlation:
+    enabled: true
+    id-length: 16
+    header-name: X-Correlation-Id
+    mdc-key: corrId
+    request-attr: corrId
+
+  slow:
+    enabled: true
+    threshold-ms: 3000
+
+  security:
+    enabled: true
+    username-attr: username
+    role-attr: role
+
+  audit:
+    enabled: true
+    username-attr: username
+    role-attr: role
 
 logging:
   file:
     path: ./logs
   level:
     root: INFO
-    # 기본 로그 레벨 (개발용)
-    com.ilway.skystat: DEBUG
-    org.hibernate.SQL: INFO
 
+jwt:
+  auth:
+    enabled: false
 ---
 # ===============================================================
 # 2. STAGING Profile (스테이징 환경 차이점)
@@ -66,7 +95,6 @@ spring:
 
 logging:
   level:
-    com.ilway.skystat: DEBUG
     org.hibernate.SQL: INFO
 
 ---
@@ -82,5 +110,17 @@ spring:
 
 logging:
   level:
-    com.ilway.skystat: INFO  # 불필요한 디버그 로그 제거
     org.hibernate: WARN      # 하이버네이트 로그 최소화
+
+jwt:
+  secret: ${JWT_SECRET}
+  auth:
+    enabled: true
+    include:
+      - /api/admin/**
+    exclude:
+      - /api/public/**
+      - /health
+      - /actuator/**
+    sources: [BEARER, COOKIE]
+    cookie-name: access_token

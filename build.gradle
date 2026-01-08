@@ -7,12 +7,14 @@ version = '1.0.0'
 
 allprojects {
   repositories {
+    mavenLocal()
     mavenCentral()
   }
 }
 
 subprojects {
   apply plugin: 'java'
+  apply plugin: 'java-library'
   apply plugin: 'io.spring.dependency-management'
 
   dependencyManagement {

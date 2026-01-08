@@ -8,6 +8,7 @@ import com.ilway.skystat.framework.exception.MetarParseException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -26,7 +27,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(AggregationUnavailableException.class)
 	public ResponseEntity<ErrorBody> handleUnavailable(AggregationUnavailableException e, HttpServletRequest req) {
-		log.warn("503 path={} msg={}", req.getRequestURI(), e.getMessage());
+		logWarn(503, "SERVICE_UNAVAILABLE", e.getMessage(), req);
 		return ResponseEntity.status(503).body(new ErrorBody("SERVICE_UNAVAILABLE", e.getMessage()));
 	}
 
@@ -35,28 +36,28 @@ public class GlobalExceptionHandler {
 		int status = e.getHttpStatus();
 		String code = e.getCode();
 
-		log.warn("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage());
+		logWarn(status, code, e.getMessage(), req);
 		return ResponseEntity.status(status).body(MetarSaveResponse.failure(0, 1, 0d, e.getMessage()));
 	}
 
 	@ExceptionHandler(MetarParseException.class)
-	public ResponseEntity<MetarSaveResponse> handleDuplicatedMetar(MetarParseException e, HttpServletRequest req) {
+	public ResponseEntity<MetarSaveResponse> handleMetarParse(MetarParseException e, HttpServletRequest req) {
 		int status = e.getHttpStatus();
 		String code = e.getCode();
 
-		log.warn("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage());
+		logWarn(status, code, e.getMessage(), req);
 		return ResponseEntity.status(status).body(MetarSaveResponse.failure(1, 0, 1d, e.getMessage()));
 	}
 
-	@ExceptionHandler(BusinessException.class) // 필요 시 도메인/앱 예외로 교체
+	@ExceptionHandler(BusinessException.class)
 	public ResponseEntity<ErrorBody> handleBiz(BusinessException e, HttpServletRequest req) {
 		int status = e.getHttpStatus();
 		String code = e.getCode();
 
 		if (status >= 500) {
-			log.error("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage(), e);
+			logError(status, code, e.getMessage(), req, e);
 		} else {
-			log.warn("{} path={} code={} msg={}", status, req.getRequestURI(), code, e.getMessage());
+			logWarn(status, code, e.getMessage(), req);
 		}
 		return ResponseEntity.status(status).body(new ErrorBody(code, e.getMessage()));
 	}
@@ -67,7 +68,7 @@ public class GlobalExceptionHandler {
 		MissingServletRequestParameterException.class
 	})
 	public ResponseEntity<ErrorBody> handleBadRequest(Exception e, HttpServletRequest req) {
-		log.warn("400 path={} msg={}", req.getRequestURI(), e.getMessage());
+		logWarn(400, "BAD_REQUEST", e.getMessage(), req);
 		return ResponseEntity.badRequest().body(new ErrorBody("BAD_REQUEST", e.getMessage()));
 	}
 
@@ -76,13 +77,14 @@ public class GlobalExceptionHandler {
 		String msg = e.getConstraintViolations().stream()
 			             .map(v -> v.getPropertyPath() + " " + v.getMessage())
 			             .findFirst().orElse(e.getMessage());
-		log.warn("400 path={} msg={}", req.getRequestURI(), msg);
+		logWarn(400, "VALIDATION_ERROR", msg, req);
 		return ResponseEntity.badRequest().body(new ErrorBody("VALIDATION_ERROR", msg));
 	}
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<ErrorBody> handleNotReadable(HttpMessageNotReadableException e, HttpServletRequest req) {
-		log.warn("400 path={} msg={}", req.getRequestURI(), e.getMostSpecificCause().getMessage());
+		String cause = (e.getMostSpecificCause() != null) ? e.getMostSpecificCause().getMessage() : e.getMessage();
+		logWarn(400, "BAD_REQUEST", cause, req);
 		return ResponseEntity.badRequest().body(new ErrorBody("BAD_REQUEST", "Malformed JSON or unreadable body"));
 	}
 
@@ -91,7 +93,8 @@ public class GlobalExceptionHandler {
 		String msg = e.getBindingResult().getFieldErrors().stream()
 			             .map(fe -> fe.getField() + " " + fe.getDefaultMessage())
 			             .findFirst().orElse("Validation failed");
-		log.warn("400 path={} msg={}", req.getRequestURI(), msg);
+
+		logWarn(400, "VALIDATION_ERROR", msg, req);
 		return ResponseEntity.badRequest().body(new ErrorBody("VALIDATION_ERROR", msg));
 	}
 
@@ -105,7 +108,7 @@ public class GlobalExceptionHandler {
 		} else {
 			msg = e.getMessage();
 		}
-		log.warn("400 path={} msg={}", req.getRequestURI(), msg);
+		logWarn(400, "BINDING_ERROR", msg, req);
 		return ResponseEntity.badRequest().body(new ErrorBody("BINDING_ERROR", msg));
 	}
 
@@ -114,23 +117,95 @@ public class GlobalExceptionHandler {
 		String msg = e.getAllErrors().stream()
 			             .map(err -> err.getDefaultMessage())
 			             .findFirst().orElse("Validation failed");
-		log.warn("400 path={} msg={}", req.getRequestURI(), msg);
+		logWarn(400, "VALIDATION_ERROR", msg, req);
 		return ResponseEntity.badRequest().body(new ErrorBody("VALIDATION_ERROR", msg));
 	}
 
-	// (선택) 업로드 용량 초과 → 413
+	// 업로드 용량 초과 → 413
 	@ExceptionHandler(MaxUploadSizeExceededException.class)
 	public ResponseEntity<ErrorBody> handleUpload(MaxUploadSizeExceededException e, HttpServletRequest req) {
-		log.warn("413 path={} msg={}", req.getRequestURI(), e.getMessage());
+		logWarn(413, "PAYLOAD_TOO_LARGE", e.getMessage(), req);
 		return ResponseEntity.status(413).body(new ErrorBody("PAYLOAD_TOO_LARGE", "File too large"));
 	}
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorBody> handleAny(Exception e, HttpServletRequest req) {
-		log.error("unhandled error path={}", req.getRequestURI(), e);
-		return ResponseEntity.internalServerError().body(new ErrorBody("INTERNAL_ERROR","Unexpected error"));
+		logError(500, "INTERNAL_ERROR", "Unexpected error", req, e);
+		return ResponseEntity.internalServerError().body(new ErrorBody("INTERNAL_ERROR", "Unexpected error"));
+	}
+
+	// =========================================================
+	// Logging helpers (slow/access와 동일한 키 순서/이름)
+	// =========================================================
+
+	private void logWarn(int status, String code, String msg, HttpServletRequest req) {
+		log.warn("{} code={} msg={}",
+			prefix(req, status),
+			safe(code),
+			safe(msg)
+		);
+	}
+
+	private void logError(int status, String code, String msg, HttpServletRequest req, Throwable e) {
+		log.error("{} code={} msg={}",
+			prefix(req, status),
+			safe(code),
+			safe(msg),
+			e
+		);
+	}
+
+	private String prefix(HttpServletRequest req, int status) {
+		return "corr=" + corrId(req)
+			       + " ip=" + clientIp(req)
+			       + " xff=\"" + safeHeader(req, "X-Forwarded-For") + "\""
+			       + " method=" + safe(req.getMethod())
+			       + " uri=\"" + safe(uri(req)) + "\""
+			       + " status=" + status
+			       + " referer=\"" + safeHeader(req, "Referer") + "\""
+			       + " ua=\"" + safeHeader(req, "User-Agent") + "\"";
+	}
+
+	private String uri(HttpServletRequest req) {
+		String qs = req.getQueryString();
+		return (qs == null || qs.isBlank()) ? req.getRequestURI() : req.getRequestURI() + "?" + qs;
+	}
+
+	private String corrId(HttpServletRequest req) {
+		Object v = req.getAttribute("corrId"); // log-spring-web 설정(request-attr)이 corrId인 경우
+		if (v != null) return safe(String.valueOf(v));
+
+		String mdc = MDC.get("corrId");
+		return (mdc == null || mdc.isBlank()) ? "-" : mdc;
+	}
+
+	private String clientIp(HttpServletRequest req) {
+		// 프록시 환경이면 XFF 첫 번째 값을 원본으로 간주(원하면 여기 정책 바꿀 수 있음)
+		String xff = req.getHeader("X-Forwarded-For");
+		if (xff != null && !xff.isBlank()) {
+			int comma = xff.indexOf(',');
+			return (comma >= 0) ? xff.substring(0, comma).trim() : xff.trim();
+		}
+		String ip = req.getRemoteAddr();
+		return (ip == null || ip.isBlank()) ? "-" : ip;
+	}
+
+	private String safeHeader(HttpServletRequest req, String name) {
+		String v = req.getHeader(name);
+		if (v == null || v.isBlank()) return "-";
+		return safe(v);
+	}
+
+	private String safe(String v) {
+		if (v == null) return "-";
+		String s = v.replace('\n', ' ')
+			           .replace('\r', ' ')
+			           .replace('\t', ' ')
+			           .trim();
+		if (s.isBlank()) return "-";
+		if (s.length() > 500) return s.substring(0, 500) + "...(truncated)";
+		return s;
 	}
 
 	public record ErrorBody(String code, String message) {}
-
 }

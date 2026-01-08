@@ -132,9 +132,9 @@ public class MetarSaveFileService implements MetarSaveFileUseCase {
 
 	private static String buildMessage(double parsingErrorRate) {
 		if (parsingErrorRate >= 0.50) return "Warning: parsing error rate >= 50%. Dataset quality is very low.";
-		if (parsingErrorRate >= 0.33) return "Caution: parsing error rate >= 33%. Dataset quality is low.";
+		if (parsingErrorRate >= 0.30) return "Caution: parsing error rate >= 30%. Dataset quality is low.";
 		if (parsingErrorRate >= 0.01) return "Notice: parsing error rate >= 1%.";
-		return "OK";
+		return "";
 	}
 
 	private record InsertMetar(int lineNo, Metar metar){};
